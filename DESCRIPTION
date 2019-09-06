@@ -1,0 +1,13 @@
+Package: freealg
+Type: Package
+Title: The Free Algebra
+Version: 1.0-0
+Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
+Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
+Description: The free algebra
+License: GPL (>= 2)
+Imports: Rcpp (>= 0.12.3)
+LinkingTo: Rcpp
+SystemRequirements: C++11
+URL: https://github.com/RobinHankin/freealg.git
+BugReports: https://github.com/RobinHankin/freealg/issues
