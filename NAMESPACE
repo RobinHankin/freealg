@@ -2,3 +2,4 @@ useDynLib(freealg, .registration=TRUE)
 exportPattern("^[[:alpha:]]+")
 
 import("methods")
+importFrom(Rcpp, evalCpp)
