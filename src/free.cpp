@@ -15,13 +15,14 @@
 
 using namespace std;
 using namespace Rcpp; 
-typedef map <IntegerVector, double> free;  // maps integer vectors to reals
+typedef std::list<signed int> index; // an 'index' object is a list of signed ints
+typedef map <index, double> free;   // a 'free' maps index objects to reals
 
 List retval(const free &X){   // takes a free object and returns a mpoly-type list suitable for return to R
     unsigned int i; 
     free::const_iterator it;
     
-    unsigned int n=X.size();
+    unsigned int n=X.size();  
     List wordlist(n);
     NumericVector coeff_vec(n);
 
@@ -39,44 +40,68 @@ List retval(const free &X){   // takes a free object and returns a mpoly-type li
 free prepare(const List words, const NumericVector coeffs){ 
     free out;
     const unsigned int n=words.size();  // n = number of words (each word has one coefficient)
+    index X;
+    index::iterator it;
 
     for(unsigned int i=0 ; i<n ; i++){  
-        SEXP jj = words[i]; 
+        if(coeffs[i] != 0){ // only nonzero coeffs
+        SEXP jj = words; 
         Rcpp::IntegerVector words(jj);
 
-        // now map the word to its coefficient: 
-        if(coeffs[i] != 0){ // only nonzero coeffs
-            out[oneterm]  += coeffs[i];  // the meat
+        for(it=words.begin() ; it != words.end() ; ++it){
+            X.push_back(words[it]);
         }
+            out[comb(X)]  += coeffs[i];  // the meat
+        } // if coeffs != 0 clause closes
     } // i loop closes
     return out;
 }
 
-IntegerVector comb(IntegerVector X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
+index comb(index X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
+    std::list<signed int>::iterator it;
+    unsigned int i;
 
+        // Step 1, strip out zeros:
+        while(true){
+            it = X.begin();
+            if(it == X.end()){break; }
+            if(*it == 0){X.erase(it++)} // meat 1
+        }
 
+        // Step 2, strip out cancelling pairs [n, -n]:
+        while(true){
+            if(*it  + *(++it)==0){ // NB prefix
+                if(it == X.end()){break; }
+                X.erase(it--); // meat 2
+                X.erase(it);  // meat 3
+            }
+        }
+        return X;
 }
 
-IntegerVector concatenate(IntegerVector X1, IntegerVector X2){
-    IntegerVector out;
-    
-    return comb(out);
-}
-
-free sum(const free X1, const free X2){
-    free out;
-    term t1new,t2;
-    
-    for(free::const_iterator it2=X2.begin() ; it2 != X2.end() ; ++it2){
-            out[it2->first] += it2->second;
+index concatenate(index X1, const index X2){
+    index::const_iterator it;
+    for(it=X2.start() ; it != X2.end() ; it++){
+        X1.push_back(*it);
     }
-    return zero_coefficient_remover(out);
+     return comb(X1);
+}
+
+free sum(free X1, const free X2){
+    free out;
+    free::const_iterator it;
+
+    for(it=X2.begin() ; it != X2.end() ; ++it){
+        X1[it->first] += it->second;  // the meat
+    }
+    return X2;
 }
 
 free product(const free X1, const free X2){
-    free out=X1;
-    for(free::const_iterator it=X1.begin() ; it != X1.end() ; ++it2){
-        for(free::const_iterator it2=X2.begin() ; it2 != X2.end() ; ++it2){
+    free out;
+    free::const_iterator it1,it2;
+    for(it1=X1.begin() ; it1 != X1.end() ; ++it1){
+        for(it2=X2.begin() ; it2 != X2.end() ; ++it2){
             out[concatenate(it1->first,it2->first)] += (it1->second)*(it2->second); // the meat
         }
     }
