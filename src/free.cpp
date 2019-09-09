@@ -47,7 +47,6 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
 flindex comb(flindex X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
     std::list<signed int>::iterator it;
     std::list<signed int>::const_iterator current,next;
-    unsigned int i;
     it = X.begin();
     while(it != X.end()){
         if(*it == 0){
@@ -77,8 +76,6 @@ freealg prepare(const List words, const NumericVector coeffs){
     freealg out;
     const unsigned int n=words.size();  // n = number of words (each word has one coefficient)
 
-    NumericVector::iterator it;
-
     for(unsigned int i=0 ; i<n ; i++){  
         if(coeffs[i] != 0){ // only nonzero coeffs
         SEXP jj = words[i]; 
@@ -94,7 +91,7 @@ freealg prepare(const List words, const NumericVector coeffs){
     return out;
 }
 
-flindex concatenate(flindex X1, const flindex X2){
+flindex concatenate(flindex X1, const flindex X2){ 
     flindex::const_iterator it;
     for(it=X2.begin() ; it != X2.end() ; it++){
         X1.push_back(*it);
@@ -102,7 +99,7 @@ flindex concatenate(flindex X1, const flindex X2){
      return comb(X1);
 }
 
-freealg sum(freealg X1, const freealg X2){
+freealg sum(freealg X1, const freealg X2){ //X1 modified in place
     freealg out;
     freealg::const_iterator it;
 
