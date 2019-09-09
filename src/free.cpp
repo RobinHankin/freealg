@@ -45,29 +45,31 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
 }
     
 flindex comb(flindex X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
-    std::list<signed int>::iterator it, next;
+    std::list<signed int>::iterator it;
+    std::list<signed int>::const_iterator current,next;
     unsigned int i;
     it = X.begin();
     while(it != X.end()){
         if(*it == 0){
-            it = X.erase(it);  // meat 1 (increments 'it')
+            it = X.erase(it);  // meat A (erases zero, increments 'it')
         } else {
             it++;  // increment anyway
         }
     }  // while loop closes
 
-    if(false){
     it = X.begin();        // Step 2, strip out cancelling pairs [n, -n]:
     while(it != X.end()){
+        current = it;
+        ++it;
         next = it;
-        next++;
-        if(next != X.end()){
-            if((*it + *next)==0){ 
-                X.erase(X.erase(it)); // meat; erase two elements
+        if(it != X.end()){
+            if(((*current) + (*next))==0){ 
+                it = X.erase(current); // meat B
+                it = X.erase(it);      // meat C
                 it = X.begin();
             }
         }
-    }}
+    }
     return X;
 }
 
