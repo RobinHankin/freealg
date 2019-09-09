@@ -74,15 +74,16 @@ flindex comb(flindex X){  // combs through X, performing cancellations; eg [2,3,
 freealg prepare(const List words, const NumericVector coeffs){ 
     freealg out;
     const unsigned int n=words.size();  // n = number of words (each word has one coefficient)
-    flindex X;
+
     NumericVector::iterator it;
 
     for(unsigned int i=0 ; i<n ; i++){  
         if(coeffs[i] != 0){ // only nonzero coeffs
-        SEXP jj = words; 
+        SEXP jj = words[i]; 
         Rcpp::IntegerVector words(jj);
-
+        flindex X;
         for(unsigned int j=0 ; j<words.size() ; ++j){
+
             X.push_back(words[j]);
         }
         //            out[comb(X)]  += coeffs[i];  // the meat
