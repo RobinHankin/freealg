@@ -1,4 +1,4 @@
-// -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; indent-tabs-mode: nil; -*-
+/ -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 
 #define USE_UNORDERED_MAP true   // set to true for unordered_map; comment out to use plain stl map.
 
@@ -15,16 +15,16 @@
 
 using namespace std;
 using namespace Rcpp; 
-typedef std::list<signed int> index; // an 'index' object is a list of signed ints
-typedef map <index, double> free;   // a 'free' maps index objects to reals
+typedef std::list<signed int> flindex; // an 'flindex' object is a list of signed ints
+typedef map <flindex, double> freealg;   // a 'freealg' maps flindex objects to reals
 
-List retval(const free &X){   // takes a free object and returns a mpoly-type list suitable for return to R
+List retval(const freealg &X){   // takes a freealg object and returns a mpoly-type list suitable for return to R
     unsigned int i; 
-    free::const_iterator it;
+    freealg::const_iterator it;
     
     unsigned int n=X.size();  
-    List wordlist(n);
-    NumericVector coeff_vec(n);
+    List wordList(n);
+    NumericVector coeffs(n);
 
     for(it = X.begin(), i=0 ; it != X.end() ; ++it, i++){
         wordList[i] = it->first;
@@ -33,15 +33,41 @@ List retval(const free &X){   // takes a free object and returns a mpoly-type li
 
 
     return List::create(Named("words") = wordList,
-                        Named("coeffs") = coeff_vec
+                        Named("coeffs") = coeffs
                         );
 }
     
-free prepare(const List words, const NumericVector coeffs){ 
-    free out;
+flindex comb(flindex X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
+    std::list<signed int>::iterator it, prev,next;
+    unsigned int i;
+    it = X.begin();
+    while(it != X.end()){
+        if(*it == 0){
+            it = X.erase(it);  // meat 1
+        } else {
+            it++;
+        }
+    }
+
+    it = X.begin();        // Step 2, strip out cancelling pairs [n, -n]:
+    while(it != X.end()){
+        next = it+1;
+        if(next != X.end()){
+            if((*it + *next)==0){ 
+                it = X.erase(it); // meat B
+                X.erase(it); // meat A
+                it = X.begin();
+            }
+        }
+    }
+    return X;
+}
+
+freealg prepare(const List words, const NumericVector coeffs){ 
+    freealg out;
     const unsigned int n=words.size();  // n = number of words (each word has one coefficient)
-    index X;
-    index::iterator it;
+    flindex X;
+    flindex::iterator it;
 
     for(unsigned int i=0 ; i<n ; i++){  
         if(coeffs[i] != 0){ // only nonzero coeffs
@@ -57,39 +83,17 @@ free prepare(const List words, const NumericVector coeffs){
     return out;
 }
 
-index comb(index X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
-    std::list<signed int>::iterator it;
-    unsigned int i;
-
-        // Step 1, strip out zeros:
-        while(true){
-            it = X.begin();
-            if(it == X.end()){break; }
-            if(*it == 0){X.erase(it++)} // meat 1
-        }
-
-        // Step 2, strip out cancelling pairs [n, -n]:
-        while(true){
-            if(*it  + *(++it)==0){ // NB prefix
-                if(it == X.end()){break; }
-                X.erase(it--); // meat 2
-                X.erase(it);  // meat 3
-            }
-        }
-        return X;
-}
-
-index concatenate(index X1, const index X2){
-    index::const_iterator it;
-    for(it=X2.start() ; it != X2.end() ; it++){
+flindex concatenate(flindex X1, const flindex X2){
+    flindex::const_iterator it;
+    for(it=X2.begin() ; it != X2.end() ; it++){
         X1.push_back(*it);
     }
      return comb(X1);
 }
 
-free sum(free X1, const free X2){
-    free out;
-    free::const_iterator it;
+freealg sum(freealg X1, const freealg X2){
+    freealg out;
+    freealg::const_iterator it;
 
     for(it=X2.begin() ; it != X2.end() ; ++it){
         X1[it->first] += it->second;  // the meat
@@ -97,9 +101,9 @@ free sum(free X1, const free X2){
     return X2;
 }
 
-free product(const free X1, const free X2){
-    free out;
-    free::const_iterator it1,it2;
+freealg product(const freealg X1, const freealg X2){
+    freealg out;
+    freealg::const_iterator it1,it2;
     for(it1=X1.begin() ; it1 != X1.end() ; ++it1){
         for(it2=X2.begin() ; it2 != X2.end() ; ++it2){
             out[concatenate(it1->first,it2->first)] += (it1->second)*(it2->second); // the meat
@@ -108,8 +112,8 @@ free product(const free X1, const free X2){
     return out;
 }
 
-free power(const free, unsigned int n){
-    free out; // empty free object is the zero object
+freealg power(const freealg, unsigned int n){
+    freealg out; // empty freealg object is the zero object
     if(n<1){throw std::range_error("power cannot be <1");} 
     if(n==1){
         return X;
