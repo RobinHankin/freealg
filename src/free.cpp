@@ -19,20 +19,27 @@ typedef std::list<signed int> flindex; // an 'flindex' object is a list of signe
 typedef map <flindex, double> freealg; // a 'freealg' maps flindex objects to reals
 
 List retval(const freealg &X){   // takes a freealg object and returns a mpoly-type list suitable for return to R
-    unsigned int i; 
-    freealg::const_iterator it;
-    
-    unsigned int n=X.size();  
-    List wordList(n);
+    unsigned int i,j;
+    const unsigned int n=X.size();   // n is the number of terms
+    List indexList(n);
     NumericVector coeffs(n);
+    flindex::const_iterator ic;
+    freealg::const_iterator it;
 
     for(it = X.begin(), i=0 ; it != X.end() ; ++it, i++){
-        wordList[i] = it->first;
+
         coeffs[i] = (double) it->second;
+        const flindex f = it->first;
+        const unsigned int r = f.size();
+        IntegerVector index(r);
+        for(ic = f.begin(), j=0 ; ic != f.end() ; ++ic, ++j){
+            index[j] = (signed int) *ic;
+        }
+        indexList[i] = index;
     }  // 'it' loop closes
 
-
-    return List::create(Named("words") = wordList,
+    return List::create(
+                        Named("indices") = indexList,
                         Named("coeffs") = coeffs
                         );
 }
@@ -43,23 +50,24 @@ flindex comb(flindex X){  // combs through X, performing cancellations; eg [2,3,
     it = X.begin();
     while(it != X.end()){
         if(*it == 0){
-            it = X.erase(it);  // meat 1
+            it = X.erase(it);  // meat 1 (increments 'it')
         } else {
-            it++;
+            it++;  // increment anyway
         }
-    }
+    }  // while loop closes
 
+    if(false){
     it = X.begin();        // Step 2, strip out cancelling pairs [n, -n]:
     while(it != X.end()){
-        next = it++;
-        it--;
+        next = it;
+        next++;
         if(next != X.end()){
             if((*it + *next)==0){ 
                 X.erase(X.erase(it)); // meat; erase two elements
                 it = X.begin();
             }
         }
-    }
+    }}
     return X;
 }
 
@@ -77,7 +85,8 @@ freealg prepare(const List words, const NumericVector coeffs){
         for(unsigned int j=0 ; j<words.size() ; ++j){
             X.push_back(words[j]);
         }
-            out[comb(X)]  += coeffs[i];  // the meat
+        //            out[comb(X)]  += coeffs[i];  // the meat
+            out[X]  += coeffs[i]; 
         } // if coeffs != 0 clause closes
     } // i loop closes
     return out;
