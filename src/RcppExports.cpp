@@ -6,43 +6,42 @@
 using namespace Rcpp;
 
 // simplify
-List simplify(const List& allnames, const List& allpowers, const NumericVector& coefficients);
-RcppExport SEXP _freealg_simplify(SEXP allnamesSEXP, SEXP allpowersSEXP, SEXP coefficientsSEXP) {
+List simplify(const List& words, const NumericVector& coeffs);
+RcppExport SEXP _freealg_simplify(SEXP wordsSEXP, SEXP coeffsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const List& >::type allnames(allnamesSEXP);
-    Rcpp::traits::input_parameter< const List& >::type allpowers(allpowersSEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coefficients(coefficientsSEXP);
-    rcpp_result_gen = Rcpp::wrap(simplify(allnames, allpowers, coefficients));
+    Rcpp::traits::input_parameter< const List& >::type words(wordsSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs(coeffsSEXP);
+    rcpp_result_gen = Rcpp::wrap(simplify(words, coeffs));
     return rcpp_result_gen;
 END_RCPP
 }
 // free_prod
-List free_prod(const List& words1, const NumericVector& coefficients1, const List& words2, const NumericVector& coefficients2);
-RcppExport SEXP _freealg_free_prod(SEXP words1SEXP, SEXP coefficients1SEXP, SEXP words2SEXP, SEXP coefficients2SEXP) {
+List free_prod(const List& words1, const NumericVector& coeffs1, const List& words2, const NumericVector& coeffs2);
+RcppExport SEXP _freealg_free_prod(SEXP words1SEXP, SEXP coeffs1SEXP, SEXP words2SEXP, SEXP coeffs2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const List& >::type words1(words1SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coefficients1(coefficients1SEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs1(coeffs1SEXP);
     Rcpp::traits::input_parameter< const List& >::type words2(words2SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coefficients2(coefficients2SEXP);
-    rcpp_result_gen = Rcpp::wrap(free_prod(words1, coefficients1, words2, coefficients2));
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs2(coeffs2SEXP);
+    rcpp_result_gen = Rcpp::wrap(free_prod(words1, coeffs1, words2, coeffs2));
     return rcpp_result_gen;
 END_RCPP
 }
 // free_sum
-List free_sum(const List& words1, const NumericVector& coefficients1, const List& words2, const NumericVector& coefficients2);
-RcppExport SEXP _freealg_free_sum(SEXP words1SEXP, SEXP coefficients1SEXP, SEXP words2SEXP, SEXP coefficients2SEXP) {
+List free_sum(const List& words1, const NumericVector& coeffs1, const List& words2, const NumericVector& coeffs2);
+RcppExport SEXP _freealg_free_sum(SEXP words1SEXP, SEXP coeffs1SEXP, SEXP words2SEXP, SEXP coeffs2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const List& >::type words1(words1SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coefficients1(coefficients1SEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs1(coeffs1SEXP);
     Rcpp::traits::input_parameter< const List& >::type words2(words2SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coefficients2(coefficients2SEXP);
-    rcpp_result_gen = Rcpp::wrap(free_sum(words1, coefficients1, words2, coefficients2));
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs2(coeffs2SEXP);
+    rcpp_result_gen = Rcpp::wrap(free_sum(words1, coeffs1, words2, coeffs2));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -61,7 +60,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_freealg_simplify", (DL_FUNC) &_freealg_simplify, 3},
+    {"_freealg_simplify", (DL_FUNC) &_freealg_simplify, 2},
     {"_freealg_free_prod", (DL_FUNC) &_freealg_free_prod, 4},
     {"_freealg_free_sum", (DL_FUNC) &_freealg_free_sum, 4},
     {"_freealg_free_power", (DL_FUNC) &_freealg_free_power, 3},
