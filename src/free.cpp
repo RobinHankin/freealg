@@ -86,8 +86,7 @@ freealg prepare(const List words, const NumericVector coeffs){
 
             X.push_back(words[j]);
         }
-        //            out[comb(X)]  += coeffs[i];  // the meat
-            out[X]  += coeffs[i]; 
+        out[comb(X)]  += coeffs[i];  // the meat
         } // if coeffs != 0 clause closes
     } // i loop closes
     return out;
