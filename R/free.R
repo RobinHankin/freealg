@@ -111,7 +111,7 @@
   return(x)
 }
 
-`vector_to_freealg` <- function(v,coeffs){
+`vector_to_free` <- function(v,coeffs){
   if(missing(coeffs)){coeffs <- rep(1,length(v))}
   freealg(as.list(v),coeffs)
 }
