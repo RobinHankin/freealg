@@ -102,11 +102,10 @@ word concatenate(word X1, const word X2){
 freealg sum(freealg X1, const freealg X2){ //X1 modified in place
     freealg out;
     freealg::const_iterator it;
-
     for(it=X2.begin() ; it != X2.end() ; ++it){
         X1[it->first] += it->second;  // the meat
     }
-    return X2;
+    return X1;
 }
 
 freealg product(const freealg X1, const freealg X2){

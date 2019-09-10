@@ -21,7 +21,7 @@
     
     if (.Generic == "*") {
         if (lclass && rclass) {
-            return(free_prod(e1, e2))
+            return(free_times_free(e1, e2))
         } else if (lclass) {
             return(free_times_scalar(e1, e2))
         } else if (rclass) {
@@ -33,50 +33,50 @@
         if (lclass && rclass) {
             return(free_plus_free(e1, e2))  # S1+S2
         } else if (lclass) {
-            return(free_plus_numeric(e1, e2)) # S+x
+          return(free_plus_numeric(e1, e2)) # S+x
         } else if (rclass) {
-            return(free_plus_numeric(e2, e1)) # x+S
+          return(free_plus_numeric(e2, e1)) # x+S
         } else {
-            oddfunc()
+          oddfunc()
         }
     } else if (.Generic == "-") {
-        if (lclass && rclass) {
-            return(free_plus_free(e1, free_negative(e2)))  # S1-S2
-        } else if (lclass) {
-            return(free_plus_numeric(e1, -e2))                # S-x
-        } else if (rclass) {
-            return(free_plus_numeric(free_negative(e2), e1)) # x-S
-        } else {
-            oddfunc()
-        }
+      if (lclass && rclass) {
+        return(free_plus_free(e1, free_negative(e2)))  # S1-S2
+      } else if (lclass) {
+        return(free_plus_numeric(e1, -e2))                # S-x
+      } else if (rclass) {
+        return(free_plus_numeric(free_negative(e2), e1)) # x-S
+      } else {
+        oddfunc()
+      }
     } else if (.Generic == "^") {
-        if(lclass && !rclass){
-            return(free_power_scalar(e1,e2)) # S^n
-        } else {
-            stop("Generic '^' not implemented in this case")
-        }
+      if(lclass && !rclass){
+        return(free_power_scalar(e1,e2)) # S^n
+      } else {
+        stop("Generic '^' not implemented in this case")
+      }
     } else if (.Generic == "==") {
-        if(lclass && rclass){
-            return(free_eq_free(e1,e2))
-        } else {
-            stop("Generic '==' only compares two freealg objects with one another")
-        }          
+      if(lclass && rclass){
+        return(free_eq_free(e1,e2))
+      } else {
+        stop("Generic '==' only compares two freealg objects with one another")
+      }          
     } else if (.Generic == "!=") {
-        if(lclass && rclass){
-            return(!free_eq_free(e1,e2))
-        } else {
-            stop("Generic '!=' only compares two free objects with one another")
-        }          
+      if(lclass && rclass){
+        return(!free_eq_free(e1,e2))
+      } else {
+        stop("Generic '!=' only compares two free objects with one another")
+      }
     } else if (.Generic == "/") {
-        if(lclass && !rclass){
-            return(free_times_scalar(e1,1/e2))
-          } else {
+      if(lclass && !rclass){
+        return(free_times_scalar(e1,1/e2))
+      } else {
         stop("Generic '/' not supported for freealg objects")
+      }
     }
-  }
 }
 
-`free_negative` <- function(X){
+`free_negative` <- function(S){
     if(is.zero(S)){
         return(S)
     } else {
@@ -125,7 +125,7 @@ free_power_scalar <- function(S,n){
   } else if(n==0){
     return(constant(1))
   } else {
-      jj <- free_power(S[[1]],S[[2]])
+      jj <- free_power(S[[1]],S[[2]],n)
       return(freealg(jj[[1]],jj[[2]]))
   }
 }
