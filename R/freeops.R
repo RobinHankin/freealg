@@ -123,7 +123,7 @@ free_power_scalar <- function(S,n){
   if(n<0){
     stop("negative powers not implemented")
   } else if(n==0){
-    return(constant(1))
+    return(as.freealg(1))
   } else {
       jj <- free_power(S[[1]],S[[2]],n)
       return(freealg(jj[[1]],jj[[2]]))

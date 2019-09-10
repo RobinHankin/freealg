@@ -16,9 +16,9 @@
   } else if(is.list(x)){
     return(freealg(x[[1]],x[[2]]))
   } else if(is.numeric(x) &&(length(x)==1)){
-    return(numeric_to_freealg(x))
+    return(numeric_to_free(x))
   } else if(is.numeric(x) &&(length(x) > 1)){
-    return(vector_to_freealg(x))
+    return(vector_to_free(x))
   } else if(is.character(x)){
     return(natural_char_to_freealg(x))
   } else {
