@@ -15,8 +15,12 @@
     return(x)
   } else if(is.list(x)){
     return(freealg(x[[1]],x[[2]]))
-  } else if(is.numeric(x)){
+  } else if(is.numeric(x) &&(length(x)==1)){
     return(numeric_to_freealg(x))
+  } else if(is.numeric(x) &&(length(x) > 1)){
+    return(vector_to_freealg(x))
+  } else if(is.character(x)){
+    return(natural_char_to_freealg(x))
   } else {
     stop("not recognised")
   }
@@ -92,6 +96,7 @@
       pm <- " + " # pm = plus or minus
     } else {
       pm <- " - "
+      co <- abs(co)
     }
     jj <- words(x)[i][[1]]
     if(length(jj)>0){mulsym <- "*"} else {mulsym <- ""}
@@ -105,3 +110,39 @@
   cat("\n")
   return(x)
 }
+
+`vector_to_freealg` <- function(v,coeffs){
+  if(missing(coeffs)){coeffs <- rep(1,length(v))}
+  freealg(as.list(v),coeffs)
+}
+
+`string_to_freealg` <- function(string){
+  string <- gsub("^\\+","",string)  # strip initial "+"
+  string <- gsub("\\*","",string)   # strip all "*"
+  minus <- length(grep("^-",string))>0
+  if(minus){
+    sign <- (-1)
+    string <- gsub("^-","",string)
+  } else {
+    sign <- +1
+  }
+
+  if(length(grep("[0-9]",string))>0){
+    coeff <- as.numeric(gsub("[a-z]|[A-Z]","",string))
+    string <- gsub("[0-9]","",string)
+  } else {
+    coeff <- 1
+  }
+  out <- match(strsplit(string,"")[[1]], c(letters,LETTERS))
+  if(any(out>26)){out[out>26] <- 26-out[out>26]}
+  freealg(list(out),coeffs=sign*coeff)
+}
+
+`char_to_freealg` <- function(ch){ Reduce(`+`,lapply(ch,string_to_freealg))  }
+
+`natural_char_to_freealg` <- function(string){
+  string <- paste(string, collapse = " ")
+  string <- gsub(" ","",string)  # strip spaces
+  string <- gsub("\\+"," +",string) # 'A+B" -> "A +B"
+  string <- gsub("\\-", " -",string) # "A-B" -> "A -B"
+  char_to_freealg(strsplit(string," ")[[1]]) }
