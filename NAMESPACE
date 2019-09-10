@@ -3,3 +3,6 @@ exportPattern("^[[:alpha:]]+")
 
 import("methods")
 importFrom(Rcpp, evalCpp)
+
+S3method(constant, freealg)
+S3method("constant<-", freealg)
