@@ -55,8 +55,31 @@
   return(TRUE)
 }
 
-rfalg <- function(n=7, distinct=3, maxsize=4, include.negative=FALSE){
+`rfalg` <- function(n=7, distinct=3, maxsize=4, allow.negative=FALSE){
   distinct <- seq_len(distinct)
   if(include.negative){distinct <- c(distinct,-distinct)}
   freealg(replicate(n,sample(distinct,min(1+rgeom(1,1/maxsize),maxsize),replace=TRUE),simplify=FALSE), seq_len(n)+17)
+}
+
+`print.freealg` <- function(x,...){
+  cat("free algebra element algebraically equal to\n")
+  out <- ""
+  for(i in seq_along(words(x))){
+    co <- coeffs(x)[i]
+    if(co>0){
+      pm <- " + " # pm = plus or minus
+    } else {
+      pm <- " - "
+    }
+    jj <- words(x)[i][[1]]
+    if(length(jj)>0){mulsym <- "*"} else {mulsym <- ""}
+    if(any(jj<0)){jj[jj<0] <- 26-jj[jj<0]}
+    jj <- c(letters,LETTERS)[jj]
+    jj <- paste(jj,collapse="")
+
+    out <- paste(out, pm, co, mulsym, jj, sep="")
+  }
+  cat(out)
+  cat("\n")
+  return(x)
 }
