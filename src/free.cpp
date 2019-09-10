@@ -15,21 +15,21 @@
 
 using namespace std;
 using namespace Rcpp; 
-typedef std::list<signed int> flindex; // an 'flindex' object is a list of signed ints
-typedef map <flindex, double> freealg; // a 'freealg' maps flindex objects to reals
+typedef std::list<signed int> word; // an 'word' object is a list of signed ints
+typedef map <word, double> freealg; // a 'freealg' maps word objects to reals
 
 List retval(const freealg &X){   // takes a freealg object and returns a mpoly-type list suitable for return to R
     unsigned int i,j;
     const unsigned int n=X.size();   // n is the number of terms
     List indexList(n);
     NumericVector coeffs(n);
-    flindex::const_iterator ic;
+    word::const_iterator ic;
     freealg::const_iterator it;
 
     for(it = X.begin(), i=0 ; it != X.end() ; ++it, i++){
 
         coeffs[i] = (double) it->second;
-        const flindex f = it->first;
+        const word f = it->first;
         const unsigned int r = f.size();
         IntegerVector index(r);
         for(ic = f.begin(), j=0 ; ic != f.end() ; ++ic, ++j){
@@ -44,7 +44,7 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
                         );
 }
     
-flindex comb(flindex X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
+word comb(word X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
     std::list<signed int>::iterator it;
     std::list<signed int>::const_iterator current,next;
     it = X.begin();
@@ -80,7 +80,7 @@ freealg prepare(const List words, const NumericVector coeffs){
         if(coeffs[i] != 0){ // only nonzero coeffs
         SEXP jj = words[i]; 
         Rcpp::IntegerVector words(jj);
-        flindex X;
+        word X;
         for(unsigned int j=0 ; j<words.size() ; ++j){
 
             X.push_back(words[j]);
@@ -91,8 +91,8 @@ freealg prepare(const List words, const NumericVector coeffs){
     return out;
 }
 
-flindex concatenate(flindex X1, const flindex X2){ 
-    flindex::const_iterator it;
+word concatenate(word X1, const word X2){ 
+    word::const_iterator it;
     for(it=X2.begin() ; it != X2.end() ; it++){
         X1.push_back(*it);
     }
