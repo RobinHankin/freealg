@@ -1,0 +1,139 @@
+---
+title: "The Free Algebra in R"
+output:
+  github_document:
+    pandoc_args: --webtex
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+
+<!-- badges: start -->
+[![Build Status](https://travis-ci.org/RobinHankin/mvp.svg?branch=master)](https://travis-ci.org/RobinHankin/mvp)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/mvp)](https://cran.r-project.org/package=mvp)
+[![Rdoc](http://www.rdocumentation.org/badges/version/mvp)](http://www.rdocumentation.org/packages/mvp)
+<!-- badges: end -->
+
+# Overview
+
+The free algebra is an interesting and useful object.  Here I present
+the `freealg` package which provides some functionality for free
+algebra.
+
+The package uses `C++`'s STL `map` class for efficiency, which has the
+downside that the order of the terms is undefined.  This does not
+matter as the mathematical value is unaffected by reordering; and the
+print method does a good job in producing human-readable output.
+
+
+# Installation
+
+You can install the released version of ```freealg``` from
+[CRAN](https://CRAN.R-project.org) with:
+
+```{r, message=FALSE}
+# install.packages("freealg")  # uncomment this to install the package
+library("freealg")
+```
+
+# The free algebra
+
+The free algebra is the free R-module with a basis consisting of all
+words over an alphabet of symbols with multiplication of words defined
+as concatenation.  Thus, with an alphabet of $\{x,y,z\}$ and
+
+\[
+A=\alpha x^2yx + \beta zy
+\]
+
+and 
+
+\[
+B=\gamma z + \delta y^4
+\]
+
+we would have
+
+\[
+A\cdot B=\left(\alpha x^2yx+\beta zy\right)\cdot\left(\gamma z+\delta y^4\right)=\alpha\gamma x^2yxz+\alpha\delta x^2yxy^4+\beta\gamma zyz+\beta\delta zy^5
+\]
+
+Note that multiplication is not commutative, but it is associative.  A
+natural and easily implemented extension is to use upper-case symbols
+to represent multiplicative inverses of the lower-case equivalents.
+Thus if
+
+\[
+C=\epsilon X^2\]
+
+we would have 
+
+\[
+A\cdot C=\left(\alpha x^2yx+\beta zy\right)\cdot\epsilon X^2=
+\alpha\epsilon x^2yX + \beta\epsilon zyX^2
+\]
+
+and 
+
+\[
+C\cdot A=\epsilon X^2\cdot\left(\alpha x^2yx+\beta zy\right)=
+\alpha\epsilon yx + \beta\epsilon X^2zy.
+\]
+
+The system inherits power associativity from distributivity and
+associativity of concatenation, but is not alternative.
+
+# The ```freealg``` package in use
+
+Creating a free algebra object is straightforward.  We can coerce from
+a character string with natural idiom:
+
+```{r}
+X <- as.freealg("1 + 3a + 5b + 5abba")
+X
+```
+or use a more formal method:
+
+```{r}
+Y <- freealg(sapply(1:5,seq_len),1:5)
+```
+
+
+
+
+```{r}
+Y <- as.freealg("6 - 4a +2aaab")
+X+Y
+X*Y
+X^2
+```
+
+We can demonstrate associativity (which is non-trivial):
+
+```{r}
+set.seed(0)
+(x1 <- rfalg(inc=T))
+(x2 <- rfalg(inc=T))
+(x3 <- rfalg(inc=T))
+```
+(function `rfalg()` generates random `freealg` objects).  Then
+
+```{r}
+x1*(x2*x3) == (x1*x2)*x3
+```
+
+
+# Further information
+
+For more detail, see the package vignette
+
+```vignette("freealg")```
