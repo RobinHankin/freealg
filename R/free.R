@@ -10,6 +10,15 @@
 `words` <- function(x){x[[1]]}
 `coeffs` <- function(x){x[[2]]}  # accessor methods end here
 
+`coeffs<-` <- function(x,value){UseMethod("coeffs<-")}
+`coeffs<-.freealg` <- function(x,value){
+    if(length(value) != 1){
+        stop('order of coefficients not defined.  Idiom "coeffs(x) <- value" is meaningful only if value is unchanged on reordering, here we require "value" to have length 1') 
+    }
+    x[[2]][] <- value
+    return(freealg(x[[1]],x[[2]]))
+}
+
 `as.freealg` <- function(x,...){
   if(is.freealg(x)){
     return(x)
