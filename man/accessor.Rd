@@ -8,8 +8,7 @@
 \title{Accessor methods for freealg objects}
 \description{Accessor methods for free algebra objects}
 \usage{
-vars(x)
-powers(x)
+words(x)
 coeffs(x)
 coeffs(x) <- value
 }
