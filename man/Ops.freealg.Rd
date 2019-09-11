@@ -36,8 +36,8 @@ lowlevel_free_power(words,coeffs,n)
   \item{x}{Scalar value}
   \item{words,words1,words2}{A list of words, that is, a list of integer vectors
     representing the variables in each term}
-  \item{coeffs,coeffs1,coeffs2}{Numeric vector representing the coefficients of each
-    word}
+  \item{coeffs,coeffs1,coeffs2}{Numeric vector representing the
+    coefficients of each word}
 }
 \details{
 
