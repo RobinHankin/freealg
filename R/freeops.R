@@ -100,15 +100,15 @@
 freealg(S[[1]],x*S[[2]])
 }
 
-`free_plus_free` <- function(S1,S2){
-  if(is.zero(S1)){
-        return(S2)
-    } else if(is.zero(S2)){
-        return(S1)
+`free_plus_free` <- function(e1,e2){
+  if(is.zero(e1)){
+        return(e2)
+    } else if(is.zero(e2)){
+        return(e1)
     } else {
         jj <- free_sum(
-          words1=S1[[1]],coeffs1=S1[[2]],
-          words2=S2[[1]],coeffs2=S2[[2]]
+          words1=e1[[1]],coeffs1=e1[[2]],
+          words2=e2[[1]],coeffs2=e2[[2]]
         )
         return(freealg(jj[[1]],jj[[2]]))
     }
@@ -130,6 +130,6 @@ free_power_scalar <- function(S,n){
   }
 }
 
-`free_eq_free` <- function(S1,S2){
-  is.zero(S1-S2)  # nontrivial; S1 and S2 might have different orders
+`free_eq_free` <- function(e1,e2){
+  is.zero(e1-e2)  # nontrivial; S1 and S2 might have different orders
 }
