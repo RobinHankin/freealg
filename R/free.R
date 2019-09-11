@@ -41,6 +41,8 @@
 "constant" <- function(x){UseMethod("constant")}
 "constant<-" <- function(x, value){UseMethod("constant<-")}
 
+`constant.numeric` <- function(x){numeric_to_free(x)}
+
 `constant.freealg` <- function(x){
   wanted <- sapply(words(x),function(x){length(x)==0})
   if(any(wanted)){
