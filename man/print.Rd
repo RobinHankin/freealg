@@ -21,7 +21,7 @@ The print method has special dispensation for length-zero freealg objects
 but these are not handled entirely consistently.
 
 }
-\seealso{\code{\link{char_to_freealg}}}  
+\seealso{\code{\link{freealg}}}  
 \examples{
 
 rfalg()
