@@ -89,6 +89,7 @@
 
 `print.freealg` <- function(x,...){
   cat("free algebra element algebraically equal to\n")
+  
   out <- ""
   for(i in seq_along(words(x))){
     co <- coeffs(x)[i]
@@ -106,6 +107,7 @@
 
     out <- paste(out, pm, co, mulsym, jj, sep="")
   }
+  if(is.zero(x)){out <- "0"}
   cat(out)
   cat("\n")
   return(x)
