@@ -88,7 +88,7 @@
   if(is.zero(S1) || is.zero(S2)){
     return(constant(0))
   } else {
-      jj <- free_prod(
+      jj <- lowlevel_free_prod(
           words1=S1[[1]],coeffs1=S1[[2]],
           words2=S2[[1]],coeffs2=S2[[2]]
       )
@@ -106,7 +106,7 @@ freealg(S[[1]],x*S[[2]])
     } else if(is.zero(e2)){
         return(e1)
     } else {
-        jj <- free_sum(
+        jj <- lowlevel_free_sum(
           words1=e1[[1]],coeffs1=e1[[2]],
           words2=e2[[1]],coeffs2=e2[[2]]
         )
@@ -125,7 +125,7 @@ free_power_scalar <- function(S,n){
   } else if(n==0){
     return(as.freealg(1))
   } else {
-      jj <- free_power(S[[1]],S[[2]],n)
+      jj <- lowlevel_free_power(S[[1]],S[[2]],n)
       return(freealg(jj[[1]],jj[[2]]))
   }
 }

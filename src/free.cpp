@@ -134,12 +134,12 @@ freealg power(const freealg X, unsigned int n){
 }
 
 // [[Rcpp::export]]
-List simplify(const List &words, const NumericVector &coeffs){
+List lowlevel_simplify(const List &words, const NumericVector &coeffs){
     return retval(prepare(words,coeffs));
 }
 
 // [[Rcpp::export]]
-List free_prod(
+List lowlevel_free_prod(
                const List &words1, const NumericVector &coeffs1,
                const List &words2, const NumericVector &coeffs2
               ){
@@ -153,7 +153,7 @@ List free_prod(
 }
 
 // [[Rcpp::export]]
-List free_sum(
+List lowlevel_free_sum(
               const List &words1, const NumericVector &coeffs1,
               const List &words2, const NumericVector &coeffs2
               ){
@@ -167,7 +167,7 @@ List free_sum(
 }
 
 // [[Rcpp::export]]
-List free_power(
+List lowlevel_free_power(
               const List &words, const NumericVector &coeffs,
               const NumericVector &n
               ){

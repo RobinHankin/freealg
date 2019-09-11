@@ -1,6 +1,6 @@
 `freealg` <- function(words,coeffs){ # formal
   stopifnot(is_ok_free(words,coeffs))
-  out <- simplify(words,coeffs)  # simplify() is defined in
+  out <- lowlevel_simplify(words,coeffs)  # simplify() is defined in
                                  # RcppExports.R; it returns a list
 
   class(out) <- "freealg"   # this is the only time class() is set to "freealg"
