@@ -7,7 +7,7 @@
 \description{Create, test for, an coerce to, \code{freealg} objects}
 \usage{
 freealg(words, coeffs)
-is_ok_freealg(words,coeffs)
+is_ok_free(words,coeffs)
 is.freealg(x)
 as.freealg(x,...)
 }
