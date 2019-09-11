@@ -24,10 +24,10 @@ Maintainer: \packageMaintainer{freealg}
 \examples{
 
 a <- as.freealg("x+xyx")
-b <- as.freealg=("4x +XyX")  # upper-case interpreted as inverse
+b <- as.freealg("4x +XyX")  # upper-case interpreted as inverse
 
 a+b
-a+b==b+a   # should be TRUE
+stopifnot(a+b==b+a)   # should be TRUE
 
 a*b ==b*a # FALSE; noncommutative algebra
 
