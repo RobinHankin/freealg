@@ -1,6 +1,5 @@
 \name{freealg-package}
 \alias{freealg-package}
-\alias{freealg}
 \docType{package}
 \title{
 \packageTitle{freealg}
