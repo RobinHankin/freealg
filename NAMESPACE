@@ -7,6 +7,7 @@ importFrom(Rcpp, evalCpp)
 S3method(constant, freealg)
 S3method(constant, numeric)
 S3method("constant<-", freealg)
+S3method("coeffs<-", freealg)
 S3method("Ops",freealg)
 S3method("print",freealg)
 
