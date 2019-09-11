@@ -9,6 +9,10 @@
 \alias{free_plus_numeric}
 \alias{free_power_scalar}
 \alias{free_eq_free}
+\alias{lowlevel_simplify}
+\alias{lowlevel_free_prod}
+\alias{lowlevel_free_sum}
+\alias{lowlevel_free_power}
 \title{Arithmetic Ops methods for the the free algebra}
 \description{
   Allows arithmetic operators to be used for manipulation of freealg objects
@@ -21,11 +25,19 @@ free_power_scalar(S,n)
 free_eq_free(e1,e2)
 free_plus_numeric(S,x)
 free_plus_free(e1,e2)
+lowlevel_simplify(words,coeffs)
+lowlevel_free_prod(words,coeffs)
+lowlevel_free_sum(words,coeffs)
+lowlevel_free_power(words,coeffs)
 }
 \arguments{
   \item{S,e1,e2}{Objects of class \code{freealg}}
   \item{n}{An integer, possibly non-positive}
   \item{x}{Scalar value}
+  \item{words}{A list of words, that is, a list of integer vectors
+    representing the variables in each term}
+  \item{coeffs}{Numeric vector representing the coefficients of each
+    word}
 }
 \details{
 
@@ -36,6 +48,10 @@ free_plus_free(e1,e2)
 
   The caret, as in \code{a^n}, denotes arithmetic exponentiation, as in
   \code{x^3==x*x*x}.
+
+  Functions \code{lowlevel_foo()} are low-level functions that interface
+  directly with the \code{C} routines in the \code{src/} directory and
+  are not intended for the end-user.
 }
 \author{Robin K. S. Hankin}
 \examples{
