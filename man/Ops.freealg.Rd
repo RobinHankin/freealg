@@ -26,17 +26,17 @@ free_eq_free(e1,e2)
 free_plus_numeric(S,x)
 free_plus_free(e1,e2)
 lowlevel_simplify(words,coeffs)
-lowlevel_free_prod(words,coeffs)
-lowlevel_free_sum(words,coeffs)
-lowlevel_free_power(words,coeffs)
+lowlevel_free_prod(words1,coeffs1,words2,coeffs2)
+lowlevel_free_sum(words1,coeffs1,words2,coeffs2)
+lowlevel_free_power(words,coeffs,n)
 }
 \arguments{
   \item{S,e1,e2}{Objects of class \code{freealg}}
   \item{n}{An integer, possibly non-positive}
   \item{x}{Scalar value}
-  \item{words}{A list of words, that is, a list of integer vectors
+  \item{words,words1,words2}{A list of words, that is, a list of integer vectors
     representing the variables in each term}
-  \item{coeffs}{Numeric vector representing the coefficients of each
+  \item{coeffs,coeffs1,coeffs2}{Numeric vector representing the coefficients of each
     word}
 }
 \details{
