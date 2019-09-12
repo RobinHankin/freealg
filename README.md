@@ -6,9 +6,9 @@ The Free Algebra in R
 <!-- badges: start -->
 
 [![Build
-Status](https://travis-ci.org/RobinHankin/mvp.svg?branch=master)](https://travis-ci.org/RobinHankin/mvp)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/mvp)](https://cran.r-project.org/package=mvp)
-[![Rdoc](http://www.rdocumentation.org/badges/version/mvp)](http://www.rdocumentation.org/packages/mvp)
+Status](https://travis-ci.org/RobinHankin/freealg.svg?branch=master)](https://travis-ci.org/RobinHankin/freealg)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/freealg)](https://cran.r-project.org/package=freealg)
+[![Rdoc](http://www.rdocumentation.org/badges/version/freealg)](http://www.rdocumentation.org/packages/freealg)
 <!-- badges: end -->
 
 # Overview
