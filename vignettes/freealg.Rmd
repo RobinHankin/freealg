@@ -8,7 +8,7 @@ output:
     df_print: paged
 bibliography: free.bib
 vignette: >
-  %\VignetteIndexEntry{mvp}
+  %\VignetteIndexEntry{freealg}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
