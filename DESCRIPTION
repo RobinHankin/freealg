@@ -9,5 +9,7 @@ License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.3)
 LinkingTo: Rcpp
 SystemRequirements: C++11
+Suggests: knitr
+VignetteBuilder: knitr
 URL: https://github.com/RobinHankin/freealg.git
 BugReports: https://github.com/RobinHankin/freealg/issues
