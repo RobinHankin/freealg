@@ -3,15 +3,7 @@
 #define USE_UNORDERED_MAP true   // set to true for unordered_map; comment out to use plain stl map.
 
 #include <Rcpp.h>
-#include <cmath>
 
-#include <string.h>
-#include <iostream>
-#include <unordered_map>
-#include <vector>
-#include <deque>
-#include <utility>
-#include <iterator>
 
 using namespace std;
 using namespace Rcpp; 
