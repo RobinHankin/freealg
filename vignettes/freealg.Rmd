@@ -20,21 +20,20 @@ options(width = 80, tibble.width = Inf)
 
 # Introduction
 
-The ```freealg``` package provides some functionality for fast the
-free algebra, using the Standard Template library of ```C++```,
-commonly known as the ```STL```. 
+The ```freealg``` package provides some functionality for the free
+algebra, using the Standard Template library of ```C++```, commonly
+known as the ```STL```.  It is very like the ``mvp``` package for
+multivariate polynomials, but the indeterminates do not commute:
+multiplication is word concatenation.
 
 # The free algebra
 
 A vector space over a commutative field $\mathbb{F}$ (here the reals)
 is a set $\mathbb{V}$ together with two binary operations, addition
 and scalar multiplication, addition and scalar multiplication.
-
 Addition is usually written ``$+$'', and $\left(\mathbb{V},+\right)$
-is an Abelian group.
-
-Scalar multiplication is usually denoted by juxtaposition and
-satisfies, for any $a,b\in\mathbb{F}$ and
+is an Abelian group.  Scalar multiplication is usually denoted by
+juxtaposition and satisfies, for any $a,b\in\mathbb{F}$ and
 $\mathbf{u},\mathbf{v}\in\mathbb{V}$, the following laws:
 
 * Compatibility: $a\left(b\mathbf{v}\right)=(ab)\mathbf{v}$ 
