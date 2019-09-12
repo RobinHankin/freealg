@@ -21,10 +21,10 @@ is.constant(x)
 \details{
 
   The constant term in a free algebra object is the coefficient of the
-  empty term.  In an \code{freealg} object, the map \code{\{\} -> v}
-  implies that \code{v} is the constant.
+  empty term.  In a \code{freealg} object, the map including \code{\{\}
+  -> v} implies that \code{v} is the constant.
 
-  If \code{x} is an \code{freealg} object, \code{constant(x)} returns
+  If \code{x} is a \code{freealg} object, \code{constant(x)} returns
   the value of the constant in the multivariate polynomial; if \code{x}
   is numeric, it returns a constant \code{freealg} object with value
   \code{x}.
@@ -40,6 +40,8 @@ p <- as.freealg("1+X+Y+xy")
 constant(p)
 constant(p^5)
 
-constant(p) <- 10
-p^2
+constant(p) <- 1000
+p
+
+
 }
