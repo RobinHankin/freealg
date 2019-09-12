@@ -8,40 +8,40 @@
 test_that("Test suite aaa.R",{
 
 checker1 <- function(x){
-    expect_true(x==x, info=dput(x))
+    expect_true(x==x, info=x)
 
-    expect_true(x == x + constant(0), info=dput(x))
-    expect_true(x == x + 0, info=dput(x))
-    expect_true(x == (x + 4) -4, info=dput(x))
-    expect_true(x == -(-x), info=dput(x))
-    expect_true(x == +(+x), info=dput(x))
+    expect_true(x == x + constant(0), info=x)
+    expect_true(x == x + 0, info=x)
+    expect_true(x == (x + 4) -4, info=x)
+    expect_true(x == -(-x), info=x)
+    expect_true(x == +(+x), info=x)
 
-    expect_true(x+x-x == x, info=dput(x))
+    expect_true(x+x-x == x, info=x)
 
-    expect_true(is.zero(x-x), info=dput(x))
+    expect_true(is.zero(x-x), info=x)
 
-    expect_true(0*x == constant(0), info=dput(x))
-    expect_true(1*x == x, info=dput(x))
-    expect_true(2*x == x+x, info=dput(x))
-    expect_true(3*x == x+x+x, info=dput(x))
-    expect_true(4*x == x+x+x+x, info=dput(x))
-    expect_true(5*x == x+x+x+x+x, info=dput(x))
-    expect_true(6*x == x+x+x+x+x+x, info=dput(x))
+    expect_true(0*x == constant(0), info=x)
+    expect_true(1*x == x, info=x)
+    expect_true(2*x == x+x, info=x)
+    expect_true(3*x == x+x+x, info=x)
+    expect_true(4*x == x+x+x+x, info=x)
+    expect_true(5*x == x+x+x+x+x, info=x)
+    expect_true(6*x == x+x+x+x+x+x, info=x)
 
-    expect_true(x^0 == constant(1), info=dput(x))
-    expect_true(x^1 == x, info=dput(x))
-    expect_true(x^2 == x*x, info=dput(x))
-    expect_true(x^3 == x*x*x, info=dput(x))
-    expect_true(x^4 == x*x*x*x, info=dput(x))
+    expect_true(x^0 == constant(1), info=x)
+    expect_true(x^1 == x, info=x)
+    expect_true(x^2 == x*x, info=x)
+    expect_true(x^3 == x*x*x, info=x)
+    expect_true(x^4 == x*x*x*x, info=x)
     
     ## check constant() and constant<-():
     ## checks below include 
     y <- x
-    expect_true(constant(x) == constant(y), info=dput(x))
+    expect_true(constant(x) == constant(y), info=x)
     constant(y) <- 4
-    expect_true(constant(y) == 4, info=dput(x))
+    expect_true(constant(y) == 4, info=x)
     constant(y) <- 0
-    expect_true(constant(y) == 0, info=dput(x))
+    expect_true(constant(y) == 0, info=x)
 
   
 
@@ -50,36 +50,38 @@ checker1 <- function(x){
 
 
 checker2 <- function(x,y){
-  expect_true(x == -y+x+y)
-  expect_true(x+y == x-(-y))
+  expect_true(x == -y+x+y, info=list(x,y))
+  expect_true(x+y == x-(-y), info=list(x,y))
 
-  expect_true(x+y == y+x)
+  expect_true(x+y == y+x, info=list(x,y))
 
-  expect_true((-x)*y == -(x*y))
-  expect_true(x*(-y) == -(x*y))
+  expect_true((-x)*y == -(x*y), info=list(x,y))
+  expect_true(x*(-y) == -(x*y), info=list(x,y))
 
   ##  expect_true(x*y == y*x)  
   return(TRUE)
 }
 
 checker3 <- function(x,y,z){
-  expect_true(x+(y+z) == (x+y)+z) # additive associativity
-  expect_true(x*(y*z) == (x*y)*z) # multiplicative associativity
+  expect_true(x+(y+z) == (x+y)+z, info=list(x,y,z)) # additive associativity
+  expect_true(x*(y*z) == (x*y)*z, info=list(x,y,z)) # multiplicative associativity
 
-  expect_true(x*(y+z) == x*y + x*z)  # left distributivity
-  expect_true((y+z)*x == y*x + z*x)  # right distributivity
+  expect_true(x*(y+z) == x*y + x*z, info=list(x,y,z))  # left distributivity
+  expect_true((y+z)*x == y*x + z*x, info=list(x,y,z))  # right distributivity
   
   return(TRUE)
 } # checker3() closes
 
 
 for(i in 1:2){
-    x <- rfalg(5)
-    y <- rfalg(5)
-    z <- rfalg(5)
+  for(inc in c(TRUE,FALSE)){
+    x <- rfalg(5,include.negative=inc)
+    y <- rfalg(5,include.negative=inc)
+    z <- rfalg(5,include.negative=inc)
     
     checker1(x)
     checker2(x,y)
     checker3(x,y,z)
+  }
 }
 })
