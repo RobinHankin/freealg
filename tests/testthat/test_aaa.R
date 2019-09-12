@@ -63,14 +63,12 @@ checker2 <- function(x,y){
 }
 
 checker3 <- function(x,y,z){
-  expect_true(x+(y+z) == (x+y)+z) # associativity
-  expect_true(x*(y*z) == (x*y)*z) # associativity
+  expect_true(x+(y+z) == (x+y)+z) # additive associativity
+  expect_true(x*(y*z) == (x*y)*z) # multiplicative associativity
 
-  expect_true(x*(y+z) == x*y + x*z)  # distributivity
-  expect_true((y+z)*x == y*x + z*x)  # distributivity
+  expect_true(x*(y+z) == x*y + x*z)  # left distributivity
+  expect_true((y+z)*x == y*x + z*x)  # right distributivity
   
-
-
   return(TRUE)
 } # checker3() closes
 
