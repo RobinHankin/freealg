@@ -9,13 +9,14 @@
 \alias{free_plus_numeric}
 \alias{free_power_scalar}
 \alias{free_eq_free}
+\alias{free_equal_free}
 \alias{lowlevel_simplify}
 \alias{lowlevel_free_prod}
 \alias{lowlevel_free_sum}
 \alias{lowlevel_free_power}
 \title{Arithmetic Ops methods for the the free algebra}
 \description{
-  Allows arithmetic operators to be used for manipulation of freealg objects
+  Arithmetic operators for manipulation of freealg objects
   such as addition, multiplication, powers, etc
 }
 \usage{
@@ -58,6 +59,8 @@ lowlevel_free_power(words,coeffs,n)
 rfalg()
 as.freealg("1+x+xy+yx")  # variables are non-commutative
 as.freealg("x") * as.freealg("X") # upper-case letters are lower-case inverses
+
+
 
 constant(as.freealg("x+y+X+Y")^6)  # OEIS sequence A035610
 }
