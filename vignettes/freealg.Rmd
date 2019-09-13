@@ -174,6 +174,21 @@ X+Y        #  'aab' term cancels
 1000+Y*Z   # algebra multiplication and addition works as expected
 ```
 
+# The print method
+
+The default print method uses uppercase letters to represent
+multiplicative inverses, but it is possible to set
+the `usecaret` option, which makes changes the appearance:
+
+```{r}
+set.seed(0)
+phi <- rfalg(n=5,inc=TRUE)
+phi
+options("usecaret" = TRUE)
+phi
+options("usecaret" = FALSE)  # reset to default
+```
+
 # An example
 
 Haiman [-@haiman1993] poses the following question, attributed to David Richman:

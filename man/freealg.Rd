@@ -40,8 +40,14 @@ better to use \code{as.freealg()} in day-to-day use.
 
 Function \code{is_ok_freealg()} checks for consistency of its arguments.
 
-Function \code{char_to_freealg()} 
-
+Character strings may be coerced to \code{freealg} objects;
+\code{as.freealg()} calls \code{natural_char_to_freealg()}, which is
+user-friendly.  Functions \code{char_to_freealg()} and
+\code{string_to_freealg()} are low-level helper functions.  These
+functions assume that upper-case letters are the multiplicative inverses
+of the lower-case equivalents; so for example \code{as.freealg("aA")}
+and \code{as.freealg(aBcCbA)} evaluate to one.  This can be confusing
+with the default print method.
 
 }
 \author{Robin K. S. Hankin}
@@ -50,5 +56,9 @@ Function \code{char_to_freealg()}
 freealg(sapply(1:5,seq_len),1:5)
 
 freealg(replicate(5,sample(-5:5,rgeom(1,1/5),replace=TRUE)),1:5)
+
+
+as.freealg("1+xaX")^5
+
 
 }

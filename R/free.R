@@ -100,6 +100,13 @@
 
 `print.freealg` <- function(x,...){
   cat("free algebra element algebraically equal to\n")
+
+  if(isTRUE(getOption("usecaret"))){
+      symbols <- c(letters,paste(letters,"^-1",sep=""))
+  } else {
+      symbols <- c(letters,LETTERS)
+  }
+  n <- 26
   
   out <- ""
   for(i in seq_along(words(x))){
@@ -112,8 +119,8 @@
     }
     jj <- words(x)[i][[1]]
     if(length(jj)>0){mulsym <- "*"} else {mulsym <- ""}
-    if(any(jj<0)){jj[jj<0] <- 26-jj[jj<0]}
-    jj <- c(letters,LETTERS)[jj]
+    if(any(jj<0)){jj[jj<0] <- n-jj[jj<0]}
+    jj <- symbols[jj]
     jj <- paste(jj,collapse="")
 
     out <- paste(out, pm, co, mulsym, jj, sep="")
