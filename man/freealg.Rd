@@ -40,6 +40,22 @@ better to use \code{as.freealg()} in day-to-day use.
 
 Function \code{is_ok_freealg()} checks for consistency of its arguments.
 
+A \code{freealg} object is a two-element list.  The first element is a
+list of integer vectors representing the indices and the second is a
+numeric vector of coefficients.  Thus, for example:
+
+\preformatted{
+> as.freealg("a+4bd+3abbbbc")
+free algebra element algebraically equal to
+ + 1*a + 3*abbbbc + 4*bd
+> dput(as.freealg("a+4bd+3abbbbc"))
+structure(list(indices = list(1L, c(1L, 2L, 2L, 2L, 2L, 3L), 
+    c(2L, 4L)), coeffs = c(1, 3, 4)), class = "freealg")
+}
+
+Observe that the order of the terms is not preserved and indeed is
+undefined (implementation-specific).  Zero entries are stripped out.
+
 Character strings may be coerced to \code{freealg} objects;
 \code{as.freealg()} calls \code{natural_char_to_freealg()}, which is
 user-friendly.  Functions \code{char_to_freealg()} and
