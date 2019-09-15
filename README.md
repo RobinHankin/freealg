@@ -9,6 +9,8 @@ The Free Algebra in R
 Status](https://travis-ci.org/RobinHankin/freealg.svg?branch=master)](https://travis-ci.org/RobinHankin/freealg)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/freealg)](https://cran.r-project.org/package=freealg)
 [![Rdoc](http://www.rdocumentation.org/badges/version/freealg)](http://www.rdocumentation.org/packages/freealg)
+[![Codecov test
+coverage](https://codecov.io/gh/r-lib/freealg/branch/master/graph/badge.svg)](https://codecov.io/gh/r-lib/freealg?branch=master)
 <!-- badges: end -->
 
 # Overview
