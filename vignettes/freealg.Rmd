@@ -22,7 +22,7 @@ options(width = 80, tibble.width = Inf)
 
 The ```freealg``` package provides some functionality for the free
 algebra, using the Standard Template library of ```C++```, commonly
-known as the ```STL```.  It is very like the ``mvp``` package for
+known as the ```STL```.  It is very like the `mvp` package for
 multivariate polynomials, but the indeterminates do not commute:
 multiplication is word concatenation.
 
