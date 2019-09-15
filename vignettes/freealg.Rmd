@@ -30,11 +30,12 @@ multiplication is word concatenation.
 
 A vector space over a commutative field $\mathbb{F}$ (here the reals)
 is a set $\mathbb{V}$ together with two binary operations, addition
-and scalar multiplication, addition and scalar multiplication.
-Addition is usually written ``$+$'', and $\left(\mathbb{V},+\right)$
-is an Abelian group.  Scalar multiplication is usually denoted by
-juxtaposition and satisfies, for any $a,b\in\mathbb{F}$ and
-$\mathbf{u},\mathbf{v}\in\mathbb{V}$, the following laws:
+and scalar multiplication.  Addition, usually written $+$, makes
+$\left(\mathbb{V},+\right)$ an Abelian group.  Scalar multiplication
+is usually denoted by juxtaposition (or sometimes $\times$) and makes
+$\left(\mathbb{V},\cdot\right)$ a semigroup.  In addition, for any
+$a,b\in\mathbb{F}$ and $\mathbf{u},\mathbf{v}\in\mathbb{V}$, the
+following laws are satisfied:
 
 * Compatibility: $a\left(b\mathbf{v}\right)=(ab)\mathbf{v}$ 
 * Identity: $1\mathbf{v}=\mathbf{v}$, where $1\in\mathbb{F}$ is the
