@@ -91,7 +91,7 @@ C\cdot A=\epsilon X^2\cdot\left(\alpha x^2yx+\beta zy\right)=
 \]
 
 The system inherits power associativity from distributivity and
-associativity of concatenation, but is not alternative.
+associativity of concatenation, but is not commutative.
 
 # The ```freealg``` package in use
 
