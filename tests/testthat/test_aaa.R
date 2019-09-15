@@ -84,4 +84,28 @@ for(i in 1:2){
     checker3(x,y,z)
   }
 }
+
+p0 <- as.freealg("0")
+p1 <- as.freealg("1")
+p2 <- as.freealg("1+2x+3Xy")
+p3 <- as.freealg("1+2x+3Xy-4YYYYxxdxd")
+p4 <- as.freealg("1+2x+3Xy+4YYYYxxdxd")
+
+checker1(p0)
+checker1(p1)
+checker1(p2)
+checker1(p3)
+checker1(p4)
+
+checker2(p1,p2)
+checker2(p2,p3)
+checker2(p3,p4)
+checker2(p4,p1)
+
+checker3(p1,p1,p1)
+checker3(p1,p2,p3)
+checker3(p2,p3,p4)
+checker3(p3,p4,p1)
+checker3(p4,p1,p1)
+
 })
