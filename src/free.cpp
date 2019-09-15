@@ -37,8 +37,8 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
 }
     
 word comb(word X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
-    std::list<signed int>::iterator it;
-    std::list<signed int>::const_iterator current,next;
+    word::iterator it;
+    word::const_iterator current,next;
     it = X.begin();
     while(it != X.end()){
         if(*it == 0){
