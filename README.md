@@ -106,7 +106,7 @@ C\\cdot A=\\epsilon X^2\\cdot\\left(\\alpha x^2yx+\\beta zy\\right)=
 ")  
 
 The system inherits power associativity from distributivity and
-associativity of concatenation, but is not alternative.
+associativity of concatenation, but is not commutative.
 
 # The `freealg` package in use
 
@@ -123,7 +123,9 @@ X
 or use a more formal method:
 
 ``` r
-Y <- freealg(sapply(1:5,seq_len),1:5)
+freealg(sapply(1:5,seq_len),1:5)
+#> free algebra element algebraically equal to
+#>  + 1*a + 2*ab + 3*abc + 4*abcd + 5*abcde
 ```
 
 ``` r
@@ -143,13 +145,13 @@ We can demonstrate associativity (which is non-trivial):
 
 ``` r
 set.seed(0)
-(x1 <- rfalg(inc=T))
+(x1 <- rfalg(inc=TRUE))
 #> free algebra element algebraically equal to
 #>  + 7*C + 6*Ca + 4*B + 3*BC + 1*a + 5*aCBB + 2*bc
-(x2 <- rfalg(inc=T))
+(x2 <- rfalg(inc=TRUE))
 #> free algebra element algebraically equal to
 #>  + 6 + 1*CAAA + 2*Ca + 3*Cbcb + 7*aaCA + 4*b + 5*c
-(x3 <- rfalg(inc=T))
+(x3 <- rfalg(inc=TRUE))
 #> free algebra element algebraically equal to
 #>  + 3*C + 5*CbAc + 1*BACB + 2*a + 10*b + 7*cb
 ```

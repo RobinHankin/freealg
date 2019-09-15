@@ -105,11 +105,8 @@ X
 or use a more formal method:
 
 ```{r}
-Y <- freealg(sapply(1:5,seq_len),1:5)
+freealg(sapply(1:5,seq_len),1:5)
 ```
-
-
-
 
 ```{r}
 Y <- as.freealg("6 - 4a +2aaab")
@@ -122,9 +119,9 @@ We can demonstrate associativity (which is non-trivial):
 
 ```{r}
 set.seed(0)
-(x1 <- rfalg(inc=T))
-(x2 <- rfalg(inc=T))
-(x3 <- rfalg(inc=T))
+(x1 <- rfalg(inc=TRUE))
+(x2 <- rfalg(inc=TRUE))
+(x3 <- rfalg(inc=TRUE))
 ```
 (function `rfalg()` generates random `freealg` objects).  Then
 
