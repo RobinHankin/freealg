@@ -5,6 +5,19 @@
 
 using namespace Rcpp;
 
+// lowlevel_diffn
+List lowlevel_diffn(const List& words, const NumericVector& coeffs, const NumericVector& r);
+RcppExport SEXP _freealg_lowlevel_diffn(SEXP wordsSEXP, SEXP coeffsSEXP, SEXP rSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const List& >::type words(wordsSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs(coeffsSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type r(rSEXP);
+    rcpp_result_gen = Rcpp::wrap(lowlevel_diffn(words, coeffs, r));
+    return rcpp_result_gen;
+END_RCPP
+}
 // lowlevel_simplify
 List lowlevel_simplify(const List& words, const NumericVector& coeffs);
 RcppExport SEXP _freealg_lowlevel_simplify(SEXP wordsSEXP, SEXP coeffsSEXP) {
@@ -60,6 +73,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_freealg_lowlevel_diffn", (DL_FUNC) &_freealg_lowlevel_diffn, 3},
     {"_freealg_lowlevel_simplify", (DL_FUNC) &_freealg_lowlevel_simplify, 2},
     {"_freealg_lowlevel_free_prod", (DL_FUNC) &_freealg_lowlevel_free_prod, 4},
     {"_freealg_lowlevel_free_sum", (DL_FUNC) &_freealg_lowlevel_free_sum, 4},

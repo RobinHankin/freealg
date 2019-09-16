@@ -125,6 +125,46 @@ freealg power(const freealg X, unsigned int n){
     return out;
 }
 
+
+freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
+    freealg out; // empty freealg object is the zero object
+    word::const_iterator iw,current;
+    for(freealg::const_iterator it=X.begin() ; it != X.end() ; it++){
+        const word w = it->first;
+        const double c = it->second;
+        while(iw != w.end()){
+            current=iw;
+            word wcopy = w;
+            if( (*iw) == r){ // differential matches symbol
+                if( (*iw) * r > 0 ){  // same sign
+                    iw = wcopy.erase(current);//remove this symbol
+                    out[wcopy] += c;  // meat A, 
+                } else {   // different signs
+                    iw = wcopy.insert(current, *iw);
+                    out[wcopy] -= c;  // meat B [sign changes for inverse]
+                }
+            } else { //differential does not match
+                iw++;
+            }
+        }  // word iteration ends
+    }  //freealg iteration ends;
+    return out;
+}
+
+freealg diffn(freealg X, const NumericVector r){ // (d^len(r) X)/dr[1]...dr[len(r)]
+    for(unsigned int i=0 ; i<r.size() ; ++i){
+        X=diff1(X,(unsigned int) r[i]);
+    }
+    return X;
+}
+
+// [[Rcpp::export]]
+List lowlevel_diffn(const List &words, const NumericVector &coeffs,
+                    const NumericVector &r
+    ){
+    return retval(diffn(prepare(words,coeffs), r));
+}
+
 // [[Rcpp::export]]
 List lowlevel_simplify(const List &words, const NumericVector &coeffs){
     return retval(prepare(words,coeffs));
