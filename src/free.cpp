@@ -128,25 +128,22 @@ freealg power(const freealg X, unsigned int n){
 
 freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
     freealg out; // empty freealg object is the zero object
-    word::const_iterator iw,current;
+    word::iterator iw;
+
     for(freealg::const_iterator it=X.begin() ; it != X.end() ; it++){
-        const word w = it->first;
+        word w = it->first;  //cannot be const word w because we need w.begin()
         const double c = it->second;
+        iw = w.begin();
         while(iw != w.end()){
-            current=iw;
             word wcopy = w;
-            if( (*iw) == r){ // differential matches symbol
-                if( (*iw) * r > 0 ){  // same sign
-                    iw = wcopy.erase(current);//remove this symbol
-                    out[wcopy] += c;  // meat A, 
-                } else {   // different signs
-                    iw = wcopy.insert(current, *iw);
-                    out[wcopy] -= c;  // meat B [sign changes for inverse]
-                }
-            } else { //differential does not match
-                iw++;
+            word::iterator current = iw;
+            if( (*iw) == r){         // differential matches symbol, same sign
+                wcopy.erase(current);// remove this symbol
+                out[wcopy] += c;     // meat A
             }
-        }  // word iteration ends
+            iw++;
+        } // first while loop closes
+
     }  //freealg iteration ends;
     return out;
 }

@@ -169,6 +169,7 @@
 
 
 `fd` <- function(S,r){
-  freealg(lowlevel_diffn(S[[1]],S[[2]],r))
+    jj <- lowlevel_diffn(S[[1]],S[[2]],r)
+    return(freealg(jj[[1]],jj[[2]]))
 }
 
