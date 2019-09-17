@@ -131,17 +131,13 @@ freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
     for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
         word w = it->first;  //cannot be const word w because we need w.begin()
         const double c = it->second;
-        word::iterator iw;
-        for(iw = w.begin() ; iw != w.end() ; ++iw){
+        word::iterator iw,iwc;
+        word wcopy = w;        
+        for(iw = w.begin(),iwc=wcopy.begin() ; iw != w.end() ; ++iwc, ++iw){
             if( (*iw) == r){         // differential matches symbol, same sign
-                word wcopy = w;
-                cout << "Following line is a bug\n";
-                wcopy.erase(iw); // BUG BUG BUG THIS IS A BUG.  We are
-                                 // using an iterator for w to try and
-                                 // erase an element from wcopy;
-                                 // cannot do this.
-                cout << "Previous line is a bug\n";
-                assert(1<0);         // FALSE: will stop here (previous line is a bug).
+
+                wcopy.erase(iwc);
+
                 out[wcopy] += c;     // The meat.
           }
         } // word for() loop closes
