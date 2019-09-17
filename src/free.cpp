@@ -125,25 +125,26 @@ freealg power(const freealg X, unsigned int n){
     return out;
 }
 
-
 freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
     freealg out; // empty freealg object is the zero object
-    word::iterator iw;
 
-    for(freealg::const_iterator it=X.begin() ; it != X.end() ; it++){
+    for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
         word w = it->first;  //cannot be const word w because we need w.begin()
         const double c = it->second;
-        iw = w.begin();
-        while(iw != w.end()){
-            word wcopy = w;
-            word::iterator current = iw;
+        word::iterator iw;
+        for(iw = w.begin() ; iw != w.end() ; ++iw){
             if( (*iw) == r){         // differential matches symbol, same sign
-                wcopy.erase(current);// remove this symbol
-                out[wcopy] += c;     // meat A
-            }
-            iw++;
-        } // first while loop closes
-
+                word wcopy = w;
+                cout << "Following line is a bug\n";
+                wcopy.erase(iw); // BUG BUG BUG THIS IS A BUG.  We are
+                                 // using an iterator for w to try and
+                                 // erase an element from wcopy;
+                                 // cannot do this.
+                cout << "Previous line is a bug\n";
+                assert(1<0);         // FALSE: will stop here (previous line is a bug).
+                out[wcopy] += c;     // The meat.
+          }
+        } // word for() loop closes
     }  //freealg iteration ends;
     return out;
 }
