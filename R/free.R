@@ -168,7 +168,7 @@
   char_to_freealg(strsplit(string," ")[[1]]) }
 
 setGeneric("deriv")
-`deriv.freealg` <- function(expr,r){
+`deriv.freealg` <- function(expr, r, ...){
     jj <- lowlevel_diffn(expr[[1]],expr[[2]],r)
     return(freealg(jj[[1]],jj[[2]]))
 }

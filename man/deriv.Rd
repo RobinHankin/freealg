@@ -7,11 +7,13 @@
 \description{
 Differentiation of \code{freealg} objects}
 \usage{
-\method{deriv}{freealg}(expr, r)
+\method{deriv}{freealg}(expr, r, ...)
 }
 \arguments{
   \item{expr}{Object of class \code{freealg}}
-  \item{r}{Integer vector.  Elements denote variables to differentiate with respect to}
+  \item{r}{Integer vector.  Elements denote variables to differentiate
+    with respect to}
+  \item{...}{Further arguments, currently ignored}
 }
 \author{Robin K. S. Hankin}
 \details{
@@ -21,9 +23,9 @@ Differentiation of \code{freealg} objects}
 
   The Liebniz product rule
 
-  \deqn{\left(u\cdot\right)'=uv'+u'v}{omitted; see PDF}
+  \deqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see PDF}
 
-  operates even if (as here) $u,v$ do not commute.
+  operates even if (as here) \eqn{u,v} do not commute.
 
   A term of a \code{freealg} object can include negative values which
   correspond to negative powers of variables.  Thus:
@@ -51,7 +53,10 @@ free algebra element algebraically equal to
  - 3*aaaa
 > 
 }
-  
+
+
+Function \code{deriv()} calls helper function \code{lowlevel_diffn()}
+which is documented at \code{Ops.freealg.Rd}.
 
 }
 \examples{
