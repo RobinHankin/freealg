@@ -142,7 +142,23 @@ freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
                     if(i != j){wrem.push_back(*iwc);}
                 }
                 out[wrem] += c;     // The meat.
-            } // if match closes
+            } // if same-sign match closes...
+            if( (*iw) == -r){// ... so now search for opposite sign
+                word wcopy=w;
+                word wrem;  // "wrem" = "w with one removed"
+                for(iwc = wcopy.begin() , j=0 ; iwc != wcopy.end() ; ++j, ++iwc){
+                    if(i != j){
+                        wrem.push_back(*iwc); //do it once
+                    } else {
+                        wrem.push_back(*iwc); // do it twice
+                        wrem.push_back(*iwc);
+                    }
+                }
+                out[wrem] -= c;     // The meat (negative sign)
+            } // if same-sign match closes
+
+
+            
         } // word for() loop closes
     }  //freealg iteration ends;
     return out;
