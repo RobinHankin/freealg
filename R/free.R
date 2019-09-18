@@ -167,8 +167,8 @@
   string <- gsub("\\-", " -",string) # "A-B" -> "A -B"
   char_to_freealg(strsplit(string," ")[[1]]) }
 
-
-`fd` <- function(S,r){
+setGeneric("deriv")
+`deriv.freealg` <- function(S,r){
     jj <- lowlevel_diffn(S[[1]],S[[2]],r)
     return(freealg(jj[[1]],jj[[2]]))
 }
