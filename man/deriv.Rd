@@ -7,10 +7,10 @@
 \description{
 Differentiation of \code{freealg} objects}
 \usage{
-\method{deriv}{freealg}(S, r)
+\method{deriv}{freealg}(expr, r)
 }
 \arguments{
-  \item{S}{Object of class \code{freealg}}
+  \item{expr}{Object of class \code{freealg}}
   \item{r}{Integer vector.  Elements denote variables to differentiate with respect to}
 }
 \author{Robin K. S. Hankin}
