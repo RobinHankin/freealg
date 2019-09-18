@@ -131,13 +131,15 @@ freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
     for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
         word w = it->first;  //cannot be const word w because we need w.begin()
         const double c = it->second;
-        word::iterator iw,iwc;
-        word wcopy = w;        
-        for(iw = w.begin(),iwc=wcopy.begin() ; iw != w.end() ; ++iwc, ++iw){
+        unsigned int i,j;
+        word::iterator iw,iw2;
+
+        for(iw = w.begin(), i=0 ; iw != w.end() ; ++i, ++iw){
             if( (*iw) == r){         // differential matches symbol, same sign
-
-                wcopy.erase(iwc);
-
+                word wcopy;
+                for(iw2 = w.begin() , j=0 ;; ++j){
+                    if(i != j){wcopy.push_back(*iw);}
+                }
                 out[wcopy] += c;     // The meat.
           }
         } // word for() loop closes
