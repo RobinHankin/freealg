@@ -137,7 +137,7 @@ freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
         for(iw = w.begin(), i=0 ; iw != w.end() ; ++i, ++iw){
             if( (*iw) == r){         // differential matches symbol, same sign
                 word wcopy=w;
-                word wrem;  // "wrem" = "w with one removed"
+                word wrem;  // "wrem" = "w with one symbol removed"
                 for(iwc = wcopy.begin() , j=0 ; iwc != wcopy.end() ; ++j, ++iwc){
                     if(i != j){wrem.push_back(*iwc);}
                 }
@@ -145,7 +145,7 @@ freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
             } // if same-sign match closes...
             if( (*iw) == -r){// ... so now search for opposite sign
                 word wcopy=w;
-                word wrem;  // "wrem" = "w with one removed"
+                word wadd;  // "wrem" = "w with one symbol added"
                 for(iwc = wcopy.begin() , j=0 ; iwc != wcopy.end() ; ++j, ++iwc){
                     if(i != j){
                         wrem.push_back(*iwc); //do it once
