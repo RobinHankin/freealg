@@ -7,7 +7,7 @@
 
 using namespace std;
 using namespace Rcpp; 
-typedef std::list<signed int> word; // an 'word' object is a list of signed ints
+typedef std::list<signed int> word; // a 'word' object is a list of signed ints
 typedef map <word, double> freealg; // a 'freealg' maps word objects to reals
 
 List retval(const freealg &X){   // takes a freealg object and returns a mpoly-type list suitable for return to R
@@ -142,24 +142,21 @@ freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
                     if(i != j){wrem.push_back(*iwc);}
                 }
                 out[wrem] += c;     // The meat.
-            } // if same-sign match closes...
-            if( (*iw) == -r){// ... so now search for opposite sign
+            } // if(same-sign match) closes...
+            if( (*iw) == -r){    // ... so now search for an opposite sign match
                 word wcopy=w;
-                word wadd;  // "wrem" = "w with one symbol added"
+                word wadd;  // "wadd" = "w with one symbol added"
                 for(iwc = wcopy.begin() , j=0 ; iwc != wcopy.end() ; ++j, ++iwc){
                     if(i != j){
-                        wrem.push_back(*iwc); //do it once
+                        wadd.push_back(*iwc); //do it once
                     } else {
-                        wrem.push_back(*iwc); // do it twice
-                        wrem.push_back(*iwc);
+                        wadd.push_back(*iwc); // do it twice
+                        wadd.push_back(*iwc);
                     }
                 }
-                out[wrem] -= c;     // The meat (negative sign)
-            } // if same-sign match closes
-
-
-            
-        } // word for() loop closes
+                out[wadd] -= c;     // The meat (negative sign)
+            } // if(opposite-signe match) closes
+        } // word w for() loop closes
     }  //freealg iteration ends;
     return out;
 }
