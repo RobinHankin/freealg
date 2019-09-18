@@ -132,16 +132,17 @@ freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
         word w = it->first;  //cannot be const word w because we need w.begin()
         const double c = it->second;
         unsigned int i,j;
-        word::iterator iw,iw2;
+        word::iterator iw,iwc;
 
         for(iw = w.begin(), i=0 ; iw != w.end() ; ++i, ++iw){
             if( (*iw) == r){         // differential matches symbol, same sign
-                word wcopy;
-                for(iw2 = w.begin() , j=0 ;; ++j){
-                    if(i != j){wcopy.push_back(*iw);}
+                word wcopy=w;
+                word wrem;  // "wrem" = "w with one removed"
+                for(iwc = wcopy.begin() , j=0 ; iwc != wcopy.end() ; ++j, ++iwc){
+                    if(i != j){wrem.push_back(*iwc);}
                 }
-                out[wcopy] += c;     // The meat.
-          }
+                out[wrem] += c;     // The meat.
+            } // if match closes
         } // word for() loop closes
     }  //freealg iteration ends;
     return out;
