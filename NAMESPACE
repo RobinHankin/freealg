@@ -1,6 +1,8 @@
 useDynLib(freealg, .registration=TRUE)
 exportPattern("^[[:alpha:]]+")
 
+import("methods")
+
 importFrom("stats", "rgeom")
 importFrom(Rcpp, evalCpp)
 
