@@ -65,6 +65,11 @@ of the lower-case equivalents; so for example \code{as.freealg("aA")}
 and \code{as.freealg(aBcCbA)} evaluate to one.  This can be confusing
 with the default print method.
 
+Note carefully that even though individual symbols have multiplicative
+inverses, a general element of the free algebra will not have a
+multiplicative inverse.  For example, \code{1+x} does not have an
+inverse.  The free algebra is not a division algebra, in general.
+
 }
 \author{Robin K. S. Hankin}
 \examples{
