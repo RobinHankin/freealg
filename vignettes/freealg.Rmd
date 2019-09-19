@@ -174,6 +174,102 @@ X+Y        #  'aab' term cancels
 1000+Y*Z   # algebra multiplication and addition works as expected
 ```
 
+# Calculus
+
+The package includes functionality to differentiate free algebra
+expressions.  However, the idiom is not as cute as in the `mvp`
+package because `freealg` uses integers to distinguish the variables.
+Starting with a univariate example we have:
+
+
+```{r}
+k <- as.freealg("3 + 4aa + 7aaaaaa") # 3 + 4a^2 + 7a^6
+k
+deriv(k,1)   # dk/da  = 8a+42a^4
+```
+
+However, because of noncommutativity one has more complex behaviour.
+Observe that the Leibniz formula, if written
+$\left(xy\right)'=x'y+xy'$, still holds for noncommutative systems:
+
+```{r}
+deriv(as.freealg("abaaaa"),1)  # d(aba^4)/da = ba^4 + 4aba^3
+```
+
+The package includes symbolwise multiplicative inverses and these too
+are differentiable in the package:
+
+```{r}
+deriv(as.freealg("A"),1)    # d(a^-1)/da = -a^-2
+```
+
+but again noncommutativity complicates matters:
+
+```{r}
+deriv(as.freealg("Aba"),1)    # d(a^-1ba)/da = -a^-2ba + a^-1b
+```
+
+The package can perform multiple partial differentiation by passing a
+vector second argument.  To calculate, say,
+$\frac{d^3\left(a^3ba^{-1}cb^5\right)}{da^2\,db}$, is straighforward:
+
+```{r}
+X <- as.freealg("aaabAcbbbbb")
+X
+deriv(X,c(1,1,2))
+```
+
+We can then perform a number of consistency checks, remembering that
+multiplication is not commutative:
+
+```{r}
+set.seed(0)
+(X <- rfalg(maxsize=10,include.negative=TRUE))
+d <- deriv(X,1)
+deriv(X^3,1) == X^2*d + X*d*X + d*X^2
+```
+
+Observe carefully that the usual chain rule is not applicable here.
+One might expect that $d(X^3)/da=3X^2dX/da$, but:
+
+```{r}
+deriv(X^3,1) == 3*X^2*deriv(X,1)
+```
+
+Now we check Young's theorem, that partial derivatives commute:
+
+
+```{r}
+deriv(X,1:2) == deriv(X,2:1)
+```
+
+If differentiation commutes pairwise we may perform any number of
+partial derivatives in any order with the same result:
+
+```{r}
+
+deriv(X,c(1,2,3,1,2,3)) == deriv(X,c(3,3,2,1,2,1))
+```
+
+
+We can also verify the Leibniz formula for products, remembering to
+maintain the order of the terms:
+
+```{r}
+(X <- rfalg(maxsize=10,include.negative=TRUE))
+(Y <- rfalg(maxsize=10,include.negative=TRUE))
+deriv(X*Y,1) == deriv(X,1)*Y + X*deriv(Y,1)
+```
+
+Higher derivatives are somewhat harder:
+
+```{r}
+f1 <- function(x){deriv(x,1)}
+f2 <- function(x){deriv(x,2)}
+f1(f2(X)) == f2(f1(X))  # Young
+f1(f2(X*Y)) == X*f1(f2(Y)) + f1(X)*f2(Y) + f2(X)*f1(Y) + f1(f2(X))*Y # Leibniz
+```
+
 # The print method
 
 The default print method uses uppercase letters to represent
@@ -181,7 +277,6 @@ multiplicative inverses, but it is possible to set
 the `usecaret` option, which makes changes the appearance:
 
 ```{r}
-set.seed(0)
 phi <- rfalg(n=5,inc=TRUE)
 phi
 options("usecaret" = TRUE)
