@@ -1,6 +1,8 @@
 useDynLib(freealg, .registration=TRUE)
 exportPattern("^[[:alpha:]]+")
 
+import("methods")
+
 importFrom("stats", "rgeom")
 importFrom(Rcpp, evalCpp)
 
@@ -10,4 +12,4 @@ S3method("constant<-", freealg)
 S3method("coeffs<-", freealg)
 S3method("Ops",freealg)
 S3method("print",freealg)
-
+S3method("deriv",freealg)

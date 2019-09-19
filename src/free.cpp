@@ -7,7 +7,7 @@
 
 using namespace std;
 using namespace Rcpp; 
-typedef std::list<signed int> word; // an 'word' object is a list of signed ints
+typedef std::list<signed int> word; // a 'word' object is a list of signed ints
 typedef map <word, double> freealg; // a 'freealg' maps word objects to reals
 
 List retval(const freealg &X){   // takes a freealg object and returns a mpoly-type list suitable for return to R
@@ -123,6 +123,56 @@ freealg power(const freealg X, unsigned int n){
         }
     }
     return out;
+}
+
+freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
+    freealg out; // empty freealg object is the zero object
+
+    for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
+        word w = it->first;  //cannot be const word w because we need w.begin()
+        const double c = it->second;
+        unsigned int i,j;
+        word::iterator iw,iwc;
+
+        for(iw = w.begin(), i=0 ; iw != w.end() ; ++i, ++iw){
+            if( (*iw) == r){         // differential matches symbol, same sign
+                word wcopy=w;
+                word wrem;  // "wrem" = "w with one symbol removed"
+                for(iwc = wcopy.begin() , j=0 ; iwc != wcopy.end() ; ++j, ++iwc){
+                    if(i != j){wrem.push_back(*iwc);}
+                }
+                out[wrem] += c;     // The meat.
+            } // if(same-sign match) closes...
+            if( (*iw) == -r){    // ... so now search for an opposite sign match
+                word wcopy=w;
+                word wadd;  // "wadd" = "w with one symbol added"
+                for(iwc = wcopy.begin() , j=0 ; iwc != wcopy.end() ; ++j, ++iwc){
+                    if(i != j){
+                        wadd.push_back(*iwc); //do it once
+                    } else {
+                        wadd.push_back(*iwc); // do it twice
+                        wadd.push_back(*iwc);
+                    }
+                }
+                out[wadd] -= c;     // The meat (negative sign)
+            } // if(opposite-signe match) closes
+        } // word w for() loop closes
+    }  //freealg iteration ends;
+    return out;
+}
+
+freealg diffn(freealg X, const NumericVector r){ // (d^len(r) X)/dr[1]...dr[len(r)]
+    for(unsigned int i=0 ; i<r.size() ; ++i){
+        X=diff1(X,(unsigned int) r[i]);
+    }
+    return X;
+}
+
+// [[Rcpp::export]]
+List lowlevel_diffn(const List &words, const NumericVector &coeffs,
+                    const NumericVector &r
+    ){
+    return retval(diffn(prepare(words,coeffs), r));
 }
 
 // [[Rcpp::export]]
