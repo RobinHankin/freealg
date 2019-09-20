@@ -14,6 +14,8 @@ checker1 <- function(x){
     options("usecaret" = TRUE)
     print(x)
 
+    expect_error(!x)
+
     expect_error(x < x)
     expect_error(x > x)
     expect_error(x <=x)
@@ -24,6 +26,7 @@ checker1 <- function(x){
     expect_error(x != 1)
     expect_error(x == 1)
     expect_error(x/x)
+    expect_error(x^x)
     expect_error(x^(-1))
   
 
