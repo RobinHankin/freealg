@@ -15,6 +15,8 @@ test_that("Test suite zzz, specific identities and miscellaneous checks",{
   expect_true(is.constant(as.freealg("7")))
   expect_error(as.freealg(sin))
 
+  x <- as.freealg("1+x+2ax")
+  expect_error(coeffs(x) <- seq_along(coeffs(x)))
 
   })
 

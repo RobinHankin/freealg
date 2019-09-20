@@ -49,7 +49,6 @@ checker1 <- function(x){
 
   
     expect_silent(x <- as.freealg(x))
-    expect_error(coeffs(x) <- seq_along(coeffs(x)))
 
     coeffs(x) <- 3
     expect_true(all(coeffs(x)==3))
