@@ -8,6 +8,10 @@
 test_that("Test suite aaa.R",{
 
 checker1 <- function(x){
+
+    print(x)
+
+
     expect_true(x==x, info=x)
 
     expect_true(x == x + constant(0), info=x)
@@ -44,6 +48,15 @@ checker1 <- function(x){
     expect_true(constant(y) == 0, info=x)
 
   
+    expect_silent(x <- as.freealg(x))
+    expect_error(coeffs(x) <- seq_along(coeffs(x)))
+
+    coeffs(x) <- 3
+    expect_true(all(coeffs(x)==3))
+
+
+
+
 
   return(TRUE)
 }  # checker1() closes

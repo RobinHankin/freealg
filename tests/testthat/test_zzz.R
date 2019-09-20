@@ -16,18 +16,6 @@ test_that("Test suite zzz, specific identities and miscellaneous checks",{
   expect_error(as.freealg(sin))
 
 
-  x <- rfalg()
-  expect_silent(x <- as.freealg(x))
-  constant(x) <- 34
-  expect_true(constant(x) == 34)
-  expect_error(coeffs(x) <- seq_along(coeffs(x)))
-
-  coeffs(x) <- 3
-  expect_true(all(coeffs(x)==3))
-
-  print(x)
-
-
   })
 
   
