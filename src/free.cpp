@@ -168,6 +168,84 @@ freealg diffn(freealg X, const NumericVector r){ // (d^len(r) X)/dr[1]...dr[len(
     return X;
 }
 
+freealg pre_and_post_mult(const freealg X, const NumericVector left, const NumericVector right){
+
+    freealg out;
+    unsigned int i;
+
+    for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
+        word w = it->first;  
+
+
+        word wnew;
+        for(i=left.size(); i>0 ; --i){
+            w.push_front(left[i]);
+        }
+
+        for(i=0; i<right.size(); ++i){
+            w.push_back(right[i]);
+        }
+
+        out[w] += it->second; // coefficient of w
+    }
+    return out;
+}
+
+freealg subst(const freealg X, const freealg Y, const NumericVector r){
+    freealg out,temp,Xz;
+    freealg::const_iterator iz;
+    unsigned int i;
+    bool found_a_zero = false, done = false;
+    word::const_iterator itemp;
+    word::iterator iw;
+    // We know the words of X have no no zeros, so first we substitute
+    // r[0] for 0:
+    for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
+        word w = it->first;
+        for(iw = w.begin() ; iw != w.end() ; ++iw){
+            if( (*iw) == r[0]) { *iw = 0;}
+        }
+        Xz[w] += it->second;
+    } // Xz iteration closes; words (keys) of Xz now have 0 in place of r
+    // Now 'Xz' has zeros which should be substituted for Y
+    // first check for existence of zeros:
+    found_a_zero = true;
+    while(found_a_zero){
+        found_a_zero = false;
+        for(iz=Xz.begin() ; iz != Xz.end() ; ++iz){
+            word w = iz->first;
+            for(iw = w.begin(),i=0 ; iw != w.end() ; ++iw, ++i){
+                if( (*iw) == 0) { // found a zero!
+                    found_a_zero = true;
+                    break; // break out of iw iteration (we found a zero)
+                } //if(*iw==0) closes
+            } // iw iteration closes
+            // land here for one of two reasons: (a), a zero found,
+            // followed by break; or (b) no zero found and we have
+            // gone through the whole of word w
+
+            if(found_a_zero){
+                Xz[w] = 0;  // get rid of the original word in Xz by setting the coeff=0...
+                
+                word left,right;
+                for(j=0 , word::const_iterator jw=w.begin(), int j=0 ; j<i; ++j){
+                    left.push_front(*jw);
+                }
+                ++jw;
+
+                for(int j=i+1 ; j<w.size(); ++j){
+                    right.push_back(w[j]);
+                }
+                temp = pre_and_post_multi(Y,left,right);
+                for(itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
+                    Xz[itemp->first] += itemp->second;// ...and put the expansion back in Xz
+                }
+            } //if(found_a_zero) closes
+        }   //Xz iteration closes
+    } // while(found_a_zero) closes
+    return Xz;
+} //function subst() closes
+
 // [[Rcpp::export]]
 List lowlevel_diffn(const List &words, const NumericVector &coeffs,
                     const NumericVector &r
