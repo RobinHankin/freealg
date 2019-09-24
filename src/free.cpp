@@ -168,7 +168,7 @@ freealg diffn(freealg X, const NumericVector r){ // (d^len(r) X)/dr[1]...dr[len(
     return X;
 }
 
-freealg pre_and_post_mult(const freealg X, const NumericVector left, const NumericVector right){
+freealg multiply_pre_and_post(const freealg X, const NumericVector left, const NumericVector right){
 
     freealg out;
     unsigned int i;
@@ -196,7 +196,7 @@ freealg subst(const freealg X, const freealg Y, const NumericVector r){
     freealg::const_iterator iz;
     unsigned int i;
     bool found_a_zero = false, done = false;
-    word::const_iterator itemp;
+    word::const_iterator jw;
     word::iterator iw;
     // We know the words of X have no no zeros, so first we substitute
     // r[0] for 0:
@@ -227,17 +227,18 @@ freealg subst(const freealg X, const freealg Y, const NumericVector r){
             if(found_a_zero){
                 Xz[w] = 0;  // get rid of the original word in Xz by setting the coeff=0...
                 
-                word left,right;
-                for(j=0 , word::const_iterator jw=w.begin(), int j=0 ; j<i; ++j){
-                    left.push_front(*jw);
+                NumericVector left(i), right(w.size()-i-1);
+                int j=0;
+                for(word::iterator jw=w.begin() ; j<i; ++j, ++jw){
+                    left.push_back(*jw);
                 }
-                ++jw;
+                ++jw;  // skip the zero
 
-                for(int j=i+1 ; j<w.size(); ++j){
-                    right.push_back(w[j]);
+                for(int j=i+1 ; j<w.size(); ++j ,++jw){
+                    right.push_back(*jw);
                 }
-                temp = pre_and_post_multi(Y,left,right);
-                for(itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
+                temp = multiply_pre_and_post(Y,left,right);
+                for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
                     Xz[itemp->first] += itemp->second;// ...and put the expansion back in Xz
                 }
             } //if(found_a_zero) closes
