@@ -173,3 +173,7 @@ setGeneric("deriv")
     return(freealg(jj[[1]],jj[[2]]))
 }
 
+`horner` <- function(P, v){
+  P <- as.freealg(P)
+  Reduce(v, right=TRUE, f=function(a,b){b*P + a})
+}
