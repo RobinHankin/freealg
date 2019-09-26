@@ -191,7 +191,7 @@ freealg multiply_pre_and_post(const freealg X, const NumericVector left, const N
     return out;
 }
 
-freealg subst(const freealg X, const freealg Y, const NumericVector r){
+freealg subs(const freealg X, const freealg Y, const NumericVector r){
     freealg out,temp,Xz;
     freealg::const_iterator iz;
     unsigned int i;
@@ -226,19 +226,24 @@ freealg subst(const freealg X, const freealg Y, const NumericVector r){
 
             if(found_a_zero){
                 Xz[w] = 0;  // get rid of the original word in Xz by setting the coeff=0...
-                
                 NumericVector left(i), right(w.size()-i-1);
                 int j=0;
-                for(word::iterator jw=w.begin() ; j<i; ++j, ++jw){
+                cout << "gets to here\n";
+                for(int j=0, word::iterator jw=w.begin() ; j<i; ++j, ++jw){
+                cout << "but not here\n"; 
                     left.push_back(*jw);
                 }
                 ++jw;  // skip the zero
 
                 for(int j=i+1 ; j<w.size(); ++j ,++jw){
+                cout << "J\n";
+
                     right.push_back(*jw);
                 }
                 temp = multiply_pre_and_post(Y,left,right);
                 for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
+                cout << "K\n";
+                
                     Xz[itemp->first] += itemp->second;// ...and put the expansion back in Xz
                 }
             } //if(found_a_zero) closes
@@ -246,6 +251,15 @@ freealg subst(const freealg X, const freealg Y, const NumericVector r){
     } // while(found_a_zero) closes
     return Xz;
 } //function subst() closes
+
+// [[Rcpp::export]]
+List lowlevel_subs(
+                   const List &words1, const NumericVector &coeffs1,
+                   const List &words2, const NumericVector &coeffs2,
+                   const NumericVector &r
+    ){
+    return retval(subs(prepare(words1,coeffs1), prepare(words2,coeffs2),r));
+}
 
 // [[Rcpp::export]]
 List lowlevel_diffn(const List &words, const NumericVector &coeffs,
