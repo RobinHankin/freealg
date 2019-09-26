@@ -43,6 +43,7 @@ checker1 <- function(x){
 
     expect_true(x + 1 ==  1 + x, info=x)
     expect_true(x - 1 == -1 + x, info=x)
+    expect_true(1 - x == -x + 1, info=x)
 
     expect_true(x+x-x == x, info=x)
 
