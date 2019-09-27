@@ -204,16 +204,15 @@ freealg::iterator find_first_zero(freealg X){
     return it;
 }
 
-freealg change_r_for_zero(const freealg X, const int r){
+freealg change_r_for_zero(freealg X, const int r){
     freealg Xout;
-    freealg::iterator it;
+    freealg::const_iterator it;
     for(it=X.begin() ; it != X.end() ; ++it){
         word w = it->first;
         word wcopy = w;
+        word::iterator iwc = wcopy.begin();
         for(
-            word::iterator iw  = w.begin(),
-            word::iterator iwc = copy.begin() ;
-            iw != w.end() ; ++iw, ++iwc){
+            word::const_iterator iw = w.begin(); iw != w.end() ; ++iw, ++iwc){
             if( (*iw) == r) { // if we find an 'r'...
                 *iwc = 0;    // ... set it to zero in wcopy
             }
@@ -226,7 +225,7 @@ freealg change_r_for_zero(const freealg X, const int r){
 freealg subs(const freealg X, const freealg Y, const NumericVector r){
     freealg out,temp,Xz;
     freealg::const_iterator iz;
-    unsigned int i;
+    unsigned int i; // scope needs to extend beyond for() loop
 
     // We know the words of X have no no zeros, so first we substitute
     // r[0] for 0:
@@ -237,11 +236,14 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
     while(find_first_zero(Xz) != Xz.end()){ // that is, while there is a zero...
         freealg::iterator p=find_first_zero(Xz);
         word w = p->first;
-        for(word::const_iterator iw = w.begin(), i=0 ; iw != w.end() ; ++iw, ++i){
+        i=0;
+        for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw, ++i){
             if( (*iw) == 0) { // found a zero!
                 Xz[w] = 0;  // get rid of the original word in Xz by setting the coeff=0...
                 NumericVector left(i), right(w.size()-i-1);  // narrow scope
-                for(int j=0, word::iterator jw=w.begin() ; j<i; ++j, ++jw){
+                int j=0;
+                word::iterator jw; 
+                for(word::iterator jw=w.begin() ; j<i; ++j, ++jw){
                     left.push_back(*jw); // populate left...
                 }
                 ++jw;  //... skip the zero...
