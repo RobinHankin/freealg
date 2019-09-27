@@ -197,11 +197,11 @@ freealg::iterator find_first_zero(freealg X){
         word w=it->first;
         for(word::const_iterator iw=w.begin() ; iw != w.end() ; ++iw){
             if(*iw == 0){
-                return it;
+                return it; // 'it' points to a zero, if there is one...
             } // iw loop closes
         }
     }
-    return it;
+    return it; //... and if there isn't, then it points to the end
 }
 
 freealg change_r_for_zero(const freealg X, const int r){
