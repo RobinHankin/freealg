@@ -239,17 +239,17 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
         for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw, ++i){
             if( (*iw) == 0) { // found a zero!
                 Xz[w] = 0;  // get rid of the original word in Xz by setting the coeff=0...
-                NumericVector left(i), right(w.size()-i-1);  // narrow scope
+                NumericVector wleft(i), wright(w.size()-i-1);  // narrow scope
                 int j=0;
                 word::iterator jw;  // scope of jw needs to extend after the for loop
                 for(jw=w.begin() ; j<i; ++j, ++jw){
-                    left.push_back(*jw); // populate left...
+                    wleft.push_back(*jw); // populate wleft...
                 }
                 ++jw;  //... skip the zero...
                 for(int j=i+1 ; j<w.size(); ++j ,++jw){
-                    right.push_back(*jw);//...and populate right
+                    wright.push_back(*jw);//...and populate wright
                 }
-                temp = multiply_pre_and_post(Y,left,right);
+                temp = multiply_pre_and_post(Y,wleft,wright);
                 for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
                     Xz[itemp->first] += itemp->second;// Put the expansion back in Xz
                 }
