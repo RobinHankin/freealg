@@ -204,11 +204,10 @@ freealg::iterator find_first_zero(freealg X){
     return it;
 }
 
-freealg change_r_for_zero(freealg X, const int r){
+freealg change_r_for_zero(const freealg X, const int r){
     freealg Xout;
-    freealg::const_iterator it;
-    for(it=X.begin() ; it != X.end() ; ++it){
-        word w = it->first;
+    for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
+        const word w = it->first;
         word wcopy = w;
         word::iterator iwc = wcopy.begin();
         for(
