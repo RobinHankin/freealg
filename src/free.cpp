@@ -246,7 +246,7 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
                     wleft.push_back(*jw); // populate wleft...
                 }
                 ++jw;  //... skip the zero...
-                for(int j=i+1 ; j<w.size(); ++j ,++jw){
+                for(j=i+1 ; j<w.size(); ++j ,++jw){
                     wright.push_back(*jw);//...and populate wright
                 }
                 temp = multiply_pre_and_post(Y,wleft,wright);
