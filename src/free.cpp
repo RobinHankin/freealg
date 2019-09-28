@@ -218,10 +218,12 @@ freealg change_r_for_zero(const freealg X, const int r){
         }
         Xout[wcopy] += it->second;
     } // Xz iteration closes; words (keys) of Xz now have 0 in place of r
+    cout << "here at the end of change_r\n";
     return Xout;
 }
 
 freealg subs(const freealg X, const freealg Y, const NumericVector r){
+    cout << "here at subs()\n";
     freealg out,temp,Xz;
     freealg::const_iterator iz;
     unsigned int i; // scope needs to extend beyond for() loop
@@ -230,13 +232,21 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
     // r[0] for 0:
     Xz = change_r_for_zero(X,r[0]);
     // Now 'Xz' has zeros which should be substituted for Y
-
+    cout << "here at point X\n";
 
     while(find_first_zero(Xz) != Xz.end()){ // that is, while there is a zero...
         freealg::iterator p=find_first_zero(Xz);
+        cout << "we have p1\n";
+
         word w = p->first;
+        cout << "we have p2\n";
+
         i=0;
+        cout << "we have p3\n";
+
         for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw, ++i){
+            cout << "in the iw iterator\n";
+
             if( (*iw) == 0) { // found a zero!
                 Xz[w] = 0;  // get rid of the original word in Xz by setting the coeff=0...
                 NumericVector wleft(i), wright(w.size()-i-1);  // narrow scope
