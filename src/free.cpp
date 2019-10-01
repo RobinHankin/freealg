@@ -197,6 +197,7 @@ freealg::iterator find_first_zero(freealg X){
         word w=it->first;
         for(word::const_iterator iw=w.begin() ; iw != w.end() ; ++iw){
             if(*iw == 0){
+                cout << "ffz has found a zero\n";
                 return it; // 'it' points to a zero, if there is one...
             } // iw loop closes
         }
@@ -213,6 +214,7 @@ freealg change_r_for_zero(const freealg X, const int r){
         for(
             word::const_iterator iw = w.begin(); iw != w.end() ; ++iw, ++iwc){
             if( (*iw) == r) { // if we find an 'r'...
+                cout << "found an r here!\n";
                 *iwc = 0;    // ... set it to zero in wcopy
             }
         }
@@ -253,12 +255,18 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
                 int j=0;
                 word::iterator jw;  // scope of jw needs to extend after the for loop
                 for(jw=w.begin() ; j<i; ++j, ++jw){
+                    cout << *jw;
                     wleft.push_back(*jw); // populate wleft...
                 }
+                cout << "\n";
                 ++jw;  //... skip the zero...
                 for(j=i+1 ; j<w.size(); ++j ,++jw){
+                    cout << *jw;
                     wright.push_back(*jw);//...and populate wright
                 }
+                cout << "\n";
+                cout << "blob\n";
+                
                 temp = multiply_pre_and_post(Y,wleft,wright);
                 for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
                     Xz[itemp->first] += itemp->second;// Put the expansion back in Xz
