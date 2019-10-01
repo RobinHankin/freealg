@@ -248,7 +248,7 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
             cout << "in the iw iterator\n";
 
             if( (*iw) == 0) { // found a zero!
-                Xz[w] = 0;  // get rid of the original word in Xz by setting the coeff=0...
+                Xz.erase(w);  // get rid of the original word in Xz by setting the coeff=0...
                 NumericVector wleft(i), wright(w.size()-i-1);  // narrow scope
                 int j=0;
                 word::iterator jw;  // scope of jw needs to extend after the for loop
