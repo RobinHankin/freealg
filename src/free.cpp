@@ -191,7 +191,7 @@ freealg multiply_pre_and_post(const freealg X, const NumericVector left, const N
     return out;
 }
 
-freealg::iterator find_first_zero(freealg X){
+freealg::iterator find_first_zero(freealg &X){
     freealg::iterator it; // NB scope must extend out of for() loop
     for(it=X.begin() ; it != X.end() ; ++it){
         word w=it->first;
@@ -205,7 +205,7 @@ freealg::iterator find_first_zero(freealg X){
     return it; //... and if there isn't, then it points to the end
 }
 
-freealg change_r_for_zero(const freealg X, const int r){
+freealg change_r_for_zero(const freealg &X, const int &r){
     freealg Xout;
     for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
         const word w = it->first;
@@ -228,7 +228,6 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
     cout << "here at subs()\n";
     freealg out,temp,Xz;
     freealg::const_iterator iz;
-    unsigned int i; // scope needs to extend beyond for() loop
 
     // We know the words of X have no no zeros, so first we substitute
     // r[0] for 0:
@@ -243,10 +242,9 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
         word w = p->first;
         cout << "we have p2\n";
 
-        i=0;
         cout << "we have p3\n";
-
-        for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw, ++i){
+        int i=0;
+        for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw){
             cout << "in the iw iterator\n";
 
             if( (*iw) == 0) { // found a zero!
@@ -254,13 +252,13 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
                 NumericVector wleft(i), wright(w.size()-i-1);  // narrow scope
                 int j=0;
                 word::iterator jw;  // scope of jw needs to extend after the for loop
-                for(jw=w.begin() ; j<i; ++j, ++jw){
+                for(jw=w.begin() ; j<i-1; ++j, ++jw){
                     cout << *jw;
                     wleft.push_back(*jw); // populate wleft...
                 }
                 cout << "\n";
                 ++jw;  //... skip the zero...
-                for(j=i+1 ; j<w.size(); ++j ,++jw){
+                for(j=i ; j<w.size(); ++j , ++jw){
                     cout << *jw;
                     wright.push_back(*jw);//...and populate wright
                 }
@@ -273,6 +271,7 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
                 }
                 break;  // that is, break out of the iw loop
             } // if(found_a_zero) closes
+            i++;
         }   // iw for loop closes
     } // main while loop closes.
     // if you are here, there are no zeros in the indices of Xz
