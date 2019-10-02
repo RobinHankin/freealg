@@ -174,19 +174,17 @@ freealg multiply_pre_and_post(const freealg X, const NumericVector left, const N
     unsigned int i;
 
     for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
-        word w = it->first;  
-
-
-        word wnew;
+        const word w = it->first;  
+        word wnew = w;
         for(i=left.size(); i>0 ; --i){
-            w.push_front(left[i]);
+            wnew.push_front(left[i]);
         }
 
         for(i=0; i<right.size(); ++i){
-            w.push_back(right[i]);
+            wnew.push_back(right[i]);
         }
 
-        out[w] += it->second; // coefficient of w
+        out[wnew] += it->second; // coefficient of w
     }
     return out;
 }
