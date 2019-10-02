@@ -244,15 +244,15 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
 
         cout << "we have p3\n";
         int i=0;
-        for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw){
+        for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw){// increment i at end
             cout << "in the iw iterator\n";
 
             if( (*iw) == 0) { // found a zero!
-                Xz.erase(w);  // get rid of the original word in Xz by setting the coeff=0...
+                Xz.erase(w);  // get rid of the original word in Xz
                 NumericVector wleft(i), wright(w.size()-i-1);  // narrow scope
                 int j=0;
                 word::iterator jw;  // scope of jw needs to extend after the for loop
-                for(jw=w.begin() ; j<i-1; ++j, ++jw){
+                for(jw=w.begin() ; j<i; ++j, ++jw){
                     cout << *jw;
                     wleft.push_back(*jw); // populate wleft...
                 }
@@ -273,7 +273,7 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
             } // if(found_a_zero) closes
             i++;
         }   // iw for loop closes
-    } // main while loop closes.
+    } // main "while(find_first_zero())" loop closes.
     // if you are here, there are no zeros in the indices of Xz
     return Xz;
 } //function subst() closes
