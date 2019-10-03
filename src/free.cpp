@@ -168,7 +168,7 @@ freealg diffn(freealg X, const NumericVector r){ // (d^len(r) X)/dr[1]...dr[len(
     return X;
 }
 
-freealg multiply_pre_and_post(const freealg X, const NumericVector left, const NumericVector right){
+freealg multiply_pre_and_post(const freealg X, const word left, const word right){
 
     freealg out;
     unsigned int i;
@@ -176,12 +176,12 @@ freealg multiply_pre_and_post(const freealg X, const NumericVector left, const N
     for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
         const word w = it->first;  
         word wnew = w;
-        for(i=left.size(); i>0 ; --i){
-            wnew.push_front(left[i]);
+        for(auto ww=left.begin() ; ww != left.end() ; ++ww){
+            wnew.push_front(*ww);
         }
 
-        for(i=0; i<right.size(); ++i){
-            wnew.push_back(right[i]);
+        for(auto ww=right.begin() ; ww != right.end() ; ++ww){
+            wnew.push_back(*ww);
         }
 
         out[wnew] += it->second; // coefficient of w
@@ -247,23 +247,25 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
 
             if( (*iw) == 0) { // found a zero!
                 Xz.erase(w);  // get rid of the original word in Xz
-                NumericVector wleft(i), wright(w.size()-i-1);  // NB i might be 0
+                word wleft, wright;  // NB i might be 0
                 int j=0;
                 word::iterator jw;  // scope of jw needs to extend after the for loop
-                for(jw=w.begin() ; j<i; ++j, ++jw){
-                    cout << *jw << "jw";
+                for(jw=w.begin() ; j<i ; ++j, ++jw){
+                    cout << *jw << "_jw_";
                     wleft.push_back(*jw); // populate wleft...
                 }
-                cout << "\n";
+
+                for(auto ww=wleft.begin() ; ww != wleft.end() ; ++ww){
+                    cout << *ww;
+                }
                 ++jw;  //... skip the zero...
-                for(j=i ; j<w.size(); ++j , ++jw){
-                    cout << *jw << "JW";
+                for(j=i ; j<w.size()-1; ++j , ++jw){
+                    cout << *jw << "_JW_";
                     wright.push_back(*jw);//...and populate wright
                 }
-                cout << "\n";
-                cout << "blob\n";
                 
-                freealg temp = multiply_pre_and_post(Y,wleft,wright);
+                freealg temp = multiply_pre_and_post(Y,wright,wright);
+                return temp;
                 for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
                     Xz[itemp->first] += itemp->second;// Put the expansion back in Xz
                 }
