@@ -175,6 +175,8 @@ freealg multiply_pre_and_post(const freealg Y, const word left, const word right
     for(freealg::const_iterator it=Y.begin() ; it != Y.end() ; ++it){
         const word w = it->first;  
         word wnew = w;
+        const double coeff = it->second;
+
         for(auto ww=left.begin() ; ww != left.end() ; ++ww){
             wnew.push_front(*ww);
         }
@@ -183,7 +185,7 @@ freealg multiply_pre_and_post(const freealg Y, const word left, const word right
             wnew.push_back(*ww);
         }
 
-        out[wnew] += it->second; // coefficient of w
+        out[wnew] += coeff; // coefficient of w
     }
     return out;
 }
@@ -194,7 +196,6 @@ freealg::iterator find_first_zero(freealg &X){
         word w=it->first;
         for(word::const_iterator iw=w.begin() ; iw != w.end() ; ++iw){
             if(*iw == 0){
-                cout << "ffz has found a zero\n";
                 return it; // 'it' points to a zero, if there is one...
             } // iw loop closes
         }
@@ -211,77 +212,54 @@ freealg change_r_for_zero(const freealg &X, const int &r){
         for(
             word::const_iterator iw = w.begin(); iw != w.end() ; ++iw, ++iwc){
             if( (*iw) == r) { // if we find an 'r'...
-                cout << "found an r here!\n";
                 *iwc = 0;    // ... set it to zero in wcopy
             }
         }
         Xout[wcopy] += it->second;
     } // Xz iteration closes; words (keys) of Xz now have 0 in place of r
-    cout << "here at the end of change_r\n";
     return Xout;
 }
 
 freealg subs(const freealg X, const freealg Y, const NumericVector r){
-    cout << "here at subs()\n";
     freealg out,Xz;
     freealg::const_iterator iz;
 
     // We know the words of X have no no zeros, so first we substitute
     // r[0] for 0:
     Xz = change_r_for_zero(X,r[0]);
-    // Now 'Xz' has zeros which should be substituted for Y
-    cout << "here at point X\n";
+    
+    // Now 'Xz' has zeros; we substitute the zeros for Y
 
     while(find_first_zero(Xz) != Xz.end()){ // that is, while there is a zero...
         freealg::iterator p=find_first_zero(Xz);
-        cout << "we have p1\n";
 
         word w = p->first;
-        cout << "we have p2\n";
-
-        cout << "we have p3\n";
+        const double coeff = p->second;
         int i=0;
-        for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw){// increment i at end
-            cout << "in the iw iterator\n";
-
+        for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw){// increment i at end of loop
             if( (*iw) == 0) { // found a zero!
-                Xz.erase(w);  // get rid of the original word in Xz
+                Xz.erase(w);  // get rid of the original word in Xz (NB not Xz[w]=0)
                 word wleft, wright;  // NB i might be 0
                 int j=0;
                 word::iterator jw;  // scope of jw needs to extend after the for loop
                 for(jw=w.begin() ; j<i ; ++j, ++jw){
-                    cout << *jw << "_jw_";
                     wleft.push_front(*jw); // populate wleft...
                 }
-                cout << "\n";
-                
-                for(auto ww=wleft.begin() ; ww != wleft.end() ; ++ww){
-                    cout << *ww << "_ww_";
-                }
-                cout << "\n";
+
                 ++jw;  //... skip the zero...
+                
                 //...and populate wright   
                 for(; jw != w.end() ; ++jw){
                     wright.push_back(*jw);
                 }
 
-                for(auto xx=wright.begin() ; xx != wright.end() ; ++xx){
-                    cout << *xx << "_ww_";
-                }
-
-                cout << "\n";
-
-                cout << "<><><><><>\n";
-                cout << p->second;
-                 cout << "<><><><><>\n";
-                 freealg temp = multiply_pre_and_post(Y,wleft,wright);
-
+                freealg temp = multiply_pre_and_post(Y,wleft,wright);
                 for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
-                    Xz[itemp->first] += (p->second) ;// Put the expansion back in Xz
+                    Xz[itemp->first] += (itemp->second)*coeff ; // Put the expansion back in Xz
                 }
                 break;  // that is, break out of the iw loop
             } // if(found_a_zero) closes
-            ++i;
+            ++i; //
         }   // iw for loop closes
     } // main "while(find_first_zero())" loop closes.
     // if you are here, there are no zeros in the indices of Xz
