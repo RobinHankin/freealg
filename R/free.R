@@ -176,5 +176,6 @@ setGeneric("deriv")
 `subs` <- function(S1,S2,r){
     stopifnot(is.freealg(S1))
     stopifnot(is.freealg(S2))
-    freealg(lowlevel_subs(S1[[1]],S1[[2]],S2[[1]],S2[[2]],as.integer(round(r[1]))))
+    out <- lowlevel_subs(S1[[1]],S1[[2]],S2[[1]],S2[[2]],as.integer(round(r[1])))
+    freealg(out[[1]],out[[2]])
 }
