@@ -224,7 +224,7 @@ freealg change_r_for_zero(const freealg &X, const int &r){
 
 freealg subs(const freealg X, const freealg Y, const NumericVector r){
     cout << "here at subs()\n";
-    freealg out,temp,Xz;
+    freealg out,Xz;
     freealg::const_iterator iz;
 
     // We know the words of X have no no zeros, so first we substitute
@@ -247,23 +247,23 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
 
             if( (*iw) == 0) { // found a zero!
                 Xz.erase(w);  // get rid of the original word in Xz
-                NumericVector wleft(i), wright(w.size()-i-1);  // narrow scope
+                NumericVector wleft(i), wright(w.size()-i-1);  // NB i might be 0
                 int j=0;
                 word::iterator jw;  // scope of jw needs to extend after the for loop
                 for(jw=w.begin() ; j<i; ++j, ++jw){
-                    cout << *jw;
+                    cout << *jw << "jw";
                     wleft.push_back(*jw); // populate wleft...
                 }
                 cout << "\n";
                 ++jw;  //... skip the zero...
                 for(j=i ; j<w.size(); ++j , ++jw){
-                    cout << *jw;
+                    cout << *jw << "JW";
                     wright.push_back(*jw);//...and populate wright
                 }
                 cout << "\n";
                 cout << "blob\n";
                 
-                temp = multiply_pre_and_post(Y,wleft,wright);
+                freealg temp = multiply_pre_and_post(Y,wleft,wright);
                 for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
                     Xz[itemp->first] += itemp->second;// Put the expansion back in Xz
                 }
