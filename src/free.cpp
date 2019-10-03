@@ -168,12 +168,11 @@ freealg diffn(freealg X, const NumericVector r){ // (d^len(r) X)/dr[1]...dr[len(
     return X;
 }
 
-freealg multiply_pre_and_post(const freealg X, const word left, const word right){
+freealg multiply_pre_and_post(const freealg Y, const word left, const word right){
 
     freealg out;
-    unsigned int i;
 
-    for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
+    for(freealg::const_iterator it=Y.begin() ; it != Y.end() ; ++it){
         const word w = it->first;  
         word wnew = w;
         for(auto ww=left.begin() ; ww != left.end() ; ++ww){
@@ -252,26 +251,37 @@ freealg subs(const freealg X, const freealg Y, const NumericVector r){
                 word::iterator jw;  // scope of jw needs to extend after the for loop
                 for(jw=w.begin() ; j<i ; ++j, ++jw){
                     cout << *jw << "_jw_";
-                    wleft.push_back(*jw); // populate wleft...
+                    wleft.push_front(*jw); // populate wleft...
+                }
+                cout << "\n";
+                
+                for(auto ww=wleft.begin() ; ww != wleft.end() ; ++ww){
+                    cout << *ww << "_ww_";
+                }
+                cout << "\n";
+                ++jw;  //... skip the zero...
+                //...and populate wright   
+                for(; jw != w.end() ; ++jw){
+                    wright.push_back(*jw);
                 }
 
-                for(auto ww=wleft.begin() ; ww != wleft.end() ; ++ww){
-                    cout << *ww;
+                for(auto xx=wright.begin() ; xx != wright.end() ; ++xx){
+                    cout << *xx << "_ww_";
                 }
-                ++jw;  //... skip the zero...
-                for(j=i ; j<w.size()-1; ++j , ++jw){
-                    cout << *jw << "_JW_";
-                    wright.push_back(*jw);//...and populate wright
-                }
-                
-                freealg temp = multiply_pre_and_post(Y,wright,wright);
-                return temp;
+
+                cout << "\n";
+
+                cout << "<><><><><>\n";
+                cout << p->second;
+                 cout << "<><><><><>\n";
+                 freealg temp = multiply_pre_and_post(Y,wleft,wright);
+
                 for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
-                    Xz[itemp->first] += itemp->second;// Put the expansion back in Xz
+                    Xz[itemp->first] += (p->second) ;// Put the expansion back in Xz
                 }
                 break;  // that is, break out of the iw loop
             } // if(found_a_zero) closes
-            i++;
+            ++i;
         }   // iw for loop closes
     } // main "while(find_first_zero())" loop closes.
     // if you are here, there are no zeros in the indices of Xz
