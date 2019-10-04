@@ -12,12 +12,13 @@ test_that("test suite aaa",{
 
 
   foo <- function(p){
-    if(!24 %in% unique(c(words(p),recursive=TRUE))){
+    if(!(24 %in% unique(c(words(p),recursive=TRUE)))){
       expect_true(subs(p,x="1+x") == p)
     }
-
-    for(i in 1:10){
-      foo(rfalg(distinct=3))
-    }
+  }
+  
+  for(i in 1:10){
+    foo(rfalg(distinct=3))
+  }
 
 })
