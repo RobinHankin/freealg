@@ -37,7 +37,7 @@ $\left(\mathbb{V},\cdot\right)$ a semigroup.  In addition, for any
 $a,b\in\mathbb{F}$ and $\mathbf{u},\mathbf{v}\in\mathbb{V}$, the
 following laws are satisfied:
 
-* Compatibility: $a\left(b\mathbf{v}\right)=(ab)\mathbf{v}$ 
+* Compatibility: $a\left(b\mathbf{v}\right)=(ab)\mathbf{v}$
 * Identity: $1\mathbf{v}=\mathbf{v}$, where $1\in\mathbb{F}$ is the
 multiplicative identity 
 * Distributivity of vector addition:
@@ -56,16 +56,24 @@ $\mathbb{V}\times\mathbb{V}$ to $\mathbb{V}$ satisfying:
 * Compatibility: $(a\mathbf{u})\cdot(b\mathbf{v})=
    (ab)(\mathbf{u}\cdot\mathbf{v})$. 
 
-There is no requirement for vector multiplication to be commutative or
-indeed associative.
+There is no requirement for vector multiplication to be commutative.
+Here we assume associativity so in addition to the axioms above we
+have
 
-The _free algebra_ is, in one sense, the most general algebra.  Given
-a set of indeterminates $\left\{X_1,X_2,\ldots,X_n\right\}$ one
+* Associativity:
+  $\left(\mathbf{u}\cdot\mathbf{v}\right)\cdot\mathbf{w}=\mathbf{u}\cdot\left(\mathbf{v}\cdot\mathbf{w}\right)$.
+
+
+The _free associative algebra_ is, in one sense, the most general
+associative algebra.  Here we follow standard terminology and drop the
+word `associative' while retaining the assumption of associativity.
+Given a set of indeterminates $\left\{X_1,X_2,\ldots,X_n\right\}$ one
 considers the set of _words_, that is, finite sequences of
 indeterminates.  The vector space is then scalar multiples of words
-together with a formal vector addition.  This system automatically
-satisfies the axioms of an algebra together with the requirement that
-addition of vectors satisfies distributivity.
+together with a formal vector addition; words are multiplied by
+concatenation.  This system automatically satisfies the axioms of an
+associative algebra together with the requirement that addition of
+vectors satisfies distributivity.
 
 The free algebra is the free R-module with a basis consisting of all
 words over an alphabet of symbols with multiplication of words defined
