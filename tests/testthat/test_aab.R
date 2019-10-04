@@ -2,7 +2,7 @@
 
 ## Tests of deriv() here.
 
-test_that("Test suite aaa.R",{
+test_that("Test suite aab.R",{
 
   checker1 <- function(x){
     expect_true(deriv(x,c(1,2)) == deriv(x,c(2,1)))
