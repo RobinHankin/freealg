@@ -197,5 +197,3 @@ setGeneric("deriv")
     return(out)
 }
 
-
->>>>>>> subs
