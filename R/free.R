@@ -173,7 +173,29 @@ setGeneric("deriv")
     return(freealg(jj[[1]],jj[[2]]))
 }
 
+
 `horner` <- function(P, v){
   P <- as.freealg(P)
   Reduce(v, right=TRUE, f=function(a,b){b*P + a})
 }
+
+`subsu` <- function(S1,S2,r){
+    S1 <- as.freealg(S1)
+    S2 <- as.freealg(S2)
+    if(is.character(r) & (nchar(r)==1)){r <- which(letters==r)}
+    out <- lowlevel_subs(S1[[1]],S1[[2]],S2[[1]],S2[[2]],as.integer(round(r[1])))
+    freealg(out[[1]],out[[2]])
+}
+
+`subs` <- function(S, ...){
+    sb  <- list(...)
+    v <- names(sb)
+    out <- S
+    for (i in seq_along(sb)) {
+      out <- subsu(out, sb[[i]],v[i])
+    }
+    return(out)
+}
+
+
+>>>>>>> subs

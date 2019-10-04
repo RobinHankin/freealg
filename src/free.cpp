@@ -168,6 +168,113 @@ freealg diffn(freealg X, const NumericVector r){ // (d^len(r) X)/dr[1]...dr[len(
     return X;
 }
 
+freealg multiply_pre_and_post(const freealg Y, const word left, const word right){
+
+    freealg out;
+
+    for(freealg::const_iterator it=Y.begin() ; it != Y.end() ; ++it){
+        const word w = it->first;  
+        word wnew = w;
+        const double coeff = it->second;
+
+        for(auto ww=left.begin() ; ww != left.end() ; ++ww){
+            wnew.push_front(*ww);
+        }
+
+        for(auto ww=right.begin() ; ww != right.end() ; ++ww){
+            wnew.push_back(*ww);
+        }
+
+        out[wnew] += coeff; // coefficient of w
+    }
+    return out;
+}
+
+freealg::iterator find_first_zero(freealg &X){
+    freealg::iterator it; // NB scope must extend out of for() loop
+    for(it=X.begin() ; it != X.end() ; ++it){
+        word w=it->first;
+        for(word::const_iterator iw=w.begin() ; iw != w.end() ; ++iw){
+            if(*iw == 0){
+                return it; // 'it' points to a zero, if there is one...
+            } // iw loop closes
+        }
+    }
+    return it; //... and if there isn't, then it points to the end
+}
+
+freealg change_r_for_zero(const freealg &X, const int &r){
+    freealg Xout;
+    for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
+        const word w = it->first;
+        word wcopy = w;
+        word::iterator iwc = wcopy.begin();
+        for(
+            word::const_iterator iw = w.begin(); iw != w.end() ; ++iw, ++iwc){
+            if( (*iw) == r) { // if we find an 'r'...
+                *iwc = 0;    // ... set it to zero in wcopy
+            }
+        }
+        Xout[wcopy] += it->second;
+    } // Xz iteration closes; words (keys) of Xz now have 0 in place of r
+    return Xout;
+}
+
+freealg subs(const freealg X, const freealg Y, const NumericVector r){
+    freealg out,Xz;
+    freealg::const_iterator iz;
+
+    // We know the words of X have no no zeros, so first we substitute
+    // r[0] for 0:
+    Xz = change_r_for_zero(X,r[0]);
+    
+    // Now 'Xz' has zeros; we substitute the zeros for Y
+
+    while(find_first_zero(Xz) != Xz.end()){ // that is, while there is a zero...
+        freealg::iterator p=find_first_zero(Xz);
+
+        word w = p->first;
+        const double coeff = p->second;
+        int i=0;
+        for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw){// increment i at end of loop
+            if( (*iw) == 0) { // found a zero!
+                Xz.erase(w);  // get rid of the original word in Xz (NB not Xz[w]=0)
+                word wleft, wright;  // NB i might be 0
+                int j=0;
+                word::iterator jw;  // scope of jw needs to extend after the for loop
+                for(jw=w.begin() ; j<i ; ++j, ++jw){
+                    wleft.push_front(*jw); // populate wleft...
+                }
+
+                ++jw;  //... skip the zero...
+                
+                //...and populate wright   
+                for(; jw != w.end() ; ++jw){
+                    wright.push_back(*jw);
+                }
+
+                freealg temp = multiply_pre_and_post(Y,wleft,wright);
+                for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
+                    Xz[itemp->first] += (itemp->second)*coeff ; // Put the expansion back in Xz
+                }
+                break;  // that is, break out of the iw loop
+            } // if(found_a_zero) closes
+            ++i; //
+        }   // iw for loop closes
+    } // main "while(find_first_zero())" loop closes.
+    // if you are here, there are no zeros in the indices of Xz
+    return Xz;
+} //function subst() closes
+
+// [[Rcpp::export]]
+List lowlevel_subs(
+                   const List &words1, const NumericVector &coeffs1,
+                   const List &words2, const NumericVector &coeffs2,
+                   const NumericVector &r
+    ){
+    return retval(subs(prepare(words1,coeffs1), prepare(words2,coeffs2),r));
+}
+
 // [[Rcpp::export]]
 List lowlevel_diffn(const List &words, const NumericVector &coeffs,
                     const NumericVector &r
