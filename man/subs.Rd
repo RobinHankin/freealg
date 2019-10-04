@@ -46,7 +46,6 @@ No equivalent to \code{mvp::subvec()} is currently implemented.
 
 }
 \author{Robin K. S. Hankin}
-\seealso{\code{\link{lose}}}
 \examples{
 subs("abccc",b="1+3x")
 subs("aaaa",a="1+x")  # binomial
