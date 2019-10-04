@@ -141,7 +141,7 @@ In standard template library language, this is a map from a list of
 signed integers to a double; the header in the package reads
 
 ```
-typedef std::list<signed int> word; // an 'word' object is a list of signed ints
+typedef std::list<signed int> word; // a 'word' object is a list of signed ints
 typedef map <word, double> freealg; // a 'freealg' maps word objects to reals
 ```
 
