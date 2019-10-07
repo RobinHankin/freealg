@@ -197,3 +197,16 @@ setGeneric("deriv")
     return(out)
 }
 
+`linear` <- function(x,power=1){
+    a <- seq_along(x)
+    jj <- cbind(a,power)
+    freealg(sapply(a,function(i){rep(jj[i,1],jj[i,2])},simplify=FALSE),x)
+}
+
+`pepper` <- function(v){
+    if(is.character(v)){
+        v <- match(unlist(strsplit(v,"")),letters)
+    }
+    mv <- partitions::multiset(v)
+    freealg(split(mv,col(mv)),rep(1,ncol(mv)))
+}
