@@ -14,5 +14,4 @@ r_packages:
   - covr
 
 after_success:
-  - Rscript -e 'library(covr); codecov()'
-  
+  - Rscript -e 'library(covr);   codecov(line_exclusions=list("R/freeops.R" = c(3,18,30,40,50)))'
