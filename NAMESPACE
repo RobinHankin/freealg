@@ -6,6 +6,8 @@ import("methods")
 importFrom("stats", "rgeom")
 importFrom(Rcpp, evalCpp)
 
+importFrom(partitions, multiset)
+
 S3method(constant, freealg)
 S3method(constant, numeric)
 S3method("constant<-", freealg)

@@ -36,32 +36,32 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
                         );
 }
     
-word comb(word X){  // combs through X, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
+word comb(word w){  // combs through w, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
     word::iterator it;
     word::const_iterator current,next;
-    it = X.begin();
-    while(it != X.end()){
+    it = w.begin();
+    while(it != w.end()){
         if(*it == 0){
-            it = X.erase(it);  // meat A (erases zero, increments 'it')
+            it = w.erase(it);  // meat A (erases zero, increments 'it')
         } else {
             it++;  // increment anyway
         }
     }  // while loop closes
 
-    it = X.begin();        // Step 2, strip out cancelling pairs [n, -n]:
-    while(it != X.end()){
+    it = w.begin();        // Step 2, strip out cancelling pairs [n, -n]:
+    while(it != w.end()){
         current = it;
         ++it;
         next = it;
-        if(it != X.end()){
+        if(it != w.end()){
             if(((*current) + (*next))==0){ 
-                it = X.erase(current); // meat B
-                it = X.erase(it);      // meat C
-                it = X.begin();
+                it = w.erase(current); // meat B
+                it = w.erase(it);      // meat C
+                it = w.begin();
             }
         }
     }
-    return X;
+    return w;
 }
 
 freealg prepare(const List words, const NumericVector coeffs){ 
@@ -72,23 +72,25 @@ freealg prepare(const List words, const NumericVector coeffs){
         if(coeffs[i] != 0){ // only nonzero coeffs
         SEXP jj = words[i]; 
         Rcpp::IntegerVector words(jj);
-        word X;
+        word w;
         for(unsigned int j=0 ; j<words.size() ; ++j){
 
-            X.push_back(words[j]);
+            w.push_back(words[j]);
         }
-        out[comb(X)]  += coeffs[i];  // the meat
+        const word cw = comb(w);
+        out[cw] += coeffs[i];  // the meat
+        if(out[cw] == 0){out.erase(cw);}
         } // if coeffs != 0 clause closes
     } // i loop closes
     return out;
 }
 
-word concatenate(word X1, const word X2){ 
+word concatenate(word w1, const word w2){ 
     word::const_iterator it;
-    for(it=X2.begin() ; it != X2.end() ; it++){
-        X1.push_back(*it);
+    for(it=w2.begin() ; it != w2.end() ; it++){
+        w1.push_back(*it);
     }
-     return comb(X1);
+     return comb(w1);
 }
 
 freealg sum(freealg X1, const freealg X2){ //X1 modified in place

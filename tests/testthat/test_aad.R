@@ -1,6 +1,6 @@
 
 
-test_that("test suite aaa",{
+test_that("test suite aad",{
   subs("a",a="1+x") == as.freealg("1+x")^1
   subs("aa",a="1+x") == as.freealg("1+x")^2
   subs("aaa",a="1+x") == as.freealg("1+x")^3
