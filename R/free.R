@@ -126,7 +126,7 @@
     out <- paste(out, pm, co, mulsym, jj, sep="")
   }
   if(is.zero(x)){out <- "0"}
-  cat(out)
+  cat(paste(strwrap(out, getOption("width")), collapse="\n"))
   cat("\n")
   return(x)
 }
