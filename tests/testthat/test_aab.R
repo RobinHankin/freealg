@@ -38,7 +38,7 @@ checker2 <- function(x,y){
   expect_true(deriv(x*y,1) == deriv(x,1)*y + x*deriv(y,1))
   expect_true(deriv(x*y,2) == deriv(x,2)*y + x*deriv(y,2))
 
-  expect_true(deriv(x*y,c(1,2)) ==
+  expect_true(deriv(x        *       y,c(1,2)) ==
               deriv(x,c(1,2))*       y         +
               deriv(x,c(1  ))* deriv(y,c(  2)) +
               deriv(x,c(  2))* deriv(y,c(1  )) +

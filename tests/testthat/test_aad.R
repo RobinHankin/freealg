@@ -21,4 +21,9 @@ test_that("test suite aad",{
     foo(rfalg(distinct=3))
   }
 
+
+  expect_true(linear(1:3) == as.freealg('a+2b+3c'))
+  expect_false(linear(1:3) == as.freealg('1+a+2b+3c'))
+  expect_silent(pepper("pepper"))
+
 })
