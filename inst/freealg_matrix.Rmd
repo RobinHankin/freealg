@@ -1,0 +1,85 @@
+---
+title: "freealg_matrix"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Numerical verification of the freealg package
+
+Here we verify that the `freealg` package is consistent.  We will
+evaluate an expression on three indeterminates, `A,B,C`, here random
+matrices:
+
+```{r}
+library("freealg")
+ A <- matrix(rnorm(25),5,5)
+ B <- matrix(rnorm(25),5,5)
+ C <- matrix(rnorm(25),5,5)
+```
+
+Now we will take a random-ish element of the free algebra and call it
+`x`:
+
+```{r randfree}
+x <- structure(list(indices = list(1L, 1:2, c(1L, 2L, 1L, 1L), 2L, 
+    3L), coeffs = c(9, 6, 1, 9, 3)), class = "freealg")
+x
+```
+
+We will evaluate `x^3` in two different ways.  Firstly, direct matrix
+multiplication:
+
+```{r}
+xm <- 9*A + 6*A%*%B + A%*%B%*%A%*%A + 9*B + 3*C  # object "x" adapted for matrix multiplication
+(xcubed_matrix <- xm %*% xm %*% xm)
+```
+
+And secondly using `freealg`:
+
+```{r}
+x^3
+```
+
+We can turn the above into an expression (rather clumsily) using
+`sed`.  Cut-and-paste the above output into a file called `e.txt` and
+then the following command
+
+`cat e.txt|tr 'a-z' 'A-Z' | sed -e ':loop' -e 's/\([A-Z]\)\([A-Z]\)/\1%*%\2/g' -e 't loop'`
+
+gives this:
+
+```{r}
+xcubed_freealg <- (
++ 729*A%*%A%*%A + 486*A%*%A%*%A%*%B + 81*A%*%A%*%A%*%B%*%A%*%A + 729*A%*%A%*%B + 486*A%*%A%*%B%*%A + 81*A%*%A%*%B%*%A%*%A%*%A + 54*A%*%A%*%B%*%A%*%A%*%A%*%B
++ 9*A%*%A%*%B%*%A%*%A%*%A%*%B%*%A%*%A + 81*A%*%A%*%B%*%A%*%A%*%B + 27*A%*%A%*%B%*%A%*%A%*%C + 324*A%*%A%*%B%*%A%*%B + 54*A%*%A%*%B%*%A%*%B%*%A%*%A + 486*A%*%A%*%B%*%B +
+162*A%*%A%*%B%*%C + 243*A%*%A%*%C + 729*A%*%B%*%A + 486*A%*%B%*%A%*%A + 81*A%*%B%*%A%*%A%*%A%*%A + 54*A%*%B%*%A%*%A%*%A%*%A%*%B + 9*A%*%B%*%A%*%A%*%A%*%A%*%B%*%A%*%A
++ 81*A%*%B%*%A%*%A%*%A%*%B + 54*A%*%B%*%A%*%A%*%A%*%B%*%A + 9*A%*%B%*%A%*%A%*%A%*%B%*%A%*%A%*%A + 6*A%*%B%*%A%*%A%*%A%*%B%*%A%*%A%*%A%*%B + 1*A%*%B%*%A%*%A%*%A%*%B%*%A%*%A%*%A%*%B%*%A%*%A +
+9*A%*%B%*%A%*%A%*%A%*%B%*%A%*%A%*%B + 3*A%*%B%*%A%*%A%*%A%*%B%*%A%*%A%*%C + 36*A%*%B%*%A%*%A%*%A%*%B%*%A%*%B + 6*A%*%B%*%A%*%A%*%A%*%B%*%A%*%B%*%A%*%A + 54*A%*%B%*%A%*%A%*%A%*%B%*%B +
+18*A%*%B%*%A%*%A%*%A%*%B%*%C + 27*A%*%B%*%A%*%A%*%A%*%C + 324*A%*%B%*%A%*%A%*%B + 81*A%*%B%*%A%*%A%*%B%*%A + 54*A%*%B%*%A%*%A%*%B%*%A%*%A + 54*A%*%B%*%A%*%A%*%B%*%A%*%B +
+9*A%*%B%*%A%*%A%*%B%*%A%*%B%*%A%*%A + 81*A%*%B%*%A%*%A%*%B%*%B + 27*A%*%B%*%A%*%A%*%B%*%C + 27*A%*%B%*%A%*%A%*%C%*%A + 18*A%*%B%*%A%*%A%*%C%*%A%*%B + 3*A%*%B%*%A%*%A%*%C%*%A%*%B%*%A%*%A +
+27*A%*%B%*%A%*%A%*%C%*%B + 9*A%*%B%*%A%*%A%*%C%*%C + 972*A%*%B%*%A%*%B + 324*A%*%B%*%A%*%B%*%A + 81*A%*%B%*%A%*%B%*%A%*%A + 54*A%*%B%*%A%*%B%*%A%*%A%*%A +
+36*A%*%B%*%A%*%B%*%A%*%A%*%A%*%B + 6*A%*%B%*%A%*%B%*%A%*%A%*%A%*%B%*%A%*%A + 54*A%*%B%*%A%*%B%*%A%*%A%*%B + 18*A%*%B%*%A%*%B%*%A%*%A%*%C + 216*A%*%B%*%A%*%B%*%A%*%B + 36*A%*%B%*%A%*%B%*%A%*%B%*%A%*%A
++ 324*A%*%B%*%A%*%B%*%B + 108*A%*%B%*%A%*%B%*%C + 162*A%*%B%*%A%*%C + 729*A%*%B%*%B + 486*A%*%B%*%B%*%A + 324*A%*%B%*%B%*%A%*%B +
+54*A%*%B%*%B%*%A%*%B%*%A%*%A + 486*A%*%B%*%B%*%B + 162*A%*%B%*%B%*%C + 243*A%*%B%*%C + 162*A%*%B%*%C%*%A + 108*A%*%B%*%C%*%A%*%B + 18*A%*%B%*%C%*%A%*%B%*%A%*%A
++ 162*A%*%B%*%C%*%B + 54*A%*%B%*%C%*%C + 243*A%*%C%*%A + 162*A%*%C%*%A%*%B + 27*A%*%C%*%A%*%B%*%A%*%A + 243*A%*%C%*%B + 81*A%*%C%*%C +
+729*B%*%A%*%A + 486*B%*%A%*%A%*%B + 81*B%*%A%*%A%*%B%*%A%*%A + 729*B%*%A%*%B + 486*B%*%A%*%B%*%A + 81*B%*%A%*%B%*%A%*%A%*%A + 54*B%*%A%*%B%*%A%*%A%*%A%*%B +
+9*B%*%A%*%B%*%A%*%A%*%A%*%B%*%A%*%A + 81*B%*%A%*%B%*%A%*%A%*%B + 27*B%*%A%*%B%*%A%*%A%*%C + 324*B%*%A%*%B%*%A%*%B + 54*B%*%A%*%B%*%A%*%B%*%A%*%A + 486*B%*%A%*%B%*%B +
+162*B%*%A%*%B%*%C + 243*B%*%A%*%C + 729*B%*%B%*%A + 486*B%*%B%*%A%*%B + 81*B%*%B%*%A%*%B%*%A%*%A + 729*B%*%B%*%B + 243*B%*%B%*%C +
+243*B%*%C%*%A + 162*B%*%C%*%A%*%B + 27*B%*%C%*%A%*%B%*%A%*%A + 243*B%*%C%*%B + 81*B%*%C%*%C + 243*C%*%A%*%A + 162*C%*%A%*%A%*%B +
+27*C%*%A%*%A%*%B%*%A%*%A + 243*C%*%A%*%B + 162*C%*%A%*%B%*%A + 27*C%*%A%*%B%*%A%*%A%*%A + 18*C%*%A%*%B%*%A%*%A%*%A%*%B + 3*C%*%A%*%B%*%A%*%A%*%A%*%B%*%A%*%A +
+27*C%*%A%*%B%*%A%*%A%*%B + 9*C%*%A%*%B%*%A%*%A%*%C + 108*C%*%A%*%B%*%A%*%B + 18*C%*%A%*%B%*%A%*%B%*%A%*%A + 162*C%*%A%*%B%*%B + 54*C%*%A%*%B%*%C + 81*C%*%A%*%C +
+243*C%*%B%*%A + 162*C%*%B%*%A%*%B + 27*C%*%B%*%A%*%B%*%A%*%A + 243*C%*%B%*%B + 81*C%*%B%*%C + 81*C%*%C%*%A + 54*C%*%C%*%A%*%B + 9*C%*%C%*%A%*%B%*%A%*%A
++ 81*C%*%C%*%B + 27*C%*%C%*%C
+)
+```
+
+and then
+
+```{r}
+xcubed_freealg - xcubed_matrix
+```
+
+is within numerical tolerances.
