@@ -1,4 +1,4 @@
-\name{liner}
+\name{linear}
 \alias{linear}
 \title{A simple free algebra object}
 \description{

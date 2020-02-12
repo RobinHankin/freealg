@@ -6,7 +6,7 @@
 horner(P,v)
 }
 \arguments{
-  \item{P}{Free algbebfra polynomial}
+  \item{P}{Free algebra polynomial}
   \item{v}{Numeric vector of coefficients}
 }
 \details{
