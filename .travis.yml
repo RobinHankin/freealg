@@ -3,7 +3,6 @@
 before_install:
     - tlmgr install collection-latexrecommended
     - tlmgr install letltxmacro  
-    - tlmgr update --self --all
 
 language: R
 cache: packages
