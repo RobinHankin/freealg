@@ -1,7 +1,6 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 before_install:
-    - tlmgr install collection-latexrecommended
     - tlmgr install collection-fontsrecommended
     - sudo apt-get install texlive-fonts-extra
     - tlmgr install letltxmacro
@@ -21,3 +20,4 @@ r_packages:
 
 after_success:
   - Rscript -e 'library(covr);   codecov(line_exclusions=list("R/freeops.R" = c(3,18,30,40,50)))'
+  
