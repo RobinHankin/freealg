@@ -2,9 +2,18 @@
 \alias{pepper}
 \title{Combine variables in every possible order}
 \description{
-  Given a list of variables, return a free algebra object corresponding
-  the sum terms which have those variables combined in every possible
-  order.  
+  Given a list of variables, construct every term comprising only those
+  variables; function \code{pepper()} returns a free algebra object
+  equal to the sum of these terms.
+
+  The function is named for a query from an exam question set by Sarah
+  Marshall in which she asked how many ways there are to arrange the
+  letters of word \dQuote{pepper}, the answer being \eqn{\left({6\atop
+  1\,2\,3}\right)=\frac{6!}{1!2!3!}=60}{6!/(1!2!3!)=60}.
+
+  Function \code{multiset()} in the \code{partitions} package gives
+  related functionality.
+  
 }
 \usage{
 pepper(v)
