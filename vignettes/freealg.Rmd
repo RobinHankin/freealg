@@ -203,8 +203,9 @@ library("magrittr")
 
 The package includes functionality to differentiate free algebra
 expressions.  However, the idiom is not as cute as in the `mvp`
-package because `freealg` uses integers to distinguish the variables.
-Starting with a univariate example we have:
+package because `freealg` uses integers to distinguish the variables,
+while `mvp` uses symbolic expressions.  Starting with a univariate
+`freealg` example we have:
 
 
 ```{r}
