@@ -1,7 +1,10 @@
 \name{horner}
 \alias{horner}
 \title{Horner's method}
-\description{Horner's method for multivariate polynomials}
+\description{
+  \loadmathjax
+  Horner's method for multivariate polynomials
+}
 \usage{
 horner(P,v)
 }
@@ -15,12 +18,12 @@ horner(P,v)
 
   Given a polynomial
 
-  \deqn{p(x) = a_0 +a_1+a_2x^2+\cdots + a_nx^n}{omitted; see PDF}
+  \mjdeqn{p(x) = a_0 +a_1+a_2x^2+\cdots + a_nx^n}{omitted; see latex}
 
   it is possible to express \eqn{p(x)} in the algebraically equivalent
   form
 
-  \deqn{p(x) = a_0 + x\left(a_1+x\left(a_2+\cdots + x\left(a_{n-1} +xa_n
+  \mjdeqn{p(x) = a_0 + x\left(a_1+x\left(a_2+\cdots + x\left(a_{n-1} +xa_n
 \right)\cdots\right)\right)}{omitted; see PDF}
 
 which is much more efficient for evaluation, as it requires only \eqn{n}

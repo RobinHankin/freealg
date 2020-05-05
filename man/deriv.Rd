@@ -4,8 +4,9 @@
 \alias{deriv.freealg}
 \alias{deriv_freealg}
 \title{Differentiation of \code{freealg} objects}
-\description{
-Differentiation of \code{freealg} objects}
+\description{\loadmathjax
+  Differentiation of \code{freealg} objects
+}
 \usage{
 \method{deriv}{freealg}(expr, r, ...)
 }
@@ -18,12 +19,12 @@ Differentiation of \code{freealg} objects}
 \author{Robin K. S. Hankin}
 \details{
 
-  Function \code{deriv(S,v)} returns \eqn{\frac{\partial^r S}{\partial
+  Function \code{deriv(S,v)} returns \mjeqn{\frac{\partial^r S}{\partial
       v_1\partial v_2\ldots\partial v_r}}{d^rS/dv1...dvr}.
 
   The Liebniz product rule
 
-  \deqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see PDF}
+  \mjdeqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see latex}
 
   operates even if (as here) \eqn{u,v} do not commute.
 
