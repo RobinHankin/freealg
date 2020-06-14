@@ -20,9 +20,9 @@ options(width = 80, tibble.width = Inf)
 
 # Introduction
 
-The ```freealg``` package provides some functionality for the free
-algebra, using the Standard Template library of ```C++```, commonly
-known as the ```STL```.  It is very like the `mvp` package for
+The ``freealg` package provides some functionality for the free
+algebra, using the Standard Template library of `C++`, commonly
+known as the `STL`.  It is very like the `mvp` package for
 multivariate polynomials, but the indeterminates do not commute:
 multiplication is word concatenation.
 
@@ -105,7 +105,7 @@ B\cdot A=
 
 Note that multiplication is not commutative, but it is associative.
 
-# The ```STL map``` class
+# The `STL map` class
 
 
 Here, a *term* is defined to be a scalar multiple of a *word*, and an
@@ -115,7 +115,7 @@ number of *terms*.
 Thus we can view an element of the free algebra as a map from the set
 of words to the reals, each word mapping to its coefficient.  Note
 that the empty word maps to the constant term.  In `STL` terminology,
-a ```map``` is a sorted associative container that contains key-value
+a `map` is a sorted associative container that contains key-value
 pairs with unique keys.  It is used in the package to map words to
 their coefficients, and is useful here because search and insertion
 operations have logarithmic complexity.
@@ -184,14 +184,14 @@ X+Y        #  'aab' term cancels
 
 # Substitution
 
-The package can substitution with the `subs()` function:
+Algebraic substitution is implemented in the package with the `subs()`
+function:
 
 ```{r}
 subs("1+4a",a="xx")
 p <- as.freealg("1+aab+4aba")
 subs(p,a="1+x",b="y+xx")
 ```
-
 Substitution works nicely with the `magrittr` package:
 
 ```{r}
