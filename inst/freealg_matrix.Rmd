@@ -9,9 +9,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Numerical verification of the freealg package
 
-Here we verify that the `freealg` package is consistent.  We will
-evaluate an expression on three indeterminates, `A,B,C`, here random
-matrices:
+Here we verify that the `freealg` package is consistent.  
+
+First, we observe that $n\times n$ matrices are an algebra over the
+reals, and therefore should obey all the identities of a free algebra.
+We will evaluate an expression in two different ways (one using the
+package and the other using base R matrix algebra) and verify that the
+results agree.  We will evaluate an expression on three
+indeterminates, `A,B,C`, here random $5\times 5$ matrices:
 
 ```{r}
 library("freealg")
@@ -44,8 +49,9 @@ x^3
 ```
 
 We can turn the above into an expression (rather clumsily) using
-`sed`.  Cut-and-paste the above output into a file called `e.txt` and
-then the following command
+`sed`.  Cut-and-paste the above output into a file called `e.txt` [if
+using the text above, strip out the `#` symbols] and then the
+following command
 
 `cat e.txt|tr 'a-z' 'A-Z' | sed -e ':loop' -e 's/\([A-Z]\)\([A-Z]\)/\1%*%\2/g' -e 't loop'`
 
@@ -75,11 +81,10 @@ xcubed_freealg <- (
 + 81*C%*%C%*%B + 27*C%*%C%*%C
 )
 ```
-
 and then
 
 ```{r}
 xcubed_freealg - xcubed_matrix
 ```
 
-is within numerical tolerances.
+is zero, to within numerical tolerances.
