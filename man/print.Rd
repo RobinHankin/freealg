@@ -23,7 +23,10 @@ but these are not handled entirely consistently.
 The print method is sensitive to the value of
 \code{getOption("usecaret")}, defaulting to \dQuote{no}.  The default is
 to use uppercase letters to represent multiplicative inverses, but if
-\code{TRUE}, use \code{a^-1}.
+\code{TRUE}, inverses are indicated using \dQuote{\code{^-1}}.  This
+becomes cumbersome for powers above the first.  For example, the default
+notation for \eqn{aba^{-2}}{aba^-2} is \code{abAA} but becomes
+\code{aba^-1a^-1} if \code{usecaret} is \code{TRUE}.
 
 }
 \seealso{\code{\link{freealg}}}  
