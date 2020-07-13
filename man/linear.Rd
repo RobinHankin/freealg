@@ -2,7 +2,18 @@
 \alias{linear}
 \title{A simple free algebra object}
 \description{
-Create simple free algebra objects including linear expressions
+  Create simple free algebra objects including linear expressions, for example
+
+\preformatted{
+> linear(1:3)
+free algebra element algebraically equal to
++ 1*a + 2*b + 3*c
+> linear(1:3,power=5)
+free algebra element algebraically equal to
++ 1*aaaaa + 2*bbbbb + 3*ccccc
+>
+}
+
 }
 \usage{
 linear(x,power=1)
