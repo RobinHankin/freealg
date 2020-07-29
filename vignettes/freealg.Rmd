@@ -255,13 +255,10 @@ deriv(X^3,1) == X^2*d + X*d*X + d*X^2
 ```
 
 Observe carefully that the usual chain rule is not applicable here.
-One might expect that $d(X^3)/da=3X^2dX/da$, but:
-
-```{r}
-deriv(X^3,1) == 3*X^2*deriv(X,1)
-```
-
-Now we check Young's theorem, that partial derivatives commute:
+If multiplication is commutative, one has $d(X^3)/da=3X^2dX/da$, but
+the above idiom shows that $d(X^3)/da=X^2\,dX/da + XdX/da\,
+X+dX/da\,X^2$.  Now we check Young's theorem, that partial derivatives
+commute:
 
 
 ```{r}
