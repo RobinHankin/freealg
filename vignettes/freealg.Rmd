@@ -1,5 +1,5 @@
 ---
-title: 'The ```freealg``` package: the free algebra in R'
+title: 'The `freealg` package: the free algebra in R'
 author: "Robin K. S. Hankin"
 date: "`r Sys.Date()`"
 output:

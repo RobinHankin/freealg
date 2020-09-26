@@ -38,7 +38,7 @@ print method does a good job in producing human-readable output.
 
 # Installation
 
-You can install the released version of ```freealg``` from
+You can install the released version of `freealg` from
 [CRAN](https://CRAN.R-project.org) with:
 
 ```{r, message=FALSE}
@@ -93,7 +93,7 @@ C\cdot A=\epsilon X^2\cdot\left(\alpha x^2yx+\beta zy\right)=
 The system inherits power associativity from distributivity and
 associativity of concatenation, but is not commutative.
 
-# The ```freealg``` package in use
+# The `freealg` package in use
 
 Creating a free algebra object is straightforward.  We can coerce from
 a character string with natural idiom:
@@ -134,4 +134,4 @@ x1*(x2*x3) == (x1*x2)*x3
 
 For more detail, see the package vignette
 
-```vignette("freealg")```
+`vignette("freealg")`
