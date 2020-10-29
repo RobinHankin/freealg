@@ -9,7 +9,7 @@
 \alias{vector_to_free}
 \alias{string_to_freealg}
 \title{The free algebra}
-\description{Create, test for, an coerce to, \code{freealg} objects}
+\description{Create, test for, and coerce to, \code{freealg} objects}
 \usage{
 freealg(words, coeffs)
 is_ok_free(words,coeffs)
