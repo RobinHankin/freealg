@@ -115,8 +115,8 @@
       pm <- " + " # pm = plus or minus
     } else {
       pm <- " - "
-      co <- abs(co)
     }
+    co <- capture.output(cat(abs(co)))
     jj <- words(x)[i][[1]]
     if(length(jj)>0){mulsym <- "*"} else {mulsym <- ""}
     if(any(jj<0)){jj[jj<0] <- n-jj[jj<0]}

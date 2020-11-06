@@ -8,6 +8,8 @@ importFrom(Rcpp, evalCpp)
 
 importFrom(partitions, multiset)
 
+importFrom("utils", "capture.output")
+
 S3method(constant, freealg)
 S3method(constant, numeric)
 S3method("constant<-", freealg)
