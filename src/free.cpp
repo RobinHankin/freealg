@@ -11,8 +11,8 @@ typedef std::list<signed int> word; // a 'word' object is a list of signed ints
 typedef map <word, double> freealg; // a 'freealg' maps word objects to reals
 
 List retval(const freealg &X){   // takes a freealg object and returns a mpoly-type list suitable for return to R
-    unsigned int i,j;
-    const unsigned int n=X.size();   // n is the number of terms
+    int i,j;
+    const int n=X.size();   // n is the number of terms
     List indexList(n);
     NumericVector coeffs(n);
     word::const_iterator ic;
@@ -22,7 +22,7 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
 
         coeffs[i] = (double) it->second;
         const word f = it->first;
-        const unsigned int r = f.size();
+        const int r = f.size();
         IntegerVector index(r);
         for(ic = f.begin(), j=0 ; ic != f.end() ; ++ic, ++j){
             index[j] = (signed int) *ic;
@@ -66,14 +66,14 @@ word comb(word w){  // combs through w, performing cancellations; eg [2,3,-3] ->
 
 freealg prepare(const List words, const NumericVector coeffs){ 
     freealg out;
-    const unsigned int n=words.size();  // n = number of words (each word has one coefficient)
+    const int n=words.size();  // n = number of words (each word has one coefficient)
 
-    for(unsigned int i=0 ; i<n ; i++){  
+    for(int i=0 ; i<n ; i++){  
         if(coeffs[i] != 0){ // only nonzero coeffs
         SEXP jj = words[i]; 
         Rcpp::IntegerVector words(jj);
         word w;
-        for(unsigned int j=0 ; j<words.size() ; ++j){
+        for(int j=0 ; j<words.size() ; ++j){
 
             w.push_back(words[j]);
         }
@@ -113,7 +113,7 @@ freealg product(const freealg X1, const freealg X2){
     return out;
 }
 
-freealg power(const freealg X, unsigned int n){
+freealg power(const freealg X, int n){
     freealg out; // empty freealg object is the zero object
     if(n<1){throw std::range_error("power cannot be <1");} 
     if(n==1){
@@ -127,13 +127,13 @@ freealg power(const freealg X, unsigned int n){
     return out;
 }
 
-freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
+freealg diff1(const freealg X, const int r){  // dX/dx_r
     freealg out; // empty freealg object is the zero object
 
     for(freealg::const_iterator it=X.begin() ; it != X.end() ; ++it){
         word w = it->first;  //cannot be const word w because we need w.begin()
         const double c = it->second;
-        unsigned int i,j;
+        int i,j;
         word::iterator iw,iwc;
 
         for(iw = w.begin(), i=0 ; iw != w.end() ; ++i, ++iw){
@@ -164,8 +164,8 @@ freealg diff1(const freealg X, const unsigned int r){  // dX/dx_r
 }
 
 freealg diffn(freealg X, const NumericVector r){ // (d^len(r) X)/dr[1]...dr[len(r)]
-    for(unsigned int i=0 ; i<r.size() ; ++i){
-        X=diff1(X,(unsigned int) r[i]);
+    for(int i=0 ; i<r.size() ; ++i){
+        X=diff1(X,(int) r[i]);
     }
     return X;
 }
