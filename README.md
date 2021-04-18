@@ -2,13 +2,13 @@ The Free Algebra in R
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- badges: start -->
 
+[![Total
+Downloads](https://cranlogs.r-pkg.org/badges/grand-total/freealg)](https://CRAN.R-project.org/package=freealg)
 [![Build
 Status](https://travis-ci.org/RobinHankin/freealg.svg?branch=master)](https://travis-ci.org/RobinHankin/freealg)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/freealg)](https://cran.r-project.org/package=freealg)
-[![Rdoc](https://www.rdocumentation.org/badges/version/freealg)](https://www.rdocumentation.org/packages/freealg)
 [![Codecov test
 coverage](https://codecov.io/gh/RobinHankin/freealg/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/freealg/branch/master)
 <!-- badges: end -->
@@ -38,67 +38,58 @@ library("freealg")
 The free algebra is the free R-module with a basis consisting of all
 words over an alphabet of symbols with multiplication of words defined
 as concatenation. Thus, with an alphabet of
-![\\{x,y,z\\}](https://latex.codecogs.com/png.latex?%5C%7Bx%2Cy%2Cz%5C%7D
-"\\{x,y,z\\}") and
+![\\{x,y,z\\}](https://latex.codecogs.com/png.latex?%5C%7Bx%2Cy%2Cz%5C%7D "\{x,y,z\}")
+and
 
-  
-![&#10;A=\\alpha x^2yx + \\beta
-zy&#10;](https://latex.codecogs.com/png.latex?%0AA%3D%5Calpha%20x%5E2yx%20%2B%20%5Cbeta%20zy%0A
-"
+![
 A=\\alpha x^2yx + \\beta zy
-")  
+](https://latex.codecogs.com/png.latex?%0AA%3D%5Calpha%20x%5E2yx%20%2B%20%5Cbeta%20zy%0A "
+A=\alpha x^2yx + \beta zy
+")
 
 and
 
-  
-![&#10;B=\\gamma z + \\delta
-y^4&#10;](https://latex.codecogs.com/png.latex?%0AB%3D%5Cgamma%20z%20%2B%20%5Cdelta%20y%5E4%0A
-"
+![
 B=\\gamma z + \\delta y^4
-")  
+](https://latex.codecogs.com/png.latex?%0AB%3D%5Cgamma%20z%20%2B%20%5Cdelta%20y%5E4%0A "
+B=\gamma z + \delta y^4
+")
 
 we would have
 
-  
-![&#10;A\\cdot B=\\left(\\alpha x^2yx+\\beta
-zy\\right)\\cdot\\left(\\gamma z+\\delta y^4\\right)=\\alpha\\gamma
-x^2yxz+\\alpha\\delta x^2yxy^4+\\beta\\gamma zyz+\\beta\\delta
-zy^5&#10;](https://latex.codecogs.com/png.latex?%0AA%5Ccdot%20B%3D%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%5Ccdot%5Cleft%28%5Cgamma%20z%2B%5Cdelta%20y%5E4%5Cright%29%3D%5Calpha%5Cgamma%20x%5E2yxz%2B%5Calpha%5Cdelta%20x%5E2yxy%5E4%2B%5Cbeta%5Cgamma%20zyz%2B%5Cbeta%5Cdelta%20zy%5E5%0A
-"
+![
 A\\cdot B=\\left(\\alpha x^2yx+\\beta zy\\right)\\cdot\\left(\\gamma z+\\delta y^4\\right)=\\alpha\\gamma x^2yxz+\\alpha\\delta x^2yxy^4+\\beta\\gamma zyz+\\beta\\delta zy^5
-")  
+](https://latex.codecogs.com/png.latex?%0AA%5Ccdot%20B%3D%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%5Ccdot%5Cleft%28%5Cgamma%20z%2B%5Cdelta%20y%5E4%5Cright%29%3D%5Calpha%5Cgamma%20x%5E2yxz%2B%5Calpha%5Cdelta%20x%5E2yxy%5E4%2B%5Cbeta%5Cgamma%20zyz%2B%5Cbeta%5Cdelta%20zy%5E5%0A "
+A\cdot B=\left(\alpha x^2yx+\beta zy\right)\cdot\left(\gamma z+\delta y^4\right)=\alpha\gamma x^2yxz+\alpha\delta x^2yxy^4+\beta\gamma zyz+\beta\delta zy^5
+")
 
 Note that multiplication is not commutative, but it is associative. A
 natural and easily implemented extension is to use upper-case symbols to
 represent multiplicative inverses of the lower-case equivalents. Thus if
 
-  
-![&#10;C=\\epsilon
-X^2](https://latex.codecogs.com/png.latex?%0AC%3D%5Cepsilon%20X%5E2
-"
-C=\\epsilon X^2")  
+![
+C=\\epsilon X^2](https://latex.codecogs.com/png.latex?%0AC%3D%5Cepsilon%20X%5E2 "
+C=\epsilon X^2")
 
 we would have
 
-  
-![&#10;A\\cdot C=\\left(\\alpha x^2yx+\\beta zy\\right)\\cdot\\epsilon
-X^2=&#10;\\alpha\\epsilon x^2yX + \\beta\\epsilon
-zyX^2&#10;](https://latex.codecogs.com/png.latex?%0AA%5Ccdot%20C%3D%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%5Ccdot%5Cepsilon%20X%5E2%3D%0A%5Calpha%5Cepsilon%20x%5E2yX%20%2B%20%5Cbeta%5Cepsilon%20zyX%5E2%0A
-"
+![
 A\\cdot C=\\left(\\alpha x^2yx+\\beta zy\\right)\\cdot\\epsilon X^2=
 \\alpha\\epsilon x^2yX + \\beta\\epsilon zyX^2
-")  
+](https://latex.codecogs.com/png.latex?%0AA%5Ccdot%20C%3D%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%5Ccdot%5Cepsilon%20X%5E2%3D%0A%5Calpha%5Cepsilon%20x%5E2yX%20%2B%20%5Cbeta%5Cepsilon%20zyX%5E2%0A "
+A\cdot C=\left(\alpha x^2yx+\beta zy\right)\cdot\epsilon X^2=
+\alpha\epsilon x^2yX + \beta\epsilon zyX^2
+")
 
 and
 
-  
-![&#10;C\\cdot A=\\epsilon X^2\\cdot\\left(\\alpha x^2yx+\\beta
-zy\\right)=&#10;\\alpha\\epsilon yx + \\beta\\epsilon
-X^2zy.&#10;](https://latex.codecogs.com/png.latex?%0AC%5Ccdot%20A%3D%5Cepsilon%20X%5E2%5Ccdot%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%3D%0A%5Calpha%5Cepsilon%20yx%20%2B%20%5Cbeta%5Cepsilon%20X%5E2zy.%0A
-"
+![
 C\\cdot A=\\epsilon X^2\\cdot\\left(\\alpha x^2yx+\\beta zy\\right)=
 \\alpha\\epsilon yx + \\beta\\epsilon X^2zy.
-")  
+](https://latex.codecogs.com/png.latex?%0AC%5Ccdot%20A%3D%5Cepsilon%20X%5E2%5Ccdot%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%3D%0A%5Calpha%5Cepsilon%20yx%20%2B%20%5Cbeta%5Cepsilon%20X%5E2zy.%0A "
+C\cdot A=\epsilon X^2\cdot\left(\alpha x^2yx+\beta zy\right)=
+\alpha\epsilon yx + \beta\epsilon X^2zy.
+")
 
 The system inherits power associativity from distributivity and
 associativity of concatenation, but is not commutative.
