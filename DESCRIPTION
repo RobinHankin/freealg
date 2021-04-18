@@ -7,10 +7,10 @@ Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Depends: methods
 Description: The free algebra in R; multivariate polynomials with non-commuting indeterminates.
 License: GPL (>= 2)
-Imports: Rcpp (>= 0.12.3), partitions (>= 1.9-22)
+Imports: Rcpp (>= 0.12.3), partitions (>= 1.9-22), mathjaxr
 LinkingTo: Rcpp
 SystemRequirements: C++11
-Suggests: knitr,testthat,magrittr,mathjaxr,markdown,rmarkdown
+Suggests: knitr,testthat,magrittr,markdown,rmarkdown
 VignetteBuilder: knitr
 URL: https://github.com/RobinHankin/freealg
 BugReports: https://github.com/RobinHankin/freealg/issues
