@@ -10,7 +10,7 @@ License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.3), partitions (>= 1.9-22)
 LinkingTo: Rcpp
 SystemRequirements: C++11
-Suggests: knitr,testthat,magrittr,mathjaxr
+Suggests: knitr,testthat,magrittr,mathjaxr,markdown,rmarkdown
 VignetteBuilder: knitr
 URL: https://github.com/RobinHankin/freealg.git
 BugReports: https://github.com/RobinHankin/freealg/issues
