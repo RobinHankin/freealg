@@ -12,6 +12,6 @@ LinkingTo: Rcpp
 SystemRequirements: C++11
 Suggests: knitr,testthat,magrittr,mathjaxr,markdown,rmarkdown
 VignetteBuilder: knitr
-URL: https://github.com/RobinHankin/freealg.git
+URL: https://github.com/RobinHankin/freealg
 BugReports: https://github.com/RobinHankin/freealg/issues
 RdMacros: mathjaxr
