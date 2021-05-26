@@ -21,7 +21,7 @@ string_to_freealg(string)
 vector_to_free(v,coeffs)
 }
 \arguments{
-  \item{words}{Terms of the algebra object, eg \code{c(1,2,-1,3,2)}
+  \item{words}{Terms of the algebra object, eg \code{c(1,2,-1,-3,-2)}
     corresponds to \code{abACB} because \eqn{a=1}, \eqn{b=2} etc;
     uppercase, or negative number, means inverse}
   \item{coeffs}{Numeric vector corresponding to the coefficients of each
