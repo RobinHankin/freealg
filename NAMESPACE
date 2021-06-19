@@ -11,6 +11,15 @@ importFrom(partitions, multiset)
 
 importFrom("utils", "capture.output")
 
+importFrom("digest", "digest")
+importFrom("disordR","disord")
+importFrom("disordR","is.disord")
+importFrom("disordR","consistent")
+importFrom("disordR","sapply")
+importFrom("disordR","elements")
+
+
+
 S3method(constant, freealg)
 S3method(constant, numeric)
 S3method("constant<-", freealg)

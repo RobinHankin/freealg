@@ -7,16 +7,20 @@
   return(out)
 }
 
-`words` <- function(x){x[[1]]}
-`coeffs` <- function(x){x[[2]]}  # accessor methods end here
+# `hash` <- function(x){digest::digest(x)}
+`words` <- function(x){disord(x[[1]],digest::digest(x))}
+`coeffs` <- function(x){disord(x[[2]],digest::digest(x))} # accessor methods end here
 
 `coeffs<-` <- function(x,value){UseMethod("coeffs<-")}
 `coeffs<-.freealg` <- function(x,value){
-    if(length(value) != 1){
-        stop('order of coefficients not defined.  Idiom "coeffs(x) <- value" is meaningful only if value is unchanged on reordering, here we require "value" to have length 1') 
-    }
-    x[[2]][] <- value
-    return(freealg(x[[1]],x[[2]]))
+  jj <- coeffs(x)
+  if(is.disord(value)){
+    stopifnot(consistent(words(x),value))
+    jj <- value
+  } else {
+    jj[] <- value  # the meat
+  }
+  freealg(words(x),jj)
 }
 
 `as.freealg` <- function(x,...){
@@ -69,8 +73,8 @@
     co[wanted] <- value
     w <- words(x)
     } else {
-      co <- c(coeffs(x),value)
-      w <- c(words(x),list(numeric(0)))
+      co <- c(elements(coeffs(x)),value)
+      w <- c(elements(words(x)),list(numeric(0)))
     }
   freealg(w,co)
 }
@@ -109,15 +113,17 @@
   n <- 26
   
   out <- ""
-  for(i in seq_along(words(x))){
-    co <- coeffs(x)[i]
+  w <- elements(words(x))
+  eco <- elements(coeffs(x))
+  for(i in seq_along(w)){
+    co <- eco[i]
     if(co>0){
       pm <- " + " # pm = plus or minus
     } else {
       pm <- " - "
     }
     co <- capture.output(cat(abs(co)))
-    jj <- words(x)[i][[1]]
+    jj <- w[i][[1]]
     if(length(jj)>0){mulsym <- "*"} else {mulsym <- ""}
     if(any(jj<0)){jj[jj<0] <- n-jj[jj<0]}
     jj <- symbols[jj]

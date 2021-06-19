@@ -12,7 +12,7 @@ test_that("test suite aad",{
 
 
   foo <- function(p){
-    if(!(24 %in% unique(c(words(p),recursive=TRUE)))){
+    if(!(24 %in% unique(c(elements(words(p)),recursive=TRUE)))){
       expect_true(subs(p,x="1+x") == p)
     }
   }
