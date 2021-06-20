@@ -249,6 +249,7 @@ We can then perform a number of consistency checks, remembering that
 multiplication is not commutative:
 
 ```{r}
+set.seed(0)
 (X <- rfalg(maxsize=10,include.negative=TRUE))
 d <- deriv(X,1)
 deriv(X^3,1) == X^2*d + X*d*X + d*X^2
@@ -305,6 +306,105 @@ options("usecaret" = TRUE)
 phi
 options("usecaret" = FALSE)  # reset to default
 ```
+
+
+# How the `disordR` package is used
+
+It is possible to extract and examine the different components of a
+`freealg` object.  Consider:
+
+```{r}
+a <- rfalg()
+a
+dput(a)
+```
+
+We see that, internally, `a` is a two-element list, with the first
+element being the indices and the second being the coefficients.  We
+may extract the coefficients as follows:
+
+```{r}
+coeffs(a)
+```
+
+Above, observe how `coeffs()` does not return a vector but an object
+of class `disord`, defined in the `disordR` package.  The hash code is
+displayed by the `disord` print method and serves to stop misuse of
+the coefficients.  Standard extraction and replacement conditions
+apply to this object; for example, we cannot extract the "first"
+element, and trying to do so generates an error from the S4 extraction
+method of `disordR`:
+
+```{r,error=TRUE}
+coeffs(a)[1]
+```
+
+The error is intentional: the key-value pairs are stored in an
+implementation-specific order, so there is no well-defined "first"
+element.  Nevertheless, some extraction methods do make sense.  We
+can, for example, find every coefficient that is greater than 3:
+
+```{r}
+coeffs(a) > 3
+```
+
+Above, note that the result is another `disord` object, in this case
+Boolean.  The result cannot be a vector because for the extracted
+values, as for the parent, have no uniquely defined order.  Observe
+that the result can be used to extract coefficients of `a`:
+
+```{r}
+coeffs(a)[coeffs(a) > 3]
+```
+
+The hash key prevents one from treating the result of `coeffs()` like
+a vector in cases where the unspecified order would cause
+ambiguities.   For example:
+
+```{r,error=TRUE}
+b <- a*2
+coeffs(a) + coeffs(b)
+coeffs(a) < coeffs(b)
+```
+
+Above, neither idiom is well-defined and returns an error; the
+diagnostic is the hash codes differing.  Note, however, that there is
+not a complete bar on combining coefficients of distinct objects:
+
+```{r}
+coeffs(a) + coeffs(b)[coeffs(b) >= 14]
+```
+
+The idiom above has a well-defined result because the object to the
+right of the `+` sign has length 1 and ordering is not an issue.
+Replacement methods follow similar desiderata:
+
+
+```{r}
+coeffs(a)
+coeffs(a)[coeffs(a) < 3] <- 0  # set any coefficient < 3 to zero
+a
+```
+
+Also
+
+```{r}
+(X <- rfalg())
+coeffs(X) <- coeffs(X)%%2  # treat coeffs modulo 2
+X
+```
+
+We may also perform similar operation with the `words()` of a `freelg`
+object.  Suppose we wish to extract only those terms with exactly two:
+
+```{r}
+X <- as.freealg("1+5x + 7*x*y*x + 6*x*x*x*x*x - 9a*b + x*a - 3a*x - x*y*z*a")
+X
+wanted <- sapply(words(X),function(x){length(x)==2})
+wanted
+freealg(words(X)[wanted],coeffs(X)[wanted])
+```
+
 
 # An example
 
