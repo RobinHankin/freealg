@@ -31,6 +31,9 @@ is.constant(x)
 
   Function \code{is.constant()} returns \code{TRUE} if its argument has
   no variables and \code{FALSE} otherwise.
+
+  Setting the coefficients of the empty \code{freealg} returns the zero
+  (empty) object.
   
 }
 \author{Robin K. S. Hankin}

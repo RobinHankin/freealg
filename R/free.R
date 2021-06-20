@@ -13,6 +13,7 @@
 
 `coeffs<-` <- function(x,value){UseMethod("coeffs<-")}
 `coeffs<-.freealg` <- function(x,value){
+  if(is.zero(x)){return(x)}
   jj <- coeffs(x)
   if(is.disord(value)){
     stopifnot(consistent(words(x),value))
@@ -82,6 +83,10 @@
 `is.freealg` <- function(x){inherits(x,"freealg")}
 
 `is_ok_free` <- function(words,coeffs){
+    if(is.disord(words) | is.disord(coeffs)){
+        stopifnot(disordR::consistent(words,coeffs))
+    }
+    
     if( (length(words)==0) && (length(coeffs)==0)){
         return(TRUE)  # zero element
     }
