@@ -405,6 +405,26 @@ wanted
 freealg(words(X)[wanted],coeffs(X)[wanted])
 ```
 
+As a final illustration, suppose we wanted to kill every term starting
+with an `x` that has a large (absolute value exceeds 100, say)
+coefficient:
+
+```{r}
+P <- as.freealg("1 + x + y + 1002*x*y + y*x + 176*x*x*y -5423*x*z*x")
+P
+w1 <- sapply(words(P),function(w){identical(w[1],24L)})
+w2 <- sapply(coeffs(P),function(w){abs(w)>1000})
+wanted <- !(w1 & w2)
+freealg(words(P)[wanted],coeffs(P)[wanted])
+```
+
+Alternatively
+
+```{r}
+coeffs(P)[w1 & w2] <- 0
+P
+```
+
 
 # An example
 
