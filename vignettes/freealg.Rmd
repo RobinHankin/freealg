@@ -395,11 +395,18 @@ X
 ```
 
 We may also perform similar operation with the `words()` of a `freelg`
-object.  Suppose we wish to extract only those terms with exactly two:
+object.  
 
 ```{r}
 X <- as.freealg("1+5x + 7*x*y*x + 6*x*x*x*x*x - 9a*b + x*a - 3a*x - x*y*z*a")
 X
+```
+
+Suppose we wish to extract only those terms with exactly two.  For
+this, we need `disordR::sapply()`:
+
+```{r}
+library("disordR")  # overloads sapply()
 wanted <- sapply(words(X),function(x){length(x)==2})
 wanted
 freealg(words(X)[wanted],coeffs(X)[wanted])

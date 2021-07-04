@@ -7,9 +7,8 @@
   return(out)
 }
 
-# `hash` <- function(x){digest::digest(x)}
-`words` <- function(x){disord(x[[1]],digest::digest(x))}
-`coeffs` <- function(x){disord(x[[2]],digest::digest(x))} # accessor methods end here
+`words` <- function(x){disord(x[[1]],hashcal(x))}
+`coeffs` <- function(x){disord(x[[2]],hashcal(x))} # accessor methods end here
 
 `coeffs<-` <- function(x,value){UseMethod("coeffs<-")}
 `coeffs<-.freealg` <- function(x,value){

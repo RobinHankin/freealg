@@ -11,8 +11,8 @@ importFrom(partitions, multiset)
 
 importFrom("utils", "capture.output")
 
-importFrom("digest", "digest")
 importFrom("disordR","disord")
+importFrom("disordR","hashcal")
 importFrom("disordR","is.disord")
 importFrom("disordR","consistent")
 importFrom("disordR","sapply")

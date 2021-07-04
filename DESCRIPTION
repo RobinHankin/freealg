@@ -4,10 +4,10 @@ Title: The Free Algebra
 Version: 1.0-3
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
-Depends: methods,disordR (>= 0.0-2)
+Depends: methods
 Description: The free algebra in R; multivariate polynomials with non-commuting indeterminates.
 License: GPL (>= 2)
-Imports: Rcpp (>= 0.12.3), partitions (>= 1.9-22), mathjaxr, digest
+Imports: Rcpp (>= 0.12.3), partitions (>= 1.9-22), mathjaxr, disordR
 LinkingTo: Rcpp
 SystemRequirements: C++11
 Suggests: knitr,testthat,magrittr,markdown,rmarkdown
