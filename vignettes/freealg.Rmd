@@ -314,7 +314,7 @@ It is possible to extract and examine the different components of a
 `freealg` object.  Consider:
 
 ```{r}
-a <- rfalg()
+a <- as.freealg("1 + 4*a + 7*aaac + 1*aab + 5*acac + 3*bbaa + 2*bbab + 6*c")
 a
 dput(a)
 ```
