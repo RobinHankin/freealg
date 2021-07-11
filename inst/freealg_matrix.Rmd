@@ -50,8 +50,8 @@ x^3
 
 We can turn the above into an expression (rather clumsily) using
 `sed`.  Cut-and-paste the above output into a file called `e.txt` [if
-using the text above, strip out the `#` symbols] and then the
-following command
+using the text above, strip out the `#` symbols and the first line
+saying "free algebra..."] and then the following command
 
 `cat e.txt|tr 'a-z' 'A-Z' | sed -e ':loop' -e 's/\([A-Z]\)\([A-Z]\)/\1%*%\2/g' -e 't loop'`
 
