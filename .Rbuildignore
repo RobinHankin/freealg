@@ -2,3 +2,6 @@
 ^\.travis\.yml$
 ^README.Rmd$
 ^codecov.yml$
+^inst/freealg_stickermaker.R$
+^inst/anthony_blue.png$
+^inst/anthony.xcf$
