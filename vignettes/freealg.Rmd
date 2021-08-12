@@ -18,6 +18,12 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#", dev = "png", fig.width = 7
 options(width = 80, tibble.width = Inf)
 ```
 
+<p style="text-align: right;">
+![](`r system.file("help/figures/mvp.png", package = "mvp")`){width=10%}
+</p>
+
+
+
 # Introduction
 
 The `freealg` package provides some functionality for the free

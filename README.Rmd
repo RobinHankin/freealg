@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
+<img src="man/figures/freealg.png" width = "150" align="right" />
 
 <!-- badges: start -->
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/freealg)](https://CRAN.R-project.org/package=freealg)
