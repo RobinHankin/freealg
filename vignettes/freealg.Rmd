@@ -19,7 +19,7 @@ options(width = 80, tibble.width = Inf)
 ```
 
 <p style="text-align: right;">
-![](`r system.file("help/figures/mvp.png", package = "mvp")`){width=10%}
+![](`r system.file("help/figures/freealg.png", package = "freealg")`){width=10%}
 </p>
 
 
