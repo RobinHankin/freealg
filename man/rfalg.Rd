@@ -18,7 +18,7 @@ rfalg(n=7, distinct=3, maxsize=4, include.negative=FALSE)
 }
 \details{
 What you see is what you get, basically.  A term such as
-\code{aabaAbBB} will be simplified to \code{aabbBB}.
+\code{aaBaAbaC} will be simplified to \code{aaaC}.
 }
 \author{Robin K. S. Hankin}
 \examples{
