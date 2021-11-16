@@ -36,11 +36,9 @@ free algebra element algebraically equal to
 
 }
 
-
-
 Functions \code{subsu()} is a lower-level formal function, not really
 intended for the end-user.  Function \code{subsu()} takes \code{S1} and
-substitutes occurences of symbol \code{r} with \code{S2}.
+substitutes occurrences of symbol \code{r} with \code{S2}.
 
 No equivalent to \code{mvp::subvec()} is currently implemented.
 

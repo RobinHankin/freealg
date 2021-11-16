@@ -24,7 +24,7 @@ constant term is technically a coefficient but is documented under
 \author{Robin K. S. Hankin}
 \note{
 
-Threre is an extended discussion of this issue in the \code{mvp} object
+There is an extended discussion of this issue in the \code{mvp} object
 at \code{accessor.Rd}.
 
 }

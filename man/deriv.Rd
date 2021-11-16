@@ -22,7 +22,7 @@
   Function \code{deriv(S,v)} returns \mjeqn{\frac{\partial^r S}{\partial
       v_1\partial v_2\ldots\partial v_r}}{d^rS/dv1...dvr}.
 
-  The Liebniz product rule
+  The Leibniz product rule
 
   \mjdeqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see latex}
 
