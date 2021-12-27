@@ -109,7 +109,8 @@ checker3 <- function(x,y,z){
 
   expect_true(x*(y+z) == x*y + x*z, info=list(x,y,z))  # left distributivity
   expect_true((y+z)*x == y*x + z*x, info=list(x,y,z))  # right distributivity
-  
+
+  expect_true(is.zero(.[x,.[y,z]] + .[y,.[z,x]] + .[z,.[x,y]])) # Jacobi identity
   return(TRUE)
 } # checker3() closes
 
