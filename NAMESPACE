@@ -1,5 +1,8 @@
 useDynLib(freealg, .registration=TRUE)
 exportPattern("^[[:alpha:]]+")
+exportClasses("dot")
+exportMethods("[")
+
 
 import("methods")
 import("mathjaxr")
