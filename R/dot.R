@@ -16,3 +16,10 @@ setMethod("[", signature(x="dot",i="ANY",j="ANY"),function(x, i, j, drop){
     if(drop){out <- drop(out)}
     return(out)
 } )
+
+`jacobi` <- function(x,y,z){
+    jj <- new("dot")
+    jj[x,jj[y,z]] + jj[y,jj[z,x]] + jj[z,jj[x,y]]
+    ## user: .[x,.[y,z]] + .[y,.[z,x]] + .[z,.[x,y]]
+
+}

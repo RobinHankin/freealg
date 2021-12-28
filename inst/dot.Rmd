@@ -1,0 +1,111 @@
+---
+title: "The dot: commutators and the Jacobi identity in R"
+output: bookdown::html_document2
+---
+
+```{r setup}
+set.seed(0)
+knitr::opts_chunk$set(echo = TRUE)
+library("freealg")
+```
+
+<p style="text-align: right;">
+![](`r system.file("help/figures/freealg.png", package = "freealg")`){width=10%}
+</p>
+
+This short document introduces the dot object and shows how it can be
+used to work with commutators and verify the Jacobi identity.  The dot
+object is a (trivial) `S4` object of class `dot`:
+
+```{r}
+`.` <- new("dot")
+```
+
+The point of the dot (!) is that it allows one to calculate the Lie
+bracket $[x,y]$ using R idiom `.[x,y]`.  Thus:
+
+```{r}
+x <- as.freealg("x")
+y <- as.freealg("y")
+.[x,y]
+```
+
+It would have been nice to use \code{[x,y]} (that is, without the dot)
+but although this is syntactically consistent, it cannot be done in R.
+
+It is possible to apply the dot construction `.[x,y]` to more
+complicated examples.  Here I show that the Lie bracket is
+nonassociative:
+
+```{r nonassociative}
+x <- as.freealg("1+a")
+y <- as.freealg("3 - 2a + 7b")
+z <- as.freealg("2 - 5b + 7x")
+.[x,.[y,z]]
+.[.[x,y],z]
+.[x,.[y,z]] == .[.[x,y],z]
+```
+
+However, it does satisfy the Jacobi identity
+$\left[x,\left[y,z\right]\right]+\left[y,\left[z,x\right]\right]+
+\left[z,\left[x,y\right]\right]=0$:
+
+```{r verifyJacobi}
+.[x,.[y,z]] + .[y,.[z,x]] + .[z,.[x,y]]
+```
+
+We can see this more directly using `jacobi()`:
+
+```{r}
+jacobi(x,y,z)
+```
+
+## The `dot` S4 class and matrices {-}
+
+The `dot` S4 class defines
+
+```setMethod("[", signature(x="dot",i="ANY",j="ANY"),function(x, i, j, drop){i*j - j*i})```
+
+(slightly simplified).  The assumption is that `*` and `-` are defined
+appropriately, so the commutator makes sense for a wide range of
+classes.
+
+Special dispensation is made if the arguments are matrices.  This is
+because in standard R idiom, `A*B` refers to Hadamard (elementwise)
+multiplication, which is an abomination; with this definition the Lie
+bracket is identically zero.  The package therefore includes a matrix
+method:
+
+```setMethod("[", signature(x="dot",i="matrix",j="matrix"),function(x, i, j, drop){i%*%j-j%*%i})```
+
+So we have
+
+```{r showmatrixmethod}
+A <- matrix(1:4,2,2)
+B <- matrix(c(6,7,3,3),2,2)
+C <- matrix(c(0,2,1,6),2,2)
+.[A,B]
+```
+
+With this method, we can again verify Jacobi:
+
+```{r verifyjacobimatrix}
+jacobi(A,B,C)
+```
+
+Actually there is typically a small numeric roundoff error:
+
+```{r jacobiandnumeric}
+rM <- function(n=4){matrix(rnorm(n^2),n,n)}
+options(digits=3)
+jacobi(rM(),rM(),rM())
+```
+
+### Package dataset {-}
+
+Following lines create `dot.rda`, residing in the `data/` directory
+of the package.
+
+```{r,label=saverowingingdataset}
+save(`.`,file="dot.rda")
+```
