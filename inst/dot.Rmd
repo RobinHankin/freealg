@@ -68,15 +68,13 @@ The `dot` S4 class defines
 
 (slightly simplified).  The assumption is that `*` and `-` are defined
 appropriately, so the commutator makes sense for a wide range of
-classes.
+classes.  Special dispensation is made if the arguments are matrices.
+This is because in standard R idiom, `A*B` refers to Hadamard
+(elementwise) multiplication, which is an abomination; with this
+definition the Lie bracket is identically zero.  The package therefore
+includes a matrix method:
 
-Special dispensation is made if the arguments are matrices.  This is
-because in standard R idiom, `A*B` refers to Hadamard (elementwise)
-multiplication, which is an abomination; with this definition the Lie
-bracket is identically zero.  The package therefore includes a matrix
-method:
-
-```setMethod("[", signature(x="dot",i="matrix",j="matrix"),function(x, i, j, drop){i%*%j-j%*%i})```
+`setMethod("[", signature(x="dot",i="matrix",j="matrix"),function(x, i, j, drop){i%*%j-j%*%i})`
 
 So we have
 
