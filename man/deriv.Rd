@@ -26,7 +26,19 @@
 
   \mjdeqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see latex}
 
-  operates even if (as here) \eqn{u,v} do not commute.
+  operates even if (as here) \eqn{u,v} do not commute.  However, we
+  assume that the infinitesimal does commute past all the
+  indeterminates.  For example, if we wish to differentiate \eqn{aaba}
+  with respect to \eqn{a}, we would write \eqn{f(a) = aaba} and then
+
+  \deqn{f(a+\delta a) = (a+\delta a)(a+\delta a)b(a+\delta a)}
+
+  and working to first order we have
+
+  \deqn{f(a+\delta a) -f(a)= (\delta a)aba + a(\delta a)ba + aab(\delta a).}
+
+  so if \eqn{\delta a} commutes past all the indeterminates we would
+  write \eqn{df/da = 2aba + aab}, which is what \code{deriv()} gives.
 
   A term of a \code{freealg} object can include negative values which
   correspond to negative powers of variables.  Thus:
