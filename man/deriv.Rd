@@ -45,35 +45,34 @@
     + 1*aaa (da) + 1*aa (da) a + 1*a (da) aa + 1* (da) aaa
     > 
 
-    > deriv(as.freealg("A"),1)       # d(a^-1)/da = -a^-2
+    > deriv(as.freealg("AAAA"),1)       
     free algebra element algebraically equal to
-    - 1*AA
+    - 1*AAAA(da)A - 1*AAA(da)AA - 1*AA(da)AAA - 1*A(da)AAAA
   }
   
   (see also the examples).  Vector \code{r} may include negative
   integers which mean to differentiate with respect to the inverse of
-  the variable:
-
-  \preformatted{
-    > deriv(as.freealg("AAAA"),-1)    # d(a^-4)/d(a^-1) = 4a^-3
-    free algebra element algebraically equal to
-    + 4*AAA
-    > deriv(as.freealg("aaa"),-1)     # d(a^3)/d(a^-1) = 3a^4
-    free algebra element algebraically equal to
-    - 3*aaaa
-    > 
-  }
+  the variable, but the print method cannot deal with this as yet.
 
   The infinitesimal indeterminates (\dQuote{\code{da}} etc) are
   represented by \code{SHRT_MAX+r}, where \code{r} is the integer for
   the symbol, and \code{SHRT_MAX} is the maximum short integer.  So the
-  maximum number for any symbol is \code{SHRT_MAX}.
-  
+  maximum number for any symbol is \code{SHRT_MAX}.  Inverse elements
+  such as \code{A}, being represented by negative integers, have
+  differentials that are \code{SHRT_MAX-r}; the print method does not
+  handle this well.
+
   Function \code{deriv()} calls helper function \code{lowlevel_diffn()}
   which is documented at \code{Ops.freealg.Rd}.
 
+  A vignette illustrating this concept and furnishing numerical
+  verification of the code in the context of matrix algebra is given at
+  \code{inst/freealg_matrix.Rmd}.
+
 }
 \examples{
+
+deriv(as.freealg("4*aaaabaacAc"),1)
 
 x <- rfalg()
 deriv(x,1:3)
