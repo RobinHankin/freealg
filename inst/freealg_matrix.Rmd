@@ -5,9 +5,15 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+set.seed(0)
 ```
 
+
 ## Numerical verification of the freealg package
+
+<p style="text-align: right;">
+![](`r system.file("help/figures/freealg.png", package = "freealg")`){width=10%}
+</p>
 
 Here we verify that the `freealg` package is consistent.  
 
@@ -88,3 +94,47 @@ xcubed_freealg - xcubed_matrix
 ```
 
 is zero, to within numerical tolerances.
+
+## Calculus
+
+We will verify that the `deriv()` function behaves correctly.
+
+```{r calcdefineo}
+o <- as.freealg("4*aaabacaa + 7*ccab -9*babaa")
+do <- deriv(o,1)  # differentiate WRT a
+o
+do
+```
+
+Now evaluate `o` in matrix-speak:
+
+```{r}
+f <- function(A,B,C){4*A%*%A%*%A%*%B%*%A%*%C%*%A%*%A + 7*C%*%C%*%A%*%B -9*B%*%A%*%B%*%A%*%A}
+small <- 1e-5
+dA <- small*matrix(rnorm(25),5,5)
+fdash <- function(A,B,C,dA){(     
+   + 4*A%*%A%*%A%*%B%*%A%*%C%*%A%*%(dA) + 4*A%*%A%*%A%*%B%*%A%*%C%*%(dA)%*%A
+   + 4*A%*%A%*%A%*%B%*%(dA)%*%C%*%A%*%A + 4*A%*%A%*%(dA)%*%B%*%A%*%C%*%A%*%A
+   + 4*A%*%(dA)%*%A%*%B%*%A%*%C%*%A%*%A
+   - 9*B%*%A%*%B%*%A%*%(dA) - 9*B%*%A%*%B%*%(dA)%*%A - 9*B%*%(dA)%*%B%*%A%*%A
+   + 7*C%*%C%*%(dA)%*%B + 4*(dA)%*%A%*%A%*%B%*%A%*%C%*%A%*%A
+)}
+approximate <- fdash(A,B,C,dA)
+exact <- f(A+dA,B,C) - f(A,B,C)
+approximate
+exact
+approximate-exact
+```
+
+Above, we see the difference between the approximate and the exact is
+small, as might be expected.  We can improve the accuracy by
+evaluating the approximation at an intermediate point:
+
+
+```{r}
+approximate <- fdash(A+dA/2,B,C,dA)
+exact <- f(A+dA,B,C) - f(A,B,C)
+approximate-exact
+```
+
+and we see an improved accuracy.
