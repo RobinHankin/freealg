@@ -139,24 +139,28 @@ freealg diff1(const freealg X, const int r){  // dX/dx_r
         for(iw = w.begin(), i=0 ; iw != w.end() ; ++i, ++iw){
             if( (*iw) == r){         // differential matches symbol, same sign
                 word wcopy=w;
-                word wrem;  // "wrem" = "w with one symbol removed"
+                word wchan;  // "wchan" = "w with one symbol changed"
                 for(iwc = wcopy.begin() , j=0 ; iwc != wcopy.end() ; ++j, ++iwc){
-                    if(i != j){wrem.push_back(*iwc);}
-                }
-                out[wrem] += c;     // The meat.
+                    if(i != j){
+		      wchan.push_back(*iwc);
+                } else {
+		  wchan.push_back(SHRT_MAX+r);}
+		}
+                out[wchan] += c;     // The meat.
             } // if(same-sign match) closes...
             if( (*iw) == -r){    // ... so now search for an opposite sign match
                 word wcopy=w;
-                word wadd;  // "wadd" = "w with one symbol added"
+                word wadd;  // "wtwo" = "w with one symbol replaced with two"
                 for(iwc = wcopy.begin() , j=0 ; iwc != wcopy.end() ; ++j, ++iwc){
                     if(i != j){
-                        wadd.push_back(*iwc); //do it once
+                        wadd.push_back(*iwc); 
                     } else {
-                        wadd.push_back(*iwc); // do it twice
-                        wadd.push_back(*iwc);
+  		        wadd.push_back(-r);         
+                        wadd.push_back(SHRT_MAX+r); // dA = -A(da)A
+                        wadd.push_back(-r);
                     }
                 }
-                out[wadd] -= c;     // The meat (negative sign)
+                out[wadd] -= c;     // The meat (note negative sign)
             } // if(opposite-signe match) closes
         } // word w for() loop closes
     }  //freealg iteration ends;

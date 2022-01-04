@@ -26,10 +26,9 @@
 
   \mjdeqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see latex}
 
-  operates even if (as here) \eqn{u,v} do not commute.  However, we
-  assume that the infinitesimal does commute past all the
-  indeterminates.  For example, if we wish to differentiate \eqn{aaba}
-  with respect to \eqn{a}, we would write \eqn{f(a) = aaba} and then
+  operates even if (as here) \eqn{u,v} do not commute.  For example, if
+  we wish to differentiate \eqn{aaba} with respect to \eqn{a}, we would
+  write \eqn{f(a) = aaba} and then
 
   \deqn{f(a+\delta a) = (a+\delta a)(a+\delta a)b(a+\delta a)}
 
@@ -37,17 +36,14 @@
 
   \deqn{f(a+\delta a) -f(a)= (\delta a)aba + a(\delta a)ba + aab(\delta a).}
 
-  so if \eqn{\delta a} commutes past all the indeterminates we would
-  write \eqn{df/da = 2aba + aab}, which is what \code{deriv()} gives.
-
   A term of a \code{freealg} object can include negative values which
   correspond to negative powers of variables.  Thus:
 
   \preformatted{
-    > deriv(as.freealg("aaaa"),1)   #   d(a^4)/da = 4a^3
+    > deriv(as.freealg("aaaa"),1)
     free algebra element algebraically equal to
-    + 4*aaa
-
+    + 1*aaa (da) + 1*aa (da) a + 1*a (da) aa + 1* (da) aaa
+    > 
 
     > deriv(as.freealg("A"),1)       # d(a^-1)/da = -a^-2
     free algebra element algebraically equal to
@@ -58,7 +54,6 @@
   integers which mean to differentiate with respect to the inverse of
   the variable:
 
-
   \preformatted{
     > deriv(as.freealg("AAAA"),-1)    # d(a^-4)/d(a^-1) = 4a^-3
     free algebra element algebraically equal to
@@ -68,8 +63,12 @@
     - 3*aaaa
     > 
   }
-  
 
+  The infinitesimal indeterminates (\dQuote{\code{da}} etc) are
+  represented by \code{SHRT_MAX+r}, where \code{r} is the integer for
+  the symbol, and \code{SHRT_MAX} is the maximum short integer.  So the
+  maximum number for any symbol is \code{SHRT_MAX}.
+  
   Function \code{deriv()} calls helper function \code{lowlevel_diffn()}
   which is documented at \code{Ops.freealg.Rd}.
 

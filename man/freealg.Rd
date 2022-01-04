@@ -74,6 +74,8 @@ inverse.  The free algebra is not a division algebra, in general.
 \author{Robin K. S. Hankin}
 \examples{
 
+freealg(list(1:2, 2:1,numeric(0),1:6),1:4)
+
 freealg(sapply(1:5,seq_len),1:5)
 
 freealg(replicate(5,sample(-5:5,rgeom(1,1/5),replace=TRUE)),1:5)

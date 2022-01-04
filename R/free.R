@@ -108,6 +108,7 @@
 
 `print.freealg` <- function(x,...){
   cat("free algebra element algebraically equal to\n")
+  SHRT_MAX <- 32767
 
   if(isTRUE(getOption("usecaret"))){
       symbols <- c(letters,paste(letters,"^-1",sep=""))
@@ -130,10 +131,13 @@
     jj <- w[i][[1]]
     if(length(jj)>0){mulsym <- "*"} else {mulsym <- ""}
     if(any(jj<0)){jj[jj<0] <- n-jj[jj<0]}
-    jj <- symbols[jj]
-    jj <- paste(jj,collapse="")
-
-    out <- paste(out, pm, co, mulsym, jj, sep="")
+    ss <- symbols[jj]
+    wanted <- jj>SHRT_MAX
+    if(any(wanted)){
+        ss[wanted] <- paste("(d",symbols[jj[wanted]-SHRT_MAX],")",sep="")
+    }
+    ss <- paste(ss,collapse="")
+    out <- paste(out, pm, co, mulsym, ss, sep="")
   }
   if(is.zero(x)){out <- "0"}
   cat(paste(strwrap(out, getOption("width")), collapse="\n"))
