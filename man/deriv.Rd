@@ -52,15 +52,20 @@
   
   (see also the examples).  Vector \code{r} may include negative
   integers which mean to differentiate with respect to the inverse of
-  the variable, but the print method cannot deal with this as yet.
+  the variable:
+
+  \preformatted{
+    > deriv(as.freealg("3abcbCC"),-3)
+    free algebra element algebraically equal to
+    + 3*abcbC(dC) + 3*abcb(dC)C - 3*abc(dC)cbCC
+  }
 
   The infinitesimal indeterminates (\dQuote{\code{da}} etc) are
   represented by \code{SHRT_MAX+r}, where \code{r} is the integer for
-  the symbol, and \code{SHRT_MAX} is the maximum short integer.  So the
-  maximum number for any symbol is \code{SHRT_MAX}.  Inverse elements
-  such as \code{A}, being represented by negative integers, have
-  differentials that are \code{SHRT_MAX-r}; the print method does not
-  handle this well.
+  the symbol, and \code{SHRT_MAX} is the maximum short integer.  This
+  includes negative \code{r}.  So the maximum number for any symbol is
+  \code{SHRT_MAX}.  Inverse elements such as \code{A}, being represented
+  by negative integers, have differentials that are \code{SHRT_MAX-r}.
 
   Function \code{deriv()} calls helper function \code{lowlevel_diffn()}
   which is documented at \code{Ops.freealg.Rd}.

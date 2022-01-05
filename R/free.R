@@ -109,6 +109,8 @@
 `print.freealg` <- function(x,...){
   cat("free algebra element algebraically equal to\n")
   SHRT_MAX <- 32767
+  SHRT_MAXo2 <- round(SHRT_MAX/2)
+  
 
   if(isTRUE(getOption("usecaret"))){
       symbols <- c(letters,paste(letters,"^-1",sep=""))
@@ -133,9 +135,15 @@
     if(any(jj<0)){jj[jj<0] <- n-jj[jj<0]}
     ss <- symbols[jj]
     wanted <- jj>SHRT_MAX
-    if(any(wanted)){
+    if(any(wanted)){# (da)
         ss[wanted] <- paste("(d",symbols[jj[wanted]-SHRT_MAX],")",sep="")
     }
+
+    wanted <- (jj>SHRT_MAXo2) & (jj<SHRT_MAX) # (dA)
+    if(any(wanted)){
+        ss[wanted] <- paste("(d",symbols[26-jj[wanted]+SHRT_MAX],")",sep="")
+    }
+
     ss <- paste(ss,collapse="")
     out <- paste(out, pm, co, mulsym, ss, sep="")
   }
