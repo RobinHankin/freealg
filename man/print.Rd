@@ -29,8 +29,8 @@ notation for \eqn{aba^{-2}}{aba^-2} is \code{abAA} but becomes
 \code{aba^-1a^-1} if \code{usecaret} is \code{TRUE}.
 
 Integers exceeding \code{SHRT_MAX} are reserved for infinitesimals,
-which are printed as \dQuote{\code{da}}; see \code{deriv.Rd} for
-details.
+which are printed as \dQuote{\code{da}}; see the note at \code{deriv.Rd}
+for details.
 
 }
 \seealso{\code{\link{freealg}},\code{\link{deriv}}}

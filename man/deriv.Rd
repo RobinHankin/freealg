@@ -13,16 +13,17 @@
 \arguments{
   \item{expr}{Object of class \code{freealg}}
   \item{r}{Integer vector.  Elements denote variables to differentiate
-    with respect to}
+    with respect to.  If \code{r} is a character vector, it is
+    interpreted as \code{a=1,b=2,...,z=26}; if of length 1,
+    \dQuote{\code{aab}} is interpreted as \code{c("a","a","b")}}
   \item{...}{Further arguments, currently ignored}
 }
 \author{Robin K. S. Hankin}
-\details{
+\details{\loadmathjax
 
-  Function \code{deriv(S,v)} returns \mjeqn{\frac{\partial^r S}{\partial
-      v_1\partial v_2\ldots\partial v_r}}{d^rS/dv1...dvr}.
-
-  The Leibniz product rule
+  Experimental function \code{deriv(S,v)} returns
+      \mjeqn{\frac{\partial^r S}{\partial v_1\partial v_2\ldots\partial
+      v_r}}{d^rS/dv1...dvr}.  The Leibniz product rule
 
   \mjdeqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see latex}
 
@@ -34,18 +35,21 @@
 
   and working to first order we have
 
-  \deqn{f(a+\delta a) -f(a)= (\delta a)aba + a(\delta a)ba + aab(\delta a).}
+  \deqn{f(a+\delta a) -f(a)= (\delta a)aba + a(\delta a)ba + aab(\delta
+  a).}  In the package:
+  
+  \preformatted{
+
+    > deriv(as.freealg("aaba"),"a")
+    free algebra element algebraically equal to
+    + 1*aab(da) + 1*a(da)ba + 1*(da)aba
+}
 
   A term of a \code{freealg} object can include negative values which
   correspond to negative powers of variables.  Thus:
 
   \preformatted{
-    > deriv(as.freealg("aaaa"),1)
-    free algebra element algebraically equal to
-    + 1*aaa (da) + 1*aa (da) a + 1*a (da) aa + 1* (da) aaa
-    > 
-
-    > deriv(as.freealg("AAAA"),1)       
+    > deriv(as.freealg("AAAA"),"a")       
     free algebra element algebraically equal to
     - 1*AAAA(da)A - 1*AAA(da)AA - 1*AA(da)AAA - 1*A(da)AAAA
   }
@@ -55,9 +59,19 @@
   the variable:
 
   \preformatted{
-    > deriv(as.freealg("3abcbCC"),-3)
+    > deriv(as.freealg("3abcbCC"),"C")
     free algebra element algebraically equal to
     + 3*abcbC(dC) + 3*abcb(dC)C - 3*abc(dC)cbCC
+  }
+
+  It is possible to perform repeated differentiation by passing a
+  suitable value of \code{r}.  For
+  \mjeqn{\frac{\partial^2}{\partial a\partial c}}{omitted}:
+
+  \preformatted{
+    > deriv(as.freealg("aaabAcx"),"ac")
+    free algebra element algebraically equal to
+    - 1*aaabA(da)A(dc)x + 1*aa(da)bA(dc)x + 1*a(da)abA(dc)x + 1*(da)aabA(dc)x
   }
 
   The infinitesimal indeterminates (\dQuote{\code{da}} etc) are

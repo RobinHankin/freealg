@@ -32,7 +32,7 @@ vector_to_free(v,coeffs)
   \item{x}{Object possibly of class \code{freealg}}
   \item{...}{Further arguments, passed to the methods}
 }
-\details{
+\details{\loadmathjax
 
 Function \code{freealg()} is the formal creation mechanism for
 \code{freealg} objects.  However, it is not very user-friendly; it is
@@ -65,13 +65,26 @@ of the lower-case equivalents; so for example \code{as.freealg("aA")}
 and \code{as.freealg(aBcCbA)} evaluate to one.  This can be confusing
 with the default print method.
 
-Note carefully that even though individual symbols have multiplicative
-inverses, a general element of the free algebra will not have a
-multiplicative inverse.  For example, \code{1+x} does not have an
-inverse.  The free algebra is not a division algebra, in general.
+Even though individual symbols have multiplicative inverses, a general
+element of the free algebra will not have a multiplicative inverse.  For
+example, \code{1+x} does not have an inverse.  The free algebra is not a
+division algebra, in general.
+
 
 }
+
 \author{Robin K. S. Hankin}
+
+\note{
+  Internally, the package uses signed integers and as such can have
+  \code{.Machine$integer.max} different symbols; on my machine this is
+  2147483647.  Of course the print method cannot deal with this as it
+  only has 26 symbols for letters a-z (and A-Z for the inverses), but
+  the objects themselves do not care about the print method.  Note also
+  that the experimental calculus facility (as per \code{deriv()})
+  reserves numbers in the range \code{SHRT_MAX}\mjeqn{{}\pm r}{+/-r} for
+  infinitesimals, where \code{r} is the integer for a symbol.  This
+  system might change in the future.  }
 \examples{
 
 freealg(list(1:2, 2:1,numeric(0),1:6),1:4)
