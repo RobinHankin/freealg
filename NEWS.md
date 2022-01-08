@@ -1,4 +1,4 @@
-# freealg_1.0-13
+# freealg_1.0-3
 
 - add a sticker
 - coeffs() returns a `disord` object
