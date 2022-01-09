@@ -11,6 +11,8 @@ setMethod("[", signature(x="dot",i="ANY",j="missing"),function(x, i, j, drop){do
 setMethod("[", signature(x="dot",i="missing",j="ANY"),function(x, i, j, drop){dot_error()})
 setMethod("[", signature(x="dot",i="matrix",j="matrix"),function(x, i, j, drop){i%*%j-j%*%i})
 
+setMethod("[", signature(x="dot",i="function",j="function"),function(x, i, j, drop){function(z){i(j(z))-j(i(z))}})
+
 setMethod("[", signature(x="dot",i="ANY",j="ANY"),function(x, i, j, drop){
     out <- i*j - j*i
     if(drop){out <- drop(out)}
@@ -22,4 +24,11 @@ setMethod("[", signature(x="dot",i="ANY",j="ANY"),function(x, i, j, drop){
     jj[x,jj[y,z]] + jj[y,jj[z,x]] + jj[z,jj[x,y]]
     ## user: .[x,.[y,z]] + .[y,.[z,x]] + .[z,.[x,y]]
 
+}
+
+`ad` <- function(x){
+    function(y){
+        jj <- new("dot")
+        return(jj[x,y])
+    }
 }

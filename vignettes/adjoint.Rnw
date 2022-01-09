@@ -1,0 +1,200 @@
+% -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
+\documentclass[nojss]{jss}
+\usepackage{amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% declarations for jss.cls %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% just as usual
+\author{Robin K. S. Hankin\\Auckland University of Technology}
+\title{The adjoint operator in the freealg package}
+%\VignetteIndexEntry{adjoint}
+
+%% for pretty printing and a nice hypersummary also set:
+\Plainauthor{Robin K. S. Hankin}
+\Plaintitle{The adjoint operator}
+\Shorttitle{The adjoint operator}
+
+%% an abstract and keywords
+\Abstract{ In this very short document I discuss the adjoint operator
+  \code{ad()} and illustrate some of its properties.
+}
+
+\Keywords{Adjoint operator, free algebra}
+\Plainkeywords{Adjoint operator, free algebra}
+  
+%% publication information
+%% NOTE: This needs to filled out ONLY IF THE PAPER WAS ACCEPTED.
+%% If it was not (yet) accepted, leave them commented.
+%% \Volume{13}
+%% \Issue{9}
+%% \Month{September}
+%% \Year{2004}
+%% \Submitdate{2004-09-29}
+%% \Acceptdate{2004-09-29}
+%% \Repository{https://github.com/RobinHankin/freegroup} %% this line for Tragula
+
+%% The address of (at least) one author should be given
+%% in the following format:
+\Address{
+  Robin K. S. Hankin\\%\orcid{https://orcid.org/0000-0001-5982-0415}\\
+  Auckland University of Technology\\
+  E-mail: \email{hankin.robin@gmail.com}\hfill\includegraphics[width=1in]{\Sexpr{system.file("help/figures/freealg.png",package="freealg")}}
+}
+%% It is also possible to add a telephone and fax number
+%% before the e-mail in the following format:
+%% Telephone: +43/1/31336-5053
+%% Fax: +43/1/31336-734
+
+%% for those who use Sweave please include the following line (with % symbols):
+%% need no \usepackage{Sweave.sty}
+
+%% end of declarations %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\SweaveOpts{}
+
+\begin{document}
+
+
+<<echo=FALSE,print=FALSE>>=
+library("freealg")
+@ 
+
+
+\hfill\includegraphics[width=1in]{\Sexpr{system.file("help/figures/freealg.png",package="freealg")}}
+
+<<>>=
+ad
+@ 
+  
+
+\subsection*{The adjoint operator: definition}
+
+An associative algebra ${\mathcal A}$ and $X,Y\in{\mathcal A}$, we
+define the \emph{Lie Bracket} $[X,Y]$ as $XY-YX$.  In the {\tt
+  freealg} package this is implemented with the{\tt .[]} construction:
+
+<<>>=
+X <- as.freealg("X")
+Y <- as.freealg("Y")
+.[X,Y]
+@
+
+\subsection*{The Jacobi identity}
+
+The Lie bracket is bilinear and satisfies the Jacobi condition:
+
+<<>>=
+X <- rfalg(3)
+Y <- rfalg(3)
+Z <- rfalg(3)
+X # Y and Z are similar objects
+.[X,Y] # quite complicated
+.[X,.[Y,Z]] + .[Y,.[Z,X]] + .[Z,.[X,Y]]  # Zero by Jacobi
+@ 
+
+
+\subsection*{The adjoint: definition}
+Now we define the adjoint as follows.  Given a Lie algebra
+$\mathfrak{g}$, and $X\in{\mathcal A}$, we define a linear map
+$\mathrm{ad}_X\colon\mathfrak{g}\longrightarrow\mathfrak{g}$ with
+
+\[
+\mathrm{ad}_X(Y)=\left[X,Y\right]
+\]
+
+In the {\tt freealg} package, this is implemented using the {\tt ad()} function:
+
+<<>>=
+ad(X)
+@ 
+
+See how function {\tt ad()} returns a {\em function}.  We can play with this:
+
+<<>>=
+f <- ad(X)
+f(Y)
+f(Y) == X*Y-Y*X
+@ 
+
+
+The first thing to note is that $\mathrm{ad}_X$ is NOT a Lie
+homomorphism.  If $\phi$ is a Lie homomorphism then $\phi([x,y]) =
+\left[\phi(x),\phi(y)\right]$.  There is no reason to expect the
+adjoint to be a Lie homomorphism, but it does not hurt to check:
+    
+<<>>=
+phi <- ad(Z)
+phi(.[X,Y]) == .[phi(X),phi(Y)]
+@     
+
+With this definition, it is easy to calculate, say,
+$[Z,[Z,[Z,[Z,[Z,X]]]]]$:
+
+<<label=repeatedad>>=
+f <- ad(as.freealg("x"))
+f(f(f(f(f(as.freealg("y"))))))
+@ 
+
+
+\subsection*{The adjoint operator is a derivation}
+
+A {\em derivation} of a Lie bracket is a function
+$\phi\colon\mathfrak{g}\longrightarrow\mathfrak{g}$ that satisfies
+
+\[
+\phi([Y,Z]) = [\phi(Y),Z] + [Y,\phi(Z)].
+\]
+
+We will verify that $\mathrm{ad}_X$ is indeed a derivation:
+
+<<label=verifyderivation>>=
+phi <- ad(X)
+phi(.[Y,Z]) == .[phi(Y),Z] + .[Y,phi(Z)]
+@ 
+ 
+
+\subsection*{The adjoint operator
+    $\mathrm{ad}\colon\mathfrak{g}\longrightarrow\mathrm{
+        End}(\mathfrak{g})$ is a Lie homomorphism}
+
+We are asserting that 
+
+\[
+\mathrm{ad}_{\left[X,Y\right]} =\left[\mathrm{ad}_X,\mathrm{ad}_Y\right]
+\]
+
+In package idiom we would have:
+                              
+<<>>=
+ad(.[X,Y])(Z) == .[ad(X),ad(Y)](Z)
+@                               
+                              
+Observe that ``\code{.[ad(X),ad(Y)]}'' is a function:
+                                                
+                                                
+<<>>=
+.[ad(X),ad(Y)]
+@                                                 
+
+
+which we evaluate (on the right hand side) at \code{Z}.
+
+
+\section*{Adjoints in other contexts}
+
+Function \code{ad()} works in a more general context than the free
+algebra.  For example, we might use it for matrices:
+
+<<>>=
+f <- ad(matrix(c(4,6,2,3),2,2))
+M <- matrix(1:4,2,2)
+f(M)
+@ 
+
+\end{document}
+ 
