@@ -243,6 +243,7 @@ setGeneric("deriv")
 }
 
 `degree` <- function(x,n){
+    if(missing(n)){stop("argument 'n' missing ... maybe you meant degrees()?")}
     coeffs(x)[!(degrees(x) %in% n)] <- 0
     return(x)
 }
