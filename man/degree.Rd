@@ -36,7 +36,8 @@ degree(x,n) <- value
   \code{freealg} object \code{x}.
 
   \code{degree(x,n)} returns the freealg object comprising terms with
-  degree \code{n} (which may be a vector).
+  degree \code{n} (which may be a vector).  Note that this function is
+  considerably less efficient than \code{clifford::grade()}.
 
   \code{degree(x,n) <- value} sets the coefficients of terms with degree
   \code{n}.
