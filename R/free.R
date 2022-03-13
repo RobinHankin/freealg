@@ -241,3 +241,17 @@ setGeneric("deriv")
     mv <- partitions::multiset(v)
     freealg(split(mv,col(mv)),rep(1,ncol(mv)))
 }
+
+`degree` <- function(x,n){
+    coeffs(x)[!(degrees(x) %in% n)] <- 0
+    return(x)
+}
+
+`degrees` <- function(x){
+    disord(unlist(lapply(words(x),length)),hashcal(x))
+}
+
+`degree<-` <- function(x, n, value){
+    coeffs(x)[degrees(x) %in% n] <- value
+    return(x)
+}

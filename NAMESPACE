@@ -20,6 +20,7 @@ importFrom("disordR","is.disord")
 importFrom("disordR","consistent")
 importFrom("disordR","sapply")
 importFrom("disordR","elements")
+importFrom("disordR","%in%")
 
 
 
