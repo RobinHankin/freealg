@@ -242,17 +242,17 @@ setGeneric("deriv")
     freealg(split(mv,col(mv)),rep(1,ncol(mv)))
 }
 
-`degree` <- function(x,n){
-    if(missing(n)){stop("argument 'n' missing ... maybe you meant degrees()?")}
-    coeffs(x)[!(degrees(x) %in% n)] <- 0
+`grade` <- function(x,n){
+    if(missing(n)){stop("argument 'n' missing ... maybe you meant grades()?")}
+    coeffs(x)[!(grades(x) %in% n)] <- 0
     return(x)
 }
 
-`degrees` <- function(x){
+`grades` <- function(x){
     disord(unlist(lapply(words(x),length)),hashcal(x))
 }
 
-`degree<-` <- function(x, n, value){
-    coeffs(x)[degrees(x) %in% n] <- value
+`grade<-` <- function(x, n, value){
+    coeffs(x)[grades(x) %in% n] <- value
     return(x)
 }
