@@ -1,8 +1,10 @@
-\name{degree}
+\name{grade}
+\alias{grade}
+\alias{grade<-}
+\alias{grades}
 \alias{degree}
-\alias{degree<-}
 \alias{degrees}
-\title{The degree of terms in a \code{freealg} object
+\title{The grade (or degree) of terms in a \code{freealg} object
 }
 \description{\loadmathjax
 
@@ -17,13 +19,13 @@ subspace \mjeqn{\mathcal{B}_n}{B_n} with
   
 The elements of \mjeqn{\cup_{n\geq 0}\mathcal{B}_n}{omitted} are
 called \dfn{homogeneous} and those of \mjeqn{\mathcal{B}_n}{B_n} are
-called homogenous of degree \mjseqn{n}.
+called homogenous of degree (or grade) \mjseqn{n}.
 
 }
 \usage{
-degrees(x)
-degree(x,n)
-degree(x,n) <- value
+grades(x)
+grade(x,n)
+grade(x,n) <- value
 }
 \arguments{
   \item{x}{Freealg object}
@@ -32,14 +34,14 @@ degree(x,n) <- value
 }
 \details{
 
-  \code{degrees(x)} returns the number of symbols in each term of a
-  \code{freealg} object \code{x}.
+  \code{grades(x)} returns the grade (number of symbols) in each term
+  of a \code{freealg} object \code{x}.
 
-  \code{degree(x,n)} returns the freealg object comprising terms with
-  degree \code{n} (which may be a vector).  Note that this function is
+  \code{grade(x,n)} returns the freealg object comprising terms with
+  grade \code{n} (which may be a vector).  Note that this function is
   considerably less efficient than \code{clifford::grade()}.
 
-  \code{degree(x,n) <- value} sets the coefficients of terms with degree
+  \code{grade(x,n) <- value} sets the coefficients of terms with grade
   \code{n}.
   
 }
@@ -54,8 +56,8 @@ package}
 \examples{
 
 a <- rfalg(20)
-degrees(a)
-degree(a,2)
-degree(a,2) <- 0 # kill all degree-2 terms
+grades(a)
+grade(a,2)
+grade(a,2) <- 0 # kill all grade-2 terms
 
 }
