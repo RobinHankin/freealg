@@ -21,6 +21,11 @@ The elements of \mjeqn{\cup_{n\geq 0}\mathcal{B}_n}{omitted} are
 called \dfn{homogeneous} and those of \mjeqn{\mathcal{B}_n}{B_n} are
 called homogenous of degree (or grade) \mjseqn{n}.
 
+The grade of a term is the number of symbols in it.  Thus the grade of
+\code{xxx} and \code{4xxy} is 3; the grade of a constant is zero.
+Because the terms are stored in an implementation-specific way, the
+grade of a multi-term object is a \code{disord} object.
+
 }
 \usage{
 grades(x)
@@ -42,7 +47,9 @@ grade(x,n) <- value
   considerably less efficient than \code{clifford::grade()}.
 
   \code{grade(x,n) <- value} sets the coefficients of terms with grade
-  \code{n}.
+  \code{n}.  For \code{value}, a length-one numeric vector is accepted
+  (notably zero, which kills terms of grade \code{n}) and also a
+  \code{freealg} object comprising terms of grade code{n}.
   
 }
 \value{Returns a disord object}
@@ -59,5 +66,7 @@ a <- rfalg(20)
 grades(a)
 grade(a,2)
 grade(a,2) <- 0 # kill all grade-2 terms
+
+grade(a,1) <- grade(a,1) * 888 
 
 }

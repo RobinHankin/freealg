@@ -253,6 +253,12 @@ setGeneric("deriv")
 }
 
 `grade<-` <- function(x, n, value){
-    coeffs(x)[grades(x) %in% n] <- value
-    return(x)
+    if(is.freealg(value)){
+        stopifnot(all(grades(value) %in% n))
+        grade(x,n) <- 0
+        return(x+value)
+    } else {
+        coeffs(x)[grades(x) %in% n] <- value
+        return(x)
+    }
 }
