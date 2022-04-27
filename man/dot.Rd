@@ -85,6 +85,12 @@ creates file \code{dot.rda} which resides in the \code{data/} directory.
 }
 \author{Robin K. S. Hankin}
 \examples{
+
+.[as.freealg("x"),as.freealg("y")]
+.[as.freealg("x"),as.freealg("y+2z")]
+.[as.freealg("x+y+2xYx"),as.freealg("x+y+2xYx")]
+
+
 x <- rfalg()
 y <- rfalg()
 z <- rfalg()
@@ -93,12 +99,17 @@ jacobi(x,y,z) # Jacobi identity
 .[x,.[y,z]] + .[y,.[z,x]] + .[z,.[x,y]]  # Jacobi, expanded
 
 
-rM <- function(...){matrix(sample(1:9,9),3,3)}
-
-.[rM(),rM()]
-jacobi(rM(),rM(),rM())
-
 f <- ad(x)
 f(y)
+
+
+rM <- function(...){matrix(sample(1:9,9),3,3)} # a random matrix
+
+M <- rM()
+N <- rM()
+O <- rM()
+
+.[M,N]
+jacobi(M,N,O)
 
 }

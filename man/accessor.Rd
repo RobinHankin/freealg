@@ -31,7 +31,7 @@ at \code{accessor.Rd}.
 \seealso{\code{\link{constant}}}
 \examples{
 a <- rfalg()
-
+a
 coeffs(a)
 coeffs(a) <- 7
 }

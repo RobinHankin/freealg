@@ -62,11 +62,18 @@ H. Munthe-Kaas and B. Owren 1999.  \dQuote{Computations in a free Lie
 package}
 \examples{
 
-a <- rfalg(20)
+
+X <- as.freealg("1 -x + 5*y + 6*x*y -8*x*x*x*x*y*x")
+X
+grades(X)
+
+a <- rfalg(30)
+a
 grades(a)
 grade(a,2)
 grade(a,2) <- 0 # kill all grade-2 terms
+a
 
 grade(a,1) <- grade(a,1) * 888 
-
+a
 }
