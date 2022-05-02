@@ -71,12 +71,12 @@
   if(any(wanted)){
     co <- coeffs(x)
     co[wanted] <- value
-    w <- words(x)
+    w <- elements(words(x))
     } else {
       co <- c(elements(coeffs(x)),value)
       w <- c(elements(words(x)),list(numeric(0)))
     }
-  freealg(w,co)
+  freealg(elements(w),elements(co))
 }
 
 `is.freealg` <- function(x){inherits(x,"freealg")}
