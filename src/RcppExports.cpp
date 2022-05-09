@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // lowlevel_subs
 List lowlevel_subs(const List& words1, const NumericVector& coeffs1, const List& words2, const NumericVector& coeffs2, const NumericVector& r);
 RcppExport SEXP _freealg_lowlevel_subs(SEXP words1SEXP, SEXP coeffs1SEXP, SEXP words2SEXP, SEXP coeffs2SEXP, SEXP rSEXP) {
