@@ -262,3 +262,5 @@ setGeneric("deriv")
         return(x)
     }
 }
+
+`nterms` <- function(x){length(coeffs(x))}
