@@ -84,6 +84,8 @@
     }
 }
 
+# inv() defined in free.R; it is not really an operation
+
 `free_times_free` <- function(S1,S2){
   if(is.zero(S1) || is.zero(S2)){
     return(constant(0))

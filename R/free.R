@@ -264,3 +264,11 @@ setGeneric("deriv")
 }
 
 `nterms` <- function(x){length(coeffs(x))}
+
+`inv` <- function(S){
+  if(nterms(S)==1){
+    return(freealg(list(rev(-words(S)[[1]])),1/coeffs(S)))
+  } else {
+    stop("only freealg objects with exactly one term have a multiplicative inverse")
+  }
+}
