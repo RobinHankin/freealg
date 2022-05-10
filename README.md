@@ -41,12 +41,12 @@ library("freealg")
 The free algebra is the free R-module with a basis consisting of all
 words over an alphabet of symbols with multiplication of words defined
 as concatenation. Thus, with an alphabet of
-![\\{x,y,z\\}](https://latex.codecogs.com/png.latex?%5C%7Bx%2Cy%2Cz%5C%7D "\{x,y,z\}")
+![\\{x,y,z\\}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5C%7Bx%2Cy%2Cz%5C%7D "\{x,y,z\}")
 and
 
 ![
 A=\\alpha x^2yx + \\beta zy
-](https://latex.codecogs.com/png.latex?%0AA%3D%5Calpha%20x%5E2yx%20%2B%20%5Cbeta%20zy%0A "
+](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0AA%3D%5Calpha%20x%5E2yx%20%2B%20%5Cbeta%20zy%0A "
 A=\alpha x^2yx + \beta zy
 ")
 
@@ -54,7 +54,7 @@ and
 
 ![
 B=\\gamma z + \\delta y^4
-](https://latex.codecogs.com/png.latex?%0AB%3D%5Cgamma%20z%20%2B%20%5Cdelta%20y%5E4%0A "
+](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0AB%3D%5Cgamma%20z%20%2B%20%5Cdelta%20y%5E4%0A "
 B=\gamma z + \delta y^4
 ")
 
@@ -62,7 +62,7 @@ we would have
 
 ![
 AB=\\left(\\alpha x^2yx+\\beta zy\\right)\\left(\\gamma z+\\delta y^4\\right)=\\alpha\\gamma x^2yxz+\\alpha\\delta x^2yxy^4+\\beta\\gamma zyz+\\beta\\delta zy^5
-](https://latex.codecogs.com/png.latex?%0AAB%3D%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%5Cleft%28%5Cgamma%20z%2B%5Cdelta%20y%5E4%5Cright%29%3D%5Calpha%5Cgamma%20x%5E2yxz%2B%5Calpha%5Cdelta%20x%5E2yxy%5E4%2B%5Cbeta%5Cgamma%20zyz%2B%5Cbeta%5Cdelta%20zy%5E5%0A "
+](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0AAB%3D%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%5Cleft%28%5Cgamma%20z%2B%5Cdelta%20y%5E4%5Cright%29%3D%5Calpha%5Cgamma%20x%5E2yxz%2B%5Calpha%5Cdelta%20x%5E2yxy%5E4%2B%5Cbeta%5Cgamma%20zyz%2B%5Cbeta%5Cdelta%20zy%5E5%0A "
 AB=\left(\alpha x^2yx+\beta zy\right)\left(\gamma z+\delta y^4\right)=\alpha\gamma x^2yxz+\alpha\delta x^2yxy^4+\beta\gamma zyz+\beta\delta zy^5
 ")
 
@@ -70,17 +70,18 @@ and
 
 ![
 BA=\\left(\\gamma z+\\delta y^4\\right)\\left(\\alpha x^2yx+\\beta zy\\right)=\\alpha\\gamma zx^2yx + \\alpha\\delta y^4 x^2yx + \\beta\\gamma z^2y + \\beta\\delta y^4zy.
-](https://latex.codecogs.com/png.latex?%0ABA%3D%5Cleft%28%5Cgamma%20z%2B%5Cdelta%20y%5E4%5Cright%29%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%3D%5Calpha%5Cgamma%20zx%5E2yx%20%2B%20%5Calpha%5Cdelta%20y%5E4%20x%5E2yx%20%2B%20%5Cbeta%5Cgamma%20z%5E2y%20%2B%20%5Cbeta%5Cdelta%20y%5E4zy.%0A "
+](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0ABA%3D%5Cleft%28%5Cgamma%20z%2B%5Cdelta%20y%5E4%5Cright%29%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%3D%5Calpha%5Cgamma%20zx%5E2yx%20%2B%20%5Calpha%5Cdelta%20y%5E4%20x%5E2yx%20%2B%20%5Cbeta%5Cgamma%20z%5E2y%20%2B%20%5Cbeta%5Cdelta%20y%5E4zy.%0A "
 BA=\left(\gamma z+\delta y^4\right)\left(\alpha x^2yx+\beta zy\right)=\alpha\gamma zx^2yx + \alpha\delta y^4 x^2yx + \beta\gamma z^2y + \beta\delta y^4zy.
 ")
 
 A natural and easily implemented extension is to use upper-case symbols
 to represent multiplicative inverses of the lower-case equivalents
 (formally we would use the presentation
-![xX=1](https://latex.codecogs.com/png.latex?xX%3D1 "xX=1")). Thus if
+![xX=1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;xX%3D1 "xX=1")).
+Thus if
 
 ![
-C=\\epsilon\\left(x^{-1}\\right)^2=\\epsilon X^2](https://latex.codecogs.com/png.latex?%0AC%3D%5Cepsilon%5Cleft%28x%5E%7B-1%7D%5Cright%29%5E2%3D%5Cepsilon%20X%5E2 "
+C=\\epsilon\\left(x^{-1}\\right)^2=\\epsilon X^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0AC%3D%5Cepsilon%5Cleft%28x%5E%7B-1%7D%5Cright%29%5E2%3D%5Cepsilon%20X%5E2 "
 C=\epsilon\left(x^{-1}\right)^2=\epsilon X^2")
 
 we would have
@@ -88,7 +89,7 @@ we would have
 ![
 AC=\\left(\\alpha x^2yx+\\beta zy\\right)\\epsilon X^2=
 \\alpha\\epsilon x^2yX + \\beta\\epsilon zyX^2
-](https://latex.codecogs.com/png.latex?%0AAC%3D%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%5Cepsilon%20X%5E2%3D%0A%5Calpha%5Cepsilon%20x%5E2yX%20%2B%20%5Cbeta%5Cepsilon%20zyX%5E2%0A "
+](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0AAC%3D%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%5Cepsilon%20X%5E2%3D%0A%5Calpha%5Cepsilon%20x%5E2yX%20%2B%20%5Cbeta%5Cepsilon%20zyX%5E2%0A "
 AC=\left(\alpha x^2yx+\beta zy\right)\epsilon X^2=
 \alpha\epsilon x^2yX + \beta\epsilon zyX^2
 ")
@@ -98,7 +99,7 @@ and
 ![
 CA=\\epsilon X^2\\left(\\alpha x^2yx+\\beta zy\\right)=
 \\alpha\\epsilon yx + \\beta\\epsilon X^2zy.
-](https://latex.codecogs.com/png.latex?%0ACA%3D%5Cepsilon%20X%5E2%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%3D%0A%5Calpha%5Cepsilon%20yx%20%2B%20%5Cbeta%5Cepsilon%20X%5E2zy.%0A "
+](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0ACA%3D%5Cepsilon%20X%5E2%5Cleft%28%5Calpha%20x%5E2yx%2B%5Cbeta%20zy%5Cright%29%3D%0A%5Calpha%5Cepsilon%20yx%20%2B%20%5Cbeta%5Cepsilon%20X%5E2zy.%0A "
 CA=\epsilon X^2\left(\alpha x^2yx+\beta zy\right)=
 \alpha\epsilon yx + \beta\epsilon X^2zy.
 ")
