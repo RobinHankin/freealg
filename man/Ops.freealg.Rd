@@ -1,6 +1,7 @@
 \name{Ops.freealg}
 \alias{Ops.freealg}
 \alias{ops}
+\alias{inv}
 \alias{free_negative}
 \alias{freealg_negative}
 \alias{free_times_free}
@@ -36,6 +37,7 @@ lowlevel_free_sum(words1,coeffs1,words2,coeffs2)
 lowlevel_free_power(words,coeffs,n)
 lowlevel_diffn(words,coeffs,r)
 lowlevel_subs(words1, coeffs1, words2, coeffs2, r)
+inv(S)
 }
 \arguments{
   \item{S,e1,e2}{Objects of class \code{freealg}}
@@ -61,6 +63,13 @@ lowlevel_subs(words1, coeffs1, words2, coeffs2, r)
   Functions \code{lowlevel_foo()} are low-level functions that interface
   directly with the \code{C} routines in the \code{src/} directory and
   are not intended for the end-user.
+
+  Function \code{inv()} is defined only for freealg objects with a
+  single term.  If \code{x} has a single term we have
+  \code{inv(x)*x=x*inv(x)=1}.  There is no corresponding division in the
+  package because \code{a/b} may be either \code{a*inv(b)} or
+  \code{inv(b)*a}.
+  
 }
 \author{Robin K. S. Hankin}
 \examples{
@@ -68,7 +77,7 @@ rfalg()
 as.freealg("1+x+xy+yx")  # variables are non-commutative
 as.freealg("x") * as.freealg("X") # upper-case letters are lower-case inverses
 
-
-
 constant(as.freealg("x+y+X+Y")^6)  # OEIS sequence A035610
+
+inv(as.freealg("2aaabAAAAx"))
 }
