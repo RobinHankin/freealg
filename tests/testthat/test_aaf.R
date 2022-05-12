@@ -31,6 +31,8 @@ checker2 <- function(x,y,n){
 checker3 <- function(x,y,z){
     expect_true(jacobi(x,y,z) == 0)
     expect_true(.[x,.[y,z]] + .[y,.[z,x]] + .[z,.[x,y]] == 0)
+    f <- ad(x)
+    expect_true(f(y*z) == f(y)*z + y*f(z))
 }
 
 for(i in 1:2){
