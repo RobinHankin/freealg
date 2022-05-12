@@ -58,7 +58,8 @@ inv(S)
   specialist function.
 
   The caret, as in \code{a^n}, denotes arithmetic exponentiation, as in
-  \code{x^3==x*x*x}.
+  \code{x^3==x*x*x}.  The only comparison operators are equality and
+  inequality; \code{x==y} is defined as \code{is.zero(x-y)}.
 
   Functions \code{lowlevel_foo()} are low-level functions that interface
   directly with the \code{C} routines in the \code{src/} directory and

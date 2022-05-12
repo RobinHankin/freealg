@@ -56,17 +56,9 @@
         stop("Generic '^' not implemented in this case")
       }
     } else if (.Generic == "==") {
-      if(lclass && rclass){
         return(free_eq_free(e1,e2))
-      } else {
-        stop("Generic '==' only compares two freealg objects with one another")
-      }          
     } else if (.Generic == "!=") {
-      if(lclass && rclass){
         return(!free_eq_free(e1,e2))
-      } else {
-        stop("Generic '!=' only compares two free objects with one another")
-      }
     } else if (.Generic == "/") {
       if(lclass && !rclass){
         return(free_times_scalar(e1,1/e2))
