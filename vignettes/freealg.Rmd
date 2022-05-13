@@ -1,0 +1,123 @@
+---
+title: "The free algebra with R"
+author: "Robin K. S. Hankin"
+output: html_vignette
+vignette: >
+  %\VignetteIndexEntry{The free algebra}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(rmarkdown.html_vignette.check_title = FALSE)
+library("freealg")
+set.seed(1)
+```
+
+<p style="text-align: right;">
+![](`r system.file("help/figures/freealg.png", package = "freealg")`){width=10%}
+</p>
+
+# The free algebra
+
+The free algebra is the free R-module with a basis consisting of all
+words over an alphabet of symbols [conventionally lower-case letters]
+with multiplication of words defined as concatenation.  It is easiest
+to give an example: with an alphabet of $\{x,y,z\}$ and formally write
+$A=\alpha x^2yx + \beta zy$ and $B=\gamma z + \delta y^4$, we would
+have
+
+\[
+AB=\left(\alpha x^2yx+\beta zy\right)\left(\gamma z+\delta y^4\right)=
+\alpha\gamma x^2yxz+\alpha\delta x^2yxy^4+\beta\gamma zyz+\beta\delta zy^5
+\]
+
+and
+
+\[
+BA=\left(\gamma z+\delta y^4\right)\left(\alpha x^2yx+\beta zy\right)=
+\alpha\gamma zx^2yx + \alpha\delta y^4 x^2yx + \beta\gamma z^2y + \beta\delta y^4zy.
+\]
+
+The system inherits associativity from associativity of concatenation;
+distributivity follows from the definition of R-module.  However, the
+free algebra is not commutative in general.
+
+# The `freealg` package in use
+
+The above examples are a little too general for the `freealg` package;
+the idiom requires that we have specific numerical values for the
+coefficients $\alpha,\beta,\gamma\delta$.  Here we will use $1,2,3,4$
+respectively.
+
+```{r,label=defineAandB}
+(A <- as.freealg("xxyx + 2zy"))
+(B <- as.freealg("3z + 4yyyy"))
+A*B
+B*A
+```
+
+Note that the terms are stored in an implementation-specific order.
+For example, `B` might appear as `+ 4*yyyy + 3*z` or the algebraically
+equivalent form `3*z + 4*yyyy` (see the `disordR` package vignette for
+an extended discussion).
+
+Inverses are coded using upper-case letters. 
+
+```{r,useuppercase}
+(C <- as.freealg("3 + 5X - 2Xyx"))
+A*C
+C*A
+```
+
+With these objects we may verify that the distributive and associative laws are true:
+
+```{r,checklaws}
+A*(B+C) == A*B + A*C
+(A+B)*C == A*C + B*C
+A*(B*C) == (A*B)*C
+```
+
+Various utilities are included in the package.  For example, the
+commutator bracket is represented by reasonably concise idiom:
+
+
+```{r,label=usecommutator}
+.[as.freealg("x"),as.freealg("y")]
+```
+
+Using `rfalg()` to generate random free algebra objects, we may verify
+the Jacobi identity:
+
+
+```{r,label=verifyjacobi}
+x <- rfalg()
+y <- rfalg()
+z <- rfalg()
+
+.[x,.[y,z]] + .[y,.[z,x]] + .[z,.[x,y]]
+```
+
+The package includes functionality for substitution:
+
+
+```{r,showsubstitution}
+subs("aabccc",b="1+3x")  # aa(1+3x)ccc
+```
+
+
+```{r,sequentialsubstitution}
+subs("abccc",b="1+3x",x="1+d+2e")
+```
+
+There is even some functionality for calculus:
+
+```{r,showderiv}
+deriv(as.freealg("aaaxaa"),"a")
+```
+
+
+
+
