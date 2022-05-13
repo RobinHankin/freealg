@@ -29,6 +29,6 @@ setMethod("[", signature(x="dot",i="ANY",j="ANY"),function(x, i, j, drop){
 `ad` <- function(x){
     function(y){
         jj <- new("dot")
-        return(jj[x,y])
+        return(jj[as.freealg(x),as.freealg(y)])
     }
 }
