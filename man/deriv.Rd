@@ -19,7 +19,7 @@
   \item{...}{Further arguments, currently ignored}
 }
 \author{Robin K. S. Hankin}
-\details{\loadmathjax
+\details{
 
   Experimental function \code{deriv(S,v)} returns
       \mjeqn{\frac{\partial^r S}{\partial v_1\partial v_2\ldots\partial
