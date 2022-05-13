@@ -53,7 +53,7 @@
       if(lclass && !rclass){
         return(free_power_scalar(e1,e2)) # S^n
       } else {
-        stop("Generic '^' not implemented in this case")
+        stop("Generic '^' not implemented in this case: x^2=x*x")
       }
     } else if (.Generic == "==") {
         return(free_eq_free(e1,e2))
