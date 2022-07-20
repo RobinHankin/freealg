@@ -1,6 +1,7 @@
 \name{rfalg}
 \alias{rfalg}
 \alias{rfreealg}
+\alias{rfree}
 \title{Random free algebra objects}
 \description{Random elements of the free algebra, intended as quick
   \dQuote{get you going} examples of \code{freealg} objects}
@@ -23,7 +24,8 @@ What you see is what you get, basically.  A term such as
 \author{Robin K. S. Hankin}
 \examples{
 rfalg()
-rfalg()^3
+rfalg(include.negative=TRUE)^2
+
 
 constant(rfalg())
 
