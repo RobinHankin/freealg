@@ -21,8 +21,7 @@ importFrom("disordR","consistent")
 importFrom("disordR","sapply")
 importFrom("disordR","elements")
 importFrom("disordR","%in%")
-
-
+importFrom("disordR","sort")
 
 S3method(constant, freealg)
 S3method(constant, numeric)
