@@ -20,41 +20,54 @@ set.seed(1)
 ![](`r system.file("help/figures/freealg.png", package = "freealg")`){width=10%}
 </p>
 
-# The free algebra
-
-The free algebra is the free R-module with a basis consisting of all
-words over an alphabet of symbols [conventionally lower-case letters]
-with multiplication of words defined as concatenation.  It is easiest
-to give an example: with an alphabet of $\{x,y,z\}$ and formally write
-$A=\alpha x^2yx + \beta zy$ and $B=\gamma z + \delta y^4$, we would
-have
-
-\[
-AB=\left(\alpha x^2yx+\beta zy\right)\left(\gamma z+\delta y^4\right)=
-\alpha\gamma x^2yxz+\alpha\delta x^2yxy^4+\beta\gamma zyz+\beta\delta zy^5
-\]
-
-and
+The _free algebra_ is best defined by an example: with an alphabet of
+$\{x,y,z\}$, and real numbers $\alpha,\beta,\gamma$ we formally define
+$A=\alpha x^2yx + \beta zy$ and $B=-\beta zy + \gamma y^4$.  Addition
+is commutative so $x+y=y+x$ (and so $A=\beta zy + \alpha x^2yx$) but
+multiplication is not commutative, so $xy\neq yx$; both are
+associative.  We also have consistency in that $\alpha(\beta
+P)=(\alpha\beta)P$ for any expression $P$.  Then:
 
 \[
-BA=\left(\gamma z+\delta y^4\right)\left(\alpha x^2yx+\beta zy\right)=
-\alpha\gamma zx^2yx + \alpha\delta y^4 x^2yx + \beta\gamma z^2y + \beta\delta y^4zy.
+A+B=(\alpha x^2yx + \beta zy) + (-\beta zy + \gamma y^4) = \alpha x^2yx + \gamma y^4
 \]
 
-The system inherits associativity from associativity of concatenation;
-distributivity follows from the definition of R-module.  However, the
-free algebra is not commutative in general.
+\[
+AB=
+(\alpha x^2yx + \beta zy)
+(-\beta zy + \gamma y^4)
+=
+\alpha\gamma x^2yxzy + \alpha\gamma x^2yxy^4+\beta\gamma zyzy +\beta\gamma zy^5
+\]
+
+\[
+BA=(-\beta zy + \gamma y^4)(\alpha x^2yx + \beta zy)
+=
+-\alpha\beta zyx^2yx
+-\beta^2 zyzy
++ \alpha\gamma y^4x^2yx
++ \beta\gamma y^4zy
+\]
+
+This is a natural set of objects to consider.  Formally, we consider
+the free R-module with a basis consisting of all words over an
+alphabet of symbols [conventionally lower-case letters] with
+multiplication of words defined as concatenation.  The system inherits
+associativity from associativity of concatenation; distributivity
+follows from the definition of R-module.  However, the free algebra is
+not commutative in general.
 
 # The `freealg` package in use
 
 The above examples are a little too general for the `freealg` package;
 the idiom requires that we have specific numerical values for the
-coefficients $\alpha,\beta,\gamma\delta$.  Here we will use $1,2,3,4$
+coefficients $\alpha,\beta,\gamma,\delta$.  Here we will use $1,2,3,4$
 respectively.
 
 ```{r,label=defineAandB}
 (A <- as.freealg("xxyx + 2zy"))
-(B <- as.freealg("3z + 4yyyy"))
+(B <- as.freealg("-2zy + 3yyyy"))
+A+B
 A*B
 B*A
 ```
