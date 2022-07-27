@@ -7,3 +7,7 @@
 
 - add an adjoint function ad()
 - new vignette: adjoint.Rnw
+
+# 1.0-8
+
+- bugfixes
