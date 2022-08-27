@@ -6,7 +6,7 @@ Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cr
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Depends: R (>= 3.5.0), methods
 Description: The free algebra in R; multivariate polynomials with
-non-commuting indeterminates.  Uses 'disordR' discipline.
+    non-commuting indeterminates.  Uses 'disordR' discipline.
 License: GPL (>= 2)
 LazyData: yes
 Imports: Rcpp (>= 1.0-7), partitions (>= 1.9-22), mathjaxr, disordR (>= 0.0-8)
