@@ -44,6 +44,19 @@ No equivalent to \code{mvp::subvec()} is currently implemented.
 
 }
 \author{Robin K. S. Hankin}
+\note{
+
+  Function \code{subs()} is one place in the package where the use of
+  \code{letters} is effectively hard-wired in.  Idiom such as
+
+  \code{subs("abccc",b="1+3x")}
+
+  is very nice, but identifies \dQuote{b} with 2.  Note that argument
+  \code{r} of \code{subsu()} is canonically an integer but a single
+  character is interpreted as a \code{letter}.  See also the \code{note}
+  at \code{freealg.Rd}.
+
+}
 \examples{
 subs("abccc",b="1+3x")
 subs("aaaa",a="1+x")  # binomial
