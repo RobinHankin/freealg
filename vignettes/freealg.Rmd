@@ -37,7 +37,7 @@ AB=
 (\alpha x^2yx + \beta zy)
 (-\beta zy + \gamma y^4)
 =
-\alpha\gamma x^2yxzy + \alpha\gamma x^2yxy^4+\beta\gamma zyzy +\beta\gamma zy^5
+-\alpha\beta x^2yxzy +\alpha\gamma x^2yxy^4 -\beta^2zyzy +\beta\gamma zy^5
 \]
 
 \[
@@ -61,7 +61,7 @@ not commutative in general.
 
 The above examples are a little too general for the `freealg` package;
 the idiom requires that we have specific numerical values for the
-coefficients $\alpha,\beta,\gamma,\delta$.  Here we will use $1,2,3,4$
+coefficients $\alpha,\beta,\gamma$.  Here we will use $1,2,3$
 respectively.
 
 ```{r,label=defineAandB}
@@ -73,19 +73,27 @@ B*A
 ```
 
 Note that the terms are stored in an implementation-specific order.
-For example, `B` might appear as `+ 4*yyyy + 3*z` or the algebraically
-equivalent form `3*z + 4*yyyy` (see the `disordR` package vignette for
+For example, `A` might appear as `xxyz + 2*zy` or the algebraically
+equivalent form `2*zy + xxyz` (see the `disordR` package vignette for
 an extended discussion).
 
 Inverses are coded using upper-case letters. 
 
 ```{r,useuppercase}
+A*as.freealg("X") # X = x^{-1}
+```
+
+See how multiplying by $X=x^{-1}$ on the right cancels one of the `x`
+terms in `A`.  We can use this device in more complicated examples:
+
+```{r, uppercaseC}
 (C <- as.freealg("3 + 5X - 2Xyx"))
 A*C
 C*A
 ```
 
-With these objects we may verify that the distributive and associative laws are true:
+With these objects we may verify that the distributive and associative
+laws are true:
 
 ```{r,checklaws}
 A*(B+C) == A*B + A*C
@@ -98,7 +106,9 @@ commutator bracket is represented by reasonably concise idiom:
 
 
 ```{r,label=usecommutator}
-.[as.freealg("x"),as.freealg("y")]
+a <- as.freealg("a")
+b <- as.freealg("b")
+.[a,b] # returns ab-ba
 ```
 
 Using `rfalg()` to generate random free algebra objects, we may verify
@@ -125,12 +135,13 @@ subs("aabccc",b="1+3x")  # aa(1+3x)ccc
 subs("abccc",b="1+3x",x="1+d+2e")
 ```
 
-There is even some functionality for calculus:
+There is even some experimental functionality for calculus:
 
 ```{r,showderiv}
 deriv(as.freealg("aaaxaa"),"a")
 ```
 
-
-
+Above, "`da`" means the differential of `a`.  Note how it may appear
+at any position in the product, not just the end (cf matrix
+differentiation).
 
