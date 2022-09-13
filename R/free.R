@@ -273,3 +273,8 @@ setGeneric("deriv")
     stop("only freealg objects with exactly one term have a multiplicative inverse")
   }
 }
+
+`abelianize` <- function(x){
+  freealg(lapply(words(x),function(x){x[order(abs(x))]}),elements(coeffs(x)))
+}
+

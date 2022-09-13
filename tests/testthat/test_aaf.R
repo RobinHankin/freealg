@@ -15,6 +15,7 @@ checker1 <- function(x){
 
     expect_true(.[x,x] == 0)
     expect_true(.[x,x*3] == 0)
+
     return(TRUE)
 }  # checker1() closes
 
@@ -24,6 +25,8 @@ checker2 <- function(x,y,n){
     expect_true(n*.[x,y] == .[n*x,y])
     expect_true(n*.[x,y] == .[x,n*y])
     expect_true(.[x+y,x-y] == .[y,x]*2)
+
+    expect_true(abelianize(.[x,y]) == 0)
     
     return(TRUE)
 } # checker2() closes
@@ -33,6 +36,7 @@ checker3 <- function(x,y,z){
     expect_true(.[x,.[y,z]] + .[y,.[z,x]] + .[z,.[x,y]] == 0)
     f <- ad(x)
     expect_true(f(y*z) == f(y)*z + y*f(z))
+
 }
 
 for(i in 1:2){

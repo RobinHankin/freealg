@@ -11,3 +11,7 @@
 # 1.0-8
 
 - bugfixes
+
+# 1.0-9
+
+- added abelianize() following freegroup::abelianize()

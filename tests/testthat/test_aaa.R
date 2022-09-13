@@ -81,8 +81,10 @@ checker1 <- function(x){
     coeffs(x) <- 3
     expect_true(all(coeffs(x)==3))
 
+    expect_true(constant(x) == constant(abelianize(x)))
 
-
+    expect_true(abelianize(abelianize(x)) == abelianize(x))
+    expect_true(abelianize(abelianize(x)) == abelianize(x))
 
 
   return(TRUE)
@@ -99,6 +101,7 @@ checker2 <- function(x,y){
   expect_true(x*(-y) == -(x*y), info=list(x,y))
 
   ##  expect_true(x*y == y*x)  
+
   return(TRUE)
 }
 
