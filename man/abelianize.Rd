@@ -17,9 +17,9 @@ past one another.  Abelianization is vectorized.
 \author{Robin K. S. Hankin}
 \note{There is a very similar function in the \pkg{freegroup} package.}
 \examples{
-(x <- rfalg())
-abelianize(x)
 
-.[rfalg(),rfalg()]
+abelianize(as.freealg("ba + 2abbba + 3abAB"))
+
+abelianize(.[rfalg(),rfalg()])
 
 }
