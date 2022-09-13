@@ -82,7 +82,6 @@ checker1 <- function(x){
     coeffs(x) <- 3
     expect_true(all(coeffs(x)==3))
 
-    expect_true(constant(x) == constant(abelianize(x)))
 
     expect_true(abelianize(abelianize(x)) == abelianize(x))
     expect_true(abelianize(abelianize(x)) == abelianize(x))
