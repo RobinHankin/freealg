@@ -26,6 +26,11 @@ The grade of a term is the number of symbols in it.  Thus the grade of
 Because the terms are stored in an implementation-specific way, the
 grade of a multi-term object is a \code{disord} object.
 
+The grade of the zero \code{freealg} object,
+\code{grade(as.freealg(0))}, is defined to be zero, which ensures that
+\code{max(grades(abelianize(x))) <= max(grades(x))} is always satisfied.
+However, a case for \code{NULL} could be made.
+
 }
 \usage{
 grades(x)

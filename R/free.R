@@ -250,7 +250,12 @@ setGeneric("deriv")
 }
 
 `grades` <- function(x){
-    disord(unlist(lapply(words(x),length)),hashcal(x))
+  if(is.zero(x)){
+    out <- 0
+  } else {
+    out <- disord(unlist(lapply(words(x),length)),hashcal(x))
+  }
+  return(out)
 }
 
 `grade<-` <- function(x, n, value){
