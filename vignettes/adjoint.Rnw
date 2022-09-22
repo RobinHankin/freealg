@@ -74,9 +74,9 @@ ad
 
 \subsection*{The adjoint operator: definition}
 
-An associative algebra ${\mathcal A}$ and $X,Y\in{\mathcal A}$, we
-define the \emph{Lie Bracket} $[X,Y]$ as $XY-YX$.  In the {\tt
-  freealg} package this is implemented with the{\tt .[]} construction:
+Given an associative algebra ${\mathcal A}$ and $X,Y\in{\mathcal A}$,
+we define the \emph{Lie Bracket} $[X,Y]$ as $XY-YX$.  In the {\tt
+freealg} package this is implemented with the{\tt .[]} construction:
 
 <<>>=
 X <- as.freealg("X")
@@ -123,7 +123,8 @@ f(Y) == X*Y-Y*X
 
 
 The first thing to note is that $\mathrm{ad}_X$ is NOT a Lie
-homomorphism.  If $\phi$ is a Lie homomorphism then $\phi([x,y]) =
+homomorphism, for any particular (non-constant) value of $X$.  If
+$\phi$ is a Lie homomorphism then $\phi([x,y]) =
 \left[\phi(x),\phi(y)\right]$.  There is no reason to expect the
 adjoint to be a Lie homomorphism, but it does not hurt to check:
     
@@ -136,10 +137,12 @@ With this definition, it is easy to calculate, say,
 $[Z,[Z,[Z,[Z,[Z,X]]]]]$:
 
 <<label=repeatedad>>=
-f <- ad(as.freealg("x"))
-f(f(f(f(f(as.freealg("y"))))))
+f <- ad("x")
+f(f(f(f(f("y")))))
 @ 
 
+Above, we see that \code{ad()} coerces its argument to a
+\code{freealg} object.
 
 \subsection*{The adjoint operator is a derivation}
 
@@ -162,7 +165,10 @@ phi(.[Y,Z]) == .[phi(Y),Z] + .[Y,phi(Z)]
     $\mathrm{ad}\colon\mathfrak{g}\longrightarrow\mathrm{
         End}(\mathfrak{g})$ is a Lie homomorphism}
 
-We are asserting that 
+
+Even though $\mathrm{ad}_X$ is not a Lie homomorphism, we can view the
+adjoint operator as a map from a Lie algebra to its endomorphism
+group, and this {\em is} a Lie homomorphism.  We are asserting that
 
 \[
 \mathrm{ad}_{\left[X,Y\right]} =\left[\mathrm{ad}_X,\mathrm{ad}_Y\right]
@@ -175,8 +181,7 @@ ad(.[X,Y])(Z) == .[ad(X),ad(Y)](Z)
 @                               
                               
 Observe that ``\code{.[ad(X),ad(Y)]}'' is a function:
-                                                
-                                                
+                                                                                               
 <<>>=
 .[ad(X),ad(Y)]
 @                                                 
