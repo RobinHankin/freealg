@@ -28,6 +28,6 @@ setMethod("[", signature(x="dot",i="ANY",j="ANY"),function(x, i, j, drop){
 
 `ad` <- function(x){
     function(y){
-        .[as.freealg(x),as.freealg(y)]
+        new("dot")[as.freealg(x),as.freealg(y)]
     }
 }
