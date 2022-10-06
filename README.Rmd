@@ -29,12 +29,9 @@ knitr::opts_chunk$set(
 
 The free algebra is an interesting and useful object.  Here I present
 the `freealg` package which provides some functionality for free
-algebra.
-
-The package uses `C++`'s STL `map` class for efficiency, which has the
-downside that the order of the terms is undefined.  This does not
-matter as the mathematical value is unaffected by reordering; and the
-print method does a good job in producing human-readable output.
+algebra.  The package uses `C++`'s STL `map` class for efficiency,
+which uses the fact that the order of the terms is algebraically
+immaterial.  The package  `disordR` discipline is used.
 
 
 # Installation
