@@ -1,0 +1,201 @@
+% -*- mode: noweb; noweb-default-code-mode: R-mode; -*-
+
+
+\documentclass{article}
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{amssymb}        % needed for \leqslant
+\usepackage{amsmath}        % needed for cases
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}		% Can be removed after putting your text content
+\usepackage{graphicx}
+\usepackage[numbers]{natbib}
+\usepackage{doi}
+\usepackage{wrapfig}
+
+
+\title{The free algebra in R}
+
+%\date{September 9, 1985}	% Here you can change the date presented in the paper title
+%\date{} 					% Or removing it
+
+\author{ \href{https://orcid.org/0000-0001-5982-0415}{\includegraphics[width=0.03\textwidth]{orcid.pdf}\hspace{1mm}Robin K. S.~Hankin}\thanks{\href{https://academics.aut.ac.nz/robin.hankin}{work};  
+\href{https://www.youtube.com/watch?v=JzCX3FqDIOc&list=PL9_n3Tqzq9iWtgD8POJFdnVUCZ_zw6OiB&ab_channel=TrinTragulaGeneralRelativity}{play}} \\
+ Auckland University of Technology\\
+	\texttt{hankin.robin@gmail.com} \\
+}
+
+% Uncomment to remove the date
+%\date{}
+
+% Uncomment to override  the `A preprint' in the header
+%\renewcommand{\headeright}{Technical Report}
+%\renewcommand{\undertitle}{Technical Report}
+\renewcommand{\shorttitle}{The free algebra in R}
+
+%%% Add PDF metadata to help others organize their library
+%%% Once the PDF is generated, you can check the metadata with
+%%% $ pdfinfo template.pdf
+\hypersetup{
+pdftitle={The free algebra in R},
+pdfsubject={q-bio.NC, q-bio.QM},
+pdfauthor={Robin K. S.~Hankin},
+pdfkeywords={Free algebra}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  The free algebra is an interesting and useful algebraic object.
+  Here I introduce {\tt freealg}, an R package which furnishes
+  computational support for free algebras.  The package uses the
+  standard template library's {\tt map} class for efficiency, which
+  uses the fact that the order of the terms is algebraically
+  immaterial.  The package follows {\tt disordR} discipline.
+  I demonstrate some properties of free algebra using the package, and
+  showcase package idiom.  The package is available on CRAN
+  at \url{https://CRAN.R-project.org/package=freealg}.
+\end{abstract}
+
+\SweaveOpts{}
+
+\section{The free algebra}
+
+\setlength{\intextsep}{0pt}
+\begin{wrapfigure}{r}{0.2\textwidth}
+  \begin{center}
+\includegraphics[width=1in]{freealg.png}
+  \end{center}
+\end{wrapfigure}
+The free algebra is the free R-module with a basis consisting of all
+words over an alphabet of symbols with multiplication of words defined
+as concatenation.  Such objects are a natural set to consider and have
+a sum and product given by algebraic addition and string concatenation
+respectively; the system is assumed to be distributive.  Formally, we
+consider the free R-module with a basis consisting of all words over
+an alphabet of symbols [conventionally lower-case letters] with
+multiplication of words defined as concatenation.  The system inherits
+associativity from associativity of concatenation; distributivity
+follows from the definition of R-module.  However, the free algebra is
+not commutative in general.  Thus, with an alphabet of $\{x,y,z\}$ and
+$\alpha,\beta,\gamma,\delta\in\mathbb{R}$, we might define free
+algebra elements $A,B$ as
+
+\[
+A=\alpha x^2yx + \beta zy\qquad B=\gamma z + \delta y^4
+\]
+
+we would then have
+
+\begin{eqnarray*}
+AB &=& \left(\alpha x^2yx+\beta zy\right)\left(\gamma z+\delta y^4\right)=\alpha\gamma x^2yxz+\alpha\delta x^2yxy^4+\beta\gamma zyz+\beta\delta zy^5\\
+BA &=&\left(\gamma z+\delta y^4\right)\left(\alpha x^2yx+\beta zy\right)=\alpha\gamma zx^2yx + \alpha\delta y^4 x^2yx + \beta\gamma z^2y + \beta\delta y^4zy.
+\end{eqnarray*}
+
+\section{The  package in use}
+
+The above examples are a little too general for the {\tt freealg}
+package; the idiom requires that we have specific numerical values for
+the coefficients $\alpha,\beta,\gamma,\delta$.  Here we will use
+$1,2,-2,3$ respectively.
+
+<<defineAandB>>=
+library("freealg")
+(A <- as.freealg("xxyx + 2zy"))
+(B <- as.freealg("-2zy + 3yyyy"))
+A+B
+A*B
+B*A
+@ 
+
+Note that the terms are stored in an implementation-specific order.
+For example, {\tt A} might appear as {\tt xxyz + 2*zy} or the
+algebraically equivalent form {\tt 2*zy + xxyz} (see the {\tt disordR}
+package~\cite{hankin2019,hankin2022_disordR}).  Inverses are coded
+using upper-case letters:
+
+<<useuppercase>>=
+A*as.freealg("X") # X = x^{-1}
+@ 
+
+See how multiplying by $X=x^{-1}$ on the right cancels one of the {\tt
+  x} terms in {\tt A}.  Also note the transparent implementation of
+(right) distributivity.  We can use this device in more complicated
+examples:
+
+<<uppercaseC>>=
+(C <- as.freealg("3 + 5X - 2Xyx"))
+A*C
+C*A
+@
+
+With these objects we may verify that the distributive and associative
+laws hold:
+
+<<checklaws>>=
+c(A*(B+C) == A*B + A*C  ,  (A+B)*C == A*C + B*C  ,  A*(B*C) == (A*B)*C)
+@ 
+
+\section{The commutator bracket and the Jacobi identity}
+
+Various utilities are included in the package.  For example, the
+commutator bracket is represented by reasonably concise idiom:
+
+<<usecommutator>>=
+a <- as.freealg("a")
+b <- as.freealg("b")
+.[a,b] # returns ab-ba
+@ 
+
+Using {\tt rfalg()} to generate random free algebra objects, we may
+verify the Jacobi identity:
+
+
+<<verifyjacobi>>=
+x <- rfalg()
+y <- rfalg()
+z <- rfalg()
+
+.[x,.[y,z]] + .[y,.[z,x]] + .[z,.[x,y]]
+@ 
+
+
+
+The package includes functionality for substitution:
+
+
+<<showsubstitution>>=
+subs("aabccc",b="1+3x")  # aa(1+3x)ccc
+@ 
+
+
+
+<<sequentialsubstitution>>=
+subs("abccc",b="1+3x",x="1+d+2e")
+@ 
+
+There is even some experimental functionality for calculus:
+
+<<showderiv>>=
+
+deriv(as.freealg("aaaxaa"),"a")
+@ 
+
+Above, {\tt da} means the differential of {\tt a}.  Note how it may
+appear at any position in the product, not just the end (cf matrix
+differentiation).
+
+
+\bibliographystyle{apalike}
+\bibliography{freealg_arxiv}
+
+\end{document}
