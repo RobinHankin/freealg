@@ -40,7 +40,7 @@ x <- structure(list(indices = list(1L, 1:2, c(1L, 2L, 1L, 1L), 2L,
 x
 ```
 
-We will evaluate `x^3` in two different ways.  Firstly, direct matrix
+We will evaluate `x^2` in two different ways.  Firstly, direct matrix
 multiplication:
 
 ```{r}
@@ -51,7 +51,7 @@ xm <- 9*A + 6*A%*%B + A%*%B%*%A%*%A + 9*B + 3*C  # object "x" adapted for matrix
 And secondly using `freealg`:
 
 ```{r}
-x^3
+x^2
 ```
 
 We can turn the above into an expression (rather clumsily) using
