@@ -22,7 +22,7 @@ The free algebra is an interesting and useful object. Here I present the
 `freealg` package which provides some functionality for free algebra.
 The package uses `C++`’s STL `map` class for efficiency, which uses the
 fact that the order of the terms is algebraically immaterial. The
-package `disordR` discipline is used.
+package conforms to `disordR` discipline.
 
 # Installation
 
