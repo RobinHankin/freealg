@@ -98,7 +98,7 @@ X # Y and Z are similar objects
 @ 
 
 
-\subsection*{The adjoint: definition}
+\subsection*{The adjoint map: definition}
 Now we define the adjoint as follows.  Given a Lie algebra
 $\mathfrak{g}$, and $X\in{\mathcal A}$, we define a linear map
 $\mathrm{ad}_X\colon\mathfrak{g}\longrightarrow\mathfrak{g}$ with
