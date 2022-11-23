@@ -15,3 +15,7 @@
 # 1.0-9
 
 - added abelianize() following freegroup::abelianize()
+
+# 1.1-0
+
+- drop() functionality
