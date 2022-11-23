@@ -44,7 +44,10 @@
   freealg(list(numeric(0)),x)
   }
 
-`is.zero` <- function(x){  length(coeffs(x))==0 }
+`is.zero` <- function(x){
+  if(!is.freealg(x)){ return(x==0)}
+  return(length(coeffs(x))==0)
+}
 
 `is.constant` <- function(x){
   jj <- words(x)
@@ -282,4 +285,16 @@ setGeneric("deriv")
 `abelianize` <- function(x){
   freealg(lapply(words(x),function(x){x[order(abs(x))]}),elements(coeffs(x)))
 }
+
+setGeneric("drop")
+setMethod("drop","freealg", function(x){
+    if(is.zero(x)){
+        return(0)
+    } else if(is.constant(x)){
+        return(constant(x))
+    } else {
+        return(x)
+    }
+})
+
 
