@@ -13,13 +13,24 @@ test_that("Test suite zzz, specific identities and miscellaneous checks",{
   expect_silent(x <- freealg(list(1,c(1,0,2)),c(4,5)))
 
   expect_true(is.constant(as.freealg("7")))
+  expect_true(is.constant(as.freealg("0")))
+
+  expect_true(is.constant(3))
+  expect_true(is.constant(0))
+
   expect_error(as.freealg(sin))
+  
 
   x <- as.freealg("1+x+2ax")
+  expect_false(is.constant(x))
   expect_error(coeffs(x) <- seq_along(coeffs(x)))
 
   expect_true(horner("x+y",1:3) == as.freealg("1 + 2x + 2y + 3xy + 3xx  + 3yx + 3yy"))
 
+
+
+
+  
   })
 
   

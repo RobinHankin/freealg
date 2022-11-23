@@ -50,8 +50,16 @@
 }
 
 `is.constant` <- function(x){
-  jj <- words(x)
-  (length(jj)==1) & identical(jj[[1]],integer(0))
+  if(!is.freealg(x)){
+    return(is.numeric(x) & (length(x)==1))
+  } else {
+    if(is.zero(x)){
+      return(TRUE)
+    } else {
+      jj <- words(x)
+      return((length(jj)==1) & identical(jj[[1]],integer(0)))
+    }
+  }
 }
 
 "constant" <- function(x){UseMethod("constant")}

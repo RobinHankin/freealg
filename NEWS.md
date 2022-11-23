@@ -19,3 +19,4 @@
 # 1.1-0
 
 - drop() functionality
+- bugfixes: is.constant()
