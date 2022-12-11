@@ -2,6 +2,7 @@
 title: "The free algebra with R"
 author: "Robin K. S. Hankin"
 output: html_vignette
+bibliography: free.bib
 vignette: >
   %\VignetteIndexEntry{The free algebra}
   %\VignetteEngine{knitr::rmarkdown}
@@ -74,8 +75,8 @@ B*A
 
 Note that the terms are stored in an implementation-specific order.
 For example, `A` might appear as `xxyz + 2*zy` or the algebraically
-equivalent form `2*zy + xxyz` (see the `disordR` package vignette for
-an extended discussion).
+equivalent form `2*zy + xxyz`.  The package follows `disordR`
+discipline [@hankin2022_disordR].
 
 Inverses are coded using upper-case letters. 
 
@@ -103,7 +104,6 @@ A*(B*C) == (A*B)*C
 
 Various utilities are included in the package.  For example, the
 commutator bracket is represented by reasonably concise idiom:
-
 
 ```{r,label=usecommutator}
 a <- as.freealg("a")
@@ -145,3 +145,4 @@ Above, "`da`" means the differential of `a`.  Note how it may appear
 at any position in the product, not just the end (cf matrix
 differentiation).
 
+# References
