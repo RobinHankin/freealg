@@ -20,3 +20,4 @@
 
 - drop() functionality
 - bugfixes: is.constant()
+- consistent citations in the vignette
