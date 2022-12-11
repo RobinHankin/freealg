@@ -21,7 +21,9 @@ set.seed(1)
 ![](`r system.file("help/figures/freealg.png", package = "freealg")`){width=10%}
 </p>
 
-To cite the `freealg` package in publications, please use @hankin2022_freealg.
+To cite the `freealg` package in publications, please use
+@hankin2022_freealg.
+
 The _free algebra_ is best defined by an example: with an alphabet of
 $\{x,y,z\}$, and real numbers $\alpha,\beta,\gamma$ we formally define
 $A=\alpha x^2yx + \beta zy$ and $B=-\beta zy + \gamma y^4$.  Addition
