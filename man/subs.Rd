@@ -22,7 +22,7 @@ subsu(S1,S2,r)
 \details{
 
 Function \code{subs()} substitutes variables for \code{freealg} objects
-(coerced if necessary) using a natural R idiom.  Observe that this type
+(coerced if necessary) using natural \R idiom.  Observe that this type
 of substitution is sensitive to order:
 
 \preformatted{
