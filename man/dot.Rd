@@ -3,7 +3,6 @@
 \alias{dot}
 \alias{.}
 \alias{dot-class}
-\alias{extract}
 \alias{commutator}
 \alias{jacobi}
 \alias{dot_error}
@@ -29,7 +28,7 @@ commutator, that is, \code{xy-yx} or the Lie bracket \mjseqn{[x,y]}.  It
 would have been nice to use \code{[x,y]} (that is, without the dot) but
 although this is syntactically consistent, it cannot be done in R.
 
-The \dQuote{meat} of the package is:
+The \dQuote{meat} of the dot functionality is:
 
 \preformatted{
 setClass("dot", slots = c(ignore='numeric'))
