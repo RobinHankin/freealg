@@ -3,7 +3,7 @@ title: "The dot: commutators and the Jacobi identity in R"
 output: bookdown::html_document2
 ---
 
-```{r setup}
+```{r setup,include=FALSE}
 set.seed(0)
 knitr::opts_chunk$set(echo = TRUE)
 library("freealg")
@@ -17,14 +17,14 @@ This short document introduces the dot object and shows how it can be
 used to work with commutators and verify the Jacobi identity.  The dot
 object is a (trivial) `S4` object of class `dot`:
 
-```{r}
+```{r label=newdot}
 `.` <- new("dot")
 ```
 
 The point of the dot (!) is that it allows one to calculate the Lie
 bracket $[x,y]$ using R idiom `.[x,y]`.  Thus:
 
-```{r}
+```{r label=usedot}
 x <- as.freealg("x")
 y <- as.freealg("y")
 .[x,y]
@@ -56,7 +56,7 @@ $\left[x,\left[y,z\right]\right]+\left[y,\left[z,x\right]\right]+
 
 We can see this more directly using `jacobi()`:
 
-```{r}
+```{r directuseofjacobi}
 jacobi(x,y,z)
 ```
 
