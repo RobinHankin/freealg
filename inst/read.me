@@ -1,0 +1,31 @@
+File freealg_arxiv.Rnw is basically the same as the vignette
+(vignettes/freealg.Rmd) but modified for arxiv.
+
+Weave  'freealg_arxiv.Rnw' with something like
+
+R CMD Sweave freealg_arxiv.Rnw
+
+(that takes about a minute).  This will create freealg_arxiv.tex.
+
+To create the pdf, you will need to latex freealg_arxiv.tex.  For this,
+you will need a couple of auxiliary files:
+
+* arxiv.sty from https://github.com/kourgeorge/arxiv-style
+* orcid.png, from https://orcid.org/signin
+* freealg.png, the hexsticker, copied from man/figures
+* Sweave.sty, copied from the R distribution
+
+Then 
+
+pdflatex freealg_arxiv
+bibtex freealg_arxiv
+pdflatex freealg_arxiv
+pdflatex freealg_arxiv
+
+will create freealg_arxiv.pdf and freealg_arxiv.bbl
+
+These files will have to be uploaded to arxiv for it to process
+freealg_arxiv.tex; remember to upload freealg_arxiv.bbl as well.
+
+NOTE: the tex file, freealg_arxiv.tex, is NOT under version control.
+
