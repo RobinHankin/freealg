@@ -56,7 +56,7 @@
     if(is.zero(x)){
       return(TRUE)
     } else {
-      jj <- words(x)
+      jj <- elements(words(x))
       return((length(jj)==1) & identical(jj[[1]],integer(0)))
     }
   }
@@ -104,7 +104,7 @@
     if(identical(words,list()) && length(coeffs)==1){
       return(TRUE)
       }
-    stopifnot(unlist(lapply(words,is.numeric)))
+    stopifnot(unlist(lapply(elements(words),is.numeric)))
     stopifnot(is.numeric(coeffs))
 
     stopifnot(length(words)==length(coeffs))
@@ -264,7 +264,7 @@ setGeneric("deriv")
   if(is.zero(x)){
     out <- 0
   } else {
-    out <- disord(unlist(lapply(words(x),length)),hashcal(x))
+    out <- disord(unlist(lapply(elements(words(x)),length)),hashcal(x))
   }
   return(out)
 }
@@ -291,7 +291,7 @@ setGeneric("deriv")
 }
 
 `abelianize` <- function(x){
-  freealg(lapply(words(x),function(x){x[order(abs(x))]}),elements(coeffs(x)))
+  freealg(lapply(elements(words(x)),function(x){x[order(abs(x))]}),elements(coeffs(x)))
 }
 
 setGeneric("drop")
