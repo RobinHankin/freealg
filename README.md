@@ -9,11 +9,7 @@ The Free Algebra in R
 
 [![Total
 Downloads](https://cranlogs.r-pkg.org/badges/grand-total/freealg)](https://CRAN.R-project.org/package=freealg)
-[![Build
-Status](https://travis-ci.org/RobinHankin/freealg.svg?branch=master)](https://travis-ci.org/RobinHankin/freealg)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/freealg)](https://cran.r-project.org/package=freealg)
-[![Codecov test
-coverage](https://codecov.io/gh/RobinHankin/freealg/branch/master/graph/badge.svg)](https://codecov.io/gh/RobinHankin/freealg/branch/master)
 <!-- badges: end -->
 
 # Overview
