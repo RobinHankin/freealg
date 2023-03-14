@@ -1,7 +1,7 @@
 Package: freealg
 Type: Package
 Title: The Free Algebra
-Version: 1.1-0
+Version: 1.1-1
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 Depends: R (>= 3.5.0), methods
@@ -12,7 +12,7 @@ Description: The free algebra in R with non-commuting indeterminates.
      <doi:10.48550/ARXIV.2211.04002>.
 License: GPL (>= 2)
 LazyData: yes
-Imports: Rcpp (>= 1.0-7), partitions (>= 1.9-22), mathjaxr, disordR (>= 0.0-9-3)
+Imports: Rcpp (>= 1.0-7), partitions (>= 1.9-22), mathjaxr, disordR (>= 0.9)
 LinkingTo: Rcpp
 SystemRequirements: C++11
 Suggests: knitr,testthat,magrittr,markdown,rmarkdown
