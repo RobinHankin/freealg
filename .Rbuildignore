@@ -5,3 +5,7 @@
 ^inst/freealg_stickermaker.R$
 ^inst/annabel.png$
 ^inst/dot.rda$
+^inst/freealg_arxiv.Rnw$
+^inst/freealg_arxiv.bib$
+^inst/read.me$
+^inst/sequence.Rmd$
