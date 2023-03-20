@@ -27,6 +27,7 @@ test_that("test suite aad",{
   expect_silent(pepper("pepper"))
 
   p <- as.freealg("1 +2xy +3yx + 4xyz")
-  expect_error(coeffs(p)[coeffs(p)<=2] <- coeffs(p)[coeffs(p)>2] * 1000)
+  # following line produces an error but only on disordR >= 0.9-2:
+  # expect_error(coeffs(p)[coeffs(p)<=2] <- coeffs(p)[coeffs(p)>2] * 1000)
 
 })
