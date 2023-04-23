@@ -306,3 +306,4 @@ setMethod("drop","freealg", function(x){
 })
 
 
+setGeneric("sort")
