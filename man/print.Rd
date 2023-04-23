@@ -1,7 +1,10 @@
 \name{print}
 \alias{print.freealg}
 \title{Print freealg objects}
-\description{Print methods for free algebra objects}
+\description{
+Print methods for free algebra objects.  The indeterminates are
+represented using lowercase letters a-z (currently hard coded).
+}
 \usage{
 \method{print}{freealg}(x,...)
 }
