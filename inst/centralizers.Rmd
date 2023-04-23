@@ -1,0 +1,39 @@
+---
+title: "Centralizers in the free algebra"
+author: "Robin Hankin"
+date: "2023-04-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Given that $R$ is the free associative algebra over some set of
+generators over a field $k$, Cohn conjectured (and Bergman proved)
+that any pair of commuting elements of $R$ can written in the form
+$P(z)$, $Q(z)$ for some $z\in R$.  This is easy to illustrate in the
+package.
+
+```{r}
+library("freealg")
+(z <- as.freealg("2+a-aab+4*z"))
+```
+
+We then construct $P=P(z)$ and $Q=Q(z)$:
+```{r}
+P <- 3+5*z^3
+Q <- z - z^4
+```
+
+Objects `P` and `Q` are quite complicated, but they commute:
+
+```{r}
+.[P,Q]
+```
+
+
+# References 
+
+* G. M. Bergman 1969.  "Centralizers in free associative algebras".  _Transactions of the American Mathematical Society_ 137:327-344
+* P. M. Cohn 1963.  "Rings with weak algorithm".  _Transactions of the Americal Mathematical Society 109:332-356.
