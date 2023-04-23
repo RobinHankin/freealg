@@ -7,7 +7,9 @@
 \alias{constant<-.freealg}
 \alias{constant.numeric}
 \title{The constant term}
-\description{Get and set the constant term of a \code{freealg} object}
+\description{\loadmathjax
+  Get and set the constant term of a \code{freealg} object
+}
 \usage{
 \method{constant}{freealg}(x)
 \method{constant}{numeric}(x)
@@ -21,8 +23,9 @@ is.constant(x)
 \details{
 
   The constant term in a free algebra object is the coefficient of the
-  empty term.  In a \code{freealg} object, the map including \code{\{\}
-  -> v} implies that \code{v} is the constant.
+  empty term.  In a \code{freealg} object, the map including
+  \mjeqn{\emptyset\longrightarrow v}{see PDF} implies that \mjseqn{v} is
+  the constant.
 
   If \code{x} is a \code{freealg} object, \code{constant(x)} returns
   the value of the constant in the multivariate polynomial; if \code{x}
