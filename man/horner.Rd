@@ -18,7 +18,7 @@ horner(P,v)
 
   Given a polynomial
 
-  \mjdeqn{p(x) = a_0 +a_1+a_2x^2+\cdots + a_nx^n}{omitted; see latex}
+  \mjdeqn{p(x) = a_0 +a_1x+a_2x^2+\cdots + a_nx^n}{omitted; see latex}
 
   it is possible to express \eqn{p(x)} in the algebraically equivalent
   form
