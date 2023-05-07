@@ -34,7 +34,7 @@ at \code{accessor.Rd}.
 a <- rfalg()
 a
 coeffs(a)
-words(a)  # Note hash is identical to that of coeffs(a)
+words(a)  # NB: hash is identical to that of coeffs(a)
 
 coeffs(a) <- 7   # replacement methods work 
 a
