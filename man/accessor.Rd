@@ -18,7 +18,7 @@ coeffs(x) <- value
   \item{value}{Numeric vector of length 1}
 }
 \details{
-Access or set the different parts of an \code{freealg} object.  The
+Access or set the different parts of a \code{freealg} object.  The
 constant term is technically a coefficient but is documented under
 \code{constant.Rd}.
 }
