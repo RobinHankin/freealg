@@ -15,7 +15,7 @@ subspace \mjeqn{\mathcal{B}_n}{B_n} with
 
 \mjdeqn{
   \mathcal{B}=\bigoplus_{n=0}^\infty\mathcal{B}_n,\quad\mbox{and}\quad\mathcal{B}_n\mathcal{B}_m\subseteq\mathcal{B}_{n+m}\quad\mbox{for all $m,n\geq  0.$}
-}{omitted}
+}{omitted: see PDF}
   
 The elements of \mjeqn{\cup_{n\geq 0}\mathcal{B}_n}{omitted} are
 called \dfn{homogeneous} and those of \mjeqn{\mathcal{B}_n}{B_n} are
