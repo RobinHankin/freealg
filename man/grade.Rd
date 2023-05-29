@@ -3,6 +3,7 @@
 \alias{grade<-}
 \alias{grades}
 \alias{degree}
+\alias{deg}
 \alias{degrees}
 \title{The grade (or degree) of terms in a \code{freealg} object
 }
@@ -21,10 +22,10 @@ The elements of \mjeqn{\cup_{n\geq 0}\mathcal{B}_n}{omitted} are
 called \dfn{homogeneous} and those of \mjeqn{\mathcal{B}_n}{B_n} are
 called homogenous of degree (or grade) \mjseqn{n}.
 
-The grade of a term is the number of symbols in it.  Thus the grade of
-\code{xxx} and \code{4xxy} is 3; the grade of a constant is zero.
-Because the terms are stored in an implementation-specific way, the
-grade of a multi-term object is a \code{disord} object.
+The \dfn{grade} of a term is the number of symbols in it.  Thus the
+grade of \code{xxx} and \code{4xxy} is 3; the grade of a constant is
+zero.  Because the terms are stored in an implementation-specific way,
+the grade of a multi-term object is a \code{disord} object.
 
 The grade of the zero \code{freealg} object,
 \code{grade(as.freealg(0))}, is defined to be \mjeqn{-\infty}{omitted},
@@ -37,6 +38,7 @@ However, a case for \code{NULL} could be made.
 grades(x)
 grade(x,n)
 grade(x,n) <- value
+deg(x)
 }
 \arguments{
   \item{x}{Freealg object}
@@ -48,6 +50,9 @@ grade(x,n) <- value
   \code{grades(x)} returns the grade (number of symbols) in each term
   of a \code{freealg} object \code{x}.
 
+  \code{deg(x)} returns the maximum of the grades of each symbol of
+  \code{x}; \code{max(grades(x))}.
+  
   \code{grade(x,n)} returns the freealg object comprising terms with
   grade \code{n} (which may be a vector).  Note that this function is
   considerably less efficient than \code{clifford::grade()}.

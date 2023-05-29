@@ -105,6 +105,9 @@ checker2 <- function(x,y){
 
   ##  expect_true(x*y == y*x)  
 
+  expect_true(deg(x*y) <= deg(x) + deg(y)) # equality if no inverse symbols
+  expect_true(deg(x+y) <= max(deg(x), deg(y)))
+
   return(TRUE)
 }
 
@@ -144,10 +147,14 @@ checker1(p2)
 checker1(p3)
 checker1(p4)
 
+checker2(p0,p1)
+checker2(p1,-p1)
 checker2(p1,p2)
+checker2(p1,-p2)
 checker2(p2,p3)
 checker2(p3,p4)
 checker2(p4,p1)
+checker2(p4,p0)
 
 checker3(p1,p1,p1)
 checker3(p1,p2,p3)

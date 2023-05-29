@@ -280,6 +280,8 @@ setGeneric("deriv")
     }
 }
 
+`deg` <- function(x){max(grades(x))}
+
 `nterms` <- function(x){length(coeffs(x))}
 
 `inv` <- function(S){
