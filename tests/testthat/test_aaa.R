@@ -87,7 +87,7 @@ checker1 <- function(x){
     expect_true(abelianize(abelianize(x)) == abelianize(x))
 
     expect_true(max(grades(abelianize(x))) <= max(grades(x)))
-    expect_true(grades(x*0)==0)
+    expect_true(grades(x*0) == -Inf)
 
 
   return(TRUE)

@@ -262,7 +262,7 @@ setGeneric("deriv")
 
 `grades` <- function(x){
   if(is.zero(x)){
-    out <- 0
+    out <- -Inf
   } else {
     out <- disord(unlist(lapply(elements(words(x)),length)),hashcal(x))
   }
