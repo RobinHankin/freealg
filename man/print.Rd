@@ -31,6 +31,11 @@ becomes cumbersome for powers above the first.  For example, the default
 notation for \eqn{aba^{-2}}{aba^-2} is \code{abAA} but becomes
 \code{aba^-1a^-1} if \code{usecaret} is \code{TRUE}.
 
+Experimental option \code{suppress1} controls whether a coefficient of 1
+is printed or not.  If \code{FALSE}, the 1 is printed; any other value
+suppresses 1 values.  The logic has too many \dQuote{not}s but it's the
+best way to have the suppression active by default.
+
 Integers exceeding \code{SHRT_MAX} are reserved for infinitesimals,
 which are printed as \dQuote{\code{da}}; see the note at \code{deriv.Rd}
 for details.
@@ -47,6 +52,16 @@ options("usecaret" = TRUE)  # use caret
 x
 options("usecaret" = FALSE) # back to the default
 x
+
+
+x <- freealg(list(5,1:4,3,8,7),c(1,1,1,3,22))
+x
+
+
+options(suppress1=FALSE)
+x
+
+options(suppress1=TRUE) # restore default
 
 
 }

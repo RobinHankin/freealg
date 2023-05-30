@@ -161,7 +161,9 @@
     out <- paste(out, pm, co, mulsym, ss, sep="")
   }
   if(is.zero(x)){out <- "0"}
+  if(!isFALSE(getOption("suppress1"))){out <- gsub("1\\*","",out)}
   cat(paste(strwrap(out, getOption("width")), collapse="\n"))
+  
   cat("\n")
   return(x)
 }
