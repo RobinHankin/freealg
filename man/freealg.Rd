@@ -36,7 +36,8 @@ vector_to_free(v,coeffs)
 
 Function \code{freealg()} is the formal creation mechanism for
 \code{freealg} objects.  However, it is not very user-friendly; it is
-better to use \code{as.freealg()} in day-to-day use.
+better to use \code{as.freealg()} in day-to-day use (although it does
+use heuristics for the coefficients if not supplied).
 
 Function \code{is_ok_freealg()} checks for consistency of its arguments.
 
@@ -70,7 +71,6 @@ element of the free algebra will not have a multiplicative inverse.  For
 example, \code{1+x} does not have an inverse.  The free algebra is not a
 division algebra, in general.
 
-
 }
 
 \author{Robin K. S. Hankin}
@@ -88,6 +88,7 @@ division algebra, in general.
 \examples{
 
 freealg(list(1:2, 2:1,numeric(0),1:6),1:4)
+freealg(list(1:2, 2:1,numeric(0),1:6))   # heuristics for coeffs: assume 1
 
 freealg(sapply(1:5,seq_len),1:5)
 

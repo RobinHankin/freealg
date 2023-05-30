@@ -1,4 +1,6 @@
 `freealg` <- function(words,coeffs){ # formal
+  if(missing(coeffs)){coeffs <- 1}
+  if(length(coeffs) == 1){coeffs <- rep(coeffs,length(words))}
   stopifnot(is_ok_free(words,coeffs))
   out <- lowlevel_simplify(words,coeffs)  # simplify() is defined in
                                  # RcppExports.R; it returns a list
