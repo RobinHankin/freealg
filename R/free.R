@@ -10,12 +10,12 @@
 }
 
 `words` <- function(x){disord(x[[1]],hashcal(x))}
-`coeffs` <- function(x){disord(x[[2]],hashcal(x))} # accessor methods end here
+`coeffs` <- function(x,drop=TRUE){disord(x[[2]],hashcal(x),drop=drop)} # accessor methods end here
 
 `coeffs<-` <- function(x,value){UseMethod("coeffs<-")}
 `coeffs<-.freealg` <- function(x,value){
   if(is.zero(x)){return(x)}
-  jj <- coeffs(x)
+  jj <- coeffs(x,drop=FALSE)
   if(is.disord(value)){
     stopifnot(consistent(words(x),value))
     jj <- value
