@@ -313,3 +313,12 @@ setMethod("drop","freealg", function(x){
 
 
 setGeneric("sort")
+
+`all_pos` <- function(x){all(unlist(words(x))>0)}
+
+`keep_pos` <- function(x){
+  coeffs(x)[unlist(lapply(words(x),function(x){any(x<0)}))] <- 0
+  return(x)
+}
+
+
