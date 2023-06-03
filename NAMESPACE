@@ -23,6 +23,7 @@ importFrom("disordR","lapply")
 importFrom("disordR","elements")
 importFrom("disordR","%in%")
 importFrom("disordR","sort")
+importFrom("disordR","unlist")
 
 S3method(constant, freealg)
 S3method(constant, numeric)
