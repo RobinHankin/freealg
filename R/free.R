@@ -313,6 +313,8 @@ setMethod("drop","freealg", function(x){
 
 
 setGeneric("sort")
+setGeneric("unlist")
+setGeneric("lapply")
 
 `all_pos` <- function(x){all(unlist(words(x))>0)}
 
