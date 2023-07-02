@@ -37,9 +37,7 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
 }
     
 word comb(word w){  // combs through w, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
-    word::iterator it;
-    word::const_iterator current,next;
-    it = w.begin();
+    word::iterator it = w.begin();
     while(it != w.end()){
         if(*it == 0){
             it = w.erase(it);  // meat A (erases zero, increments 'it')
@@ -50,9 +48,9 @@ word comb(word w){  // combs through w, performing cancellations; eg [2,3,-3] ->
 
     it = w.begin();        // Step 2, strip out cancelling pairs [n, -n]:
     while(it != w.end()){
-        current = it;
+        word::const_iterator current = it;
         ++it;
-        next = it;
+        word::const_iterator next = it;
         if(it != w.end()){
             if(((*current) + (*next))==0){ 
                 it = w.erase(current); // meat B
@@ -227,12 +225,11 @@ freealg change_r_for_zero(const freealg &X, const int &r){
 }
 
 freealg subs(const freealg X, const freealg Y, const NumericVector r){
-    freealg out,Xz;
-    freealg::const_iterator iz;
+    freealg out;
 
     // We know the words of X have no no zeros, so first we substitute
     // r[0] for 0:
-    Xz = change_r_for_zero(X,r[0]);
+    freealg Xz = change_r_for_zero(X,r[0]);
     
     // Now 'Xz' has zeros; we substitute the zeros for Y
 
