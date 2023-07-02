@@ -69,11 +69,11 @@ freealg prepare(const List words, const NumericVector coeffs){
     for(int i=0 ; i<n ; i++){  
         if(coeffs[i] != 0){ // only nonzero coeffs
         SEXP jj = words[i]; 
-        Rcpp::IntegerVector words(jj);
+        Rcpp::IntegerVector thisword(jj);
         word w;
-        for(int j=0 ; j<words.size() ; ++j){
+        for(int j=0 ; j<thisword.size() ; ++j){
 
-            w.push_back(words[j]);
+            w.push_back(thisword[j]);
         }
         const word cw = comb(w);
         out[cw] += coeffs[i];  // the meat
