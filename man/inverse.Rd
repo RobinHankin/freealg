@@ -14,8 +14,8 @@ keep_pos(x)
 \details{
 
   Function \code{all_pos()} tests for its argument having only positive
-  powers; function \code{keep_pos()} discards any term with a negative
-  power.
+  powers (that is, no inverse symbols present); function
+  \code{keep_pos()} discards any term with a negative power.
   
   At various points in the package, it is assumed that upper-case
   letters are the multiplicative inverses of the lower-case equivalents;

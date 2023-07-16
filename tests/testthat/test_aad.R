@@ -28,6 +28,10 @@ test_that("test suite aad",{
 
   p <- as.freealg("1 +2xy +3yx + 4xyz")
   # following line produces an error but only on disordR >= 0.9-2:
-  # expect_error(coeffs(p)[coeffs(p)<=2] <- coeffs(p)[coeffs(p)>2] * 1000)
+  expect_error(coeffs(p)[coeffs(p)<=2] <- coeffs(p)[coeffs(p)>2] * 1000)
 
+  p <- as.freealg("1+x+xyz +X")  # issue #44
+  coeffs(p)[unlist(lapply(words(p),function(x){any(x<0)}))] <- 0
+  expect_true(p == as.freealg("1+x+xyz"))
+  
 })

@@ -39,7 +39,8 @@ Function \code{freealg()} is the formal creation mechanism for
 better to use \code{as.freealg()} in day-to-day use (although it does
 use heuristics for the coefficients if not supplied).
 
-Function \code{is_ok_freealg()} checks for consistency of its arguments.
+Low-level helper function \code{is_ok_freealg()} checks for consistency
+of its arguments.
 
 A \code{freealg} object is a two-element list.  The first element is a
 list of integer vectors representing the indices and the second is a
