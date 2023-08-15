@@ -33,7 +33,31 @@ test_that("Test suite zzz, specific identities and miscellaneous checks",{
 
 
 
+  expect_true(all(coeffs(freealg(as.list(seq_len(1000))))==1))
 
+  expect_output(print(deriv(as.freealg("aaaabcdaaa"),1)))
+  expect_output(print(deriv(as.freealg("aaxAAAxaabcdaaaabXbaa"),1)))
+  expect_output(print(deriv(as.freealg("aaxAAAxaabcdaaaabXbaa"),-1)))
+
+
+  expect_true(deriv(as.freealg("aaaabcdaaxAAxa"), 1) == deriv(as.freealg("aaaabcdaaxAAxa"),"a"))
+  expect_true(deriv(as.freealg("aaaabcdaaxAAxa"),-1) == deriv(as.freealg("aaaabcdaaxAAxa"),"A"))
+
+  expect_true(all(grades(grade(horner("1+x+2y",1:7),5))==5))
+
+  a <- horner("1+x+2y",1:7)
+  b <- a
+  grade(a,5) <- grade(a,5) *100
+  expect_true(grade(a,5) == grade(b,5)*100)
+
+  expect_error(grade(b))
+
+  expect_true(nterms(horner("1+x+2y",seq_len(7))) == 2^7-1)
+  expect_true(inv(as.freealg("aaaaabcaaabAAA")) == as.freealg("aaaBAAACBAAAAA"))
+  expect_error(inv(as.freealg("3+aaaaabcaaabAAA")))
+  expect_true(is.numeric(drop(as.freealg("9"))))
+
+  expect_true(keep_pos(as.freealg("a+ 5asAbc+ abc+ A")) == as.freealg("abc + a"))
   
   })
 
