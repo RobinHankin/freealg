@@ -112,4 +112,6 @@ O <- rM()
 .[M,N]
 jacobi(M,N,O)
 
+plot(.[sin,cos](seq(from=0,to=1,len=100)))
+
 }
