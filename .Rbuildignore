@@ -10,3 +10,5 @@
 ^inst/read.me$
 ^inst/sequence.Rmd$
 ^inst/centralizers.Rmd$
+^.*\.Rproj$
+^\.Rproj\.user$
