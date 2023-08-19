@@ -58,6 +58,19 @@ test_that("Test suite zzz, specific identities and miscellaneous checks",{
   expect_true(is.numeric(drop(as.freealg("9"))))
 
   expect_true(keep_pos(as.freealg("a+ 5asAbc+ abc+ A")) == as.freealg("abc + a"))
+
+  A <- matrix(0,3,3)
+  B <- A
+  diag(A) <- c(1,-1,0)
+  diag(B) <- c(0,1,-1)
+  expect_true(all(.[A,B] == 0))
+
+  lhs <- .[tan,sin](0.1)
+  rhs <- tan(sin(0.1)) - sin(tan(0.1))
+  expect_true(abs(lhs-rhs) < 1e-10)
+
+  expect_false(all_pos(as.freealg("1+x+y+X")))
+  expect_true (all_pos(as.freealg("1+x+y+z")))
   
   })
 
