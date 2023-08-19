@@ -20,16 +20,46 @@ The print method does not change the internal representation of a
 is a list of integer vectors representing words, and the second is a
 numeric vector of coefficients.
 
+The print method uses lowercase letters a-z to represent the
+indeterminates; this is currently hard coded:
+
+\preformatted{
+> (x <- as.freealg("6abbbc + 7cax"))
+free algebra element algebraically equal to
++ 6*abbbc + 7*cax
+> unclass(x)
+$indices
+$indices[[1]]
+[1] 1 2 2 2 3
+
+$indices[[2]]
+[1]  3  1 24
+
+
+$coeffs
+[1] 6 7
+}
+
 The print method has special dispensation for length-zero freealg objects
 but these are not handled entirely consistently.
 
 The print method is sensitive to the value of
-\code{getOption("usecaret")}, defaulting to \dQuote{no}.  The default is
-to use uppercase letters to represent multiplicative inverses, but if
+\code{getOption("usecaret")}, defaulting to \dQuote{FALSE}.  The default
+is to use uppercase letters to represent multiplicative inverses, but if
 \code{TRUE}, inverses are indicated using \dQuote{\code{^-1}}.  This
 becomes cumbersome for powers above the first.  For example, the default
 notation for \eqn{aba^{-2}}{aba^-2} is \code{abAA} but becomes
 \code{aba^-1a^-1} if \code{usecaret} is \code{TRUE}.
+
+The symbols for the indeterminates are \code{c(letters,LETTERS)}.  The
+intent is to be able to signify 52 distinct indeterminates,
+\code{a-z,A-Z}, inverses indicated with carets, for example
+\dQuote{\code{G^-1}}, and this needs option \code{usecarat} to be
+\code{TRUE}.  However, if option \code{usecaret} is \code{FALSE}, then
+the print method becomes confusing for indeterminates 27-52.  For
+example, indeterminate number 1 appears as \code{a}, and its inverse is
+\code{A}.  But indeterminate number 27 also appears as \code{A}.  No
+warning is given: caveat emptor!
 
 Experimental option \code{suppress1} controls whether a coefficient of 1
 is printed or not.  If \code{FALSE}, the 1 is printed; any other value
