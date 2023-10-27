@@ -29,7 +29,7 @@ linear(x,power=1)
 \note{
 
   It is instructive to compare the functionality documented here with
-  their \pkg{mvp} equivalents.  Many of the functions documented at
+  their \CRANpkg{mvp} equivalents.  Many of the functions documented at
   \code{mvp::special.Rd} do not make sense in the context of the free
   algebra.  Function \code{mvp::product()}, for example, imposes an
   order on the expansion.
