@@ -15,7 +15,12 @@ past one another.  Abelianization is vectorized.
 }
 \value{Returns an object of class \code{freealg}.}
 \author{Robin K. S. Hankin}
-\note{There is a very similar function in the \pkg{freegroup} package.}
+
+\note{There is a very similar function in the \CRANpkg{freegroup}
+  package.  However, the \CRANpkg{frab} package is the best way to work
+  with the free Abelian group.
+}
+
 \examples{
 
 abelianize(as.freealg("ba + 2abbba + 3abAB"))
