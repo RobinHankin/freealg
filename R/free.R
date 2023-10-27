@@ -310,6 +310,7 @@ setGeneric("deriv")
 }
 
 setGeneric("drop")
+setOldClass("freealg")
 setMethod("drop","freealg", function(x){
     if(is.zero(x)){
         return(0)
