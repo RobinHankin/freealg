@@ -1,5 +1,7 @@
 \name{rfalg}
 \alias{rfalg}
+\alias{rfalgg}
+\alias{rfalggg}
 \alias{rfreealg}
 \alias{rfree}
 \title{Random free algebra objects}
