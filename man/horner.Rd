@@ -27,7 +27,7 @@ horner(P,v)
 \right)\cdots\right)\right)}{omitted; see PDF}
 
 which is much more efficient for evaluation, as it requires only
-\mjseqn{n} multiplications and \mjeqn{n} additions, and this is optimal.
+\mjseqn{n} multiplications and \mjseqn{n} additions, and this is optimal.
 Function \code{horner()} will take a \code{freealg} object for its first
 argument.
 
