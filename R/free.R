@@ -119,6 +119,15 @@
   freealg(replicate(n,sample(distinct,min(1+rgeom(1,1/maxsize),maxsize),replace=TRUE),simplify=FALSE), seq_len(n))
 }
 
+`rfalgg` <- function(n=30, distinct=8, maxsize=7, include.negative=FALSE){
+    rfalg(n=n, distinct=distinct, maxsize=maxsize, include.negative=FALSE)
+}
+
+`rfalggg` <- function(n=100, distinct=26, maxsize=30, include.negative=FALSE){
+    rfalg(n=n, distinct=distinct, maxsize=maxsize, include.negative=FALSE)
+}
+
+
 `print.freealg` <- function(x,...){
   cat("free algebra element algebraically equal to\n")
   SHRT_MAX <- 32767

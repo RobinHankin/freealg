@@ -7,6 +7,8 @@
   \dQuote{get you going} examples of \code{freealg} objects}
 \usage{
 rfalg(n=7, distinct=3, maxsize=4, include.negative=FALSE)
+rfalgg(n=30, distinct=8, maxsize=7, include.negative=FALSE)
+rfalggg(n=100, distinct=26, maxsize=30, include.negative=FALSE)
 }
 \arguments{
   \item{n}{Number of terms to generate}
@@ -20,6 +22,10 @@ rfalg(n=7, distinct=3, maxsize=4, include.negative=FALSE)
 \details{
 What you see is what you get, basically.  A term such as
 \code{aaBaAbaC} will be simplified to \code{aaaC}.
+
+Functions \code{rfalgg()} and \code{rfalggg()} return successively more
+complicated \code{freealg} objects.
+
 }
 \author{Robin K. S. Hankin}
 \examples{
