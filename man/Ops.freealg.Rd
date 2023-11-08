@@ -58,8 +58,16 @@ inv(S)
   specialist function.
 
   The caret, as in \code{a^n}, denotes arithmetic exponentiation, as in
-  \code{x^3==x*x*x}.  The only comparison operators are equality and
-  inequality; \code{x==y} is defined as \code{is.zero(x-y)}.
+  \code{x^3==x*x*x}.  As an experimental feature, this is (sort of)
+  vectorised: if \code{n} is a vector, then \code{a^n} returns the sum
+  of \code{a} raised to the power of each element of {n}.  For example,
+  \code{a^c(n1,n2,n3)} is \code{a^n1 + a^n2 + a^n3}.  Internally,
+  \code{n} is tabulated in the interests of efficiency, so
+  \code{a^c(0,2,5,5,5,) = 1 + a^2 + 3a^5} is evaluated with only a
+  single fifth power.
+
+  The only comparison operators are equality and inequality; \code{x==y}
+  is defined as \code{is.zero(x-y)}.
 
   Functions \code{lowlevel_foo()} are low-level functions that interface
   directly with the \code{C} routines in the \code{src/} directory and
@@ -81,4 +89,8 @@ as.freealg("x") * as.freealg("X") # upper-case letters are lower-case inverses
 constant(as.freealg("x+y+X+Y")^6)  # OEIS sequence A035610
 
 inv(as.freealg("2aaabAAAAx"))
+
+as.freealg("a")^(1:7)
+
+
 }

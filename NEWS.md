@@ -1,3 +1,15 @@
+# freealg_1.1-4
+
+- single-letter symbols lazy loaded (experimental)
+- semi vectorization of integer powers
+
+# freealg_1.1-3
+
+- new functions rfalgg() and rfalggg() as part of a consistentification project
+- more drop() functionality
+- better linking with the frab package
+- grades() functionality
+
 # freealg_1.0-3
 
 - add a sticker
