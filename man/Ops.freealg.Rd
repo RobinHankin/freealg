@@ -64,7 +64,8 @@ inv(S)
   \code{a^c(n1,n2,n3)} is \code{a^n1 + a^n2 + a^n3}.  Internally,
   \code{n} is tabulated in the interests of efficiency, so
   \code{a^c(0,2,5,5,5,) = 1 + a^2 + 3a^5} is evaluated with only a
-  single fifth power.
+  single fifth power.  Similar functionality is implemented in the
+  \CRANpkg{mvp} package.
 
   The only comparison operators are equality and inequality; \code{x==y}
   is defined as \code{is.zero(x-y)}.
