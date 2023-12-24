@@ -30,6 +30,8 @@ With these variables we can do all sorts of slick calculations:
 
 
 ```{r}
+.[a,.[b,c]] + .[c,.[a,b]] + .[b,.[c,a]] # Jacobi identity
+horner(2*a+3*b, 1:4)
 ```
 
 ### Package dataset {-}
