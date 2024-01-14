@@ -60,7 +60,7 @@ deg(x)
   \code{grade(x,n) <- value} sets the coefficients of terms with grade
   \code{n}.  For \code{value}, a length-one numeric vector is accepted
   (notably zero, which kills terms of grade \code{n}) and also a
-  \code{freealg} object comprising terms of grade code{n}.
+  \code{freealg} object comprising terms of grade \code{n}.
   
 }
 \value{Returns a disord object}
