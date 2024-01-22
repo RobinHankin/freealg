@@ -11,8 +11,14 @@
   letters of word \dQuote{pepper}, the answer being \eqn{\left({6\atop
   1\,2\,3}\right)=\frac{6!}{1!2!3!}=60}{6!/(1!2!3!)=60}.
 
-  Function \code{multiset()} in the \code{partitions} package gives
-  related functionality.
+  Function \code{multiset()} in the \CRANpkg{partitions} package gives
+  related functionality; for the record, one way to reproduce
+  \code{pepper("pepper")} would be
+
+  \preformatted{
+    apply(matrix(c("p","e","r")[multiset(c(1,1,1,2,2,3))],nrow=6),2,paste,collapse="")
+  }
+
   
 }
 \usage{
