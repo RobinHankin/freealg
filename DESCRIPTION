@@ -14,7 +14,7 @@ License: GPL (>= 2)
 LazyData: yes
 Imports: Rcpp (>= 1.0-7), partitions (>= 1.9-22), mathjaxr, disordR (>= 0.9-5-1)
 LinkingTo: Rcpp
-Suggests: knitr,testthat,magrittr,markdown,rmarkdown
+Suggests: knitr,testthat,magrittr,markdown,rmarkdown,covr
 VignetteBuilder: knitr
 URL: https://github.com/RobinHankin/freealg
 BugReports: https://github.com/RobinHankin/freealg/issues
