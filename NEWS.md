@@ -1,5 +1,8 @@
-# freealg_1.1-4
+# freealg_1.1-5
 
+- single-letter symbols no longer lazy loaded (experiment failed)
+
+# freealg_1.1-4
 - single-letter symbols lazy loaded (experimental)
 - semi vectorization of integer powers
 

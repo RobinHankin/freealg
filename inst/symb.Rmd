@@ -15,25 +15,32 @@ knitr::include_graphics(system.file("help/figures/freealg.png", package = "freea
 ```
 
 To cite the `freealg` package in publications please use
-@hankin2022_freealg.  This short markdown document creates variables
+@hankin2022_freealg.  This short markdown document defines variables
 `a`, `b`, $\ldots$, `z` and their inverses `A`-`Z`, which are
-single-symbol `freealg` objects.  Lowercase letters `c`, `q`, and `t`,
-and uppercase letters `C`, `D`, `F`, `I`, `T`, present particular
-problems as they have distinct meanings in `R`.  Lazy loading means
-that all these letters adopt their `freealg` interpretation on loading
-the package, which is why this functionality is experimental.
+single-symbol `freealg` objects.  At the end, it creates a file called
+`lettersymbols.rda` which loads these symbols in to an R session.
+Earlier versions of the `freealg` package included a copy of
+`lettersymbols.rda` in the `data/` directory; lazy loading meant that
+all these letters adopt their `freealg` interpretation on loading the
+package, which is why this functionality was experimental.  On
+reflection, however, it was not desirable and the file is not included
+in the package any more.  To reinstate it, and have single letters be
+interpreted as free algebra symbols, simply execute the following code:
 
-```{r}
+```{r, label=createlettersymbols}
 for(letter in c(letters,LETTERS)){
   eval(parse(text=paste(letter, ' <- as.freealg("',letter, '")')))
 }
 ```
 
+Lowercase letters `c`, `q`, and `t`, and uppercase letters
+`C`, `D`, `F`, `I`, `T`, present particular problems as they have
+distinct meanings in `R`.  
+
 With these variables we can do all sorts of slick calculations
 immediately after loading the package:
 
-
-```{r}
+```{r, label=slickexample}
 (1+a)*(1-a) == 1-a^2
 .[a,.[b,c]] + .[c,.[a,b]] + .[b,.[c,a]] # Jacobi identity
 horner(2*a+3*b, 1:4)
@@ -41,8 +48,8 @@ horner(2*a+3*b, 1:4)
 
 ### Package dataset {-}
 
-Following lines create `lettersymbols.rda`, residing in the `data/` directory
-of the package.
+Following lines create `lettersymbols.rda`, formerly residing in the
+`data/` directory of the package.
 
 ```{r,label=savepackagedataset}
 save(
