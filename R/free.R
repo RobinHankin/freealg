@@ -321,7 +321,6 @@ setMethod("drop","freealg", function(x){
     }
 })
 
-
 setGeneric("sort")
 setGeneric("unlist")
 setGeneric("lapply")
@@ -333,4 +332,13 @@ setGeneric("lapply")
   return(x)
 }
 
-
+`[.freealg` <- function(x,...){
+    wanted <- list(...)[[1]]
+    coeffs(x)[!wanted] <- 0
+    return(x)
+}
+         
+`[<-.freealg` <- function(x,index,value){
+    coeffs(x)[index] <- value
+    return(x)
+}

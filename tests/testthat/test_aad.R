@@ -28,5 +28,32 @@ test_that("test suite aad",{
   p <- as.freealg("1+x+xyz +X")  # issue #44
   coeffs(p)[unlist(lapply(words(p),function(x){any(x<0)}))] <- 0
   expect_true(p == as.freealg("1+x+xyz"))
+
+  ##  issue #46, extraction:
+  a <- as.freealg("aaa + 2*aaba + 3*abbbba + 4*xyzabc - 3*abc")
+  expect_true(a[coeffs(a)==  1] == as.freealg("aaa"))
+  expect_true(a[coeffs(a) >  2] == as.freealg("3*abbbba + 4*xyzabc"))
+  expect_true(a[coeffs(a) >  4] == 0)
+  
+  ##  issue #46, replacement:
+  a <- as.freealg("aaa + 2*aaba + 3*abbbba + 4*xyzabc - 3*abc")
+  a[coeffs(a)>3] <- 9
+  expect_true(a == as.freealg("aaa + 2*aaba + 3*abbbba + 9*xyzabc - 3*abc"))
+  expect_error(a[a])
+
+  a <- as.freealg("aaa + 2*aaba + 3*abbbba + 4*xyzabc - 3*abc")
+  a[coeffs(a)>5] <- 99
+  expect_true(a == as.freealg("aaa + 2*aaba + 3*abbbba + 4*xyzabc - 3*abc"))
+
+  a <- as.freealg("aaa + 2*aaba + 3*abbbba + 4*xyzabc - 3*abc")
+  a[coeffs(a) <= 9] <- 88
+  expect_true(a == as.freealg("88*aaa + 88*aaba + 88*abbbba + 88*xyzabc + 88*abc"))
+
+  a <- as.freealg("aaa + 2*aaba + 3*abbbba + 4*xyzabc - 3*abc")
+  expect_error(a[a] <- 0)
+
+
+
+  
   
 })

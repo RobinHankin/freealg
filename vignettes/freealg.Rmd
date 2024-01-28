@@ -138,6 +138,18 @@ subs("aabccc",b="1+3x")  # aa(1+3x)ccc
 subs("abccc",b="1+3x",x="1+d+2e")
 ```
 
+## Experimental functionality
+
+It is possible to extract components of `freealg` objects using
+reasonably standard idiom:
+
+```{r showaccessor}
+(a <- as.freealg("aaa + 2*aaba + 3*abbbba + 9*xyzabc - 3*abc"))
+a[coeffs(a) > 2]
+a[coeffs(a) < 0] <- 99
+a
+```
+
 There is even some experimental functionality for calculus:
 
 ```{r,showderiv}

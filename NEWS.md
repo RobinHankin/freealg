@@ -1,3 +1,8 @@
+# freealg_1.1-6
+
+- syntactic sugar for extraction and replacement as in x[coeffs(x)<5]
+  and x[coeffs(x)<-5] <- 0
+
 # freealg_1.1-5
 
 - single-letter symbols no longer lazy loaded (experiment failed)
