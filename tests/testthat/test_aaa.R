@@ -65,6 +65,8 @@ checker1 <- function(x){
     expect_true(x^2 == x*x, info=x)
     expect_true(x^3 == x*x*x, info=x)
     expect_true(x^4 == x*x*x*x, info=x)
+
+    expect_true(x^(0:2) == 1 + x +x^2)
     
     ## check constant() and constant<-():
     ## checks below include 
