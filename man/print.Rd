@@ -45,26 +45,28 @@ but these are not handled entirely consistently.
 
 The print method is sensitive to the value of
 \code{getOption("usecaret")}, defaulting to \dQuote{FALSE}.  The default
-is to use uppercase letters to represent multiplicative inverses, but if
-\code{TRUE}, inverses are indicated using \dQuote{\code{^-1}}.  This
-becomes cumbersome for powers above the first.  For example, the default
-notation for \eqn{aba^{-2}}{aba^-2} is \code{abAA} but becomes
+is to use uppercase letters to represent multiplicative inverses.  Thus,
+the inverse of \code{a} appears as either \dQuote{\code{a^-1}} if
+\code{usecaret} is \code{TRUE}, and \dQuote{\code{A}} if \code{FALSE}.
+Carets become cumbersome for powers above the first.  For example, the
+default notation for \eqn{aba^{-2}}{aba^-2} is \code{abAA} but becomes
 \code{aba^-1a^-1} if \code{usecaret} is \code{TRUE}.
 
-The symbols for the indeterminates are \code{c(letters,LETTERS)}.  The
-intent is to be able to signify 52 distinct indeterminates,
-\code{a-z,A-Z}, inverses indicated with carets, for example
-\dQuote{\code{G^-1}}, and this needs option \code{usecarat} to be
-\code{TRUE}.  However, if option \code{usecaret} is \code{FALSE}, then
-the print method becomes confusing for indeterminates 27-52.  For
-example, indeterminate number 1 appears as \code{a}, and its inverse is
-\code{A}.  But indeterminate number 27 also appears as \code{A}.  No
-warning is given: caveat emptor!
+The symbols for the indeterminates are currently hardcoded as
+\code{c(letters,LETTERS)}.  The intent is to be able to signify 52
+distinct indeterminates, \code{a-z,A-Z}.  This works fine if option
+\code{usecaret} is \code{TRUE}.  But if option \code{usecaret} is
+\code{FALSE}, this can be confusing: for example, indeterminate number 1
+appears as \code{a}, and its inverse would appear as \dQuote{\code{A}}.
+But indeterminate number 27 also appears as \dQuote{\code{A}}.  They
+look the same, but no warning is given: caveat emptor!
 
-Experimental option \code{suppress1} controls whether a coefficient of 1
-is printed or not.  If \code{FALSE}, the 1 is printed; any other value
-suppresses 1 values.  The logic has too many \dQuote{not}s but it's the
-best way to have the suppression active by default.
+The method is also sensitive to \code{getOption("mulsym")}, defaulting
+to \code{NULL}.  This is the multiplication symbol used between the
+coefficient and the indeterminate string.  Sometimes an asterisk,
+\code{*} might be useful.  If \code{mulsym} takes its default of
+\code{NULL} [or a length zero string], the print method suppresses
+coefficients of \eqn{\pm 1}.
 
 Integers exceeding \code{SHRT_MAX} are reserved for infinitesimals,
 which are printed as \dQuote{\code{da}}; see the note at \code{deriv.Rd}
@@ -88,10 +90,8 @@ x <- freealg(list(5,1:4,3,8,7),c(1,1,1,3,22))
 x
 
 
-options(suppress1=FALSE)
+options(mulsym = "*")
 x
-
-options(suppress1=TRUE) # restore default
-
+options(mulsym = NULL)  # restore default
 
 }

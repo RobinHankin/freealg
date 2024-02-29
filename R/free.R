@@ -151,9 +151,11 @@
     } else {
       pm <- " - "
     }
-    co <- capture.output(cat(abs(co)))
     jj <- w[i][[1]]
-    if(length(jj)>0){mulsym <- "*"} else {mulsym <- ""}
+    co <- capture.output(cat(abs(co)))
+    if(length(jj)>0){mulsym <- getOption("mulsym")} else {mulsym <- ""}
+    if((co=="1") && (is.null(mulsym) || nchar(mulsym)==0)){co <- ""}
+
     if(any(jj<0)){jj[jj<0] <- n-jj[jj<0]}
     ss <- symbols[jj]
     wanted <- jj>SHRT_MAX
@@ -170,7 +172,7 @@
     out <- paste(out, pm, co, mulsym, ss, sep="")
   }
   if(is.zero(x)){out <- "0"}
-  if(!isFALSE(getOption("suppress1"))){out <- gsub("1\\*","",out)}
+
   cat(paste(strwrap(out, getOption("width")), collapse="\n"))
   
   cat("\n")
