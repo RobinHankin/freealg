@@ -154,7 +154,7 @@
     jj <- w[i][[1]]
     co <- capture.output(cat(abs(co)))
     if(length(jj)>0){mulsym <- getOption("mulsym")} else {mulsym <- ""}
-    if((co=="1") && (is.null(mulsym) || nchar(mulsym)==0)){co <- ""}
+    if((co=="1") && (is.null(mulsym) || nchar(mulsym)==0) && (length(jj)>0)){co <- ""}
 
     if(any(jj<0)){jj[jj<0] <- n-jj[jj<0]}
     ss <- symbols[jj]
