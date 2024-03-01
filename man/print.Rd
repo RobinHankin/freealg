@@ -64,9 +64,9 @@ look the same, but no warning is given: caveat emptor!
 The method is also sensitive to \code{getOption("mulsym")}, defaulting
 to \code{NULL}.  This is the multiplication symbol used between the
 coefficient and the indeterminate string.  Sometimes an asterisk,
-\code{*} might be useful.  If \code{mulsym} takes its default of
-\code{NULL} [or a length zero string], the print method suppresses
-coefficients of \eqn{\pm 1}.
+\code{*} or a space, might be useful.  If \code{mulsym} takes its
+default of \code{NULL} [or a length zero string], the print method
+suppresses coefficients of \eqn{\pm 1}.
 
 Integers exceeding \code{SHRT_MAX} are reserved for infinitesimals,
 which are printed as \dQuote{\code{da}}; see the note at \code{deriv.Rd}
