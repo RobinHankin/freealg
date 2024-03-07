@@ -116,7 +116,7 @@ library("freealg")
 Note that the terms are stored in an implementation-specific order.
 For example, {\tt A} might appear as {\tt xxyz + 2*zy} or the
 algebraically equivalent form {\tt 2*zy + xxyz} (see the {\tt disordR}
-package~\cite{hankin2022_mvp_arxiv,hankin2022_disordR}).
+package~\cite{hankin2022_mvp_arxiv,hankin2022_disordR_arxiv}).
 
 \section{Computational implementation of free algebra: the {\tt STL}
 map class}
@@ -152,7 +152,7 @@ class is fast is that the order in which the keys are stored is
 undefined: the compiler may store them in the order which it regards
 as most propitious.  This is not an issue for the maps considered here
 as addition and multiplication are commutative and associative.  The
-package uses {\tt disordR} discipline~\cite{hankin2022_disordR}.  Note
+package uses {\tt disordR} discipline~\cite{hankin2022_disordR_arxiv}.  Note
 also that constant terms are handled with no difficulty (constants are
 simply maps from the empty map to its value), as is the zero
 polynomial (which is simply an empty map).
@@ -304,6 +304,6 @@ for working with the free algebra, leveraging the efficiency of the
 manipulating free Lie algebras.
 
 \bibliographystyle{apalike}
-\bibliography{freealg_arxiv}
+\bibliography{freealg}
 
 \end{document}
