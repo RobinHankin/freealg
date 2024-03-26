@@ -36,8 +36,8 @@ extraction is cute but not particularly efficient.
 \author{Robin K. S. Hankin}
 \note{
 
-There is an extended discussion of this issue in the \code{mvp} object
-at \code{accessor.Rd}.
+There is an extended discussion of \CRANpkg{disordR} discipline in the
+context of algebras in the \CRANpkg{mvp} package at \code{accessor.Rd}.
 
 }
 \seealso{\code{\link{constant}}}
