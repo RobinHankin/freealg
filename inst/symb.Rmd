@@ -19,13 +19,19 @@ To cite the `freealg` package in publications please use
 `a`, `b`, $\ldots$, `z` and their inverses `A`-`Z`, which are
 single-symbol `freealg` objects.  At the end, it creates a file called
 `lettersymbols.rda` which loads these symbols in to an R session.
+This file resides in the `inst/' directory of the package.
+
 Earlier versions of the `freealg` package included a copy of
 `lettersymbols.rda` in the `data/` directory; lazy loading meant that
-all these letters adopt their `freealg` interpretation on loading the
-package, which is why this functionality was experimental.  On
+all these letters adopted their `freealg` interpretation on loading
+the package, which is why this functionality was experimental.  On
 reflection, however, it was not desirable and the file is not included
-in the package any more.  To reinstate it, and have single letters be
-interpreted as free algebra symbols, simply execute the following code:
+in the package any more.  Setting `LazyData` to `TRUE` in the
+`DESCRIPTION` file is not desirable either, because the dot object
+requires lazy loading to work correctly.
+
+The following code creates upper and lower case single-letter symbols
+in an R session:
 
 ```{r, label=createlettersymbols}
 for(letter in c(letters,LETTERS)){
