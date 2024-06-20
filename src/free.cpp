@@ -224,7 +224,6 @@ freealg change_r_for_zero(const freealg &X, const int &r){
 }
 
 freealg subs(const freealg& X, const freealg& Y, const NumericVector r){
-    freealg out;
 
     // We know the words of X have no no zeros, so first we substitute
     // r[0] for 0:
