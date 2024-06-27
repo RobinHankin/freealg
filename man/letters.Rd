@@ -11,16 +11,15 @@
 
 Sometimes it is convenient in an \R session to have all 26 letters a-z
 and all 26 uppercase letters A-Z adopt their free algebra
-interpretations.  This is accomplished by executing the following
-commands:
+interpretations.  To access this, load the \code{lettersymbols} dataset,
+which is provided with the package in the \code{inst} directory:
 
-  \preformatted{
-    for(letter in c(letters,LETTERS)){
-      eval(parse(text=paste(letter, ' <- as.freealg("',letter, '")')))
-    }
-  }
+\preformatted{
+  load(system.file("lettersymbols.rda",package="freealg"))
+}
+
   
-Executing these commands allows you to do cool things such as the
+Executing this allows you to do cool things such as the
 following:
 
 \preformatted{
