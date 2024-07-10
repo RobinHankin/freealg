@@ -72,16 +72,6 @@ jobs:
         run: rownames(installed.packages())
         shell: Rscript {0}
 
-      - name: Install dependencies
-        run: |
-        remotes::install_deps(dependencies = TRUE)
-        remotes::install_cran("rcmdcheck")
-        tinytex::parse_install( text = "! LaTeX Error: File ae.sty' not found.") tinytex::parse_install( text = "! LaTeX Error: File footmisc.sty' not found.")
-        tinytex::parse_install( text = "! LaTeX Error: File ctable.sty' not found.") tinytex::parse_install( text = "! LaTeX Error: File grfext.sty' not found.")
-        shell: Rscript {0}
-
-
-
       # Get package name and version from DESCRIPTION so that we'll know
       # what's the name of the tar.gz file with the built package.
       # pkgbuild is set as an output which can be accessed by subsequent steps.
@@ -98,7 +88,7 @@ jobs:
       # --no-manual --no-build-vignettes because this requires LaTeX.
       - name: Build R package 🏗
         run: |
-          R CMD build ${{ github.event.repository.name }}
+          R CMD build --no-manual --no-build-vignettes ${{ github.event.repository.name }}
           ls -l
         shell: bash
 
