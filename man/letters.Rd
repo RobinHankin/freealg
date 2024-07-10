@@ -5,7 +5,7 @@
 \description{
   Variables \code{a}, \code{b},\ldots, \code{z} and their inverses
   \code{A}-\code{Z} are given their \code{freealg} semantic meaning.
-  }
+}
 
 \details{
 
