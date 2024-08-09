@@ -1,10 +1,10 @@
-# Contributing to `stokes`
+# Contributing to `freealg`
 
-Thank you for considering contributing to `stokes`!  I appreciate your
-interest in making this project better.  Please read and adhere to the
-[Code of Conduct](CODE_OF_CONDUCT.md) to maintain a safe, welcoming,
-and inclusive environment.  Various forms of contributions are
-welcome:
+Thank you for considering contributing to `freealg`!  I appreciate
+your interest in making this project better.  Please read and adhere
+to the [Code of Conduct](CODE_OF_CONDUCT.md) to maintain a safe,
+welcoming, and inclusive environment.  Various forms of contributions
+are welcome:
 
 - **Bug Reports**: Feel free to report any bugs you encounter.
 - **Documentation**: Typos, clarity issues, or missing guides: your
