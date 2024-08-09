@@ -1,3 +1,11 @@
+# freealg_1.1-8
+
+- code of conduct and contributing guidelines
+
+# freealg_1.1-7
+
+- consistentification
+
 # freealg_1.1-6
 
 - syntactic sugar for extraction and replacement as in x[coeffs(x)<5]
