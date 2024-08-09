@@ -175,7 +175,7 @@
   cat(paste(strwrap(out, getOption("width")), collapse="\n"))
   
   cat("\n")
-  return(x)
+  return(invisible(x))
 }
 
 `vector_to_free` <- function(v,coeffs){
