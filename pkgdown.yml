@@ -1,0 +1,9 @@
+pandoc: 3.1.11
+pkgdown: 2.1.0
+pkgdown_sha: ~
+articles:
+  freealg: freealg.html
+last_built: 2024-08-09T13:54Z
+urls:
+  reference: https://robinhankin.github.io/freealg/reference
+  article: https://robinhankin.github.io/freealg/articles
