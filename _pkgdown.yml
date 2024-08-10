@@ -1,4 +1,3 @@
 url: https://robinhankin.github.io/freealg/
 template:
-  bootstrap: 5
-
+  math-rendering: katex
