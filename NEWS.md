@@ -3,6 +3,7 @@
 - code of conduct and contributing guidelines
 - remove dependency on mathjax
 - bugfixes
+- revdepcheck workflow
 
 # freealg_1.1-7
 
