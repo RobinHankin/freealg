@@ -32,7 +32,7 @@ vector_to_free(v,coeffs)
   \item{x}{Object possibly of class \code{freealg}}
   \item{...}{Further arguments, passed to the methods}
 }
-\details{\loadmathjax
+\details{
 
 Function \code{freealg()} is the formal creation mechanism for
 \code{freealg} objects.  However, it is not very user-friendly; it is
@@ -78,7 +78,7 @@ with the default print method.
   only has 26 symbols for letters a-z (and A-Z for the inverses), but
   the objects themselves do not care about the print method.  Note also
   that the experimental calculus facility (as per \code{deriv()})
-  reserves numbers in the range \code{SHRT_MAX}\mjeqn{{}\pm r}{+/-r} for
+  reserves numbers in the range \code{SHRT_MAX}\eqn{{}\pm r}{+/-r} for
   infinitesimals, where \code{r} is the integer for a symbol.  This
   system might change in the future.  }
 \examples{

@@ -5,7 +5,6 @@ exportMethods("[")
 
 
 import("methods")
-import("mathjaxr")
 
 importFrom("stats", "rgeom")
 importFrom(Rcpp, evalCpp)

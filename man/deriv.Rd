@@ -4,7 +4,7 @@
 \alias{deriv.freealg}
 \alias{deriv_freealg}
 \title{Differentiation of \code{freealg} objects}
-\description{\loadmathjax
+\description{
   Differentiation of \code{freealg} objects
 }
 \usage{
@@ -22,10 +22,10 @@
 \details{
 
   Experimental function \code{deriv(S,v)} returns
-      \mjeqn{\frac{\partial^r S}{\partial v_1\partial v_2\ldots\partial
+      \eqn{\frac{\partial^r S}{\partial v_1\partial v_2\ldots\partial
       v_r}}{d^rS/dv1...dvr}.  The Leibniz product rule
 
-  \mjdeqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see latex}
+  \deqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see latex}
 
   operates even if (as here) \eqn{u,v} do not commute.  For example, if
   we wish to differentiate \eqn{aaba} with respect to \eqn{a}, we would
@@ -66,7 +66,7 @@
 
   It is possible to perform repeated differentiation by passing a
   suitable value of \code{r}.  For
-  \mjeqn{\frac{\partial^2}{\partial a\partial c}}{omitted}:
+  \eqn{\frac{\partial^2}{\partial a\partial c}}{omitted}:
 
   \preformatted{
     > deriv(as.freealg("aaabAcx"),"ac")

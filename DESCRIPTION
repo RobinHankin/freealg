@@ -12,11 +12,9 @@ Description: The free algebra in R with non-commuting indeterminates.
      <doi:10.48550/ARXIV.2211.04002>.
 License: GPL (>= 2)
 LazyData: yes
-Imports: Rcpp (>= 1.0-7), partitions (>= 1.9-22), mathjaxr, disordR (>= 0.9-5-1)
+Imports: Rcpp (>= 1.0-7), partitions (>= 1.9-22), disordR (>= 0.9-5-1)
 LinkingTo: Rcpp
 Suggests: knitr,testthat,magrittr,markdown,rmarkdown,covr
 VignetteBuilder: knitr
 URL: https://github.com/RobinHankin/freealg, https://robinhankin.github.io/freealg/
 BugReports: https://github.com/RobinHankin/freealg/issues
-RdMacros: mathjaxr
-
