@@ -58,21 +58,22 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">subs</span><span class="op">(</span><span class="va">S</span>, <span class="va">...</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">subs</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
 <span><span class="fu">subsu</span><span class="op">(</span><span class="va">S1</span>,<span class="va">S2</span>,<span class="va">r</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <p></p>
-<dl><dt id="arg-s-s-s-">S,S1,S2<a class="anchor" aria-label="anchor" href="#arg-s-s-s-"></a></dt>
+<dl><dt id="arg-s-s-">S1,S2<a class="anchor" aria-label="anchor" href="#arg-s-s-"></a></dt>
 <dd><p>Objects of class <code>freealg</code></p></dd>
 
   <dt id="arg-r">r<a class="anchor" aria-label="anchor" href="#arg-r"></a></dt>
 <dd><p>Integer specifying symbol to substitute (\(a=1,b=2\) etc)</p></dd>
 
   <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>named arguments corresponding to variables to substitute</p></dd>
+<dd><p>First element is a <code>freealg</code> object, remainder are
+    named arguments corresponding to variables to substitute</p></dd>
 
 </dl></div>
     <div id="value">
@@ -147,84 +148,13 @@ substitutes occurrences of symbol <code>r</code> with <code>S2</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + 4accc + 3adccc + 6aeccc</span>
 <span class="r-in"><span><span class="fu">subs</span><span class="op">(</span><span class="fu"><a href="rfalg.html">rfalg</a></span><span class="op">(</span><span class="op">)</span>,a<span class="op">=</span><span class="fu"><a href="rfalg.html">rfalg</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 1512aaa + 1764aabc + 756aaca + 1008aacaba + 252aacabb + 1764aaccb + 1764abca</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 2058abcbc + 882abcca + 1176abccaba + 294abccabb + 2058abcccb + 6ac + 1188acaa</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 1008acabaa + 1176acababc + 504acabaca + 672acabacaba + 168acabacabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1176acabaccb + 252acabba + 294acabbbc + 126acabbca + 168acabbcaba + 42acabbcabb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 294acabbccb + 1386acabc + 594acaca + 792acacaba + 198acacabb + 1386acaccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 504acbca + 588acbcbc + 252acbcca + 336acbccaba + 84acbccabb + 588acbcccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 216accaa + 288accabaa + 336accababc + 144accabaca + 192accabacaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48accabacabb + 336accabaccb + 72accabba + 84accabbbc + 36accabbca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48accabbcaba + 12accabbcabb + 84accabbccb + 252accabc + 108accaca + 144accacaba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 36accacabb + 252accaccb + 1764accba + 2058accbbc + 882accbca + 1176accbcaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 294accbcabb + 2058accbccb + 504acccba + 588acccbbc + 252acccbca + 336acccbcaba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 84acccbcabb + 588acccbccb + 8b + 1764bcaa + 2058bcabc + 882bcaca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1176bcacaba + 294bcacabb + 2058bcaccb + 2058bcbca + 2401bcbcbc + 1029bcbcca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1372bcbccaba + 343bcbccabb + 2401bcbcccb + 7bcc + 1386bccaa + 1176bccabaa +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1372bccababc + 588bccabaca + 784bccabacaba + 196bccabacabb + 1372bccabaccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 294bccabba + 343bccabbbc + 147bccabbca + 196bccabbcaba + 49bccabbcabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 343bccabbccb + 1617bccabc + 693bccaca + 924bccacaba + 231bccacabb + 1617bccaccb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 588bccbca + 686bccbcbc + 294bccbcca + 392bccbccaba + 98bccbccabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 686bccbcccb + 252bcccaa + 336bcccabaa + 392bcccababc + 168bcccabaca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 224bcccabacaba + 56bcccabacabb + 392bcccabaccb + 84bcccabba + 98bcccabbbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42bcccabbca + 56bcccabbcaba + 14bcccabbcabb + 98bcccabbccb + 294bcccabc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 126bcccaca + 168bcccacaba + 42bcccacabb + 294bcccaccb + 2058bcccba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2401bcccbbc + 1029bcccbca + 1372bcccbcaba + 343bcccbcabb + 2401bcccbccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 588bccccba + 686bccccbbc + 294bccccbca + 392bccccbcaba + 98bccccbcabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 686bccccbccb + 4c + 756caaa + 882caabc + 378caaca + 504caacaba + 126caacabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 882caaccb + 1008cabaaa + 1176cabaabc + 504cabaaca + 672cabaacaba + 168cabaacabb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 1176cabaaccb + 1176cababca + 1372cababcbc + 588cababcca + 784cababccaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 196cababccabb + 1372cababcccb + 4cabac + 792cabacaa + 672cabacabaa +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 784cabacababc + 336cabacabaca + 448cabacabacaba + 112cabacabacabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 784cabacabaccb + 168cabacabba + 196cabacabbbc + 84cabacabbca + 112cabacabbcaba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 28cabacabbcabb + 196cabacabbccb + 924cabacabc + 396cabacaca + 528cabacacaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 132cabacacabb + 924cabacaccb + 336cabacbca + 392cabacbcbc + 168cabacbcca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 224cabacbccaba + 56cabacbccabb + 392cabacbcccb + 144cabaccaa + 192cabaccabaa +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 224cabaccababc + 96cabaccabaca + 128cabaccabacaba + 32cabaccabacabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 224cabaccabaccb + 48cabaccabba + 56cabaccabbbc + 24cabaccabbca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32cabaccabbcaba + 8cabaccabbcabb + 56cabaccabbccb + 168cabaccabc + 72cabaccaca</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 96cabaccacaba + 24cabaccacabb + 168cabaccaccb + 1176cabaccba + 1372cabaccbbc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 588cabaccbca + 784cabaccbcaba + 196cabaccbcabb + 1372cabaccbccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 336cabacccba + 392cabacccbbc + 168cabacccbca + 224cabacccbcaba + 56cabacccbcabb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 392cabacccbccb + 252cabbaa + 294cabbabc + 126cabbaca + 168cabbacaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42cabbacabb + 294cabbaccb + 294cabbbca + 343cabbbcbc + 147cabbbcca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 196cabbbccaba + 49cabbbccabb + 343cabbbcccb + cabbc + 198cabbcaa + 168cabbcabaa</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 196cabbcababc + 84cabbcabaca + 112cabbcabacaba + 28cabbcabacabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 196cabbcabaccb + 42cabbcabba + 49cabbcabbbc + 21cabbcabbca + 28cabbcabbcaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7cabbcabbcabb + 49cabbcabbccb + 231cabbcabc + 99cabbcaca + 132cabbcacaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33cabbcacabb + 231cabbcaccb + 84cabbcbca + 98cabbcbcbc + 42cabbcbcca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56cabbcbccaba + 14cabbcbccabb + 98cabbcbcccb + 36cabbccaa + 48cabbccabaa +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56cabbccababc + 24cabbccabaca + 32cabbccabacaba + 8cabbccabacabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56cabbccabaccb + 12cabbccabba + 14cabbccabbbc + 6cabbccabbca + 8cabbccabbcaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2cabbccabbcabb + 14cabbccabbccb + 42cabbccabc + 18cabbccaca + 24cabbccacaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6cabbccacabb + 42cabbccaccb + 294cabbccba + 343cabbccbbc + 147cabbccbca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 196cabbccbcaba + 49cabbccbcabb + 343cabbccbccb + 84cabbcccba + 98cabbcccbbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42cabbcccbca + 56cabbcccbcaba + 14cabbcccbcabb + 98cabbcccbccb + 882cabca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1029cabcbc + 441cabcca + 588cabccaba + 147cabccabb + 1029cabcccb + 3cac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 594cacaa + 504cacabaa + 588cacababc + 252cacabaca + 336cacabacaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 84cacabacabb + 588cacabaccb + 126cacabba + 147cacabbbc + 63cacabbca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 84cacabbcaba + 21cacabbcabb + 147cacabbccb + 693cacabc + 297cacaca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 396cacacaba + 99cacacabb + 693cacaccb + 252cacbca + 294cacbcbc + 126cacbcca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 168cacbccaba + 42cacbccabb + 294cacbcccb + 108caccaa + 144caccabaa +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 168caccababc + 72caccabaca + 96caccabacaba + 24caccabacabb + 168caccabaccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36caccabba + 42caccabbbc + 18caccabbca + 24caccabbcaba + 6caccabbcabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42caccabbccb + 126caccabc + 54caccaca + 72caccacaba + 18caccacabb + 126caccaccb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 882caccba + 1029caccbbc + 441caccbca + 588caccbcaba + 147caccbcabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1029caccbccb + 252cacccba + 294cacccbbc + 126cacccbca + 168cacccbcaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42cacccbcabb + 294cacccbccb + 6cbb + 1764ccbaa + 2058ccbabc + 882ccbaca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1176ccbacaba + 294ccbacabb + 2058ccbaccb + 2058ccbbca + 2401ccbbcbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1029ccbbcca + 1372ccbbccaba + 343ccbbccabb + 2401ccbbcccb + 7ccbc + 1386ccbcaa</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 1176ccbcabaa + 1372ccbcababc + 588ccbcabaca + 784ccbcabacaba + 196ccbcabacabb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 1372ccbcabaccb + 294ccbcabba + 343ccbcabbbc + 147ccbcabbca + 196ccbcabbcaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49ccbcabbcabb + 343ccbcabbccb + 1617ccbcabc + 693ccbcaca + 924ccbcacaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 231ccbcacabb + 1617ccbcaccb + 588ccbcbca + 686ccbcbcbc + 294ccbcbcca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 392ccbcbccaba + 98ccbcbccabb + 686ccbcbcccb + 252ccbccaa + 336ccbccabaa +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 392ccbccababc + 168ccbccabaca + 224ccbccabacaba + 56ccbccabacabb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 392ccbccabaccb + 84ccbccabba + 98ccbccabbbc + 42ccbccabbca + 56ccbccabbcaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14ccbccabbcabb + 98ccbccabbccb + 294ccbccabc + 126ccbccaca + 168ccbccacaba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42ccbccacabb + 294ccbccaccb + 2058ccbccba + 2401ccbccbbc + 1029ccbccbca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1372ccbccbcaba + 343ccbccbcabb + 2401ccbccbccb + 588ccbcccba + 686ccbcccbbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 294ccbcccbca + 392ccbcccbcaba + 98ccbcccbcabb + 686ccbcccbccb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 42aaa + 6ac + 12acaa + 48b + 7bc + 24c + 21caaa + 196caaabaaa + 28caaabac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56caaabacaa + 231caaabb + 112caaabc + 168caaabcbb + 3cac + 6cacaa + 56cacaabaaa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 8cacaabac + 16cacaabacaa + 66cacaabb + 32cacaabc + 48cacaabcbb + 28cacbaaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4cacbac + 8cacbacaa + 33cacbb + 16cacbc + 24cacbcbb + 24cb + 36cbb + 224cbbaaa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 32cbbac + 64cbbacaa + 264cbbb + 128cbbc + 192cbbcbb + 12cc + 7ccb + 112ccbaaa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 16ccbac + 32ccbacaa + 150ccbb + 168ccbbbaaa + 24ccbbbac + 48ccbbbacaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 198ccbbbb + 96ccbbbc + 144ccbbbcbb + 64ccbc + 96ccbcbb</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
