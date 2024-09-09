@@ -8,13 +8,14 @@
   \code{freealg} objects
 }
 \usage{
-subs(S, ...)
+subs(...)
 subsu(S1,S2,r)
 }
 \arguments{
-  \item{S,S1,S2}{Objects of class \code{freealg}}
+  \item{S1,S2}{Objects of class \code{freealg}}
   \item{r}{Integer specifying symbol to substitute (\eqn{a=1,b=2} etc)}
-  \item{\dots}{named arguments corresponding to variables to substitute}
+  \item{\dots}{First element is a \code{freealg} object, remainder are
+    named arguments corresponding to variables to substitute}
 }
 \value{
   Returns a \code{freealg} object.

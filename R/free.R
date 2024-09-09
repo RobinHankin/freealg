@@ -244,14 +244,14 @@ setGeneric("deriv")
     freealg(out[[1]],out[[2]])
 }
 
-`subs` <- function(S, ...){
-    sb  <- list(...)
-    v <- names(sb)
-    out <- S
-    for (i in seq_along(sb)) {
-      out <- subsu(out, sb[[i]],v[i])
-    }
-    return(out)
+`subs` <- function(...) {
+  sb <- list(...)[-1]
+  v <- names(sb)
+  out <- list(...)[[1]]
+  for (i in seq_along(sb)) {
+    out <- subsu(out, sb[[i]], v[i])
+  }
+  return(out)
 }
 
 `linear` <- function(x,power=1){
