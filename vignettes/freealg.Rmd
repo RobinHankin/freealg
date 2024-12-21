@@ -3,6 +3,7 @@ title: "The free algebra with R"
 author: "Robin K. S. Hankin"
 output: html_vignette
 bibliography: freealg.bib
+link-citations: true
 vignette: >
   %\VignetteIndexEntry{The free algebra}
   %\VignetteEngine{knitr::rmarkdown}
