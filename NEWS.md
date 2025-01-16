@@ -1,5 +1,7 @@
 # freealg_1.1-8
 
+- add drop argument to grades()
+- bugfix to `grades<-()`
 - code of conduct and contributing guidelines
 - remove dependency on mathjax
 - bugfixes

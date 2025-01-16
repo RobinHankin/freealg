@@ -36,7 +36,7 @@ However, a case for \code{NULL} could be made.
 }
 \usage{
 grades(x)
-grade(x,n)
+grade(x,n,drop=FALSE)
 grade(x,n) <- value
 deg(x)
 }
@@ -44,6 +44,8 @@ deg(x)
   \item{x}{Freealg object}
   \item{n}{Integer vector}
   \item{value}{Replacement value, a numeric vector}
+  \item{drop}{Boolean, indicating whether or not to return a
+    \code{drop}ped value}n
 }
 \details{
 
@@ -56,6 +58,11 @@ deg(x)
   \code{grade(x,n)} returns the freealg object comprising terms with
   grade \code{n} (which may be a vector).  Note that this function is
   considerably less efficient than \code{clifford::grade()}.
+
+  The \code{drop} argument to \code{grade()} only makes a difference if
+  \code{n=0}, that is, extracting the constant.  It defaults to
+  \code{FALSE} on the grounds that \code{constant()} returns a
+  \code{drop}ped value.
 
   \code{grade(x,n) <- value} sets the coefficients of terms with grade
   \code{n}.  For \code{value}, a length-one numeric vector is accepted

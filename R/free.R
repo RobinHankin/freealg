@@ -268,9 +268,10 @@ setGeneric("deriv")
     freealg(split(mv,col(mv)),rep(1,ncol(mv)))
 }
 
-`grade` <- function(x,n){
+`grade` <- function(x,n,drop=FALSE){
     if(missing(n)){stop("argument 'n' missing ... maybe you meant grades()?")}
     coeffs(x)[!(grades(x) %in% n)] <- 0
+    if(drop){x <- drop(x)}
     return(x)
 }
 

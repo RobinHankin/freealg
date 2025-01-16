@@ -83,4 +83,9 @@ test_that("Test suite zzz, specific identities and miscellaneous checks",{
   ## also issue #51:
   expect_true(grades(x*0) == -Inf)
   
+  X <- as.freealg("4 + 6x -8xyz")
+  expect_true (identical(grade(X,0,drop=TRUE ),4))
+  expect_false(identical(grade(X,0           ),4))  # checks the default
+  expect_false(identical(grade(X,0,drop=FALSE),4))
+  
 })
