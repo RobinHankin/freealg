@@ -97,7 +97,7 @@ However, a case for <code>NULL</code> could be made.</p>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">grades</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="fu">grade</span><span class="op">(</span><span class="va">x</span>,<span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu">grade</span><span class="op">(</span><span class="va">x</span>,<span class="va">n</span>,drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu">grade</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
 <span><span class="fu">deg</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -114,7 +114,11 @@ However, a case for <code>NULL</code> could be made.</p>
   <dt id="arg-value">value<a class="anchor" aria-label="anchor" href="#arg-value"></a></dt>
 <dd><p>Replacement value, a numeric vector</p></dd>
 
-</dl></div>
+  <dt id="arg-drop">drop<a class="anchor" aria-label="anchor" href="#arg-drop"></a></dt>
+<dd><p>Boolean, indicating whether or not to return a
+    <code>drop</code>ped value</p></dd>
+</dl><p>n</p>
+    </div>
     <div id="details">
     <h2>Details</h2>
 
@@ -126,6 +130,10 @@ However, a case for <code>NULL</code> could be made.</p>
 <p><code>grade(x,n)</code> returns the freealg object comprising terms with
   grade <code>n</code> (which may be a vector).  Note that this function is
   considerably less efficient than <code>clifford::grade()</code>.</p>
+<p>The <code>drop</code> argument to <code>grade()</code> only makes a difference if
+  <code>n=0</code>, that is, extracting the constant.  It defaults to
+  <code>FALSE</code> on the grounds that <code><a href="https://robinhankin.github.io/freealg/reference/constant.html">constant()</a></code> returns a
+  <code>drop</code>ped value.</p>
 <p><code>grade(x,n) &lt;- value</code> sets the coefficients of terms with grade
   <code>n</code>.  For <code>value</code>, a length-one numeric vector is accepted
   (notably zero, which kills terms of grade <code>n</code>) and also a
