@@ -285,6 +285,7 @@ setGeneric("deriv")
 
 `grade<-` <- function(x, n, value){
     if(is.freealg(value)){
+        if(is.zero(value)){return(Recall(x,n,0))}
         stopifnot(all(grades(value) %in% n))
         grade(x,n) <- 0
         return(x+value)

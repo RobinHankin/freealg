@@ -71,9 +71,16 @@ test_that("Test suite zzz, specific identities and miscellaneous checks",{
 
   expect_false(all_pos(as.freealg("1+x+y+X")))
   expect_true (all_pos(as.freealg("1+x+y+z")))
+
+
+  ## following test checks fix to issue #51
+  x <- as.freealg("5a + 5acaa + 3acab + 2b + 6cba + 7ccab")
+  xold <- x
+  y <- as.freealg("7a + 5aacb + 10b + 2c + 4cab")
+  grade(x,2) <- grade(y,2)
+  expect_true(x == xold)
+
+  ## also issue #51:
+  expect_true(grades(x*0) == -Inf)
   
-  })
-
-  
-
-
+})
