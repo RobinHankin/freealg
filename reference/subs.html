@@ -140,6 +140,18 @@ substitutes occurrences of symbol <code>r</code> with <code>S2</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + A</span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="rfalg.html">rfalg</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">subs</span><span class="op">(</span><span class="va">a</span>,a<span class="op">=</span><span class="va">a</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 36a + 49bc + 36ca + 168caba + 12cabb + 168cabbc + 72cabca + 96cabcaba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24cabcabb + 168cabccb + 21cbc + 168cbcba + 7cbcbb + 196cbcbbc + 84cbcbca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112cbcbcaba + 28cbcbcabb + 196cbcbccb + 9cca + 84ccaba + 96ccababa + 4ccababb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112ccababbc + 48ccababca + 64ccababcaba + 16ccababcabb + 112ccababccb + 6ccabb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 24ccabbba + ccabbbb + 28ccabbbbc + 12ccabbbca + 16ccabbbcaba + 4ccabbbcabb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28ccabbbccb + 84ccabbc + 36ccabca + 48ccabcaba + 12ccabcabb + 84ccabccb + 49ccb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 21cccb + 168cccbba + 7cccbbb + 196cccbbbc + 84cccbbca + 112cccbbcaba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28cccbbcabb + 196cccbbccb</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Sequential substitution works:</span></span></span>
 <span class="r-in"><span></span></span>
@@ -148,13 +160,97 @@ substitutes occurrences of symbol <code>r</code> with <code>S2</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + 4accc + 3adccc + 6aeccc</span>
 <span class="r-in"><span><span class="fu">subs</span><span class="op">(</span><span class="fu"><a href="rfalg.html">rfalg</a></span><span class="op">(</span><span class="op">)</span>,a<span class="op">=</span><span class="fu"><a href="rfalg.html">rfalg</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 42aaa + 6ac + 12acaa + 48b + 7bc + 24c + 21caaa + 196caaabaaa + 28caaabac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56caaabacaa + 231caaabb + 112caaabc + 168caaabcbb + 3cac + 6cacaa + 56cacaabaaa</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 8cacaabac + 16cacaabacaa + 66cacaabb + 32cacaabc + 48cacaabcbb + 28cacbaaa +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4cacbac + 8cacbacaa + 33cacbb + 16cacbc + 24cacbcbb + 24cb + 36cbb + 224cbbaaa</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 32cbbac + 64cbbacaa + 264cbbb + 128cbbc + 192cbbcbb + 12cc + 7ccb + 112ccbaaa</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 16ccbac + 32ccbacaa + 150ccbb + 168ccbbbaaa + 24ccbbbac + 48ccbbbacaa +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 198ccbbbb + 96ccbbbc + 144ccbbbcbb + 64ccbc + 96ccbcbb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 2401aacbaacbaacb + 686aacbaacbabca + 2058aacbaacbbb + 1029aacbaacbbca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1715aacbaacbbccb + 1715aacbaacbc + 686aacbabcaaacb + 196aacbabcaabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 588aacbabcabb + 294aacbabcabca + 490aacbabcabccb + 490aacbabcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2058aacbbbaacb + 588aacbbbabca + 1764aacbbbbb + 882aacbbbbca + 1470aacbbbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1470aacbbbc + 1029aacbbcaaacb + 294aacbbcaabca + 882aacbbcabb + 441aacbbcabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 735aacbbcabccb + 735aacbbcac + 1715aacbbccbaacb + 490aacbbccbabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1470aacbbccbbb + 735aacbbccbbca + 1225aacbbccbbccb + 1225aacbbccbc + 7aacbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1715aacbcaacb + 686aacbcaacbaacb + 196aacbcaacbabca + 588aacbcaacbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 294aacbcaacbbca + 490aacbcaacbbccb + 490aacbcaacbc + 490aacbcabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196aacbcabcaaacb + 56aacbcabcaabca + 168aacbcabcabb + 84aacbcabcabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140aacbcabcabccb + 140aacbcabcac + 1470aacbcbb + 588aacbcbbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168aacbcbbabca + 504aacbcbbbb + 252aacbcbbbca + 420aacbcbbbccb + 420aacbcbbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 735aacbcbca + 294aacbcbcaaacb + 84aacbcbcaabca + 252aacbcbcabb + 126aacbcbcabca</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 210aacbcbcabccb + 210aacbcbcac + 1225aacbcbccb + 490aacbcbccbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140aacbcbccbabca + 420aacbcbccbbb + 210aacbcbccbbca + 350aacbcbccbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 350aacbcbccbc + 1225aacbcc + 490aacbccaacb + 140aacbccabca + 420aacbccbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 210aacbccbca + 350aacbccbccb + 350aacbccc + 686abcaaacbaacb + 196abcaaacbabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 588abcaaacbbb + 294abcaaacbbca + 490abcaaacbbccb + 490abcaaacbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196abcaabcaaacb + 56abcaabcaabca + 168abcaabcabb + 84abcaabcabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140abcaabcabccb + 140abcaabcac + 588abcabbaacb + 168abcabbabca + 504abcabbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252abcabbbca + 420abcabbbccb + 420abcabbc + 294abcabcaaacb + 84abcabcaabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252abcabcabb + 126abcabcabca + 210abcabcabccb + 210abcabcac + 490abcabccbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140abcabccbabca + 420abcabccbbb + 210abcabccbbca + 350abcabccbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 350abcabccbc + 2abcac + 490abcacaacb + 196abcacaacbaacb + 56abcacaacbabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168abcacaacbbb + 84abcacaacbbca + 140abcacaacbbccb + 140abcacaacbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140abcacabca + 56abcacabcaaacb + 16abcacabcaabca + 48abcacabcabb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24abcacabcabca + 40abcacabcabccb + 40abcacabcac + 420abcacbb + 168abcacbbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48abcacbbabca + 144abcacbbbb + 72abcacbbbca + 120abcacbbbccb + 120abcacbbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 210abcacbca + 84abcacbcaaacb + 24abcacbcaabca + 72abcacbcabb + 36abcacbcabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60abcacbcabccb + 60abcacbcac + 350abcacbccb + 140abcacbccbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40abcacbccbabca + 120abcacbccbbb + 60abcacbccbbca + 100abcacbccbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100abcacbccbc + 350abcacc + 140abcaccaacb + 40abcaccabca + 120abcaccbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60abcaccbca + 100abcaccbccb + 100abcaccc + 8b + 2058bbaacbaacb + 588bbaacbabca</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 1764bbaacbbb + 882bbaacbbca + 1470bbaacbbccb + 1470bbaacbc + 588bbabcaaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168bbabcaabca + 504bbabcabb + 252bbabcabca + 420bbabcabccb + 420bbabcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1764bbbbaacb + 504bbbbabca + 1512bbbbbb + 756bbbbbca + 1260bbbbbccb + 1260bbbbc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 882bbbcaaacb + 252bbbcaabca + 756bbbcabb + 378bbbcabca + 630bbbcabccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 630bbbcac + 1470bbbccbaacb + 420bbbccbabca + 1260bbbccbbb + 630bbbccbbca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1050bbbccbbccb + 1050bbbccbc + 6bbc + 1470bbcaacb + 588bbcaacbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168bbcaacbabca + 504bbcaacbbb + 252bbcaacbbca + 420bbcaacbbccb + 420bbcaacbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 420bbcabca + 168bbcabcaaacb + 48bbcabcaabca + 144bbcabcabb + 72bbcabcabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120bbcabcabccb + 120bbcabcac + 1260bbcbb + 504bbcbbaacb + 144bbcbbabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 432bbcbbbb + 216bbcbbbca + 360bbcbbbccb + 360bbcbbc + 630bbcbca + 252bbcbcaaacb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 72bbcbcaabca + 216bbcbcabb + 108bbcbcabca + 180bbcbcabccb + 180bbcbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1050bbcbccb + 420bbcbccbaacb + 120bbcbccbabca + 360bbcbccbbb + 180bbcbccbbca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 300bbcbccbbccb + 300bbcbccbc + 1050bbcc + 420bbccaacb + 120bbccabca + 360bbccbb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 180bbccbca + 300bbccbccb + 300bbccc + 1029bcaaacbaacb + 294bcaaacbabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 882bcaaacbbb + 441bcaaacbbca + 735bcaaacbbccb + 735bcaaacbc + 294bcaabcaaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84bcaabcaabca + 252bcaabcabb + 126bcaabcabca + 210bcaabcabccb + 210bcaabcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 882bcabbaacb + 252bcabbabca + 756bcabbbb + 378bcabbbca + 630bcabbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 630bcabbc + 441bcabcaaacb + 126bcabcaabca + 378bcabcabb + 189bcabcabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 315bcabcabccb + 315bcabcac + 735bcabccbaacb + 210bcabccbabca + 630bcabccbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 315bcabccbbca + 525bcabccbbccb + 525bcabccbc + 3bcac + 735bcacaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 294bcacaacbaacb + 84bcacaacbabca + 252bcacaacbbb + 126bcacaacbbca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 210bcacaacbbccb + 210bcacaacbc + 210bcacabca + 84bcacabcaaacb + 24bcacabcaabca</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 72bcacabcabb + 36bcacabcabca + 60bcacabcabccb + 60bcacabcac + 630bcacbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252bcacbbaacb + 72bcacbbabca + 216bcacbbbb + 108bcacbbbca + 180bcacbbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 180bcacbbc + 315bcacbca + 126bcacbcaaacb + 36bcacbcaabca + 108bcacbcabb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54bcacbcabca + 90bcacbcabccb + 90bcacbcac + 525bcacbccb + 210bcacbccbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60bcacbccbabca + 180bcacbccbbb + 90bcacbccbbca + 150bcacbccbbccb + 150bcacbccbc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 525bcacc + 210bcaccaacb + 60bcaccabca + 180bcaccbb + 90bcaccbca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 150bcaccbccb + 150bcaccc + 1715bccbaacbaacb + 490bccbaacbabca + 1470bccbaacbbb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 735bccbaacbbca + 1225bccbaacbbccb + 1225bccbaacbc + 490bccbabcaaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140bccbabcaabca + 420bccbabcabb + 210bccbabcabca + 350bccbabcabccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 350bccbabcac + 1470bccbbbaacb + 420bccbbbabca + 1260bccbbbbb + 630bccbbbbca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1050bccbbbbccb + 1050bccbbbc + 735bccbbcaaacb + 210bccbbcaabca + 630bccbbcabb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 315bccbbcabca + 525bccbbcabccb + 525bccbbcac + 1225bccbbccbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 350bccbbccbabca + 1050bccbbccbbb + 525bccbbccbbca + 875bccbbccbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 875bccbbccbc + 5bccbc + 1225bccbcaacb + 490bccbcaacbaacb + 140bccbcaacbabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 420bccbcaacbbb + 210bccbcaacbbca + 350bccbcaacbbccb + 350bccbcaacbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 350bccbcabca + 140bccbcabcaaacb + 40bccbcabcaabca + 120bccbcabcabb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60bccbcabcabca + 100bccbcabcabccb + 100bccbcabcac + 1050bccbcbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 420bccbcbbaacb + 120bccbcbbabca + 360bccbcbbbb + 180bccbcbbbca + 300bccbcbbbccb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 300bccbcbbc + 525bccbcbca + 210bccbcbcaaacb + 60bccbcbcaabca + 180bccbcbcabb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 90bccbcbcabca + 150bccbcbcabccb + 150bccbcbcac + 875bccbcbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 350bccbcbccbaacb + 100bccbcbccbabca + 300bccbcbccbbb + 150bccbcbccbbca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 250bccbcbccbbccb + 250bccbcbccbc + 875bccbcc + 350bccbccaacb + 100bccbccabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 300bccbccbb + 150bccbccbca + 250bccbccbccb + 250bccbccc + 4c + 1715caacbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 490caacbabca + 1470caacbbb + 735caacbbca + 1225caacbbccb + 1225caacbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 490cabcaaacb + 140cabcaabca + 420cabcabb + 210cabcabca + 350cabcabccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 350cabcac + 6cbb + 1470cbbaacb + 420cbbabca + 1260cbbbb + 630cbbbca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1050cbbbccb + 1050cbbc + 735cbcaaacb + 210cbcaabca + 630cbcabb + 315cbcabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 525cbcabccb + 525cbcac + 1225cbccbaacb + 350cbccbabca + 1050cbccbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 525cbccbbca + 875cbccbbccb + 875cbccbc + 5cc + 1225ccaacb + 490ccaacbaacb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140ccaacbabca + 420ccaacbbb + 210ccaacbbca + 350ccaacbbccb + 350ccaacbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 350ccabca + 140ccabcaaacb + 40ccabcaabca + 120ccabcabb + 60ccabcabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100ccabcabccb + 100ccabcac + 1050ccbb + 420ccbbaacb + 120ccbbabca + 360ccbbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 180ccbbbca + 300ccbbbccb + 300ccbbc + 525ccbca + 210ccbcaaacb + 60ccbcaabca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 180ccbcabb + 90ccbcabca + 150ccbcabccb + 150ccbcac + 875ccbccb + 350ccbccbaacb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 100ccbccbabca + 300ccbccbbb + 150ccbccbbca + 250ccbccbbccb + 250ccbccbc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 875ccc + 350cccaacb + 100cccabca + 300cccbb + 150cccbca + 250cccbccb + 250cccc</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
