@@ -4,7 +4,7 @@ Title: The Free Algebra
 Version: 1.1-8
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
-Depends: R (>= 3.5.0), methods
+Depends: R (>= 4.2), methods
 Description: The free algebra in R with non-commuting indeterminates.
      Uses 'disordR' discipline
      (Hankin, 2022, <doi:10.48550/ARXIV.2210.03856>).  To cite the

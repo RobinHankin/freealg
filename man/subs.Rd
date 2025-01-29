@@ -67,6 +67,9 @@ subs("abA",b=31)
 subs("1+a",a="A")   # can substitute for an inverse
 subs("A",a="1+x")   # inverses are not substituted for
 
+a <- rfalg()
+subs(a,a=a)
+
 
 ## Sequential substitution works:
 

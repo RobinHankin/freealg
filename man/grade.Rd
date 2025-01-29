@@ -10,15 +10,15 @@
 \description{
 
 The free algebra \eqn{\mathcal B}{B} is a \dfn{graded} algebra: that
-is, for each integer \eqn{n\geq 0}{n>=0} there is a homogeneous
+is, for each integer \eqn{n\geqslant 0}{n>=0} there is a homogeneous
 subspace \eqn{\mathcal{B}_n}{B_n} with
 \eqn{\mathcal{B}_0=\mathcal{R}}{B_0=R} and
 
 \deqn{
-  \mathcal{B}=\bigoplus_{n=0}^\infty\mathcal{B}_n,\quad\mbox{and}\quad\mathcal{B}_n\mathcal{B}_m\subseteq\mathcal{B}_{n+m}\quad\mbox{for all $m,n\geq  0.$}
+  \mathcal{B}=\bigoplus_{n=0}^\infty\mathcal{B}_n,\quad\mbox{and}\quad\mathcal{B}_n\mathcal{B}_m\subseteq\mathcal{B}_{n+m}\quad\mbox{for all $m,n\geqslant  0.$}
 }{omitted: see PDF}
   
-The elements of \eqn{\cup_{n\geq 0}\mathcal{B}_n}{omitted} are
+The elements of \eqn{\cup_{n\geqslant 0}\mathcal{B}_n}{omitted} are
 called \dfn{homogeneous} and those of \eqn{\mathcal{B}_n}{B_n} are
 called homogenous of degree (or grade) \eqn{n}.
 
@@ -60,9 +60,9 @@ deg(x)
   considerably less efficient than \code{clifford::grade()}.
 
   The \code{drop} argument to \code{grade()} only makes a difference if
-  \code{n=0}, that is, extracting the constant.  It defaults to
-  \code{FALSE} on the grounds that \code{constant()} returns a
-  \code{drop}ped value.
+  either the result is zero, or that \code{n=0} (that is, extracting the
+  constant).  It defaults to \code{FALSE} on the grounds that
+  \code{constant()} returns a \code{drop}ped value.
 
   \code{grade(x,n) <- value} sets the coefficients of terms with grade
   \code{n}.  For \code{value}, a length-one numeric vector is accepted
