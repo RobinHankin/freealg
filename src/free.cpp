@@ -37,16 +37,9 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
 }
     
 word comb(word w){  // combs through w, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
-    word::iterator it = w.begin();
-    while(it != w.end()){
-        if(*it == 0){
-            it = w.erase(it);  // meat A (erases zero, increments 'it')
-        } else {
-            it++;  // increment anyway
-        }
-    }  // while loop closes
 
-    it = w.begin();        // Step 2, strip out cancelling pairs [n, -n]:
+    w.erase(std::remove(w.begin(), w.end(), 0), w.end());
+    word::iterator it = w.begin();
     while(it != w.end()){
         word::const_iterator current = it;
         ++it;
@@ -84,27 +77,22 @@ freealg prepare(const List words, const NumericVector coeffs){
 }
 
 word concatenate(word w1, const word& w2){ 
-    word::const_iterator it;
-    for(it=w2.begin() ; it != w2.end() ; it++){
-        w1.push_back(*it);
-    }
-     return comb(w1);
+    w1.insert(w1.end(), w2.begin(), w2.end()); // Efficient concatenation
+    return comb(w1);
 }
 
 freealg sum(freealg X1, const freealg& X2){ //X1 modified in place
-    freealg::const_iterator it;
-    for(it=X2.begin() ; it != X2.end() ; ++it){
-        X1[it->first] += it->second;  // the meat
+    for (const auto& [key, value] : X2){
+        X1[key] += value;
     }
     return X1;
 }
 
 freealg product(const freealg& X1, const freealg& X2){
     freealg out;
-    freealg::const_iterator it1,it2;
-    for(it1=X1.begin() ; it1 != X1.end() ; ++it1){
-        for(it2=X2.begin() ; it2 != X2.end() ; ++it2){
-            out[concatenate(it1->first,it2->first)] += (it1->second)*(it2->second); // the meat
+    for(const auto& [key1, value1] : X1) {
+        for(const auto& [key2, value2] : X2) {
+            out[concatenate(key1, key2)] += value1 * value2; // the meat
         }
     }
     return out;
