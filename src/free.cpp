@@ -11,24 +11,20 @@ typedef std::list<signed int> word; // a 'word' object is a list of signed ints
 typedef map <word, double> freealg; // a 'freealg' maps word objects to reals
 
 List retval(const freealg &X){   // takes a freealg object and returns a mpoly-type list suitable for return to R
-    int i,j;
-    const int n=X.size();   // n is the number of terms
+    const int n = X.size();   // n is the number of terms
     List indexList(n);
     NumericVector coeffs(n);
-    word::const_iterator ic;
-    freealg::const_iterator it;
 
-    for(it = X.begin(), i=0 ; it != X.end() ; ++it, i++){
-
-        coeffs[i] = (double) it->second;
-        const word f = it->first;
-        const int r = f.size();
-        IntegerVector index(r);
-        for(ic = f.begin(), j=0 ; ic != f.end() ; ++ic, ++j){
-            index[j] = (signed int) *ic;
+    int i = 0;
+    for(const auto& [f, coef] : X){
+        coeffs[i] = static_cast<double>(coef);
+        IntegerVector index(f.size());
+        
+        for(int j = 0; const auto& val : f){
+            index[j++] = static_cast<int>(val);
         }
-        indexList[i] = index;
-    }  // 'it' loop closes
+        indexList[i++] = index;
+    } 
 
     return List::create(
                         Named("indices") = indexList,
@@ -182,16 +178,15 @@ freealg multiply_pre_and_post(const freealg& Y, const word& left, const word& ri
 }
 
 freealg::iterator find_first_zero(freealg &X){
-    freealg::iterator it; // NB scope must extend out of for() loop
-    for(it=X.begin() ; it != X.end() ; ++it){
-        word w=it->first;
-        for(word::const_iterator iw=w.begin() ; iw != w.end() ; ++iw){
-            if(*iw == 0){
+    for(auto it=X.begin() ; it != X.end() ; ++it){
+        const word w=it->first;
+        for(const auto& iw : w){
+            if(iw == 0){
                 return it; // 'it' points to a zero, if there is one...
             } // iw loop closes
         }
     }
-    return it; //... and if there isn't, then it points to the end
+    return X.end(); //... and if there isn't, then it points to the end
 }
 
 freealg change_r_for_zero(const freealg &X, const int &r){
@@ -242,9 +237,8 @@ freealg subs(const freealg& X, const freealg& Y, const NumericVector r){
                     wright.push_back(*jw);
                 }
 
-                freealg temp = multiply_pre_and_post(Y,wleft,wright);
-                for(freealg::iterator itemp=temp.begin() ; itemp !=temp.end() ; ++itemp){
-                    Xz[itemp->first] += (itemp->second)*coeff ; // Put the expansion back in Xz
+                for(const auto& [k,v] : multiply_pre_and_post(Y,wleft,wright)){
+                    Xz[k] += v * coeff ; // Put the expansion back in Xz
                 }
                 break;  // that is, break out of the iw loop
             } // if(found_a_zero) closes
