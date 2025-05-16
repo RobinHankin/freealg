@@ -20,6 +20,8 @@
 %% an abstract and keywords
 \Abstract{ In this very short document I discuss the adjoint operator
   \code{ad()} and illustrate some of its properties.
+To cite the \pkg{freealg} package, use~\cite{hankin2022_freealg}.
+
 }
 
 \Keywords{Adjoint operator, free algebra}
@@ -224,5 +226,6 @@ e.g. \code{survival::survexp.us}.
 This would make it ``\code{freelg::.[x,y]}'', which is not really any
 better IMO.
 
+\bibliography{freealg}
 \end{document}
  
