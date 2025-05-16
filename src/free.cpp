@@ -19,8 +19,9 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
     for(const auto& [f, coef] : X){
         coeffs[i] = static_cast<double>(coef);
         IntegerVector index(f.size());
-        
-        for(int j = 0; const auto& val : f){
+
+        int j = 0;
+        for(const auto& val : f){
             index[j++] = static_cast<int>(val);
         }
         indexList[i++] = index;
