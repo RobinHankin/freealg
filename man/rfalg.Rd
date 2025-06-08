@@ -5,8 +5,10 @@
 \alias{rfreealg}
 \alias{rfree}
 \title{Random free algebra objects}
-\description{Random elements of the free algebra, intended as quick
-  \dQuote{get you going} examples of \code{freealg} objects}
+\description{
+  Generate random elements of the free algebra, intended as quick
+  \dQuote{get you going} examples of \code{freealg} objects
+}
 \usage{
 rfalg(n=7, distinct=3, maxsize=4, include.negative=FALSE)
 rfalgg(n=30, distinct=8, maxsize=7, include.negative=FALSE)
@@ -22,18 +24,17 @@ rfalggg(n=100, distinct=26, maxsize=30, include.negative=FALSE)
     inverse of the lower-case symbols}
 }
 \details{
-What you see is what you get, basically.  A term such as
-\code{aaBaAbaC} will be simplified to \code{aaaC}.
+  Terms are automatically simplified; for example, 
+  \code{aaBaAbaC} will be simplified to \code{aaaC}.
 
-Functions \code{rfalgg()} and \code{rfalggg()} return successively more
-complicated \code{freealg} objects.
+  Functions \code{rfalgg()} and \code{rfalggg()} return successively
+  more complicated \code{freealg} objects.
 
 }
 \author{Robin K. S. Hankin}
 \examples{
 rfalg()
-rfalg(include.negative=TRUE)^2
-
+rfalg(include.negative = TRUE)^2
 
 constant(rfalg())
 
