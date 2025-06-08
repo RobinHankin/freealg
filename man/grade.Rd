@@ -20,7 +20,7 @@ subspace \eqn{\mathcal{B}_n}{B_n} with
   
 The elements of \eqn{\cup_{n\geqslant 0}\mathcal{B}_n}{omitted} are
 called \dfn{homogeneous} and those of \eqn{\mathcal{B}_n}{B_n} are
-called homogenous of degree (or grade) \eqn{n}.
+called homogeneous of degree (or grade) \eqn{n}.
 
 The \dfn{grade} of a term is the number of symbols in it.  Thus the
 grade of \code{xxx} and \code{4xxy} is 3; the grade of a constant is
@@ -45,7 +45,7 @@ deg(x)
   \item{n}{Integer vector}
   \item{value}{Replacement value, a numeric vector}
   \item{drop}{Boolean, indicating whether or not to return a
-    \code{drop}ped value}n
+    \code{drop}ped value}
 }
 \details{
 
@@ -76,8 +76,8 @@ H. Munthe-Kaas and B. Owren 1999.  \dQuote{Computations in a free Lie
   algebra}, \emph{Phil. Trans. R. Soc. Lond. A}, 357:957--981 (theorem 3.8)
 }
 \author{Robin K. S. Hankin}
-\note{A similar concept \dfn{grade} is discussed in the \pkg{clifford}
-package}
+\note{The \pkg{clifford} package includes a similar concept, also called
+  \dfn{grade}.}
 \examples{
 
 
