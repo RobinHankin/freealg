@@ -1,11 +1,9 @@
 \name{linear}
 \alias{linear}
-\title{A simple free algebra object}
+\title{Simple free algebra objects}
 \description{
-
   Create simple free algebra objects including linear expressions.  For
   example:
-
 
 \preformatted{
 > linear(1:3)
@@ -34,8 +32,8 @@ linear(x,power=1)
   algebra.  Function \code{mvp::product()}, for example, imposes an
   order on the expansion.
 
-Function \code{constant()} is documented at \code{constant.Rd}, but is
-listed below for convenience.
+  Function \code{constant()} is documented at \code{constant.Rd}, but is
+  listed below for convenience.
 
 }
 \seealso{\code{\link{constant}}, \code{\link{zero}}}
