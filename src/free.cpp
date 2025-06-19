@@ -4,11 +4,10 @@
 #define STRICT_R_HEADERS
 #include <Rcpp.h>
 
-
-using namespace std;
 using namespace Rcpp; 
 typedef std::list<signed int> word; // a 'word' object is a list of signed ints
-typedef map <word, double> freealg; // a 'freealg' maps word objects to reals
+typedef std::map <word, double> freealg; // a 'freealg' maps word objects to reals
+
 
 List retval(const freealg &X){   // takes a freealg object and returns a mpoly-type list suitable for return to R
     const int n = X.size();   // n is the number of terms
