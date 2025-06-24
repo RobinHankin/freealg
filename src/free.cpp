@@ -142,7 +142,7 @@ freealg diff1(const freealg& X, const int r){  // dX/dx_r
                     }
                 }
                 out[wadd] -= c;     // The meat (note negative sign)
-            } // if(opposite-signe match) closes
+            } // if(opposite-sign match) closes
         } // word w for() loop closes
     }  //freealg iteration ends;
     return out;
