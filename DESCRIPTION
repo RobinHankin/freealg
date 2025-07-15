@@ -4,7 +4,7 @@ Title: The Free Algebra
 Version: 1.2-0
 Authors@R: person(given=c("Robin", "K. S."), family="Hankin", role = c("aut","cre"), email="hankin.robin@gmail.com", comment = c(ORCID = "0000-0001-5982-0415"))
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
-Depends: R (>= 4.2), methods
+Depends: R (>= 4.2)
 Description: The free algebra in R with non-commuting indeterminates.
      Uses 'disordR' discipline
      (Hankin, 2022, <doi:10.48550/ARXIV.2210.03856>).  To cite the
@@ -12,7 +12,7 @@ Description: The free algebra in R with non-commuting indeterminates.
      <doi:10.48550/ARXIV.2211.04002>.
 License: GPL (>= 2)
 LazyData: yes
-Imports: Rcpp (>= 1.0-7), partitions (>= 1.9-22), disordR (>= 0.9-5-1)
+Imports: Rcpp (>= 1.0-7), partitions (>= 1.9-22), disordR (>= 0.9-5-1), methods
 LinkingTo: Rcpp
 Suggests: knitr,testthat,magrittr,markdown,rmarkdown,covr
 VignetteBuilder: knitr

@@ -3,8 +3,7 @@ exportPattern("^[[:alpha:]]+")
 exportClasses("dot")
 exportMethods("[")
 
-
-import("methods")
+importFrom("methods", "new")
 
 importFrom("stats", "rgeom")
 importFrom(Rcpp, evalCpp)
