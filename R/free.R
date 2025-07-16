@@ -5,8 +5,7 @@
   out <- lowlevel_simplify(words,coeffs)  # simplify() is defined in
                                  # RcppExports.R; it returns a list
 
-  class(out) <- "freealg"   # this is the only time class() is set to "freealg"
-  return(out)
+  return(structure(out, class = "freealg")) # this is the only place class freealg is set
 }
 
 `words` <- function(x){disord(x[[1]],hashcal(x))}
