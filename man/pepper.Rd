@@ -31,8 +31,8 @@ pepper(v)
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{linear}}}
 \examples{
-pepper(c(1,1,1,1,1,1,2))  # 6 a's and 1 b
-pepper(c(1,2,2,2,3))      # 1 a, 3 b's and 1 c
+pepper(c(1, 1, 1, 1, 1, 1, 2))  # 6 a's and 1 b
+pepper(c(1, 2, 2, 2, 3))        # 1 a, 3 b's and 1 c
 pepper("pepper")
 }
 \keyword{symbolmath}

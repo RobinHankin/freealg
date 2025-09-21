@@ -34,10 +34,10 @@ argument.
 \author{Robin K. S. Hankin}
 \examples{
 
-horner("x",  1:4)  # note constant term is 1.
+horner("x", 1:4)  # note constant term is 1.
 
-horner("x+y",1:3) # note presence of xy and yx terms
+horner("x+y", 1:3) # note presence of xy and yx terms
 
-horner("1+x+xyX",1:3)
+horner("1+x+xyX", 1:3)
 }
 \keyword{symbolmath}

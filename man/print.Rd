@@ -53,8 +53,8 @@ default notation for \eqn{aba^{-2}}{aba^-2} is \code{abAA} but becomes
 \code{aba^-1a^-1} if \code{usecaret} is \code{TRUE}.
 
 The symbols for the indeterminates are currently hardcoded as
-\code{c(letters,LETTERS)}.  The intent is to be able to signify 52
-distinct indeterminates, \code{a-z,A-Z}.  This works fine if option
+\code{c(letters, LETTERS)}.  The intent is to be able to signify 52
+distinct indeterminates, \code{a-z, A-Z}.  This works fine if option
 \code{usecaret} is \code{TRUE}.  But if option \code{usecaret} is
 \code{FALSE}, this can be confusing: for example, indeterminate number 1
 appears as \code{a}, and its inverse would appear as \dQuote{\code{A}}.
@@ -86,7 +86,7 @@ options("usecaret" = FALSE) # back to the default
 x
 
 
-x <- freealg(list(5,1:4,3,8,7),c(1,1,1,3,22))
+x <- freealg(list(5,1:4,3,8,7), c(1,1,1,3,22))
 x
 
 

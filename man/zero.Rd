@@ -15,8 +15,8 @@ is.zero(x)
 
   Function \code{is.zero()} returns \code{TRUE} if \code{x} is indeed
   the zero free algebra object.  It is defined as
-  \code{length(coeffs(x))==0} for reasons of efficiency, but
-  conceptually it returns \code{x==constant(0)}.
+  \code{length(coeffs(x)) == 0} for reasons of efficiency, but
+  conceptually it returns \code{x == constant(0)}.
 
   (Use \code{constant(0)} to create the zero object).
 

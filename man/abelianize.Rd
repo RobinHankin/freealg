@@ -25,6 +25,6 @@ past one another.  Abelianization is vectorized.
 
 abelianize(as.freealg("ba + 2abbba + 3abAB"))
 
-abelianize(.[rfalg(),rfalg()])
+abelianize(.[rfalg(), rfalg()])
 
 }

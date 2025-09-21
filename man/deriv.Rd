@@ -94,12 +94,11 @@
 deriv(as.freealg("4*aaaabaacAc"),1)
 
 x <- rfalg()
-deriv(x,1:3)
+deriv(x, 1:3)
 
-y <- rfalg(7,7,17,TRUE)
+y <- rfalg(7, 7, 17, TRUE)
 
-deriv(y,1:5)-deriv(y,sample(1:5)) # should be zero
-
+deriv(y,1:5) - deriv(y,sample(1:5)) # should be zero
 
 }
 \keyword{symbolmath}

@@ -12,7 +12,7 @@
 \description{Accessor methods for free algebra objects}
 \usage{
 words(x)
-coeffs(x,drop=TRUE)
+coeffs(x, drop=TRUE)
 coeffs(x) <- value
 }
 \arguments{
@@ -49,7 +49,6 @@ words(a)  # NB: hash is identical to that of coeffs(a)
 
 coeffs(a) <- 7   # replacement methods work 
 a
-coeffs(a)  #
-
+coeffs(a)
 
 }

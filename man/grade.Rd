@@ -36,8 +36,8 @@ However, a case for \code{NULL} could be made.
 }
 \usage{
 grades(x)
-grade(x,n,drop=FALSE)
-grade(x,n) <- value
+grade(x, n, drop=FALSE)
+grade(x, n) <- value
 deg(x)
 }
 \arguments{
@@ -88,10 +88,10 @@ grades(X)
 a <- rfalg(30)
 a
 grades(a)
-grade(a,2)
-grade(a,2) <- 0 # kill all grade-2 terms
+grade(a, 2)
+grade(a, 2) <- 0 # kill all grade-2 terms
 a
 
-grade(a,1) <- grade(a,1) * 888 
+grade(a, 1) <- grade(a, 1) * 888 
 a
 }

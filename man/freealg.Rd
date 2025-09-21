@@ -83,15 +83,13 @@ with the default print method.
   system might change in the future.  }
 \examples{
 
-freealg(list(1:2, 2:1,numeric(0),1:6),1:4)
-freealg(list(1:2, 2:1,numeric(0),1:6))   # heuristics for coeffs: assume 1
+freealg(list(1:2, 2:1, numeric(0), 1:6), 1:4)
+freealg(list(1:2, 2:1, numeric(0), 1:6)) # heuristics for coeffs: assume 1
 
-freealg(sapply(1:5,seq_len),1:5)
+freealg(sapply(1:5, seq_len), 1:5)
 
-freealg(replicate(5,sample(-5:5,rgeom(1,1/5),replace=TRUE)),1:5)
-
+freealg(replicate(5, sample(-5:5,rgeom(1,1/5),replace=TRUE)), 1:5)
 
 as.freealg("1+xaX")^5
-
 
 }

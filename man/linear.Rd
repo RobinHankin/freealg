@@ -9,7 +9,7 @@
 > linear(1:3)
 free algebra element algebraically equal to
 + 1*a + 2*b + 3*c
-> linear(1:3,power=5)
+> linear(1:3, power=5)
 free algebra element algebraically equal to
 + 1*aaaaa + 2*bbbbb + 3*ccccc
 >
@@ -17,7 +17,7 @@ free algebra element algebraically equal to
 
 }
 \usage{
-linear(x,power=1)
+linear(x, power=1)
 }
 \arguments{
   \item{x}{Numeric vector of terms}
@@ -39,7 +39,7 @@ linear(x,power=1)
 \seealso{\code{\link{constant}}, \code{\link{zero}}}
 \examples{
 linear(1:3)         
-linear(1:3,power=5)
-linear(1:3,power=3:1)
+linear(1:3, power=5)
+linear(1:3, power=3:1)
 }
 \keyword{symbolmath}

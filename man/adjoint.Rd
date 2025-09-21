@@ -10,7 +10,6 @@
 
   \deqn{\mathrm{ad}_X(Y)=\left[X,Y\right]}{ad_X(Y)=[X,Y]}
 
-
 }
 \usage{
 ad(x)
@@ -18,12 +17,6 @@ ad(x)
 \arguments{
   \item{x}{Object nominally of class \code{freealg} but other classes
     accepted where they make sense}
-}
-\details{
-
-details here
-
-
 }
 \author{Robin K. S. Hankin}
 \note{Vignette \code{adjoint} gives more description}
@@ -35,7 +28,6 @@ y <- rfalg()
 f <- ad(x)
 f(y)
 
-
-f(f(y)) # [x,[x,y]]
+f(f(y)) # [x, [x, y]]
 
 }

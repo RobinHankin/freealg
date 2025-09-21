@@ -86,9 +86,9 @@ creates file \code{dot.rda} which resides in the \code{data/} directory.
 \author{Robin K. S. Hankin}
 \examples{
 
-.[as.freealg("x"),as.freealg("y")]
-.[as.freealg("x"),as.freealg("y+2z")]
-.[as.freealg("x+y+2xYx"),as.freealg("x+y+2xYx")]
+.[as.freealg("x"), as.freealg("y")]
+.[as.freealg("x"), as.freealg("y+2z")]
+.[as.freealg("x+y+2xYx"), as.freealg("x+y+2xYx")]
 
 
 x <- rfalg()
@@ -103,15 +103,15 @@ f <- ad(x)
 f(y)
 
 
-rM <- function(...){matrix(sample(1:9,9),3,3)} # a random matrix
+rM <- function(...){matrix(sample(1:9, 9), 3, 3)} # a random matrix
 
 M <- rM()
 N <- rM()
 O <- rM()
 
-.[M,N]
-jacobi(M,N,O)
+.[M, N]
+jacobi(M, N, O)
 
-plot(.[sin,tan](seq(from=0,to=1,len=100)))
+plot(.[sin,tan](seq(from=0, to=1, len=100)))
 
 }

@@ -34,9 +34,6 @@ keep_pos(x)
 all_pos(rfalg(include.negative = TRUE))
 all_pos(rfalg(include.negative = FALSE))
 
-
 as.freealg("1+xaX")^5
-
-
 
 }
