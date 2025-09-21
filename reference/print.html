@@ -114,8 +114,8 @@ Carets become cumbersome for powers above the first.  For example, the
 default notation for \(aba^{-2}\) is <code>abAA</code> but becomes
 <code>aba^-1a^-1</code> if <code>usecaret</code> is <code>TRUE</code>.</p>
 <p>The symbols for the indeterminates are currently hardcoded as
-<code>c(letters,LETTERS)</code>.  The intent is to be able to signify 52
-distinct indeterminates, <code>a-z,A-Z</code>.  This works fine if option
+<code>c(letters, LETTERS)</code>.  The intent is to be able to signify 52
+distinct indeterminates, <code>a-z, A-Z</code>.  This works fine if option
 <code>usecaret</code> is <code>TRUE</code>.  But if option <code>usecaret</code> is
 <code>FALSE</code>, this can be confusing: for example, indeterminate number 1
 appears as <code>a</code>, and its inverse would appear as “<code>A</code>”.
@@ -157,7 +157,7 @@ for details.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + 6 + 3Bc + 7Aba + 6b + 4bA + 2bACa</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="freealg.html">freealg</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">8</span>,<span class="fl">7</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">22</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="freealg.html">freealg</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">8</span>,<span class="fl">7</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">22</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">x</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + abcd + c + e + 22g + 3h</span>

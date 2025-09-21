@@ -97,7 +97,7 @@ However, a case for <code>NULL</code> could be made.</p>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">grades</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="fu">grade</span><span class="op">(</span><span class="va">x</span>,<span class="va">n</span>,drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu">grade</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span>, drop<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu">grade</span><span class="op">(</span><span class="va">x</span>, <span class="va">n</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
 <span><span class="fu">deg</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -180,16 +180,16 @@ However, a case for <code>NULL</code> could be made.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A disord object with hash 75a7a9350c257ebc32ba9f8630b8c93555a26124 and elements</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 4 2 3 2 4 1 2 3 2 4 4 1 2 4 4 4 2 4 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (in some order)</span>
-<span class="r-in"><span><span class="fu">grade</span><span class="op">(</span><span class="va">a</span>,<span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">grade</span><span class="op">(</span><span class="va">a</span>, <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + 3ab + ac + 31ba + 26bb + 38ca + 37cc</span>
-<span class="r-in"><span><span class="fu">grade</span><span class="op">(</span><span class="va">a</span>,<span class="fl">2</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># kill all grade-2 terms</span></span></span>
+<span class="r-in"><span><span class="fu">grade</span><span class="op">(</span><span class="va">a</span>, <span class="fl">2</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">0</span> <span class="co"># kill all grade-2 terms</span></span></span>
 <span class="r-in"><span><span class="va">a</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + 6aaaa + 4abc + 9acaa + 97b + 22bab + 7bbbb + 14bccb + 80c + 30cabb + 19cacc +</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 24cbca + 5ccbb + 12ccca</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">grade</span><span class="op">(</span><span class="va">a</span>,<span class="fl">1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">grade</span><span class="op">(</span><span class="va">a</span>,<span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">888</span> </span></span>
+<span class="r-in"><span><span class="fu">grade</span><span class="op">(</span><span class="va">a</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">grade</span><span class="op">(</span><span class="va">a</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fl">888</span> </span></span>
 <span class="r-in"><span><span class="va">a</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + 6aaaa + 4abc + 9acaa + 86136b + 22bab + 7bbbb + 14bccb + 71040c + 30cabb +</span>

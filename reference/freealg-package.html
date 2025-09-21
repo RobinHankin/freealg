@@ -90,9 +90,9 @@ Index:  This package was not yet installed at build time.<br></p>
 <span class="r-in"><span><span class="va">a</span><span class="op">+</span><span class="va">b</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + XyX + 5x + xyx</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="va">a</span><span class="op">+</span><span class="va">b</span><span class="op">==</span><span class="va">b</span><span class="op">+</span><span class="va">a</span><span class="op">)</span>   <span class="co"># should be TRUE</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="va">a</span><span class="op">+</span><span class="va">b</span> <span class="op">==</span> <span class="va">b</span><span class="op">+</span><span class="va">a</span><span class="op">)</span>   <span class="co"># should be TRUE</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">a</span><span class="op">*</span><span class="va">b</span> <span class="op">==</span><span class="va">b</span><span class="op">*</span><span class="va">a</span> <span class="co"># FALSE; noncommutative algebra</span></span></span>
+<span class="r-in"><span><span class="va">a</span><span class="op">*</span><span class="va">b</span> <span class="op">==</span> <span class="va">b</span><span class="op">*</span><span class="va">a</span> <span class="co"># FALSE; noncommutative algebra</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="freealg.html">as.freealg</a></span><span class="op">(</span><span class="st">"1+X+xy"</span><span class="op">)</span><span class="op">^</span><span class="fl">3</span></span></span>
@@ -111,7 +111,6 @@ Index:  This package was not yet installed at build time.<br></p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 18acbcba + 35ba + 14bab + 7babb + 21bac + 49bb + 28bbc + 42bbcba + 20bca +</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8bcab + 4bcabb + 12bcac + 28bcb + 30bcbaa + 12bcbaab + 6bcbaabb + 18bcbaac +</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 42bcbab + 24bcbabc + 36bcbabcba + 16bcbc + 24bcbcba</span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

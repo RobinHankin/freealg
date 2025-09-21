@@ -93,15 +93,15 @@ argument.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">horner</span><span class="op">(</span><span class="st">"x"</span>,  <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>  <span class="co"># note constant term is 1.</span></span></span>
+<span class="r-in"><span><span class="fu">horner</span><span class="op">(</span><span class="st">"x"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span>  <span class="co"># note constant term is 1.</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + 1 + 2x + 3xx + 4xxx</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">horner</span><span class="op">(</span><span class="st">"x+y"</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="co"># note presence of xy and yx terms</span></span></span>
+<span class="r-in"><span><span class="fu">horner</span><span class="op">(</span><span class="st">"x+y"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span> <span class="co"># note presence of xy and yx terms</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + 1 + 2x + 3xx + 3xy + 2y + 3yx + 3yy</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu">horner</span><span class="op">(</span><span class="st">"1+x+xyX"</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">horner</span><span class="op">(</span><span class="st">"1+x+xyX"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + 6 + 8x + 3xx + 3xxyX + 3xy + 8xyX + 3xyyX</span>
 </code></pre></div>
