@@ -1,3 +1,8 @@
+# freealg_1.2-1
+
+- code refactoring
+
+
 # freealg_1.1-8
 
 - add drop argument to grades()
