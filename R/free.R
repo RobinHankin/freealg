@@ -255,10 +255,12 @@
 }
 
 #' @export
+#' @export deriv freealg
 "deriv" <- function(x){UseMethod("deriv")}
 
 #' @export
-`deriv.freealg` <- function(expr, r, ...){
+#' @export deriv freealg
+deriv.freealg <- function(expr, r, ...){
     if(is.character(r)){
         rn <- numeric(length(r))
         if(length(r)==1){r <- strsplit(r,"")[[1]]}
