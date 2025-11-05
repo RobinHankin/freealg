@@ -1,7 +1,7 @@
 #' @useDynLib freealg, .registration = TRUE
 
 #' @importFrom methods new
-#' @importFrom stats rgeom deriv
+#' @importFrom stats rgeom
 #' @importFrom Rcpp evalCpp
 #' @importFrom partitions multiset
 #' @importFrom utils capture.output
@@ -255,7 +255,6 @@
 }
 
 #' @export
-#' @export deriv freealg
 "deriv" <- function(x){UseMethod("deriv")}
 
 #' @export
