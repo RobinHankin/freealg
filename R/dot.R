@@ -1,7 +1,7 @@
 #' @export
 setClass("dot", slots = c(ignore='numeric'))
 
-#' @exportMethod show
+#' @export
 setMethod("show", "dot", function(object){cat('".[x,y]" returns the commutator xy-yx\n')})
 
 #' @export
