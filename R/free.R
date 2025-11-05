@@ -1,3 +1,17 @@
+#' @useDynLib freealg, .registration = TRUE
+
+#' @importFrom methods new
+#' @importFrom stats rgeom deriv
+#' @importFrom Rcpp evalCpp
+#' @importFrom partitions multiset
+#' @importFrom utils capture.output
+
+#' @importFrom disordR disord hashcal is.disord consistent sapply lapply elements %in% sort unlist 
+
+
+
+
+#' @export
 `freealg` <- function(words,coeffs){ # formal
   if(missing(coeffs)){coeffs <- 1}
   if(length(coeffs) == 1){coeffs <- rep(coeffs,length(words))}
@@ -8,10 +22,16 @@
   return(structure(out, class = "freealg")) # this is the only place class freealg is set
 }
 
+#' @export
 `words` <- function(x){disord(x[[1]],hashcal(x))}
+
+#' @export
 `coeffs` <- function(x,drop=TRUE){disord(x[[2]],hashcal(x),drop=drop)} # accessor methods end here
 
+#' @export
 `coeffs<-` <- function(x,value){UseMethod("coeffs<-")}
+
+#' @export
 `coeffs<-.freealg` <- function(x,value){
   if(is.zero(x)){return(x)}
   jj <- coeffs(x,drop=FALSE)
@@ -24,6 +44,7 @@
   freealg(words(x),jj)
 }
 
+#' @export
 `as.freealg` <- function(x,...){
   if(is.freealg(x)){
     return(x)
@@ -40,16 +61,19 @@
   }
 }
 
+#' @export
 `numeric_to_free` <- function(x){
   stopifnot(length(x)==1)
   freealg(list(numeric(0)),x)
   }
 
+#' @export
 `is.zero` <- function(x){
   if(!is.freealg(x)){ return(x==0)}
   return(length(coeffs(x))==0)
 }
 
+#' @export
 `is.constant` <- function(x){
   if(!is.freealg(x)){
     return(is.numeric(x) & (length(x)==1))
@@ -63,11 +87,16 @@
   }
 }
 
+#' @export
 "constant" <- function(x){UseMethod("constant")}
+
+#' @export
 "constant<-" <- function(x, value){UseMethod("constant<-")}
 
+#' @export
 `constant.numeric` <- function(x){numeric_to_free(x)}
 
+#' @export
 `constant.freealg` <- function(x){
   wanted <- sapply(words(x),function(x){length(x)==0})
   if(any(wanted)){
@@ -78,6 +107,7 @@
   return(out)
 }
 
+#' @export
 `constant<-.freealg` <- function(x,value){
   wanted <- sapply(words(x),function(x){length(x)==0})
   if(any(wanted)){
@@ -91,8 +121,10 @@
   freealg(elements(w),elements(co))
 }
 
+#' @export
 `is.freealg` <- function(x){inherits(x,"freealg")}
 
+#' @export
 `is_ok_free` <- function(words,coeffs){
     if(is.disord(words) | is.disord(coeffs)){
         stopifnot(disordR::consistent(words,coeffs))
@@ -112,21 +144,24 @@
     return(TRUE)
 }
 
+#' @export
 `rfalg` <- function(n=7, distinct=3, maxsize=4, include.negative=FALSE){
   distinct <- seq_len(distinct)
   if(include.negative){distinct <- c(distinct,-distinct)}
   freealg(replicate(n,sample(distinct,min(1+rgeom(1,1/maxsize),maxsize),replace=TRUE),simplify=FALSE), seq_len(n))
 }
 
+#' @export
 `rfalgg` <- function(n=30, distinct=8, maxsize=7, include.negative=FALSE){
     rfalg(n=n, distinct=distinct, maxsize=maxsize, include.negative=FALSE)
 }
 
+#' @export
 `rfalggg` <- function(n=100, distinct=26, maxsize=30, include.negative=FALSE){
     rfalg(n=n, distinct=distinct, maxsize=maxsize, include.negative=FALSE)
 }
 
-
+#' @export
 `print.freealg` <- function(x,...){
   cat("free algebra element algebraically equal to\n")
   SHRT_MAX <- 32767
@@ -177,11 +212,13 @@
   return(invisible(x))
 }
 
+#' @export
 `vector_to_free` <- function(v,coeffs){
   if(missing(coeffs)){coeffs <- rep(1,length(v))}
   freealg(as.list(v),coeffs)
 }
 
+#' @export
 `string_to_freealg` <- function(string){
   if(nchar(string)==0){return(numeric_to_free(0))}
   string <- gsub("^\\+","",string)  # strip initial "+"
@@ -205,16 +242,22 @@
   freealg(list(out),coeffs=sign*coeff)
 }
 
+#' @export
 `char_to_freealg` <- function(ch){ Reduce(`+`,lapply(ch,string_to_freealg))  }
 
+#' @export
 `natural_char_to_freealg` <- function(string){
   string <- paste(string, collapse = " ")
   string <- gsub(" ","",string)  # strip spaces
-  string <- gsub("\\+"," +",string) # 'A+B" -> "A +B"
+  string <- gsub("\\+"," +",string) # "A+B" -> "A +B"
   string <- gsub("\\-", " -",string) # "A-B" -> "A -B"
-  char_to_freealg(strsplit(string," ")[[1]]) }
+  char_to_freealg(strsplit(string," ")[[1]])
+}
 
-setGeneric("deriv")
+#' @export
+"deriv" <- function(x){UseMethod("deriv")}
+
+#' @export
 `deriv.freealg` <- function(expr, r, ...){
     if(is.character(r)){
         rn <- numeric(length(r))
@@ -230,11 +273,13 @@ setGeneric("deriv")
     return(freealg(jj[[1]],jj[[2]]))
 }
 
+#' @export
 `horner` <- function(P, v){
   P <- as.freealg(P)
   Reduce(v, right=TRUE, f=function(a,b){b*P + a})
 }
 
+#' @export
 `subsu` <- function(S1,S2,r){
     S1 <- as.freealg(S1)
     S2 <- as.freealg(S2)
@@ -243,6 +288,7 @@ setGeneric("deriv")
     freealg(out[[1]],out[[2]])
 }
 
+#' @export
 `subs` <- function(...) {
   sb <- list(...)[-1]
   v <- names(sb)
@@ -253,12 +299,14 @@ setGeneric("deriv")
   return(out)
 }
 
+#' @export
 `linear` <- function(x,power=1){
     a <- seq_along(x)
     jj <- cbind(a,power)
     freealg(sapply(a,function(i){rep(jj[i,1],jj[i,2])},simplify=FALSE),x)
 }
 
+#' @export
 `pepper` <- function(v){
     if(is.character(v)){
         v <- match(unlist(strsplit(v,"")),letters)
@@ -267,6 +315,7 @@ setGeneric("deriv")
     freealg(split(mv,col(mv)),rep(1,ncol(mv)))
 }
 
+#' @export
 `grade` <- function(x,n,drop=FALSE){
     if(missing(n)){stop("argument 'n' missing ... maybe you meant grades()?")}
     coeffs(x)[!(grades(x) %in% n)] <- 0
@@ -274,6 +323,7 @@ setGeneric("deriv")
     return(x)
 }
 
+#' @export
 `grades` <- function(x){
   if(is.zero(x)){
     out <- -Inf
@@ -283,6 +333,7 @@ setGeneric("deriv")
   return(out)
 }
 
+#' @export
 `grade<-` <- function(x, n, value){
     if(is.freealg(value)){
         if(is.zero(value)){return(Recall(x,n,0))}
@@ -295,10 +346,13 @@ setGeneric("deriv")
     }
 }
 
+#' @export
 `deg` <- function(x){max(grades(x))}
 
+#' @export
 `nterms` <- function(x){length(coeffs(x))}
 
+#' @export
 `inv` <- function(S){
   if(nterms(S)==1){
     return(freealg(list(rev(-words(S)[[1]])),1/coeffs(S)))
@@ -307,12 +361,15 @@ setGeneric("deriv")
   }
 }
 
+#' @export
 `abelianize` <- function(x){
   freealg(lapply(elements(words(x)),function(x){x[order(abs(x))]}),elements(coeffs(x)))
 }
 
 setGeneric("drop")
 setOldClass("freealg")
+
+#' @export
 setMethod("drop","freealg", function(x){
     if(is.zero(x)){
         return(0)
@@ -327,19 +384,23 @@ setGeneric("sort")
 setGeneric("unlist")
 setGeneric("lapply")
 
+#' @export
 `all_pos` <- function(x){all(unlist(words(x))>0)}
 
+#' @export
 `keep_pos` <- function(x){
   coeffs(x)[unlist(lapply(words(x),function(x){any(x<0)}))] <- 0
   return(x)
 }
 
+#' @export
 `[.freealg` <- function(x,...){
     wanted <- list(...)[[1]]
     coeffs(x)[!wanted] <- 0
     return(x)
 }
          
+#' @export
 `[<-.freealg` <- function(x,index,value){
     coeffs(x)[index] <- value
     return(x)

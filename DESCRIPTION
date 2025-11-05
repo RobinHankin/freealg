@@ -18,3 +18,5 @@ Suggests: knitr, testthat, magrittr, markdown, rmarkdown, covr
 VignetteBuilder: knitr
 URL: https://github.com/RobinHankin/freealg, https://robinhankin.github.io/freealg/
 BugReports: https://github.com/RobinHankin/freealg/issues
+RoxygenNote: 7.3.3
+Encoding: UTF-8

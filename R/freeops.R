@@ -1,3 +1,4 @@
+#' @export
 "Ops.freealg" <- function (e1, e2 = NULL) 
 {
     oddfunc <- function(...){stop("odd---neither argument has class free?")}
@@ -68,6 +69,7 @@
     }
 }
 
+#' @export
 `free_negative` <- function(S){
     if(is.zero(S)){
         return(S)
@@ -78,6 +80,7 @@
 
 # inv() defined in free.R; it is not really an operation
 
+#' @export
 `free_times_free` <- function(S1,S2){
   if(is.zero(S1) || is.zero(S2)){
     return(constant(0))
@@ -90,10 +93,12 @@
   }
 }
 
+#' @export
 `free_times_scalar` <- function(S,x){
 freealg(S[[1]],x*S[[2]])
 }
 
+#' @export
 `free_plus_free` <- function(e1,e2){
   if(is.zero(e1)){
         return(e2)
@@ -108,10 +113,12 @@ freealg(S[[1]],x*S[[2]])
     }
 }
 
+#' @export
 `free_plus_numeric` <- function(S,x){
     free_plus_free(S,numeric_to_free(x))
 }
 
+#' @export
 `free_power_scalar` <- function(S,n){
   if(length(n)>1){
     jj <- table(n)
@@ -133,6 +140,7 @@ freealg(S[[1]],x*S[[2]])
   }
 }
 
+#' @export
 `free_eq_free` <- function(e1,e2){
   is.zero(e1-e2)  # nontrivial; S1 and S2 might have different orders
 }

@@ -10,34 +10,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// lowlevel_subs
-List lowlevel_subs(const List& words1, const NumericVector& coeffs1, const List& words2, const NumericVector& coeffs2, const NumericVector& r);
-RcppExport SEXP _freealg_lowlevel_subs(SEXP words1SEXP, SEXP coeffs1SEXP, SEXP words2SEXP, SEXP coeffs2SEXP, SEXP rSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const List& >::type words1(words1SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs1(coeffs1SEXP);
-    Rcpp::traits::input_parameter< const List& >::type words2(words2SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs2(coeffs2SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type r(rSEXP);
-    rcpp_result_gen = Rcpp::wrap(lowlevel_subs(words1, coeffs1, words2, coeffs2, r));
-    return rcpp_result_gen;
-END_RCPP
-}
-// lowlevel_diffn
-List lowlevel_diffn(const List& words, const NumericVector& coeffs, const NumericVector& r);
-RcppExport SEXP _freealg_lowlevel_diffn(SEXP wordsSEXP, SEXP coeffsSEXP, SEXP rSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const List& >::type words(wordsSEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs(coeffsSEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type r(rSEXP);
-    rcpp_result_gen = Rcpp::wrap(lowlevel_diffn(words, coeffs, r));
-    return rcpp_result_gen;
-END_RCPP
-}
 // lowlevel_simplify
 List lowlevel_simplify(const List& words, const NumericVector& coeffs);
 RcppExport SEXP _freealg_lowlevel_simplify(SEXP wordsSEXP, SEXP coeffsSEXP) {
@@ -47,20 +19,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const List& >::type words(wordsSEXP);
     Rcpp::traits::input_parameter< const NumericVector& >::type coeffs(coeffsSEXP);
     rcpp_result_gen = Rcpp::wrap(lowlevel_simplify(words, coeffs));
-    return rcpp_result_gen;
-END_RCPP
-}
-// lowlevel_free_prod
-List lowlevel_free_prod(const List& words1, const NumericVector& coeffs1, const List& words2, const NumericVector& coeffs2);
-RcppExport SEXP _freealg_lowlevel_free_prod(SEXP words1SEXP, SEXP coeffs1SEXP, SEXP words2SEXP, SEXP coeffs2SEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const List& >::type words1(words1SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs1(coeffs1SEXP);
-    Rcpp::traits::input_parameter< const List& >::type words2(words2SEXP);
-    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs2(coeffs2SEXP);
-    rcpp_result_gen = Rcpp::wrap(lowlevel_free_prod(words1, coeffs1, words2, coeffs2));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -78,6 +36,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// lowlevel_free_prod
+List lowlevel_free_prod(const List& words1, const NumericVector& coeffs1, const List& words2, const NumericVector& coeffs2);
+RcppExport SEXP _freealg_lowlevel_free_prod(SEXP words1SEXP, SEXP coeffs1SEXP, SEXP words2SEXP, SEXP coeffs2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const List& >::type words1(words1SEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs1(coeffs1SEXP);
+    Rcpp::traits::input_parameter< const List& >::type words2(words2SEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs2(coeffs2SEXP);
+    rcpp_result_gen = Rcpp::wrap(lowlevel_free_prod(words1, coeffs1, words2, coeffs2));
+    return rcpp_result_gen;
+END_RCPP
+}
 // lowlevel_free_power
 List lowlevel_free_power(const List& words, const NumericVector& coeffs, const NumericVector& n);
 RcppExport SEXP _freealg_lowlevel_free_power(SEXP wordsSEXP, SEXP coeffsSEXP, SEXP nSEXP) {
@@ -91,14 +63,42 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// lowlevel_diffn
+List lowlevel_diffn(const List& words, const NumericVector& coeffs, const NumericVector& r);
+RcppExport SEXP _freealg_lowlevel_diffn(SEXP wordsSEXP, SEXP coeffsSEXP, SEXP rSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const List& >::type words(wordsSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs(coeffsSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type r(rSEXP);
+    rcpp_result_gen = Rcpp::wrap(lowlevel_diffn(words, coeffs, r));
+    return rcpp_result_gen;
+END_RCPP
+}
+// lowlevel_subs
+List lowlevel_subs(const List& words1, const NumericVector& coeffs1, const List& words2, const NumericVector& coeffs2, const NumericVector& r);
+RcppExport SEXP _freealg_lowlevel_subs(SEXP words1SEXP, SEXP coeffs1SEXP, SEXP words2SEXP, SEXP coeffs2SEXP, SEXP rSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const List& >::type words1(words1SEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs1(coeffs1SEXP);
+    Rcpp::traits::input_parameter< const List& >::type words2(words2SEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type coeffs2(coeffs2SEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type r(rSEXP);
+    rcpp_result_gen = Rcpp::wrap(lowlevel_subs(words1, coeffs1, words2, coeffs2, r));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_freealg_lowlevel_subs", (DL_FUNC) &_freealg_lowlevel_subs, 5},
-    {"_freealg_lowlevel_diffn", (DL_FUNC) &_freealg_lowlevel_diffn, 3},
     {"_freealg_lowlevel_simplify", (DL_FUNC) &_freealg_lowlevel_simplify, 2},
-    {"_freealg_lowlevel_free_prod", (DL_FUNC) &_freealg_lowlevel_free_prod, 4},
     {"_freealg_lowlevel_free_sum", (DL_FUNC) &_freealg_lowlevel_free_sum, 4},
+    {"_freealg_lowlevel_free_prod", (DL_FUNC) &_freealg_lowlevel_free_prod, 4},
     {"_freealg_lowlevel_free_power", (DL_FUNC) &_freealg_lowlevel_free_power, 3},
+    {"_freealg_lowlevel_diffn", (DL_FUNC) &_freealg_lowlevel_diffn, 3},
+    {"_freealg_lowlevel_subs", (DL_FUNC) &_freealg_lowlevel_subs, 5},
     {NULL, NULL, 0}
 };
 
