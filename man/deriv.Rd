@@ -8,10 +8,10 @@
   Differentiation of \code{freealg} objects
 }
 \usage{
-\method{deriv}{freealg}(expr, r, ...)
+\method{deriv}{freealg}(x, r, ...)
 }
 \arguments{
-  \item{expr}{Object of class \code{freealg}}
+  \item{x}{Object of class \code{freealg}}
   \item{r}{Integer vector.  Elements denote variables to differentiate
     with respect to.  If \code{r} is a character vector, it is
     interpreted as \code{a=1,b=2,...,z=26}; if of length 1,

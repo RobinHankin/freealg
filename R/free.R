@@ -255,23 +255,23 @@
 }
 
 #' @export
-"deriv" <- function(x){UseMethod("deriv")}
+deriv <- function(x, ...){UseMethod("deriv")}
 
 #' @export
 #' @export deriv freealg
-deriv.freealg <- function(expr, r, ...){
+deriv.freealg <- function(x, r, ...){
     if(is.character(r)){
         rn <- numeric(length(r))
-        if(length(r)==1){r <- strsplit(r,"")[[1]]}
-        rn <- sapply(r,function(x){which(x==c(letters,LETTERS))}) # a=1,b=2...
-        wanted <- rn>26
-        rn[wanted] <- 26-rn[wanted]  # A=-1,B=-2,...
+        if(length(r)==1){r <- strsplit(r, "")[[1]]}
+        rn <- sapply(r, function(x){which(x==c(letters,LETTERS))}) # a=1,b=2...
+        wanted <- rn > 26
+        rn[wanted] <- 26 - rn[wanted]  # A=-1,B=-2,...
     } else {
         rn <- r
     }
     
-    jj <- lowlevel_diffn(expr[[1]],expr[[2]],rn)
-    return(freealg(jj[[1]],jj[[2]]))
+    jj <- lowlevel_diffn(x[[1]], x[[2]], rn)
+    return(freealg(jj[[1]], jj[[2]]))
 }
 
 #' @export

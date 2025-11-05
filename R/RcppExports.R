@@ -2,26 +2,26 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 lowlevel_simplify <- function(words, coeffs) {
-    .Call('_freealg_lowlevel_simplify', PACKAGE = 'freealg', words, coeffs)
+    .Call(`_freealg_lowlevel_simplify`, words, coeffs)
 }
 
 lowlevel_free_sum <- function(words1, coeffs1, words2, coeffs2) {
-    .Call('_freealg_lowlevel_free_sum', PACKAGE = 'freealg', words1, coeffs1, words2, coeffs2)
+    .Call(`_freealg_lowlevel_free_sum`, words1, coeffs1, words2, coeffs2)
 }
 
 lowlevel_free_prod <- function(words1, coeffs1, words2, coeffs2) {
-    .Call('_freealg_lowlevel_free_prod', PACKAGE = 'freealg', words1, coeffs1, words2, coeffs2)
+    .Call(`_freealg_lowlevel_free_prod`, words1, coeffs1, words2, coeffs2)
 }
 
 lowlevel_free_power <- function(words, coeffs, n) {
-    .Call('_freealg_lowlevel_free_power', PACKAGE = 'freealg', words, coeffs, n)
+    .Call(`_freealg_lowlevel_free_power`, words, coeffs, n)
 }
 
 lowlevel_diffn <- function(words, coeffs, r) {
-    .Call('_freealg_lowlevel_diffn', PACKAGE = 'freealg', words, coeffs, r)
+    .Call(`_freealg_lowlevel_diffn`, words, coeffs, r)
 }
 
 lowlevel_subs <- function(words1, coeffs1, words2, coeffs2, r) {
-    .Call('_freealg_lowlevel_subs', PACKAGE = 'freealg', words1, coeffs1, words2, coeffs2, r)
+    .Call(`_freealg_lowlevel_subs`, words1, coeffs1, words2, coeffs2, r)
 }
 
