@@ -1,6 +1,8 @@
 ---
-title: "freealg_matrix"
+title: "Internal consistency of the `freealg` package using matrix algebra"
 output: html_document
+bibliography: freealg.bib
+link-citations: true
 ---
 
 ```{r setup, include=FALSE}
@@ -8,14 +10,13 @@ knitr::opts_chunk$set(echo = TRUE)
 set.seed(0)
 ```
 
+```{r out.width='20%', out.extra='style="float:right; padding:10px"',echo=FALSE}
+knitr::include_graphics(system.file("help/figures/freealg.png", package = "freealg"))
+```
 
-## Numerical verification of the freealg package
-
-<p style="text-align: right;">
-![](`r system.file("help/figures/freealg.png", package = "freealg")`){width=10%}
-</p>
-
-Here we verify that the `freealg` package is consistent.  
+To cite the `freealg` package in publications, please use
+@hankin2022_freealg.  In this short document I give some numerical
+evidence that the `freealg` package is internally consistent.
 
 First, we observe that $n\times n$ matrices are an algebra over the
 reals, and therefore should obey all the identities of a free algebra.
@@ -51,7 +52,7 @@ xm <- 9*A + 6*A%*%B + A%*%B%*%A%*%A + 9*B + 3*C  # object "x" adapted for matrix
 And secondly using `freealg`:
 
 ```{r}
-x^2
+x^3
 ```
 
 We can turn the above into an expression (rather clumsily) using
@@ -138,3 +139,5 @@ approximate-exact
 ```
 
 and we see an improved accuracy.
+
+# Refernences {-}
