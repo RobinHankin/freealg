@@ -12,18 +12,19 @@
 }
 \arguments{
   \item{x}{Object of class \code{freealg}}
+
   \item{r}{Integer vector.  Elements denote variables to differentiate
     with respect to.  If \code{r} is a character vector, it is
-    interpreted as \code{a=1,b=2,...,z=26}; if of length 1,
-    \dQuote{\code{aab}} is interpreted as \code{c("a","a","b")}}
+    interpreted as \code{a=1}, \code{b=2}, and so on; thus
+    \dQuote{\code{aab}} is interpreted as \code{c(1,1,2)}}
   \item{...}{Further arguments, currently ignored}
 }
 \author{Robin K. S. Hankin}
 \details{
 
-  Experimental function \code{deriv(S,v)} returns
-      \eqn{\frac{\partial^r S}{\partial v_1\partial v_2\ldots\partial
-      v_r}}{d^rS/dv1...dvr}.  The Leibniz product rule
+  Experimental function \code{deriv(S,v)} returns \eqn{\frac{\partial^r
+      S}{\partial v_1\partial v_2\ldots\partial v_r}}{d^rS/dv1...dvr},
+      where $v_i$ is \code{v[i]}$.  The Leibniz product rule
 
   \deqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see latex}
 
@@ -98,7 +99,7 @@ deriv(x, 1:3)
 
 y <- rfalg(7, 7, 17, TRUE)
 
-deriv(y,1:5) - deriv(y,sample(1:5)) # should be zero
+deriv(y, 1:5) - deriv(y, sample(1:5)) # should be zero
 
 }
 \keyword{symbolmath}
