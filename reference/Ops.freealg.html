@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">freealg</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-2</span>
       </span>
     </div>
 
@@ -62,6 +62,7 @@
 <span><span class="fu">Ops</span><span class="op">(</span><span class="va">e1</span>, <span class="va">e2</span><span class="op">)</span></span>
 <span><span class="fu">free_negative</span><span class="op">(</span><span class="va">S</span><span class="op">)</span></span>
 <span><span class="fu">free_power_scalar</span><span class="op">(</span><span class="va">S</span>,<span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu">free_power_free</span><span class="op">(</span><span class="va">e1</span>, <span class="va">e2</span><span class="op">)</span></span>
 <span><span class="fu">free_eq_free</span><span class="op">(</span><span class="va">e1</span>,<span class="va">e2</span><span class="op">)</span></span>
 <span><span class="fu">free_plus_numeric</span><span class="op">(</span><span class="va">S</span>,<span class="va">x</span><span class="op">)</span></span>
 <span><span class="fu">free_plus_free</span><span class="op">(</span><span class="va">e1</span>,<span class="va">e2</span><span class="op">)</span></span>
@@ -107,15 +108,23 @@
   (“<code>+</code>”, “<code>-</code>”, “<code>*</code>”,
   “<code>^</code>”, and “<code>==</code>”) to the appropriate
   specialist function.</p>
-<p>The caret, as in <code>a^n</code>, denotes arithmetic exponentiation, as in
+<p>Integer powers are implemented.  The caret [e.g., <code>a^n</code> with
+  integer <code>n</code>] denotes arithmetic exponentiation, as in
   <code>x^3==x*x*x</code>.  As an experimental feature, this is (sort of)
-  vectorised: if <code>n</code> is a vector, then <code>a^n</code> returns the sum
-  of <code>a</code> raised to the power of each element of <code>n</code>.  For example,
-  <code>a^c(n1,n2,n3)</code> is <code>a^n1 + a^n2 + a^n3</code>.  Internally,
-  <code>n</code> is tabulated in the interests of efficiency, so
-  <code>a^c(0,2,5,5,5,) = 1 + a^2 + 3a^5</code> is evaluated with only a
-  single fifth power.  Similar functionality is implemented in the
-  <a href="https://CRAN.R-project.org/package=mvp" class="external-link"><span class="pkg">mvp</span></a> package.</p>
+  vectorised: if <code>v</code> is a vector of integers, then <code>a^v</code>
+  returns the sum of <code>a</code> raised to the power of each element of
+  <code>v</code>.  For example, <code>a^c(n1,n2,n3)</code> is <code>a^n1 + a^n2 +
+  a^n3</code>.  Internally, <code>n</code> is tabulated in the interests of
+  efficiency, so <code>a^c(0,2,5,5,5,) = 1 + a^2 + 3a^5</code> is evaluated
+  with only a single fifth power.  Similar functionality is implemented
+  in the <a href="https://CRAN.R-project.org/package=mvp" class="external-link"><span class="pkg">mvp</span></a> package.</p>
+<p>Negative powers, as in <code>a^n</code> with \(n&lt;0\) are implemented: if
+  <code>a</code> has an inverse, then <code>a^n == inv(a)^(-n)</code>; so
+  <code>a^(n+m)=(a^n)*(a^m)</code> for <code>n,m</code> any integers, positive or
+  negative.</p>
+<p>If <code>a</code> has an inverse, then <code>x^a == inv(a)*x*a</code>.  The
+  notation is motivated by the identities <code>x^(ab)=(x^a)^b</code> and
+  <code>(x*y)^a=(x^a)*(y^a)</code>.</p>
 <p>The only comparison operators are equality and inequality; <code>x==y</code>
   is defined as <code>is.zero(x-y)</code>.</p>
 <p>Functions <code>lowlevel_foo()</code> are low-level functions that interface
@@ -154,6 +163,17 @@
 <span class="r-in"><span><span class="fu"><a href="freealg.html">as.freealg</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span><span class="op">^</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> + a + aa + aaa + aaaa + aaaaa + aaaaaa + aaaaaaa</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="rfalg.html">rfalg</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="rfalg.html">rfalg</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="freealg.html">as.freealg</a></span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu"><a href="freealg.html">as.freealg</a></span><span class="op">(</span><span class="st">"b"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">(</span><span class="va">x</span><span class="op">*</span><span class="va">y</span><span class="op">)</span><span class="op">^</span><span class="va">a</span> <span class="op">==</span> <span class="va">x</span><span class="op">^</span><span class="va">a</span> <span class="op">*</span> <span class="va">y</span><span class="op">^</span><span class="va">a</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
+<span class="r-in"><span><span class="va">x</span><span class="op">^</span><span class="op">(</span><span class="va">a</span><span class="op">*</span><span class="va">b</span><span class="op">)</span> <span class="op">==</span> <span class="op">(</span><span class="va">x</span><span class="op">^</span><span class="va">a</span><span class="op">)</span><span class="op">^</span><span class="va">b</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">freealg</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-2</span>
       </span>
     </div>
 
@@ -107,36 +107,42 @@ context of algebras in the <a href="https://CRAN.R-project.org/package=mvp" clas
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="rfalg.html">rfalg</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">a</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 5a + 6abac + 7ac + acac + 9b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 5accc + 2ba + 4c + ca + 7cbcb + 6cc + 3cca</span>
 <span class="r-in"><span><span class="fu">coeffs</span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A disord object with hash e9e1fa682e647dd3331605799e36ce251d5bbb97 and elements</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5 6 7 1 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A disord object with hash b37c1cae575a974384930b7e603f8638f2840c9e and elements</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 5 2 4 1 7 6 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (in some order)</span>
 <span class="r-in"><span><span class="fu">words</span><span class="op">(</span><span class="va">a</span><span class="op">)</span>  <span class="co"># NB: hash is identical to that of coeffs(a)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A disord object with hash e9e1fa682e647dd3331605799e36ce251d5bbb97 and elements</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A disord object with hash b37c1cae575a974384930b7e603f8638f2840c9e and elements</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 3 3 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 2 1 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 3 1 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[5]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3 2 3 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[6]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[7]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3 3 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (in some order)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">coeffs</span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">7</span>   <span class="co"># replacement methods work </span></span></span>
 <span class="r-in"><span><span class="va">a</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 7a + 7abac + 7ac + 7acac + 7b</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 7accc + 7ba + 7c + 7ca + 7cbcb + 7cc + 7cca</span>
 <span class="r-in"><span><span class="fu">coeffs</span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 7 7 7 7 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 7 7 7 7 7 7 7</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

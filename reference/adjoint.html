@@ -22,7 +22,7 @@ $$\mathrm{ad}_X(Y)=\left[X,Y\right]$$"><!-- mathjax --><script src="https://cdnj
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">freealg</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2-2</span>
       </span>
     </div>
 
@@ -95,150 +95,154 @@ $$\mathrm{ad}_X(Y)=\left[X,Y\right]$$"><!-- mathjax --><script src="https://cdnj
 <span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu">ad</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">f</span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - 42aaacc - 21aabbb + 42aacca + 12aaccac + 36aaccb + 18aaccc + 6aacccac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24aacccb + 30aacccccb + 21abbba + 6abbbac + 18abbbb + 9abbbc + 3abbbcac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12abbbcb + 15abbbcccb - 35abc - 77ac - 12acaacc - 6acabbb - 14acbba - 10acbc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22acc - 7accbb - 4accbba - 2acccbb - 36baacc - 18babbb - 30bbc - 66bc + 35bca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10bcac + 30bcb - 12bcbba + 15bcc + 5bccac + 20bccb - 6bccbb + 25bccccb + 77ca -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18caacc - 9cabbb + 22cac - 6cacaacc - 3cacabbb - 5cacbc - 11cacc - 2caccbba -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cacccbb + 66cb - 24cbaacc - 12cbabbb + 14cbbaa + 4cbbaac + 12cbbab + 6cbbac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2cbbacac + 8cbbacb + 10cbbacccb - 20cbbc - 59cbc - 8cbcbba - 4cbccbb + 11ccac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44ccb + ccbba + 2ccbbac + 6ccbbb + 3ccbbc + ccbbcac + 4ccbbcb + 5ccbbcccb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30cccbaacc - 15cccbabbb - 3cccbb - 25cccbbc - 55cccbc - 10cccbcbba - 5cccbccbb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 55ccccb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - 7aaababba - 14aaabaccc - 35aaabb - 42aaabbb - 21aaabcaaa - 49aaabcbbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28aaabccb - aabba - 2aaccc - 5ab - 6abb + abbaa + 7abbaaaab + 10abbab +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6abbabcac + 4abbabccc - 3acaaa - 7acbbb - 4accb + 2accca + 14acccaaab + 20acccb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 12acccbcac + 8acccbccc + 5ba + 35baaab - 10babba - 20baccc + 6bba + 42bbaaab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 36bbbcac + 24bbbccc + 30bbcac + 20bbccc - 30bcaaa - 6bcacabba - 12bcacaccc -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30bcacb - 36bcacbb - 18bcaccaaa - 42bcaccbbb - 24bcacccb - 70bcbbb - 40bccb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4bcccabba - 8bcccaccc - 20bcccb - 24bcccbb - 12bccccaaa - 28bccccbbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16bcccccb + 3caaaa + 21caaaaaab + 30caaab + 18caaabcac + 12caaabccc + 7cbbba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49cbbbaaab + 70cbbbb + 42cbbbbcac + 28cbbbbccc + 4ccba + 28ccbaaab + 40ccbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24ccbbcac + 16ccbbccc</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">f</span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="co"># [x, [x, y]]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> free algebra element algebraically equal to</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 252aaaccaacc + 126aaaccabbb + 210aaaccbc + 462aaaccc + 84aaacccbba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42aaaccccbb + 126aabbbaacc + 63aabbbabbb + 105aabbbbc + 231aabbbc + 42aabbbcbba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 21aabbbccbb - 504aaccaaacc - 252aaccaabbb + 252aaccaacca + 72aaccaaccac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 216aaccaaccb + 108aaccaaccc + 36aaccaacccac + 144aaccaacccb + 180aaccaacccccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 126aaccabbba + 36aaccabbbac + 108aaccabbbb + 54aaccabbbc + 18aaccabbbcac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72aaccabbbcb + 90aaccabbbcccb - 420aaccabc - 924aaccac - 144aaccacaacc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72aaccacabbb - 168aaccacbba - 120aaccacbc - 264aaccacc - 84aaccaccbb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48aaccaccbba - 24aaccacccbb - 432aaccbaacc - 216aaccbabbb - 360aaccbbc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 792aaccbc + 210aaccbca + 60aaccbcac + 180aaccbcb - 144aaccbcbba + 90aaccbcc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30aaccbccac + 120aaccbccb - 72aaccbccbb + 150aaccbccccb + 462aaccca -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 216aacccaacc - 108aacccabbb + 132aacccac - 72aacccacaacc - 36aacccacabbb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60aacccacbc - 132aacccacc - 24aacccaccbba - 12aacccacccbb + 396aacccb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 288aacccbaacc - 144aacccbabbb + 84aacccbbaa + 24aacccbbaac + 72aacccbbab +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36aacccbbac + 12aacccbbacac + 48aacccbbacb + 60aacccbbacccb - 240aacccbbc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 708aacccbc - 96aacccbcbba - 48aacccbccbb - 198aacccc + 66aaccccac + 264aaccccb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - 30aaccccbba + 12aaccccbbac + 36aaccccbbb + 18aaccccbbc + 6aaccccbbcac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24aaccccbbcb + 30aaccccbbcccb - 360aacccccbaacc - 180aacccccbabbb - 36aacccccbb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - 300aacccccbbc - 660aacccccbc - 120aacccccbcbba - 60aacccccbccbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 330aaccccccb - 252abbbaaacc - 126abbbaabbb + 126abbbaacca + 36abbbaaccac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 108abbbaaccb + 54abbbaaccc + 18abbbaacccac + 72abbbaacccb + 90abbbaacccccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63abbbabbba + 18abbbabbbac + 54abbbabbbb + 27abbbabbbc + 9abbbabbbcac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36abbbabbbcb + 45abbbabbbcccb - 210abbbabc - 462abbbac - 72abbbacaacc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36abbbacabbb - 84abbbacbba - 60abbbacbc - 132abbbacc - 42abbbaccbb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24abbbaccbba - 12abbbacccbb - 216abbbbaacc - 108abbbbabbb - 180abbbbbc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 396abbbbc + 105abbbbca + 30abbbbcac + 90abbbbcb - 72abbbbcbba + 45abbbbcc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15abbbbccac + 60abbbbccb - 36abbbbccbb + 75abbbbccccb + 231abbbca -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 108abbbcaacc - 54abbbcabbb + 66abbbcac - 36abbbcacaacc - 18abbbcacabbb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30abbbcacbc - 66abbbcacc - 12abbbcaccbba - 6abbbcacccbb + 198abbbcb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 144abbbcbaacc - 72abbbcbabbb + 42abbbcbbaa + 12abbbcbbaac + 36abbbcbbab +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18abbbcbbac + 6abbbcbbacac + 24abbbcbbacb + 30abbbcbbacccb - 120abbbcbbc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 354abbbcbc - 48abbbcbcbba - 24abbbcbccbb - 99abbbcc + 33abbbccac + 132abbbccb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15abbbccbba + 6abbbccbbac + 18abbbccbbb + 9abbbccbbc + 3abbbccbbcac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12abbbccbbcb + 15abbbccbbcccb - 180abbbcccbaacc - 90abbbcccbabbb - 18abbbcccbb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - 150abbbcccbbc - 330abbbcccbc - 60abbbcccbcbba - 30abbbcccbccbb + 165abbbccccb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 210abcaacc + 105abcabbb + 175abcbc + 385abcc + 70abccbba + 35abcccbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 462acaacc + 72acaaccaacc + 36acaaccabbb + 60acaaccbc + 132acaaccc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24acaacccbba + 12acaaccccbb + 231acabbb + 36acabbbaacc + 18acabbbabbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30acabbbbc + 66acabbbc + 12acabbbcbba + 6acabbbccbb + 84acbbaaacc + 42acbbaabbb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 70acbbabc + 154acbbac + 28acbbacbba + 14acbbaccbb + 385acbc + 60acbcaacc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30acbcabbb + 50acbcbc + 110acbcc + 20acbccbba + 10acbcccbb + 847acc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 132accaacc + 66accabbb + 154accbba + 24accbbaaacc + 12accbbaabbb + 42accbbaacc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 21accbbabbb + 20accbbabc + 44accbbac + 8accbbacbba + 4accbbaccbb + 35accbbbc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 77accbbc + 14accbbcbba + 7accbbccbb + 110accbc + 242accc + 77acccbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44acccbba + 12acccbbaacc + 6acccbbabbb + 10acccbbbc + 22acccbbc + 4acccbbcbba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2acccbbccbb + 22accccbb + 216baaccaacc + 108baaccabbb + 180baaccbc + 396baaccc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 72baacccbba + 36baaccccbb + 108babbbaacc + 54babbbabbb + 90babbbbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 198babbbc + 36babbbcbba + 18babbbccbb + 180bbcaacc + 90bbcabbb + 150bbcbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 330bbcc + 60bbccbba + 30bbcccbb - 420bcaaacc - 210bcaabbb + 396bcaacc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 210bcaacca + 60bcaaccac + 180bcaaccb + 90bcaaccc + 30bcaacccac + 120bcaacccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 150bcaacccccb + 198bcabbb + 105bcabbba + 30bcabbbac + 90bcabbbb + 45bcabbbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15bcabbbcac + 60bcabbbcb + 75bcabbbcccb - 350bcabc - 770bcac - 120bcacaacc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60bcacabbb - 140bcacbba - 100bcacbc - 220bcacc - 70bcaccbb - 40bcaccbba -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20bcacccbb - 360bcbaacc - 180bcbabbb + 72bcbbaaacc + 36bcbbaabbb + 60bcbbabc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 132bcbbac + 24bcbbacbba + 12bcbbaccbb - 300bcbbc - 330bcbc + 175bcbca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50bcbcac + 150bcbcb - 120bcbcbba + 75bcbcc + 25bcbccac + 100bcbccb - 60bcbccbb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 125bcbccccb + 726bcc + 385bcca - 180bccaacc - 90bccabbb + 110bccac -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60bccacaacc - 30bccacabbb - 50bccacbc - 110bccacc - 20bccaccbba - 10bccacccbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 330bccb - 240bccbaacc - 120bccbabbb + 132bccbba + 70bccbbaa + 20bccbbaac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36bccbbaacc + 60bccbbab + 18bccbbabbb + 30bccbbac + 10bccbbacac + 40bccbbacb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50bccbbacccb + 30bccbbbc - 134bccbbc + 12bccbbcbba + 6bccbbccbb - 590bccbc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 80bccbcbba - 40bccbccbb - 165bccc + 55bcccac + 220bcccb + 66bcccbb - 25bcccbba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 10bcccbbac + 30bcccbbb + 15bcccbbc + 5bcccbbcac + 20bcccbbcb + 25bcccbbcccb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 300bccccbaacc - 150bccccbabbb - 30bccccbb - 250bccccbbc - 550bccccbc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 100bccccbcbba - 50bccccbccbb + 275bcccccb - 924caaacc - 462caabbb + 462caacca +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 108caaccaacc + 54caaccabbb + 132caaccac + 396caaccb + 90caaccbc + 396caaccc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66caacccac + 264caacccb + 36caacccbba + 18caaccccbb + 330caacccccb + 231cabbba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 54cabbbaacc + 27cabbbabbb + 66cabbbac + 198cabbbb + 45cabbbbc + 198cabbbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33cabbbcac + 132cabbbcb + 18cabbbcbba + 9cabbbccbb + 165cabbbcccb - 770cabc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1694cac - 264cacaacc + 36cacaaccaacc + 18cacaaccabbb + 30cacaaccbc + 66cacaaccc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 12cacaacccbba + 6cacaaccccbb - 132cacabbb + 18cacabbbaacc + 9cacabbbabbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15cacabbbbc + 33cacabbbc + 6cacabbbcbba + 3cacabbbccbb - 308cacbba - 220cacbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30cacbcaacc + 15cacbcabbb + 25cacbcbc + 55cacbcc + 10cacbccbba + 5cacbcccbb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 484cacc + 66caccaacc + 33caccabbb - 154caccbb - 88caccbba + 12caccbbaaacc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6caccbbaabbb + 10caccbbabc + 22caccbbac + 4caccbbacbba + 2caccbbaccbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55caccbc + 121caccc - 44cacccbb + 22cacccbba + 6cacccbbaacc + 3cacccbbabbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5cacccbbbc + 11cacccbbc + 2cacccbbcbba + cacccbbccbb + 11caccccbb - 792cbaacc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 144cbaaccaacc + 72cbaaccabbb + 120cbaaccbc + 264cbaaccc + 48cbaacccbba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24cbaaccccbb - 396cbabbb + 72cbabbbaacc + 36cbabbbabbb + 60cbabbbbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 132cbabbbc + 24cbabbbcbba + 12cbabbbccbb - 168cbbaaaacc - 84cbbaaabbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 84cbbaaacca + 24cbbaaaccac + 72cbbaaaccb + 36cbbaaaccc + 12cbbaaacccac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48cbbaaacccb + 60cbbaaacccccb + 42cbbaabbba + 12cbbaabbbac + 36cbbaabbbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18cbbaabbbc + 6cbbaabbbcac + 24cbbaabbbcb + 30cbbaabbbcccb - 140cbbaabc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 308cbbaac - 48cbbaacaacc - 24cbbaacabbb - 56cbbaacbba - 40cbbaacbc - 88cbbaacc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - 28cbbaaccbb - 16cbbaaccbba - 8cbbaacccbb - 144cbbabaacc - 72cbbababbb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 120cbbabbc - 264cbbabc + 70cbbabca + 20cbbabcac + 60cbbabcb - 48cbbabcbba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30cbbabcc + 10cbbabccac + 40cbbabccb - 24cbbabccbb + 50cbbabccccb + 154cbbaca -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72cbbacaacc - 36cbbacabbb + 44cbbacac - 24cbbacacaacc - 12cbbacacabbb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20cbbacacbc - 44cbbacacc - 8cbbacaccbba - 4cbbacacccbb + 132cbbacb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 96cbbacbaacc - 48cbbacbabbb + 28cbbacbbaa + 8cbbacbbaac + 24cbbacbbab +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12cbbacbbac + 4cbbacbbacac + 16cbbacbbacb + 20cbbacbbacccb - 80cbbacbbc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 236cbbacbc - 32cbbacbcbba - 16cbbacbccbb - 66cbbacc + 22cbbaccac + 88cbbaccb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10cbbaccbba + 4cbbaccbbac + 12cbbaccbbb + 6cbbaccbbc + 2cbbaccbbcac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8cbbaccbbcb + 10cbbaccbbcccb - 120cbbacccbaacc - 60cbbacccbabbb - 12cbbacccbb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 100cbbacccbbc - 220cbbacccbc - 40cbbacccbcbba - 20cbbacccbccbb + 110cbbaccccb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 660cbbc + 120cbbcaacc + 60cbbcabbb + 100cbbcbc + 220cbbcc + 40cbbccbba +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20cbbcccbb - 1452cbc + 385cbca + 354cbcaacc + 177cbcabbb + 110cbcac + 330cbcb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 264cbcbba + 48cbcbbaaacc + 24cbcbbaabbb + 40cbcbbabc + 88cbcbbac + 16cbcbbacbba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 8cbcbbaccbb + 295cbcbc + 814cbcc + 55cbccac + 220cbccb - 132cbccbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 118cbccbba + 24cbccbbaacc + 12cbccbbabbb + 20cbccbbbc + 44cbccbbc + 8cbccbbcbba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 4cbccbbccbb + 59cbcccbb + 275cbccccb + 847cca - 198ccaacc - 99ccabbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 242ccac - 132ccacaacc - 66ccacabbb - 110ccacbc - 242ccacc - 44ccaccbba -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22ccacccbb + 726ccb - 528ccbaacc - 264ccbabbb + 154ccbbaa - 48ccbbaaacc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24ccbbaabbb + 44ccbbaac + 42ccbbaacca + 12ccbbaaccac + 36ccbbaaccb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18ccbbaaccc + 6ccbbaacccac + 24ccbbaacccb + 30ccbbaacccccb + 132ccbbab +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21ccbbabbba + 6ccbbabbbac + 18ccbbabbbb + 9ccbbabbbc + 3ccbbabbbcac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12ccbbabbbcb + 15ccbbabbbcccb - 40ccbbabc - 22ccbbac - 24ccbbacaacc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12ccbbacabbb + 22ccbbacac + 88ccbbacb - 16ccbbacbba - 20ccbbacbc - 44ccbbacc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8ccbbaccbb - 8ccbbaccbba + 110ccbbacccb - 4ccbbacccbb - 72ccbbbaacc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36ccbbbabbb - 60ccbbbbc - 132ccbbbc + 35ccbbbca + 10ccbbbcac + 30ccbbbcb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24ccbbbcbba + 15ccbbbcc + 5ccbbbccac + 20ccbbbccb - 12ccbbbccbb + 25ccbbbccccb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - 440ccbbc + 77ccbbca - 36ccbbcaacc - 18ccbbcabbb + 22ccbbcac - 12ccbbcacaacc -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6ccbbcacabbb - 10ccbbcacbc - 22ccbbcacc - 4ccbbcaccbba - 2ccbbcacccbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66ccbbcb - 48ccbbcbaacc - 24ccbbcbabbb + 14ccbbcbbaa + 4ccbbcbbaac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12ccbbcbbab + 6ccbbcbbac + 2ccbbcbbacac + 8ccbbcbbacb + 10ccbbcbbacccb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40ccbbcbbc - 118ccbbcbc - 16ccbbcbcbba - 8ccbbcbccbb - 33ccbbcc + 11ccbbccac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44ccbbccb - 5ccbbccbba + 2ccbbccbbac + 6ccbbccbbb + 3ccbbccbbc + ccbbccbbcac +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4ccbbccbbcb + 5ccbbccbbcccb - 60ccbbcccbaacc - 30ccbbcccbabbb - 6ccbbcccbb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50ccbbcccbbc - 110ccbbcccbc - 20ccbbcccbcbba - 10ccbbcccbccbb + 55ccbbccccb -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1133ccbc - 176ccbcbba - 88ccbccbb + 121cccac + 484cccb + 180cccbaaccaacc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 90cccbaaccabbb + 150cccbaaccbc + 330cccbaaccc + 60cccbaacccbba + 30cccbaaccccbb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 90cccbabbbaacc + 45cccbabbbabbb + 75cccbabbbbc + 165cccbabbbc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30cccbabbbcbba + 15cccbabbbccbb + 11cccbba + 18cccbbaacc + 9cccbbabbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22cccbbac + 66cccbbb + 15cccbbbc + 66cccbbc + 150cccbbcaacc + 75cccbbcabbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11cccbbcac + 44cccbbcb + 6cccbbcbba + 125cccbbcbc + 275cccbbcc + 3cccbbccbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50cccbbccbba + 55cccbbcccb + 25cccbbcccbb + 330cccbcaacc + 165cccbcabbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60cccbcbbaaacc + 30cccbcbbaabbb + 50cccbcbbabc + 110cccbcbbac + 20cccbcbbacbba</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> + 10cccbcbbaccbb + 275cccbcbc + 605cccbcc + 110cccbccbba + 30cccbccbbaacc +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15cccbccbbabbb + 25cccbccbbbc + 55cccbccbbc + 10cccbccbbcbba + 5cccbccbbccbb +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55cccbcccbb - 660ccccbaacc - 330ccccbabbb - 33ccccbb - 550ccccbbc - 1210ccccbc</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> - 220ccccbcbba - 110ccccbccbb + 605cccccb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 7aaababbaabba + 14aaababbaaccc + 35aaababbab + 42aaababbabb + 21aaababbacaaa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 49aaababbacbbb + 28aaababbaccb + 14aaabacccabba + 28aaabacccaccc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70aaabacccb + 84aaabacccbb + 42aaabaccccaaa + 98aaabaccccbbb + 56aaabacccccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35aaabbabba + 70aaabbaccc + 175aaabbb + 42aaabbbabba + 84aaabbbaccc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 420aaabbbb + 252aaabbbbb + 126aaabbbcaaa + 294aaabbbcbbb + 168aaabbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105aaabbcaaa + 245aaabbcbbb + 140aaabbccb + 21aaabcaaaabba + 42aaabcaaaaccc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105aaabcaaab + 126aaabcaaabb + 63aaabcaaacaaa + 147aaabcaaacbbb + 84aaabcaaaccb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 49aaabcbbbabba + 98aaabcbbbaccc + 245aaabcbbbb + 294aaabcbbbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 147aaabcbbbcaaa + 343aaabcbbbcbbb + 196aaabcbbbccb + 28aaabccbabba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56aaabccbaccc + 140aaabccbb + 168aaabccbbb + 84aaabccbcaaa + 196aaabccbcbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112aaabccbccb + aabbaabba + 2aabbaaccc + 5aabbab + 6aabbabb + 3aabbacaaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7aabbacbbb + 4aabbaccb + 2aacccabba + 4aacccaccc + 10aacccb + 12aacccbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6aaccccaaa + 14aaccccbbb + 8aacccccb + 5ababba + 10abaccc + 25abb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14abbaaaababba - 28abbaaaabaccc - 70abbaaaabb - 84abbaaaabbb - 42abbaaaabcaaa -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98abbaaaabcbbb - 56abbaaaabccb - 2abbaaabba - 4abbaaaccc - 10abbaab - 12abbaabb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + abbaabbaa + 7abbaabbaaaab + 10abbaabbab + 6abbaabbabcac + 4abbaabbabccc -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6abbaacaaa - 14abbaacbbb - 8abbaaccb + 2abbaaccca + 14abbaacccaaab +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20abbaacccb + 12abbaacccbcac + 8abbaacccbccc + 5abbaba + 35abbabaaab -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20abbababba - 40abbabaccc - 50abbabb + 12abbabba + 42abbabbaaab - 60abbabbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36abbabbbcac + 24abbabbbccc + 30abbabbcac + 20abbabbccc - 60abbabcaaa -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12abbabcacabba - 24abbabcacaccc - 60abbabcacb - 72abbabcacbb - 36abbabcaccaaa -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84abbabcaccbbb - 48abbabcacccb - 140abbabcbbb - 80abbabccb - 8abbabcccabba -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16abbabcccaccc - 40abbabcccb - 48abbabcccbb - 24abbabccccaaa - 56abbabccccbbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32abbabcccccb + 3abbacaaaa + 21abbacaaaaaab + 30abbacaaab + 18abbacaaabcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12abbacaaabccc + 7abbacbbba + 49abbacbbbaaab + 70abbacbbbb + 42abbacbbbbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28abbacbbbbccc + 4abbaccba + 28abbaccbaaab + 40abbaccbb + 24abbaccbbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16abbaccbbccc + 12abbaccc + 60abbb + 36abbbb + 18abbcaaa + 42abbcbbb + 24abbccb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 15abcaaa + 35abcbbb + 20abccb + 3acaaaabba + 6acaaaaccc + 15acaaab +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18acaaabb + 9acaaacaaa + 21acaaacbbb + 12acaaaccb + 7acbbbabba + 14acbbbaccc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35acbbbb + 42acbbbbb + 21acbbbcaaa + 49acbbbcbbb + 28acbbbccb + 4accbabba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8accbaccc + 20accbb + 24accbbb + 12accbcaaa + 28accbcbbb + 16accbccb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28acccaaababba - 56acccaaabaccc - 140acccaaabb - 168acccaaabbb - 84acccaaabcaaa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - 196acccaaabcbbb - 112acccaaabccb - 4acccaabba - 8acccaaccc - 20acccab -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24acccabb + 2acccabbaa + 14acccabbaaaab + 20acccabbab + 12acccabbabcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8acccabbabccc - 12acccacaaa - 28acccacbbb - 16acccaccb + 4acccaccca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28acccacccaaab + 40acccacccb + 24acccacccbcac + 16acccacccbccc + 10acccba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70acccbaaab - 40acccbabba - 80acccbaccc - 100acccbb + 12acccbba + 84acccbbaaab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - 120acccbbb + 72acccbbbcac + 48acccbbbccc + 60acccbbcac + 40acccbbccc -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120acccbcaaa - 24acccbcacabba - 48acccbcacaccc - 120acccbcacb - 144acccbcacbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72acccbcaccaaa - 168acccbcaccbbb - 96acccbcacccb - 280acccbcbbb - 160acccbccb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16acccbcccabba - 32acccbcccaccc - 80acccbcccb - 96acccbcccbb - 48acccbccccaaa -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112acccbccccbbb - 64acccbcccccb + 6accccaaaa + 42accccaaaaaab + 60accccaaab +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36accccaaabcac + 24accccaaabccc + 14accccbbba + 98accccbbbaaab + 140accccbbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84accccbbbbcac + 56accccbbbbccc + 8acccccba + 56acccccbaaab + 80acccccbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48acccccbbcac + 32acccccbbccc - 70baaababba - 140baaabaccc - 350baaabb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 420baaabbb - 210baaabcaaa - 490baaabcbbb - 280baaabccb - 10baabba - 20baaccc -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50bab - 60babb + 5babbaa + 35babbaaaab + 10babbaabba + 20babbaaccc + 100babbab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 60babbabb + 30babbabcac + 20babbabccc + 30babbacaaa + 70babbacbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40babbaccb - 30bacaaa - 70bacbbb - 40baccb + 10baccca + 70bacccaaab +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20bacccabba + 40bacccaccc + 200bacccb + 120bacccbb + 60bacccbcac + 40bacccbccc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 60baccccaaa + 140baccccbbb + 80bacccccb + 25bba + 175bbaaab - 84bbaaababba -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168bbaaabaccc - 420bbaaabb - 504bbaaabbb - 252bbaaabcaaa - 588bbaaabcbbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 336bbaaabccb - 12bbaabba - 24bbaaccc - 60bbab - 72bbabb - 50bbabba + 6bbabbaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42bbabbaaaab + 60bbabbab + 36bbabbabcac + 24bbabbabccc - 36bbacaaa - 84bbacbbb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - 48bbaccb - 100bbaccc + 12bbaccca + 84bbacccaaab + 120bbacccb + 72bbacccbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48bbacccbccc + 60bbba + 420bbbaaab - 60bbbabba - 120bbbaccc + 36bbbba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252bbbbaaab + 216bbbbbcac + 144bbbbbccc + 360bbbbcac + 240bbbbccc - 180bbbcaaa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 150bbbcac - 72bbbcacabba - 144bbbcacaccc - 360bbbcacb - 432bbbcacbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 216bbbcaccaaa - 504bbbcaccbbb - 288bbbcacccb - 420bbbcbbb - 240bbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100bbbccc - 48bbbcccabba - 96bbbcccaccc - 240bbbcccb - 288bbbcccbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144bbbccccaaa - 336bbbccccbbb - 192bbbcccccb - 150bbcaaa + 18bbcaaaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 126bbcaaaaaab + 180bbcaaab + 108bbcaaabcac + 72bbcaaabccc - 60bbcacabba -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120bbcacaccc - 300bbcacb - 360bbcacbb - 180bbcaccaaa - 420bbcaccbbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 240bbcacccb - 350bbcbbb + 42bbcbbba + 294bbcbbbaaab + 420bbcbbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 252bbcbbbbcac + 168bbcbbbbccc - 200bbccb + 24bbccba + 168bbccbaaab + 240bbccbb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 144bbccbbcac + 96bbccbbccc - 40bbcccabba - 80bbcccaccc - 200bbcccb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 240bbcccbb - 120bbccccaaa - 280bbccccbbb - 160bbcccccb + 15bcaaaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105bcaaaaaab + 30bcaaaabba + 60bcaaaaccc + 300bcaaab + 180bcaaabb + 90bcaaabcac</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 60bcaaabccc + 90bcaaacaaa + 210bcaaacbbb + 120bcaaaccb + 6bcacabbaabba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12bcacabbaaccc + 30bcacabbab + 36bcacabbabb + 18bcacabbacaaa + 42bcacabbacbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24bcacabbaccb + 12bcacacccabba + 24bcacacccaccc + 60bcacacccb + 72bcacacccbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36bcacaccccaaa + 84bcacaccccbbb + 48bcacacccccb + 30bcacbabba + 60bcacbaccc +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 150bcacbb + 36bcacbbabba + 72bcacbbaccc + 360bcacbbb + 216bcacbbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 108bcacbbcaaa + 252bcacbbcbbb + 144bcacbbccb + 90bcacbcaaa + 210bcacbcbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120bcacbccb + 18bcaccaaaabba + 36bcaccaaaaccc + 90bcaccaaab + 108bcaccaaabb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54bcaccaaacaaa + 126bcaccaaacbbb + 72bcaccaaaccb + 42bcaccbbbabba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84bcaccbbbaccc + 210bcaccbbbb + 252bcaccbbbbb + 126bcaccbbbcaaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 294bcaccbbbcbbb + 168bcaccbbbccb + 24bcacccbabba + 48bcacccbaccc + 120bcacccbb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 144bcacccbbb + 72bcacccbcaaa + 168bcacccbcbbb + 96bcacccbccb + 35bcbbba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 245bcbbbaaab + 70bcbbbabba + 140bcbbbaccc + 700bcbbbb + 420bcbbbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 210bcbbbbcac + 140bcbbbbccc + 210bcbbbcaaa + 490bcbbbcbbb + 280bcbbbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20bccba + 140bccbaaab + 40bccbabba + 80bccbaccc + 400bccbb + 240bccbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 120bccbbcac + 80bccbbccc + 120bccbcaaa + 280bccbcbbb + 160bccbccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4bcccabbaabba + 8bcccabbaaccc + 20bcccabbab + 24bcccabbabb + 12bcccabbacaaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28bcccabbacbbb + 16bcccabbaccb + 8bcccacccabba + 16bcccacccaccc + 40bcccacccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48bcccacccbb + 24bcccaccccaaa + 56bcccaccccbbb + 32bcccacccccb + 20bcccbabba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40bcccbaccc + 100bcccbb + 24bcccbbabba + 48bcccbbaccc + 240bcccbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144bcccbbbb + 72bcccbbcaaa + 168bcccbbcbbb + 96bcccbbccb + 60bcccbcaaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140bcccbcbbb + 80bcccbccb + 12bccccaaaabba + 24bccccaaaaccc + 60bccccaaab +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72bccccaaabb + 36bccccaaacaaa + 84bccccaaacbbb + 48bccccaaaccb + 28bccccbbbabba</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 56bccccbbbaccc + 140bccccbbbb + 168bccccbbbbb + 84bccccbbbcaaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196bccccbbbcbbb + 112bccccbbbccb + 16bcccccbabba + 32bcccccbaccc + 80bcccccbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96bcccccbbb + 48bcccccbcaaa + 112bcccccbcbbb + 64bcccccbccb - 42caaaaaababba -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84caaaaaabaccc - 210caaaaaabb - 252caaaaaabbb - 126caaaaaabcaaa -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 294caaaaaabcbbb - 168caaaaaabccb - 6caaaaabba - 12caaaaaccc - 30caaaab -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36caaaabb + 3caaaabbaa + 21caaaabbaaaab + 30caaaabbab + 18caaaabbabcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12caaaabbabccc - 18caaaacaaa - 42caaaacbbb - 24caaaaccb + 6caaaaccca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42caaaacccaaab + 60caaaacccb + 36caaaacccbcac + 24caaaacccbccc + 15caaaba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 105caaabaaab - 60caaababba - 120caaabaccc - 150caaabb + 18caaabba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 126caaabbaaab - 180caaabbb + 108caaabbbcac + 72caaabbbccc + 90caaabbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60caaabbccc - 180caaabcaaa - 36caaabcacabba - 72caaabcacaccc - 180caaabcacb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 216caaabcacbb - 108caaabcaccaaa - 252caaabcaccbbb - 144caaabcacccb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 420caaabcbbb - 240caaabccb - 24caaabcccabba - 48caaabcccaccc - 120caaabcccb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144caaabcccbb - 72caaabccccaaa - 168caaabccccbbb - 96caaabcccccb + 9caaacaaaa +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63caaacaaaaaab + 90caaacaaab + 54caaacaaabcac + 36caaacaaabccc + 21caaacbbba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 147caaacbbbaaab + 210caaacbbbb + 126caaacbbbbcac + 84caaacbbbbccc + 12caaaccba</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 84caaaccbaaab + 120caaaccbb + 72caaaccbbcac + 48caaaccbbccc - 98cbbbaaababba</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> - 196cbbbaaabaccc - 490cbbbaaabb - 588cbbbaaabbb - 294cbbbaaabcaaa -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 686cbbbaaabcbbb - 392cbbbaaabccb - 14cbbbaabba - 28cbbbaaccc - 70cbbbab -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84cbbbabb + 7cbbbabbaa + 49cbbbabbaaaab + 70cbbbabbab + 42cbbbabbabcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28cbbbabbabccc - 42cbbbacaaa - 98cbbbacbbb - 56cbbbaccb + 14cbbbaccca +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98cbbbacccaaab + 140cbbbacccb + 84cbbbacccbcac + 56cbbbacccbccc + 35cbbbba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 245cbbbbaaab - 140cbbbbabba - 280cbbbbaccc - 350cbbbbb + 42cbbbbba +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 294cbbbbbaaab - 420cbbbbbb + 252cbbbbbbcac + 168cbbbbbbccc + 210cbbbbbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 140cbbbbbccc - 420cbbbbcaaa - 84cbbbbcacabba - 168cbbbbcacaccc - 420cbbbbcacb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 504cbbbbcacbb - 252cbbbbcaccaaa - 588cbbbbcaccbbb - 336cbbbbcacccb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 980cbbbbcbbb - 560cbbbbccb - 56cbbbbcccabba - 112cbbbbcccaccc - 280cbbbbcccb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 336cbbbbcccbb - 168cbbbbccccaaa - 392cbbbbccccbbb - 224cbbbbcccccb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21cbbbcaaaa + 147cbbbcaaaaaab + 210cbbbcaaab + 126cbbbcaaabcac + 84cbbbcaaabccc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 49cbbbcbbba + 343cbbbcbbbaaab + 490cbbbcbbbb + 294cbbbcbbbbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 196cbbbcbbbbccc + 28cbbbccba + 196cbbbccbaaab + 280cbbbccbb + 168cbbbccbbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112cbbbccbbccc - 56ccbaaababba - 112ccbaaabaccc - 280ccbaaabb - 336ccbaaabbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 168ccbaaabcaaa - 392ccbaaabcbbb - 224ccbaaabccb - 8ccbaabba - 16ccbaaccc -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40ccbab - 48ccbabb + 4ccbabbaa + 28ccbabbaaaab + 40ccbabbab + 24ccbabbabcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16ccbabbabccc - 24ccbacaaa - 56ccbacbbb - 32ccbaccb + 8ccbaccca + 56ccbacccaaab</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> + 80ccbacccb + 48ccbacccbcac + 32ccbacccbccc + 20ccbba + 140ccbbaaab -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80ccbbabba - 160ccbbaccc - 200ccbbb + 24ccbbba + 168ccbbbaaab - 240ccbbbb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 144ccbbbbcac + 96ccbbbbccc + 120ccbbbcac + 80ccbbbccc - 240ccbbcaaa -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48ccbbcacabba - 96ccbbcacaccc - 240ccbbcacb - 288ccbbcacbb - 144ccbbcaccaaa -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 336ccbbcaccbbb - 192ccbbcacccb - 560ccbbcbbb - 320ccbbccb - 32ccbbcccabba -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64ccbbcccaccc - 160ccbbcccb - 192ccbbcccbb - 96ccbbccccaaa - 224ccbbccccbbb -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 128ccbbcccccb + 12ccbcaaaa + 84ccbcaaaaaab + 120ccbcaaab + 72ccbcaaabcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48ccbcaaabccc + 28ccbcbbba + 196ccbcbbbaaab + 280ccbcbbbb + 168ccbcbbbbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 112ccbcbbbbccc + 16ccbccba + 112ccbccbaaab + 160ccbccbb + 96ccbccbbcac +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64ccbccbbccc</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
