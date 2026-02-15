@@ -1,5 +1,3 @@
-## This file follows the structure of aaa.R in the free group package.
-
 test_that("Test suite aag.R",{
 
   expect_true(as.freealg("-1 + x") == -as.freealg("1-x"))
