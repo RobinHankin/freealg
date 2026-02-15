@@ -32,7 +32,9 @@ checker2 <- function(x,y){
 
     a <- as.freealg("a")*7
 
+    expect_true( (x^a) + (y^a) == (x+y)^a)
     expect_true( (x^a) * (y^a) == (x*y)^a)
+
 }
 
 for(i in 1:2){
