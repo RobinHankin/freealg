@@ -1,3 +1,7 @@
+# freealg_1.2-2
+
+- exponentiation
+
 # freealg_1.2-1
 
 - code refactoring

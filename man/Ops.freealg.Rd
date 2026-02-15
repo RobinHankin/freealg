@@ -9,6 +9,7 @@
 \alias{free_plus_free}
 \alias{free_plus_numeric}
 \alias{free_power_scalar}
+\alias{free_power_free}
 \alias{free_eq_free}
 \alias{free_equal_free}
 \alias{lowlevel_simplify}
@@ -28,6 +29,7 @@
 \method{Ops}{freealg}(e1, e2)
 free_negative(S)
 free_power_scalar(S,n)
+free_power_free(e1, e2)
 free_eq_free(e1,e2)
 free_plus_numeric(S,x)
 free_plus_free(e1,e2)
@@ -57,16 +59,26 @@ inv(S)
   \dQuote{\code{^}}, and \dQuote{\code{==}}) to the appropriate
   specialist function.
 
-  The caret, as in \code{a^n}, denotes arithmetic exponentiation, as in
+  Integer powers are implemented.  The caret [e.g., \code{a^n} with
+  integer \code{n}] denotes arithmetic exponentiation, as in
   \code{x^3==x*x*x}.  As an experimental feature, this is (sort of)
-  vectorised: if \code{n} is a vector, then \code{a^n} returns the sum
-  of \code{a} raised to the power of each element of \code{n}.  For example,
-  \code{a^c(n1,n2,n3)} is \code{a^n1 + a^n2 + a^n3}.  Internally,
-  \code{n} is tabulated in the interests of efficiency, so
-  \code{a^c(0,2,5,5,5,) = 1 + a^2 + 3a^5} is evaluated with only a
-  single fifth power.  Similar functionality is implemented in the
-  \CRANpkg{mvp} package.
+  vectorised: if \code{v} is a vector of integers, then \code{a^v}
+  returns the sum of \code{a} raised to the power of each element of
+  \code{v}.  For example, \code{a^c(n1,n2,n3)} is \code{a^n1 + a^n2 +
+  a^n3}.  Internally, \code{n} is tabulated in the interests of
+  efficiency, so \code{a^c(0,2,5,5,5,) = 1 + a^2 + 3a^5} is evaluated
+  with only a single fifth power.  Similar functionality is implemented
+  in the \CRANpkg{mvp} package.
 
+  Negative powers, as in \code{a^n} with \eqn{n<0} are implemented: if
+  \code{a} has an inverse, then \code{a^n == inv(a)^(-n)}; so
+  \code{a^(n+m)=(a^n)*(a^m)} for \code{n,m} any integers, positive or
+  negative.
+
+  If \code{a} has an inverse, then \code{x^a == inv(a)*x*a}.  The
+  notation is motivated by the identities \code{x^(ab)=(x^a)^b} and
+  \code{(x*y)^a=(x^a)*(y^a)}.
+  
   The only comparison operators are equality and inequality; \code{x==y}
   is defined as \code{is.zero(x-y)}.
 
@@ -92,6 +104,15 @@ constant(as.freealg("x+y+X+Y")^6)  # OEIS sequence A035610
 inv(as.freealg("2aaabAAAAx"))
 
 as.freealg("a")^(1:7)
+
+x <- rfalg()
+y <- rfalg()
+a <- as.freealg("a")
+b <- as.freealg("b")
+
+
+(x*y)^a == x^a * y^a
+x^(a*b) == (x^a)^b
 
 
 }

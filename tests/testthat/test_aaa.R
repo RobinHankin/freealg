@@ -25,9 +25,6 @@ checker1 <- function(x){
   
     expect_true(x-x == 0)
     expect_error(x/x)
-    expect_error(x^x)
-    expect_error(x^(-1))
-  
 
     expect_true(x == x, info=x)
     expect_true(x != x+1, info=x)

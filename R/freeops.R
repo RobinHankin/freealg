@@ -51,10 +51,12 @@
         oddfunc()
       }
     } else if (.Generic == "^") {
-      if(lclass && !rclass){
+      if (lclass && !rclass){
         return(free_power_scalar(e1,e2)) # S^n
+      } else if(lclass && rclass){
+        return(free_power_free(e1,e2)) # a^as.free("z")
       } else {
-        stop("Generic '^' not implemented in this case: x^2=x*x")
+        stop("Generic '^' not implemented in this case; all we have is x^2=x*x and a^z=inv(z)*a*z")
       }
     } else if (.Generic == "==") {
         return(free_eq_free(e1,e2))
@@ -131,7 +133,7 @@ freealg(S[[1]],x*S[[2]])
     
   stopifnot(n==round(n))
   if(n<0){
-    stop("negative powers not implemented")
+    return(Recall(inv(S), -n))
   } else if(n==0){
     return(as.freealg(1))
   } else {
@@ -139,6 +141,14 @@ freealg(S[[1]],x*S[[2]])
       return(freealg(jj[[1]],jj[[2]]))
   }
 }
+
+#' @export
+`free_power_free` <- function(e1, e2){
+    e2 <- as.freealg(e2)
+    coeffs(e2) <- 1
+    return(inv(e2) * e1 * e2)
+}
+
 
 #' @export
 `free_eq_free` <- function(e1,e2){
