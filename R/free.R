@@ -213,45 +213,45 @@
 }
 
 #' @export
-`vector_to_free` <- function(v,coeffs){
-  if(missing(coeffs)){coeffs <- rep(1,length(v))}
-  freealg(as.list(v),coeffs)
+`vector_to_free` <- function(v, coeffs){
+  if(missing(coeffs)){coeffs <- rep(1, length(v))}
+  freealg(as.list(v), coeffs)
 }
 
 #' @export
 `string_to_freealg` <- function(string){
-  if(nchar(string)==0){return(numeric_to_free(0))}
-  string <- gsub("^\\+","",string)  # strip initial "+"
-  string <- gsub("\\*","",string)   # strip all "*"
-  minus <- length(grep("^-",string))>0
+  if(nchar(string) == 0){return(numeric_to_free(0))}
+  string <- gsub("^\\+", "", string)  # strip initial "+"
+  string <- gsub("\\*", "", string)   # strip all "*"
+  minus <- length(grep("^-", string))>0
   if(minus){
     sign <- (-1)
-    string <- gsub("^-","",string)
+    string <- gsub("^-", "", string)
   } else {
     sign <- +1
   }
 
-  if(length(grep("[0-9]",string))>0){
-    coeff <- as.numeric(gsub("[a-z]|[A-Z]","",string))
-    string <- gsub("[0-9]","",string)
+  if(length(grep("[0-9]", string))>0){
+    coeff <- as.numeric(gsub("[a-z]|[A-Z]", "", string))
+    string <- gsub("[0-9]", "", string)
   } else {
     coeff <- 1
   }
   out <- match(strsplit(string,"")[[1]], c(letters,LETTERS))
   if(any(out>26)){out[out>26] <- 26-out[out>26]}
-  freealg(list(out),coeffs=sign*coeff)
+  freealg(list(out), coeffs=sign*coeff)
 }
 
 #' @export
-`char_to_freealg` <- function(ch){ Reduce(`+`,lapply(ch,string_to_freealg))  }
+`char_to_freealg` <- function(ch){ Reduce(`+`, lapply(ch, string_to_freealg))}
 
 #' @export
 `natural_char_to_freealg` <- function(string){
   string <- paste(string, collapse = " ")
-  string <- gsub(" ","",string)  # strip spaces
-  string <- gsub("\\+"," +",string) # "A+B" -> "A +B"
+  string <- gsub(" "  , ""  ,string) # strip spaces
+  string <- gsub("\\+"," +" ,string) # "A+B" -> "A +B"
   string <- gsub("\\-", " -",string) # "A-B" -> "A -B"
-  char_to_freealg(strsplit(string," ")[[1]])
+  char_to_freealg(strsplit(string, " ")[[1]])
 }
 
 #' @export
@@ -263,7 +263,7 @@ deriv.freealg <- function(x, r, ...){
     if(is.character(r)){
         rn <- numeric(length(r))
         if(length(r)==1){r <- strsplit(r, "")[[1]]}
-        rn <- sapply(r, function(x){which(x==c(letters,LETTERS))}) # a=1,b=2...
+        rn <- sapply(r, function(x){which(x == c(letters,LETTERS))}) # a=1,b=2...
         wanted <- rn > 26
         rn[wanted] <- 26 - rn[wanted]  # A=-1,B=-2,...
     } else {
@@ -281,12 +281,12 @@ deriv.freealg <- function(x, r, ...){
 }
 
 #' @export
-`subsu` <- function(S1,S2,r){
+`subsu` <- function(S1, S2, r){
     S1 <- as.freealg(S1)
     S2 <- as.freealg(S2)
     if(is.character(r) && (nchar(r)==1)){r <- which(letters==r)}
-    out <- lowlevel_subs(S1[[1]],S1[[2]],S2[[1]],S2[[2]],as.integer(round(r[1])))
-    freealg(out[[1]],out[[2]])
+    out <- lowlevel_subs(S1[[1]], S1[[2]], S2[[1]], S2[[2]], as.integer(round(r[1])))
+    freealg(out[[1]], out[[2]])
 }
 
 #' @export
@@ -301,19 +301,19 @@ deriv.freealg <- function(x, r, ...){
 }
 
 #' @export
-`linear` <- function(x,power=1){
+`linear` <- function(x, power=1){
     a <- seq_along(x)
-    jj <- cbind(a,power)
-    freealg(sapply(a,function(i){rep(jj[i,1],jj[i,2])},simplify=FALSE),x)
+    jj <- cbind(a, power)
+    freealg(sapply(a, function(i){rep(jj[i,1], jj[i,2])}, simplify=FALSE), x)
 }
 
 #' @export
 `pepper` <- function(v){
     if(is.character(v)){
-        v <- match(unlist(strsplit(v,"")),letters)
+        v <- match(unlist(strsplit(v, "")), letters)
     }
     mv <- partitions::multiset(v)
-    freealg(split(mv,col(mv)),rep(1,ncol(mv)))
+    freealg(split(mv, col(mv)), rep(1, ncol(mv)))
 }
 
 #' @export
@@ -329,7 +329,7 @@ deriv.freealg <- function(x, r, ...){
   if(is.zero(x)){
     out <- -Inf
   } else {
-    out <- disord(unlist(lapply(elements(words(x)),length)),hashcal(x))
+    out <- disord(unlist(lapply(elements(words(x)), length)), hashcal(x))
   }
   return(out)
 }
@@ -337,10 +337,10 @@ deriv.freealg <- function(x, r, ...){
 #' @export
 `grade<-` <- function(x, n, value){
     if(is.freealg(value)){
-        if(is.zero(value)){return(Recall(x,n,0))}
+        if(is.zero(value)){return(Recall(x, n, 0))}
         stopifnot(all(grades(value) %in% n))
-        grade(x,n) <- 0
-        return(x+value)
+        grade(x, n) <- 0
+        return(x + value)
     } else {
         coeffs(x)[grades(x) %in% n] <- value
         return(x)
@@ -355,8 +355,8 @@ deriv.freealg <- function(x, r, ...){
 
 #' @export
 `inv` <- function(S){
-  if(nterms(S)==1){
-    return(freealg(list(rev(-words(S)[[1]])),1/coeffs(S)))
+  if(nterms(S) == 1){
+    return(freealg(list(rev(-words(S)[[1]])), 1/coeffs(S)))
   } else {
     stop("only freealg objects with exactly one term have a multiplicative inverse")
   }
@@ -364,14 +364,14 @@ deriv.freealg <- function(x, r, ...){
 
 #' @export
 `abelianize` <- function(x){
-  freealg(lapply(elements(words(x)),function(x){x[order(abs(x))]}),elements(coeffs(x)))
+  freealg(lapply(elements(words(x)), function(x){x[order(abs(x))]}), elements(coeffs(x)))
 }
 
 setGeneric("drop")
 setOldClass("freealg")
 
 #' @export
-setMethod("drop","freealg", function(x){
+setMethod("drop", "freealg", function(x){
     if(is.zero(x)){
         return(0)
     } else if(is.constant(x)){
@@ -386,23 +386,23 @@ setGeneric("unlist")
 setGeneric("lapply")
 
 #' @export
-`all_pos` <- function(x){all(unlist(words(x))>0)}
+`all_pos` <- function(x){all(unlist(words(x)) > 0)}
 
 #' @export
 `keep_pos` <- function(x){
-  coeffs(x)[unlist(lapply(words(x),function(x){any(x<0)}))] <- 0
+  coeffs(x)[unlist(lapply(words(x), function(x){any(x<0)}))] <- 0
   return(x)
 }
 
 #' @export
-`[.freealg` <- function(x,...){
+`[.freealg` <- function(x, ...){
     wanted <- list(...)[[1]]
     coeffs(x)[!wanted] <- 0
     return(x)
 }
          
 #' @export
-`[<-.freealg` <- function(x,index,value){
+`[<-.freealg` <- function(x, index, value){
     coeffs(x)[index] <- value
     return(x)
 }
