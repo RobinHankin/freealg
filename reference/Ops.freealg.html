@@ -122,9 +122,10 @@
   <code>a</code> has an inverse, then <code>a^n == inv(a)^(-n)</code>; so
   <code>a^(n+m)=(a^n)*(a^m)</code> for <code>n,m</code> any integers, positive or
   negative.</p>
-<p>If <code>a</code> has an inverse, then <code>x^a == inv(a)*x*a</code>.  The
-  notation is motivated by the identities <code>x^(ab)=(x^a)^b</code> and
-  <code>(x*y)^a=(x^a)*(y^a)</code>.</p>
+<p>If <code>x</code> and <code>a</code> are <code>freealg</code> objects, then <code>x^a</code>
+  implements group-theoretic conjugation.  If <code>a</code> has an inverse,
+  then <code>x^a == inv(a)*x*a</code>.  The notation is motivated by the
+  identities <code>x^(ab)=(x^a)^b</code> and <code>(x*y)^a=(x^a)*(y^a)</code>.</p>
 <p>The only comparison operators are equality and inequality; <code>x==y</code>
   is defined as <code>is.zero(x-y)</code>.</p>
 <p>Functions <code>lowlevel_foo()</code> are low-level functions that interface
