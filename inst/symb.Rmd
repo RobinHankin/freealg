@@ -19,7 +19,7 @@ To cite the `freealg` package in publications please use
 `a`, `b`, $\ldots$, `z` and their inverses `A`-`Z`, which are
 single-symbol `freealg` objects.  At the end, it creates a file called
 `lettersymbols.rda` which loads these symbols in to an R session.
-This file resides in the `inst/' directory of the package.
+This file resides in the `inst/` directory of the package.
 
 Earlier versions of the `freealg` package included a copy of
 `lettersymbols.rda` in the `data/` directory; lazy loading meant that
