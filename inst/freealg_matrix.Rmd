@@ -41,7 +41,7 @@ x <- structure(list(indices = list(1L, 1:2, c(1L, 2L, 1L, 1L), 2L,
 x
 ```
 
-We will evaluate `x^2` in two different ways.  Firstly, direct matrix
+We will evaluate `x^3` in two different ways.  Firstly, direct matrix
 multiplication:
 
 ```{r}
@@ -140,4 +140,4 @@ approximate-exact
 
 and we see an improved accuracy.
 
-# Refernences {-}
+# References {-}
