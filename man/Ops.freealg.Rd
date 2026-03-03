@@ -75,9 +75,10 @@ inv(S)
   \code{a^(n+m)=(a^n)*(a^m)} for \code{n,m} any integers, positive or
   negative.
 
-  If \code{a} has an inverse, then \code{x^a == inv(a)*x*a}.  The
-  notation is motivated by the identities \code{x^(ab)=(x^a)^b} and
-  \code{(x*y)^a=(x^a)*(y^a)}.
+  If \code{x} and \code{a} are \code{freealg} objects, then \code{x^a}
+  implements group-theoretic conjugation.  If \code{a} has an inverse,
+  then \code{x^a == inv(a)*x*a}.  The notation is motivated by the
+  identities \code{x^(ab)=(x^a)^b} and \code{(x*y)^a=(x^a)*(y^a)}.
   
   The only comparison operators are equality and inequality; \code{x==y}
   is defined as \code{is.zero(x-y)}.
