@@ -28,28 +28,28 @@
 \usage{
 \method{Ops}{freealg}(e1, e2)
 free_negative(S)
-free_power_scalar(S,n)
+free_power_scalar(S, n)
 free_power_free(e1, e2)
-free_eq_free(e1,e2)
-free_plus_numeric(S,x)
-free_plus_free(e1,e2)
-lowlevel_simplify(words,coeffs)
-lowlevel_free_prod(words1,coeffs1,words2,coeffs2)
-lowlevel_free_sum(words1,coeffs1,words2,coeffs2)
-lowlevel_free_power(words,coeffs,n)
-lowlevel_diffn(words,coeffs,r)
+free_eq_free(e1, e2)
+free_plus_numeric(S, x)
+free_plus_free(e1, e2)
+lowlevel_simplify(words, coeffs)
+lowlevel_free_prod(words1, coeffs1, words2, coeffs2)
+lowlevel_free_sum(words1, coeffs1, words2, coeffs2)
+lowlevel_free_power(words, coeffs, n)
+lowlevel_diffn(words, coeffs, r)
 lowlevel_subs(words1, coeffs1, words2, coeffs2, r)
 inv(S)
 }
 \arguments{
-  \item{S,e1,e2}{Objects of class \code{freealg}}
+  \item{S, e1, e2}{Objects of class \code{freealg}}
   \item{n}{Integer, possibly non-positive}
   \item{r}{Integer vector indicating variables to differentiate with
   respect to}
   \item{x}{Scalar value}
-  \item{words,words1,words2}{A list of words, that is, a list of integer vectors
+  \item{words, words1, words2}{A list of words, that is, a list of integer vectors
     representing the variables in each term}
-  \item{coeffs,coeffs1,coeffs2}{Numeric vector representing the
+  \item{coeffs, coeffs1, coeffs2}{Numeric vector representing the
     coefficients of each word}
 }
 \details{
@@ -68,7 +68,8 @@ inv(S)
   a^n3}.  Internally, \code{n} is tabulated in the interests of
   efficiency, so \code{a^c(0,2,5,5,5,) = 1 + a^2 + 3a^5} is evaluated
   with only a single fifth power.  Similar functionality is implemented
-  in the \CRANpkg{mvp} package.
+  in the \CRANpkg{mvp} package.  Beware of bracketing issues:
+  \code{a^1:3}, for example, is not defined (use \code{a^(1:3)}).
 
   Negative powers, as in \code{a^n} with \eqn{n<0} are implemented: if
   \code{a} has an inverse, then \code{a^n == inv(a)^(-n)}; so
@@ -101,6 +102,7 @@ as.freealg("1+x+xy+yx")  # variables are non-commutative
 as.freealg("x") * as.freealg("X") # upper-case letters are lower-case inverses
 
 constant(as.freealg("x+y+X+Y")^6)  # OEIS sequence A035610
+nterms  (as.freealg("x+y+X+Y")^6)  # OEIS sequence A003462 
 
 inv(as.freealg("2aaabAAAAx"))
 
