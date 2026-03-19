@@ -1,4 +1,3 @@
-} # vandalises the package
 #' @useDynLib freealg, .registration = TRUE
 
 #' @importFrom methods new
