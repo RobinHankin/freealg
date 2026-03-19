@@ -5,7 +5,7 @@
   Horner's method for multivariate polynomials
 }
 \usage{
-horner(P,v)
+horner(P, v)
 }
 \arguments{
   \item{P}{Free algebra polynomial}
