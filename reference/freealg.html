@@ -121,11 +121,16 @@ undefined (implementation-specific).  Zero entries are stripped out.</p>
 <p>Character strings may be coerced to <code>freealg</code> objects;
 <code>as.freealg()</code> calls <code>natural_char_to_freealg()</code>, which is
 user-friendly.  Functions <code>char_to_freealg()</code> and
-<code>string_to_freealg()</code> are low-level helper functions.  These
-functions assume that upper-case letters are the multiplicative inverses
-of the lower-case equivalents; so for example <code>as.freealg("aA")</code>
-and <code>as.freealg(aBcCbA)</code> evaluate to one.  This can be confusing
-with the default print method.</p>
+<code>string_to_freealg()</code> are low-level helper functions: function
+<code>string_to_freealg()</code> takes a length-one character vector such as
+<code>"xy"</code> or <code>"-5xxy"</code> and returns the corresponding one-term
+free algebra object.  Function <code>char_to_freealg()</code> takes longer
+character vectors, and returns the sum [sic] of
+<code>string_to_freealg()</code> applied to each element.</p>
+<p>These functions assume that upper-case letters are the multiplicative
+inverses of the lower-case equivalents; so for example
+<code>as.freealg("aA")</code> and <code>as.freealg(aBcCbA)</code> evaluate to one.
+This can be confusing with the default print method.</p>
     </div>
     <div id="author">
     <h2>Author</h2>

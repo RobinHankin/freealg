@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   freealg: freealg.html
-last_built: 2026-03-19T19:29Z
+last_built: 2026-04-29T08:03Z
 urls:
   reference: https://robinhankin.github.io/freealg/reference
   article: https://robinhankin.github.io/freealg/articles
