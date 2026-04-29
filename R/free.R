@@ -220,6 +220,7 @@
 
 #' @export
 `string_to_freealg` <- function(string){
+  stopifnot(length(string) <= 1)
   if(nchar(string) == 0){return(numeric_to_free(0))}
   string <- gsub("^\\+", "", string)  # strip initial "+"
   string <- gsub("\\*", "", string)   # strip all "*"

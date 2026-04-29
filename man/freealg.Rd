@@ -61,11 +61,17 @@ undefined (implementation-specific).  Zero entries are stripped out.
 Character strings may be coerced to \code{freealg} objects;
 \code{as.freealg()} calls \code{natural_char_to_freealg()}, which is
 user-friendly.  Functions \code{char_to_freealg()} and
-\code{string_to_freealg()} are low-level helper functions.  These
-functions assume that upper-case letters are the multiplicative inverses
-of the lower-case equivalents; so for example \code{as.freealg("aA")}
-and \code{as.freealg(aBcCbA)} evaluate to one.  This can be confusing
-with the default print method.
+\code{string_to_freealg()} are low-level helper functions: function
+\code{string_to_freealg()} takes a length-one character vector such as
+\code{"xy"} or \code{"-5xxy"} and returns the corresponding one-term
+free algebra object.  Function \code{char_to_freealg()} takes longer
+character vectors, and returns the sum [sic] of
+\code{string_to_freealg()} applied to each element.
+
+These functions assume that upper-case letters are the multiplicative
+inverses of the lower-case equivalents; so for example
+\code{as.freealg("aA")} and \code{as.freealg(aBcCbA)} evaluate to one.
+This can be confusing with the default print method.
 
 }
 
