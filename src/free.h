@@ -6,7 +6,7 @@
 #include <Rcpp.h>
 
 using namespace Rcpp; 
-typedef std::list<signed int> word; // a 'word' object is a list of signed ints
+typedef std::vector<signed int> word; // a 'word' object is a list of signed ints
 typedef std::map <word, double> freealg; // a 'freealg' maps word objects to reals
 
 
@@ -57,8 +57,9 @@ freealg prepare(const List words, const NumericVector coeffs){
         Rcpp::IntegerVector thisword(words[i]);
         word w(thisword.begin(), thisword.end());
         const word cw = comb(w);
-        out[cw] += coeffs[i];  // the meat
-        if(out[cw] == 0){out.erase(cw);}
+        double& val = out[cw];
+        val += coeffs[i];
+        if(val == 0){ out.erase(cw); }
         } // if coeffs != 0 clause closes
     } // i loop closes
     return out;
@@ -151,20 +152,13 @@ freealg multiply_pre_and_post(const freealg& Y, const word& left, const word& ri
 
     freealg out;
 
-    for(freealg::const_iterator it=Y.begin() ; it != Y.end() ; ++it){
-        const word w = it->first;  
-        word wnew = w;
-        const double coeff = it->second;
-
-        for(auto ww=left.begin() ; ww != left.end() ; ++ww){
-            wnew.push_front(*ww);
-        }
-
-        for(auto ww=right.begin() ; ww != right.end() ; ++ww){
-            wnew.push_back(*ww);
-        }
-
-        out[wnew] += coeff; // coefficient of w
+    for(auto const& [w, coeff] : Y){
+        word wnew;
+        wnew.reserve(left.size() + w.size() + right.size());
+        wnew.insert(wnew.end(), left.rbegin(), left.rend());
+        wnew.insert(wnew.end(), w.begin(), w.end());
+        wnew.insert(wnew.end(), right.begin(), right.end());
+        out[wnew] += coeff;
     }
     return out;
 }
@@ -200,46 +194,32 @@ freealg change_r_for_zero(const freealg &X, const int &r){
 
 freealg subs(const freealg& X, const freealg& Y, const NumericVector r){
 
-    // We know the words of X have no no zeros, so first we substitute
+    // We know the words of X have no zeros, so first we substitute
     // r[0] for 0:
     freealg Xz = change_r_for_zero(X,r[0]);
     
     // Now 'Xz' has zeros; we substitute the zeros for Y
 
-    while(find_first_zero(Xz) != Xz.end()){ // that is, while there is a zero...
-        freealg::iterator p=find_first_zero(Xz);
+    while(true){
+        auto p = find_first_zero(Xz);
+        if(p == Xz.end()) break;
 
         word w = p->first;
         const double coeff = p->second;
-        int i=0;
-        for(word::const_iterator iw = w.begin() ; iw != w.end() ; ++iw){// increment i at end of loop
-            if( (*iw) == 0) { // found a zero!
-                Xz.erase(w);  // get rid of the original word in Xz (NB not Xz[w]=0)
-                word wleft, wright;  // NB i might be 0
-                int j=0;
-                word::iterator jw;  // scope of jw needs to extend after the for loop
-                for(jw=w.begin() ; j<i ; ++j, ++jw){
-                    wleft.push_front(*jw); // populate wleft...
-                }
+        Xz.erase(p);
 
-                ++jw;  //... skip the zero...
-                
-                //...and populate wright   
-                for(; jw != w.end() ; ++jw){
-                    wright.push_back(*jw);
-                }
-
-                for(const auto& [k,v] : multiply_pre_and_post(Y,wleft,wright)){
-                    Xz[k] += v * coeff ; // Put the expansion back in Xz
-                }
-                break;  // that is, break out of the iw loop
-            } // if(found_a_zero) closes
-            ++i; //
-        }   // iw for loop closes
-    } // main "while(find_first_zero())" loop closes.
-    // if you are here, there are no zeros in the indices of Xz
+        auto zero_it = std::find(w.begin(), w.end(), 0);
+        if(zero_it != w.end()){
+            
+            word wleft(w.begin(), zero_it);
+            word wright(zero_it + 1, w.end());
+            for(const auto& [k,v] : multiply_pre_and_post(Y, wleft, wright)){
+                Xz[k] += v * coeff ; // Put the expansion back in Xz
+            }
+        }
+    }
     return Xz;
-} //function subst() closes
+} // function sub() closes
 
 // [[Rcpp::export]]
 List lowlevel_subs(
