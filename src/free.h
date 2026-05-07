@@ -34,22 +34,17 @@ List retval(const freealg &X){   // takes a freealg object and returns a mpoly-t
 }
     
 word comb(word w){  // combs through w, performing cancellations; eg [2,3,-3] -> [2] and [2,-5,5,-2,6,7] -> [6,7]
-
-    w.erase(std::remove(w.begin(), w.end(), 0), w.end());
-    word::iterator it = w.begin();
-    while(it != w.end()){
-        word::const_iterator current = it;
-        ++it;
-        word::const_iterator next = it;
-        if(it != w.end()){
-            if(((*current) + (*next))==0){ 
-                it = w.erase(current); // meat B
-                it = w.erase(it);      // meat C
-                it = w.begin();
-            }
+    word out;
+    
+    for (const auto& symbol : w) {
+        if (symbol == 0) continue; 
+        if (!out.empty() && (out.back() + symbol == 0)) {
+            out.pop_back();
+        } else {
+            out.push_back(symbol);
         }
     }
-    return w;
+    return out;
 }
 
 freealg prepare(const List words, const NumericVector coeffs){ 
@@ -59,12 +54,8 @@ freealg prepare(const List words, const NumericVector coeffs){
     for(int i=0 ; i<n ; i++){  
         if(coeffs[i] != 0){ // only nonzero coeffs
         SEXP jj = words[i]; 
-        Rcpp::IntegerVector thisword(jj);
-        word w;
-        for(int j=0 ; j<thisword.size() ; ++j){
-
-            w.push_back(thisword[j]);
-        }
+        Rcpp::IntegerVector thisword(words[i]);
+        word w(thisword.begin(), thisword.end());
         const word cw = comb(w);
         out[cw] += coeffs[i];  // the meat
         if(out[cw] == 0){out.erase(cw);}
