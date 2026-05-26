@@ -99,6 +99,34 @@ options(digits=3)
 jacobi(rM(),rM(),rM())
 ```
 
+
+## Note on how to use the dot in other packages {-}
+
+The dot object is useful in other packages that have non-commutative
+multiplication, or that have some form of commutator (e.g. the
+`onion`, `weyl`, `clifford`, `weyl`, and `permutations` packages).  To
+use it, copy `dot.rda` (created below) to the `data/` directory, add
+the lines
+
+```
+importClassesFrom(freealg,dot)
+importMethodsFrom(freealg,"[")
+```
+
+to the `NAMESPACE` file, and define methods for it if necessary.  For
+example, in the `permutations` package we see
+
+```
+setOldClass("permutation")
+setMethod("[", signature(x = "dot", i = "permutation", j = "permutation"), function(x, i, j, drop) {
+  commutator(i, j)
+})
+```
+
+[also see how `setOldClass()` might be needed].   The `DESCRIPTION`
+file will need to specify `LazyData: yes`.
+
+
 ### Package dataset {-}
 
 Following lines create `dot.rda`, residing in the `data/` directory
