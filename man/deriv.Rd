@@ -24,7 +24,7 @@
 
   Experimental function \code{deriv(S,v)} returns \eqn{\frac{\partial^r
       S}{\partial v_1\partial v_2\ldots\partial v_r}}{d^rS/dv1...dvr},
-      where $v_i$ is \code{v[i]}$.  The Leibniz product rule
+      where \eqn{v_i} is \code{v[i]}.  The Leibniz product rule
 
   \deqn{\left(u\cdot v\right)'=uv'+u'v}{omitted; see latex}
 
