@@ -407,3 +407,9 @@ setGeneric("lapply")
     coeffs(x)[index] <- value
     return(x)
 }
+
+#' @export
+`sum.freealg` <- function(..., na.rm=FALSE){
+    Reduce(free_plus_free, list(...))
+}
+
