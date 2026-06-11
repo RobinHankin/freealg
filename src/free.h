@@ -53,7 +53,6 @@ freealg prepare(const List words, const NumericVector coeffs){
 
     for(int i=0 ; i<n ; i++){  
         if(coeffs[i] != 0){ // only nonzero coeffs
-        SEXP jj = words[i]; 
         Rcpp::IntegerVector thisword(words[i]);
         word w(thisword.begin(), thisword.end());
         const word cw = comb(w);
